@@ -14,10 +14,13 @@ export default function Home() {
       <section id="ve-chung-toi">
         <GlobalNetworkSection />
       </section>
-      <section id="join-team">
+      
+      {/* Combined Section: JOIN ERA VIETNAM + Events */}
+      <section id="join-team" className="bg-gray-50">
         <JoinEraSection />
+        <EventsSection />
       </section>
-      <EventsSection />
+      
       <AcademySection />
       <section id="du-an">
         <ProjectsSection />

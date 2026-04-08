@@ -41,7 +41,7 @@ export function NewsSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-12 md:py-12 bg-white">
       <Container>
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
