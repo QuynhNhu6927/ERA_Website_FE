@@ -1,9 +1,8 @@
 "use client";
 
 import { Container } from "@/components/ui/Container";
-import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, GraduationCap, Diamond, Zap, Building2, Award, CheckCircle } from "lucide-react";
+import { ArrowRight, GraduationCap, Diamond, Zap, Building2, Award, CheckCircle, TrendingUp, BadgeCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const courses = [
@@ -47,6 +46,59 @@ export function AcademySection() {
   return (
     <section className="py-16 md:py-24 bg-white">
       <Container>
+        {/* Header Section - Image + Text */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+          {/* Left Content */}
+          <div>
+            {/* Title */}
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="text-[#1a1a4e]">ERA </span>
+              <span className="text-[#e31937]">Academy</span>
+            </h2>
+
+            {/* Description */}
+            <p className="text-gray-600 leading-relaxed mb-8">
+              ERA Academy is an international standard training platform, equipping our agents 
+              with the elite skills required to lead in the Vietnamese real estate market. 
+              From foundational knowledge to advanced project marketing, we shape the future 
+              of real estate professionals.
+            </p>
+
+            {/* Badges */}
+            <div className="flex flex-wrap gap-6">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-red-50 rounded-full flex items-center justify-center">
+                  <BadgeCheck className="w-4 h-4 text-[#e31937]" />
+                </div>
+                <span className="text-sm font-medium text-gray-700">Global Certification</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-red-50 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-4 h-4 text-[#e31937]" />
+                </div>
+                <span className="text-sm font-medium text-gray-700">Career Growth</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Image */}
+          <div className="relative">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-xl">
+              <img
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80"
+                alt="ERA Academy Training"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Overlay Card - Added left padding/margin for mobile */}
+            <div className="absolute -bottom-4 left-4 sm:left-6 lg:-left-4 bg-[#1a1a4e] text-white p-4 sm:p-5 rounded-xl max-w-[200px] sm:max-w-[220px] shadow-lg">
+              <p className="text-xs sm:text-sm leading-relaxed">
+                Empowering over <span className="font-bold">5,000+</span> agents across Vietnam with world-class expertise.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Courses Grid - 2 columns on left, 1 tall column on right */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Side - 4 cards in 2x2 grid */}
@@ -59,7 +111,7 @@ export function AcademySection() {
                   className="group bg-white border border-gray-100 rounded-xl p-6 transition-all hover:shadow-lg hover:border-gray-200 relative overflow-hidden"
                 >
                   {/* Left accent border */}
-                  <div className="absolute left-0 top-4 bottom-4 w-1 bg-[#e31937] rounded-r" />
+                  <div className="absolute left-0 top-4 bottom-4 w-1 bg-[#1a1a4e] rounded-r" />
                   
                   {/* Icon */}
                   <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center mb-4">
@@ -81,7 +133,7 @@ export function AcademySection() {
                     <span className="text-[10px] font-semibold text-[#e31937] uppercase tracking-wider">
                       {course.levelLabel}: {course.level}
                     </span>
-                    <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 group-hover:border-[#e31937] group-hover:text-[#e31937] transition-colors">
+                    <button className="w-8 h-8 flex items-center justify-center text-[#1a1a4e] group-hover:border-[#e31937] group-hover:text-[#e31937] transition-colors">
                       <ArrowRight size={16} />
                     </button>
                   </div>

@@ -1,7 +1,8 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const news = [
@@ -29,6 +30,16 @@ const news = [
 ];
 
 export function NewsSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % news.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + news.length) % news.length);
+  };
+
   return (
     <section className="py-16 md:py-24 bg-white">
       <Container>
@@ -40,22 +51,19 @@ export function NewsSection() {
           </h2>
           <a
             href="/tin-tuc"
-            className="hidden sm:flex items-center gap-2 text-[#e31937] font-medium hover:gap-3 transition-all"
+            className="hidden md:flex items-center gap-2 text-[#e31937] font-medium hover:gap-3 transition-all"
           >
             Xem tất cả
             <ArrowRight size={18} />
           </a>
         </div>
 
-        {/* News Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {news.map((item, index) => (
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-3 gap-8">
+          {news.map((item) => (
             <article
               key={item.id}
-              className={cn(
-                "group cursor-pointer",
-                index === 1 && "md:col-span-2 lg:col-span-1"
-              )}
+              className="group cursor-pointer"
             >
               {/* Image */}
               <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-4">
@@ -67,29 +75,96 @@ export function NewsSection() {
               </div>
 
               {/* Content */}
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                <Calendar size={14} />
-                {item.date}
-              </div>
+              <p className="text-sm text-gray-400 mb-2">{item.date}</p>
               <h3 className="font-semibold text-lg text-gray-900 group-hover:text-[#e31937] transition-colors mb-2 line-clamp-2">
                 {item.title}
               </h3>
-              <p className="text-gray-600 text-sm line-clamp-2">
+              <p className="text-gray-500 text-sm line-clamp-2">
                 {item.excerpt}
               </p>
             </article>
           ))}
         </div>
 
-        {/* Mobile View All Button */}
-        <div className="mt-8 text-center sm:hidden">
-          <a
-            href="/tin-tuc"
-            className="inline-flex items-center gap-2 text-[#e31937] font-medium"
-          >
-            Xem tất cả
-            <ArrowRight size={18} />
-          </a>
+        {/* Mobile Slider - Ribbon Style */}
+        <div className="md:hidden">
+          {/* Slider Container */}
+          <div className="relative overflow-hidden rounded-2xl">
+            <div 
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {news.map((item) => (
+                <article
+                  key={item.id}
+                  className="w-full flex-shrink-0"
+                >
+                  {/* Image */}
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    
+                    {/* Content on image */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <p className="text-xs text-white/70 mb-1">{item.date}</p>
+                      <h3 className="font-semibold text-white text-base line-clamp-2">
+                        {item.title}
+                      </h3>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={20} className="text-gray-700" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={20} className="text-gray-700" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
+              {news.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={cn(
+                    "w-2 h-2 rounded-full transition-all",
+                    index === currentIndex
+                      ? "bg-white w-6"
+                      : "bg-white/50"
+                  )}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* View All Button Mobile */}
+          <div className="mt-6 text-center">
+            <a
+              href="/tin-tuc"
+              className="inline-flex items-center gap-2 text-[#e31937] font-medium"
+            >
+              Xem tất cả
+              <ArrowRight size={18} />
+            </a>
+          </div>
         </div>
       </Container>
     </section>

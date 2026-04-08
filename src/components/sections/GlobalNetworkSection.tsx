@@ -9,6 +9,17 @@ const stats = [
   { icon: Users, value: "40k+", label: "AGENTS" },
 ];
 
+// Hotspot positions (percentage from left/top)
+const hotspots = [
+  { left: 18, top: 32, delay: 0 },      // USA
+  { left: 45, top: 28, delay: 0.5 },    // Europe
+  { left: 75, top: 38, delay: 1 },      // Singapore/Asia
+  { left: 82, top: 42, delay: 1.5 },    // Japan
+  { left: 22, top: 58, delay: 0.3 },    // South America
+  { left: 50, top: 50, delay: 0.8 },    // Africa/Middle East
+  { left: 80, top: 65, delay: 1.2 },    // Australia
+];
+
 export function GlobalNetworkSection() {
   return (
     <section className="py-16 md:py-24 bg-white">
@@ -42,7 +53,7 @@ export function GlobalNetworkSection() {
                 return (
                   <div key={index} className="text-center">
                     <Icon className="w-5 h-5 text-[#e31937] mx-auto mb-2" strokeWidth={1.5} />
-                    <p className="text-2xl md:text-3xl font-bold text-[#e31937]">
+                    <p className="text-2xl md:text-3xl font-bold text-[#1a1a4e]">
                       {stat.value}
                     </p>
                     <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
@@ -56,72 +67,60 @@ export function GlobalNetworkSection() {
 
           {/* Right Content - Map Visualization */}
           <div className="relative">
-            <div className="bg-[#0a0e27] rounded-3xl p-6 md:p-8 aspect-[4/3] relative overflow-hidden">
-              {/* World Map Background - Simplified dots pattern */}
-              <div className="absolute inset-0 opacity-40">
-                <svg viewBox="0 0 800 400" className="w-full h-full" fill="none">
-                  {/* World map dots - stylized */}
-                  <g fill="currentColor" className="text-slate-600">
-                    {/* North America */}
-                    <circle cx="150" cy="120" r="3" />
-                    <circle cx="170" cy="110" r="2" />
-                    <circle cx="180" cy="130" r="2" />
-                    <circle cx="200" cy="100" r="3" />
-                    <circle cx="220" cy="120" r="2" />
-                    {/* South America */}
-                    <circle cx="250" cy="250" r="3" />
-                    <circle cx="260" cy="280" r="2" />
-                    {/* Europe */}
-                    <circle cx="380" cy="100" r="3" />
-                    <circle cx="400" cy="90" r="2" />
-                    <circle cx="420" cy="110" r="2" />
-                    {/* Africa */}
-                    <circle cx="400" cy="180" r="3" />
-                    <circle cx="420" cy="220" r="2" />
-                    {/* Asia */}
-                    <circle cx="500" cy="120" r="3" />
-                    <circle cx="550" cy="100" r="3" />
-                    <circle cx="580" cy="140" r="2" />
-                    <circle cx="600" cy="110" r="3" />
-                    {/* Australia */}
-                    <circle cx="650" cy="280" r="3" />
-                  </g>
-                  {/* Connection lines */}
-                  <g stroke="currentColor" strokeWidth="0.5" className="text-slate-700" opacity="0.3">
-                    <path d="M150,120 Q300,80 380,100" />
-                    <path d="M380,100 Q450,90 550,100" />
-                    <path d="M550,100 Q580,120 600,110" />
-                    <path d="M200,100 Q350,60 500,120" />
-                  </g>
-                </svg>
-              </div>
+            <div className="bg-[#0a0e27] rounded-3xl aspect-[4/3] relative overflow-hidden shadow-2xl">
+              {/* World Map SVG - Simplified continents */}
+              <svg 
+                viewBox="0 0 800 500" 
+                className="absolute inset-0 w-full h-full opacity-30"
+                fill="currentColor"
+              >
+                <g className="text-slate-500">
+                  {/* North America */}
+                  <path d="M50,80 Q80,60 150,70 Q200,65 240,100 Q250,140 230,180 Q200,200 180,220 Q150,230 120,210 Q80,190 60,150 Q40,120 50,80 Z" />
+                  {/* South America */}
+                  <path d="M180,240 Q210,230 230,260 Q250,300 240,350 Q220,400 200,420 Q180,430 170,400 Q160,350 165,300 Q170,260 180,240 Z" />
+                  {/* Europe */}
+                  <path d="M350,80 Q380,70 420,75 Q450,85 460,110 Q450,140 430,150 Q400,155 370,145 Q340,130 340,100 Q345,85 350,80 Z" />
+                  {/* Africa */}
+                  <path d="M360,160 Q400,150 440,170 Q470,200 460,250 Q450,300 430,350 Q400,380 370,360 Q340,320 340,270 Q345,210 360,160 Z" />
+                  {/* Asia */}
+                  <path d="M470,70 Q520,60 580,70 Q640,80 680,110 Q720,140 730,180 Q720,220 680,240 Q630,250 580,240 Q520,230 480,200 Q450,160 460,120 Q465,90 470,70 Z" />
+                  {/* Australia */}
+                  <path d="M650,300 Q690,290 720,310 Q740,340 730,370 Q710,390 680,385 Q650,380 640,350 Q635,320 650,300 Z" />
+                </g>
+              </svg>
 
-              {/* Hotspots - glowing red dots */}
-              <div className="absolute top-[25%] left-[20%]">
-                <div className="w-3 h-3 bg-[#e31937] rounded-full" />
-                <div className="absolute -inset-2 bg-[#e31937]/30 rounded-full animate-ping" />
-                <div className="absolute -inset-1 bg-[#e31937]/20 rounded-full animate-pulse" />
-              </div>
-              <div className="absolute top-[22%] left-[48%]">
-                <div className="w-3 h-3 bg-[#e31937] rounded-full" />
-                <div className="absolute -inset-2 bg-[#e31937]/30 rounded-full animate-ping" style={{ animationDelay: "0.5s" }} />
-              </div>
-              <div className="absolute top-[28%] left-[72%]">
-                <div className="w-3 h-3 bg-[#e31937] rounded-full" />
-                <div className="absolute -inset-2 bg-[#e31937]/30 rounded-full animate-ping" style={{ animationDelay: "1s" }} />
-              </div>
-              <div className="absolute top-[35%] left-[75%]">
-                <div className="w-2 h-2 bg-[#e31937] rounded-full" />
-              </div>
-              <div className="absolute top-[68%] left-[78%]">
-                <div className="w-3 h-3 bg-[#e31937] rounded-full" />
-              </div>
+              {/* Hotspots */}
+              {hotspots.map((spot, index) => (
+                <div
+                  key={index}
+                  className="absolute w-3 h-3"
+                  style={{
+                    left: `${spot.left}%`,
+                    top: `${spot.top}%`,
+                  }}
+                >
+                  <div 
+                    className="w-3 h-3 bg-[#e31937] rounded-full relative"
+                    style={{ animationDelay: `${spot.delay}s` }}
+                  >
+                    <div 
+                      className="absolute -inset-2 bg-[#e31937]/40 rounded-full animate-ping"
+                      style={{ animationDelay: `${spot.delay}s` }}
+                    />
+                    <div 
+                      className="absolute -inset-1 bg-[#e31937]/20 rounded-full animate-pulse"
+                      style={{ animationDelay: `${spot.delay}s` }}
+                    />
+                  </div>
+                </div>
+              ))}
 
-              {/* Info Card */}
-              <div className="absolute bottom-6 right-6 bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 max-w-[220px] border border-slate-700/50">
+              {/* Strategic Hubs Card - Bottom Right with blur */}
+              <div className="absolute bottom-6 right-6 bg-slate-800/60 backdrop-blur-md rounded-xl p-4 max-w-[220px] border border-slate-700/30 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-[#e31937]/20 rounded-lg flex items-center justify-center">
-                    <Globe className="w-4 h-4 text-[#e31937]" />
+                  <div className="w-8 h-8 bg-[#e31937] rounded-lg flex items-center justify-center">
+                    <Globe className="w-4 h-4 text-white" />
                   </div>
                   <span className="text-white font-semibold text-sm">Strategic Hubs</span>
                 </div>
@@ -130,8 +129,8 @@ export function GlobalNetworkSection() {
                 </p>
               </div>
 
-              {/* SAFE WORK text - subtle watermark */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-slate-700 text-xs font-medium tracking-widest opacity-30">
+              {/* SAFE WORK text */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-slate-700 text-[10px] font-medium tracking-[0.3em] uppercase">
                 SAFE WORK
               </div>
             </div>

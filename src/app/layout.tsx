@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { ToTopButton } from "@/components/layout/ToTopButton";
 
 export const metadata: Metadata = {
@@ -18,8 +17,7 @@ export default function RootLayout({
     <html lang="vi" className="h-full antialiased">
       <body className="min-h-full flex flex-col font-sans">
         <Header />
-        <main className="flex-1 pt-16 md:pt-20">{children}</main>
-        <Footer />
+        <div className="flex-1 pt-14 md:pt-16">{children}</div>
         <ToTopButton />
       </body>
     </html>

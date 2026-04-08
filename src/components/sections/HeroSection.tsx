@@ -3,12 +3,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Search, Building2, ArrowRightLeft } from "lucide-react";
+import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { id: "du-an", label: "Dự án", icon: Building2 },
-  { id: "chuyen-nhuong", label: "Chuyển nhượng", icon: ArrowRightLeft },
+  { id: "du-an", label: "Dự án" },
+  { id: "chuyen-nhuong", label: "Chuyển nhượng" },
 ];
 
 const slides = [
@@ -45,7 +45,7 @@ export function HeroSection() {
   }, [nextSlide]);
 
   return (
-    <section className="relative min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-64px)] flex items-center justify-center overflow-hidden">
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-0">
         {slides.map((slide, index) => (
@@ -102,27 +102,23 @@ export function HeroSection() {
           <div className="bg-white rounded-xl shadow-2xl p-5 max-w-2xl mx-auto">
             {/* Tabs */}
             <div className="flex gap-6 mb-4">
-              {tabs.map((tab) => {
-                const Icon = tab.icon;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={cn(
-                      "flex items-center gap-2 pb-2 text-sm font-medium transition-colors relative",
-                      activeTab === tab.id
-                        ? "text-[#e31937]"
-                        : "text-gray-500 hover:text-gray-700"
-                    )}
-                  >
-                    <Icon size={16} />
-                    {tab.label}
-                    {activeTab === tab.id && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#e31937]" />
-                    )}
-                  </button>
-                );
-              })}
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={cn(
+                    "flex items-center gap-2 pb-2 text-sm font-medium transition-colors relative",
+                    activeTab === tab.id
+                      ? "text-[#e31937]"
+                      : "text-gray-500 hover:text-gray-700"
+                  )}
+                >
+                  {tab.label}
+                  {activeTab === tab.id && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#e31937]" />
+                  )}
+                </button>
+              ))}
             </div>
 
             {/* Search Input */}

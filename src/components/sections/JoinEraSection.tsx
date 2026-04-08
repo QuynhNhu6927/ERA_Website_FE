@@ -43,7 +43,7 @@ export function JoinEraSection() {
   return (
     <section className="relative">
       {/* Background Image Section */}
-      <div className="relative h-[400px] md:h-[450px]">
+      <div className="relative h-[350px] md:h-[450px]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -61,43 +61,44 @@ export function JoinEraSection() {
       </div>
 
       {/* Cards Section - overlapping the background */}
-      <div className="relative -mt-32 pb-16 md:pb-24">
+      <div className="relative -mt-24 md:-mt-32 pb-16 md:pb-24">
         <Container>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {/* Grid 2x2 on mobile, 4 columns on desktop */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
                 <div
                   key={index}
                   className={cn(
-                    "rounded-2xl p-6 min-h-[280px] flex flex-col transition-transform hover:-translate-y-2",
+                    "rounded-2xl p-4 md:p-6 transition-transform hover:-translate-y-2 flex flex-col",
                     benefit.color
                   )}
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-5">
-                    <Icon className="w-6 h-6 text-[#1a1a4e]" strokeWidth={1.5} />
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-xl flex items-center justify-center mb-3 md:mb-4 flex-shrink-0">
+                    <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" strokeWidth={1.5} />
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-semibold text-lg text-white leading-tight mb-1">
+                  <h3 className="font-semibold text-base md:text-lg text-white leading-tight mb-1">
                     {benefit.title}
                   </h3>
                   {benefit.subtitle && (
-                    <h3 className="font-semibold text-lg text-white leading-tight mb-3">
+                    <h3 className="font-semibold text-base md:text-lg text-white leading-tight mb-2 md:mb-3">
                       {benefit.subtitle}
                     </h3>
                   )}
 
-                  {/* Description */}
-                  <p className="text-white/70 text-sm mb-6 flex-1">
+                  {/* Description - flex-1 to push Learn More to bottom */}
+                  <p className="text-white/70 text-sm mb-4 flex-1">
                     {benefit.description}
                   </p>
 
-                  {/* Learn More Link */}
+                  {/* Learn More Link - always at bottom */}
                   <button
                     className={cn(
-                      "flex items-center gap-1 text-xs font-medium transition-colors mt-auto",
+                      "flex items-center gap-2 text-xs md:text-sm font-medium transition-colors mt-auto",
                       benefit.linkColor,
                       "hover:opacity-80"
                     )}
