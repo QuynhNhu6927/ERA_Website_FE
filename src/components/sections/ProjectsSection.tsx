@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
-import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
-import { MapPin } from "lucide-react";
+import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 
 const tabs = [
   { id: "booking", label: "Đang nhận booking" },
@@ -51,20 +50,31 @@ const projects = [
 
 export function ProjectsSection() {
   const [activeTab, setActiveTab] = useState("booking");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
 
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <Container>
-        <SectionTitle
-          title="Dự Án"
-          highlight="ERA Vietnam"
-          description="Khám phá những dự án bất động sản hàng đầu được phân phối bởi ERA Vietnam, từ căn hộ cao cấp đến biệt thự nghỉ dưỡng sang trọng."
-          align="left"
-          className="mb-8"
-        />
+        <div className="flex flex-col md:block mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">
+            <span className="text-[#1a1a4e]">Dự Án </span>
+            <span className="text-[#e31937]">ERA Vietnam</span>
+          </h2>
+          <p className="text-gray-600 text-sm max-w-xl mb-6 md:mb-0">
+            Khám phá những dự án bất động sản hàng đầu được phân phối bởi ERA Vietnam, từ căn hộ cao cấp đến biệt thự nghỉ dưỡng sang trọng.
+          </p>
+        </div>
 
-        {/* Tabs */}
-        <div className="flex flex-wrap gap-2 mb-8 border-b border-gray-200">
+        {/* Tabs - Desktop */}
+        <div className="hidden md:flex flex-wrap gap-2 mb-8 border-b border-gray-200">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -84,8 +94,8 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Featured Project */}
           <div className="lg:col-span-2 lg:row-span-2 group cursor-pointer">
             <div className="relative h-full min-h-[400px] lg:min-h-[500px] rounded-2xl overflow-hidden">
@@ -160,6 +170,103 @@ export function ProjectsSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Mobile Slider - Ribbon Style */}
+        <div className="md:hidden">
+          <div className="relative overflow-hidden rounded-2xl">
+            <div 
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {projects.map((project) => (
+                <div
+                  key={project.id}
+                  className="w-full flex-shrink-0 relative aspect-[4/5]"
+                >
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  
+                  {/* Badges */}
+                  {project.badges.length > 0 && (
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      {project.badges.map((badge) => (
+                        <span
+                          key={badge}
+                          className={cn(
+                            "px-2 py-1 rounded-full text-xs font-medium",
+                            badge === "PREMIUM"
+                              ? "bg-[#e31937] text-white"
+                              : "bg-white text-gray-800"
+                          )}
+                        >
+                          {badge}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                    <h3 className="text-xl font-bold mb-2">{project.name}</h3>
+                    <div className="flex items-center gap-2 text-white/80 text-sm mb-3">
+                      <MapPin size={14} />
+                      {project.location}
+                    </div>
+                    {project.price && (
+                      <div className="flex items-center gap-4">
+                        <div>
+                          <p className="text-xs text-white/60 uppercase">Giá từ</p>
+                          <p className="text-lg font-bold">{project.price} {project.unit}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-white/60 uppercase">Loại</p>
+                          <p className="text-sm">{project.type}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={20} className="text-gray-700" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={20} className="text-gray-700" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+              {projects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={cn(
+                    "w-2 h-2 rounded-full transition-all",
+                    index === currentIndex
+                      ? "bg-white w-6"
+                      : "bg-white/50"
+                  )}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
     </section>
