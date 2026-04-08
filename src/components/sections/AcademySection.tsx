@@ -44,7 +44,7 @@ const eliteFeatures = [
 
 export function AcademySection() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-12 md:py-12 bg-white">
       <Container>
         {/* Header Section - Image + Text */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">

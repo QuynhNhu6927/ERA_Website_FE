@@ -41,7 +41,7 @@ const benefits = [
 
 export function JoinEraSection() {
   return (
-    <section className="relative">
+    <div className="relative">
       {/* Background Image Section */}
       <div className="relative h-[350px] md:h-[450px]">
         <div
@@ -61,7 +61,7 @@ export function JoinEraSection() {
       </div>
 
       {/* Cards Section - overlapping the background */}
-      <div className="relative -mt-24 md:-mt-32 pb-16 md:pb-24">
+      <div className="relative -mt-24 md:-mt-32 pb-8 md:pb-12">
         <Container>
           {/* Grid 2x2 on mobile, 4 columns on desktop */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -112,6 +112,6 @@ export function JoinEraSection() {
           </div>
         </Container>
       </div>
-    </section>
+    </div>
   );
 }

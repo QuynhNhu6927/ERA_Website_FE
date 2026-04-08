@@ -22,7 +22,7 @@ const hotspots = [
 
 export function GlobalNetworkSection() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-12 md:py-12 bg-white">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
@@ -51,8 +51,8 @@ export function GlobalNetworkSection() {
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={index} className="text-center">
-                    <Icon className="w-5 h-5 text-[#e31937] mx-auto mb-2" strokeWidth={1.5} />
+                  <div key={index} className="text-left">
+                    <Icon className="w-5 h-5 text-[#e31937] mb-2" strokeWidth={1.5} />
                     <p className="text-2xl md:text-3xl font-bold text-[#1a1a4e]">
                       {stat.value}
                     </p>
@@ -116,22 +116,24 @@ export function GlobalNetworkSection() {
                 </div>
               ))}
 
-              {/* Strategic Hubs Card - Bottom Right with blur */}
-              <div className="absolute bottom-6 right-6 bg-slate-800/60 backdrop-blur-md rounded-xl p-4 max-w-[220px] border border-slate-700/30 shadow-lg">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-[#e31937] rounded-lg flex items-center justify-center">
-                    <Globe className="w-4 h-4 text-white" />
+              {/* Strategic Hubs Card + SAFE WORK container */}
+              <div className="absolute bottom-6 right-6 max-w-[250px]">
+                <div className="bg-slate-800/40 backdrop-blur-md rounded-xl p-4 border border-slate-700/30 shadow-lg">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-8 h-8 bg-[#e31937] rounded-lg flex items-center justify-center">
+                      <Globe className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-white font-semibold text-sm">Strategic Hubs</span>
                   </div>
-                  <span className="text-white font-semibold text-sm">Strategic Hubs</span>
+                  <p className="text-slate-400 text-xs leading-relaxed">
+                    Connecting investors in Singapore, Japan, and the USA directly to the Vietnamese market.
+                  </p>
                 </div>
-                <p className="text-slate-400 text-xs leading-relaxed">
-                  Connecting investors in Singapore, Japan, and the USA directly to the Vietnamese market.
-                </p>
-              </div>
-
-              {/* SAFE WORK text */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-slate-700 text-[10px] font-medium tracking-[0.3em] uppercase">
-                SAFE WORK
+                
+                {/* SAFE WORK text */}
+                <div className="text-left text-slate-600/80 text-[10px] font-medium tracking-[0.3em] uppercase mt-2">
+                  SAFE WORK
+                </div>
               </div>
             </div>
           </div>

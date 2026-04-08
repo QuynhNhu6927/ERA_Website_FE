@@ -51,7 +51,7 @@ export function EventsSection() {
   const [currentMonth, setCurrentMonth] = useState(4);
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <div className="pb-12 md:pb-12">
       <Container>
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
@@ -176,6 +176,6 @@ export function EventsSection() {
           </div>
         </div>
       </Container>
-    </section>
+    </div>
   );
 }
