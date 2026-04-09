@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { colors } from "@/lib/theme";
 
 interface SectionTitleProps {
   title: string;
@@ -28,21 +29,27 @@ export function SectionTitle({
   return (
     <div className={cn(alignments[align], className)}>
       {subtitle && (
-        <p className="text-sm font-semibold uppercase tracking-wider text-[#e31937] mb-2">
+        <p 
+          className="text-sm font-semibold uppercase tracking-wider mb-2"
+          style={{ color: colors.primary.DEFAULT }}
+        >
           {subtitle}
         </p>
       )}
       <h2 className={cn("text-3xl md:text-4xl lg:text-5xl font-bold", titleClassName)}>
-        <span className="text-[#1a1a4e]">{title}</span>
+        <span style={{ color: colors.secondary.DEFAULT }}>{title}</span>
         {highlight && (
-          <span className="text-[#e31937]"> {highlight}</span>
+          <span style={{ color: colors.primary.DEFAULT }}> {highlight}</span>
         )}
       </h2>
       {description && (
-        <p className={cn(
-          "mt-4 text-gray-600 max-w-2xl",
-          align === "center" ? "mx-auto" : ""
-        )}>
+        <p 
+          className={cn(
+            "mt-4 max-w-2xl",
+            align === "center" ? "mx-auto" : ""
+          )}
+          style={{ color: colors.gray[600] }}
+        >
           {description}
         </p>
       )}

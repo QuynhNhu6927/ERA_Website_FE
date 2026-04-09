@@ -5,18 +5,19 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import { colors } from "@/lib/theme";
 
 const tabs = [
-  { id: "booking", label: "Đang nhận booking" },
+  { id: "booking", label: "Dang nhan booking" },
   { id: "top-sales", label: "Top doanh thu" },
-  { id: "trending", label: "Hot trên thị trường" },
+  { id: "trending", label: "Hot tren thi truong" },
 ];
 
 const projects = [
   {
     id: 1,
     name: "Grand Marina Saigon",
-    location: "Quận 1, TP. Hồ Chí Minh",
+    location: "Quan 1, TP. Ho Chi Minh",
     price: "15.000",
     unit: "USD/m2",
     type: "Luxury Branded",
@@ -27,7 +28,7 @@ const projects = [
   {
     id: 2,
     name: "Eco Retreat",
-    location: "Tây Ninh",
+    location: "Tay Ninh",
     price: null,
     unit: null,
     type: "Eco Living",
@@ -38,7 +39,7 @@ const projects = [
   {
     id: 3,
     name: "Ixora Ho Tram",
-    location: "Bà Rịa - Vũng Tàu",
+    location: "Ba Ria - Vung Tau",
     price: null,
     unit: null,
     type: "Beach Resort",
@@ -61,34 +62,48 @@ export function ProjectsSection() {
   };
 
   return (
-    <section className="py-12 md:py-12 bg-gray-50">
+    <section 
+      className="py-12 md:py-12"
+      style={{ backgroundColor: colors.gray[50] }}
+    >
       <Container>
         <div className="flex flex-col md:block mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            <span className="text-[#1a1a4e]">Dự Án </span>
-            <span className="text-[#e31937]">ERA Vietnam</span>
+            <span style={{ color: colors.secondary.DEFAULT }}>Du An </span>
+            <span style={{ color: colors.primary.DEFAULT }}>ERA Vietnam</span>
           </h2>
-          <p className="text-gray-600 text-sm max-w-xl mb-6 md:mb-0">
-            Khám phá những dự án bất động sản hàng đầu được phân phối bởi ERA Vietnam, từ căn hộ cao cấp đến biệt thự nghỉ dưỡng sang trọng.
+          <p 
+            className="text-sm max-w-xl mb-6 md:mb-0"
+            style={{ color: colors.gray[600] }}
+          >
+            Kham pha nhung du an bat dong san hang dau duoc phan phoi boi ERA Vietnam, tu can ho cao cap den biet thu nghi duong sang trong.
           </p>
         </div>
 
         {/* Tabs - Desktop */}
-        <div className="hidden md:flex flex-wrap gap-2 mb-8 border-b border-gray-200">
+        <div 
+          className="hidden md:flex flex-wrap gap-2 mb-8"
+          style={{ borderBottom: `1px solid ${colors.gray[200]}` }}
+        >
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
-                "px-4 py-3 text-sm font-medium transition-colors relative",
-                activeTab === tab.id
-                  ? "text-[#e31937]"
-                  : "text-gray-500 hover:text-gray-700"
+                "px-4 py-3 text-sm font-medium transition-colors relative"
               )}
+              style={{
+                color: activeTab === tab.id 
+                  ? colors.primary.DEFAULT 
+                  : colors.gray[500],
+              }}
             >
               {tab.label}
               {activeTab === tab.id && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#e31937]" />
+                <span 
+                  className="absolute bottom-0 left-0 right-0 h-0.5"
+                  style={{ backgroundColor: colors.primary.DEFAULT }}
+                />
               )}
             </button>
           ))}
@@ -104,43 +119,69 @@ export function ProjectsSection() {
                 alt={projects[0].name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div 
+                className="absolute inset-0"
+                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }}
+              />
               
               {/* Badges */}
               <div className="absolute top-4 left-4 flex gap-2">
                 {projects[0].badges.map((badge) => (
-                  <Badge
+                  <span
                     key={badge}
-                    className={cn(
-                      badge === "PREMIUM"
-                        ? "bg-[#e31937] text-white"
-                        : "bg-white text-gray-800"
-                    )}
+                    className="px-2 py-1 rounded-full text-xs font-medium"
+                    style={{
+                      backgroundColor: badge === "PREMIUM" 
+                        ? colors.primary.DEFAULT 
+                        : colors.neutral.white,
+                      color: badge === "PREMIUM" 
+                        ? colors.neutral.white 
+                        : colors.gray[800],
+                    }}
                   >
                     {badge}
-                  </Badge>
+                  </span>
                 ))}
               </div>
 
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <div 
+                className="absolute bottom-0 left-0 right-0 p-6"
+                style={{ color: colors.neutral.white }}
+              >
                 <h3 className="text-2xl md:text-3xl font-bold mb-2">
                   {projects[0].name}
                 </h3>
-                <div className="flex items-center gap-2 text-white/80 text-sm mb-4">
+                <div 
+                  className="flex items-center gap-2 text-sm mb-4"
+                  style={{ color: `${colors.neutral.white}CC` }}
+                >
                   <MapPin size={16} />
                   {projects[0].location}
                 </div>
                 <div className="flex items-center gap-6">
                   <div>
-                    <p className="text-xs text-white/60 uppercase tracking-wider">Giá từ</p>
+                    <p 
+                      className="text-xs uppercase tracking-wider"
+                      style={{ color: `${colors.neutral.white}99` }}
+                    >
+                      Gia tu
+                    </p>
                     <p className="text-xl font-bold">
                       {projects[0].price} {projects[0].unit}
                     </p>
                   </div>
-                  <div className="h-10 w-px bg-white/30" />
+                  <div 
+                    className="h-10 w-px"
+                    style={{ backgroundColor: `${colors.neutral.white}4D` }}
+                  />
                   <div>
-                    <p className="text-xs text-white/60 uppercase tracking-wider">Loại</p>
+                    <p 
+                      className="text-xs uppercase tracking-wider"
+                      style={{ color: `${colors.neutral.white}99` }}
+                    >
+                      Loai
+                    </p>
                     <p className="text-lg">{projects[0].type}</p>
                   </div>
                 </div>
@@ -159,11 +200,20 @@ export function ProjectsSection() {
                 alt={project.name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div 
+                className="absolute inset-0"
+                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }}
+              />
               
-              <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+              <div 
+                className="absolute bottom-0 left-0 right-0 p-5"
+                style={{ color: colors.neutral.white }}
+              >
                 <h3 className="text-xl font-bold mb-1">{project.name}</h3>
-                <div className="flex items-center gap-2 text-white/80 text-sm">
+                <div 
+                  className="flex items-center gap-2 text-sm"
+                  style={{ color: `${colors.neutral.white}CC` }}
+                >
                   <MapPin size={14} />
                   {project.location}
                 </div>
@@ -172,7 +222,7 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* Mobile Slider - Ribbon Style */}
+        {/* Mobile Slider */}
         <div className="md:hidden">
           <div className="relative overflow-hidden rounded-2xl">
             <div 
@@ -189,7 +239,10 @@ export function ProjectsSection() {
                     alt={project.name}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div 
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }}
+                  />
                   
                   {/* Badges */}
                   {project.badges.length > 0 && (
@@ -197,12 +250,15 @@ export function ProjectsSection() {
                       {project.badges.map((badge) => (
                         <span
                           key={badge}
-                          className={cn(
-                            "px-2 py-1 rounded-full text-xs font-medium",
-                            badge === "PREMIUM"
-                              ? "bg-[#e31937] text-white"
-                              : "bg-white text-gray-800"
-                          )}
+                          className="px-2 py-1 rounded-full text-xs font-medium"
+                          style={{
+                            backgroundColor: badge === "PREMIUM" 
+                              ? colors.primary.DEFAULT 
+                              : colors.neutral.white,
+                            color: badge === "PREMIUM" 
+                              ? colors.neutral.white 
+                              : colors.gray[800],
+                          }}
                         >
                           {badge}
                         </span>
@@ -211,20 +267,36 @@ export function ProjectsSection() {
                   )}
 
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                  <div 
+                    className="absolute bottom-0 left-0 right-0 p-5"
+                    style={{ color: colors.neutral.white }}
+                  >
                     <h3 className="text-xl font-bold mb-2">{project.name}</h3>
-                    <div className="flex items-center gap-2 text-white/80 text-sm mb-3">
+                    <div 
+                      className="flex items-center gap-2 text-sm mb-3"
+                      style={{ color: `${colors.neutral.white}CC` }}
+                    >
                       <MapPin size={14} />
                       {project.location}
                     </div>
                     {project.price && (
                       <div className="flex items-center gap-4">
                         <div>
-                          <p className="text-xs text-white/60 uppercase">Giá từ</p>
+                          <p 
+                            className="text-xs uppercase"
+                            style={{ color: `${colors.neutral.white}99` }}
+                          >
+                            Gia tu
+                          </p>
                           <p className="text-lg font-bold">{project.price} {project.unit}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-white/60 uppercase">Loại</p>
+                          <p 
+                            className="text-xs uppercase"
+                            style={{ color: `${colors.neutral.white}99` }}
+                          >
+                            Loai
+                          </p>
                           <p className="text-sm">{project.type}</p>
                         </div>
                       </div>
@@ -237,17 +309,19 @@ export function ProjectsSection() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
+              style={{ backgroundColor: colors.overlay.light }}
               aria-label="Previous slide"
             >
-              <ChevronLeft size={20} className="text-gray-700" />
+              <ChevronLeft size={20} style={{ color: colors.gray[700] }} />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
+              style={{ backgroundColor: colors.overlay.light }}
               aria-label="Next slide"
             >
-              <ChevronRight size={20} className="text-gray-700" />
+              <ChevronRight size={20} style={{ color: colors.gray[700] }} />
             </button>
 
             {/* Dots Indicator */}
@@ -256,12 +330,13 @@ export function ProjectsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={cn(
-                    "w-2 h-2 rounded-full transition-all",
-                    index === currentIndex
-                      ? "bg-white w-6"
-                      : "bg-white/50"
-                  )}
+                  className="h-2 rounded-full transition-all"
+                  style={{
+                    width: index === currentIndex ? '24px' : '8px',
+                    backgroundColor: index === currentIndex 
+                      ? colors.neutral.white 
+                      : `${colors.neutral.white}80`,
+                  }}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}

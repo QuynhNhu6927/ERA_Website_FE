@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { colors } from "@/lib/theme";
 
 // Social Media Icons as SVG components
 const TikTokIcon = () => (
@@ -29,9 +32,9 @@ const YoutubeIcon = () => (
 
 const footerLinks = {
   company: [
-    { label: "Câu chuyện thương hiệu", href: "/cau-chuyen" },
-    { label: "Lĩnh vực hoạt động", href: "/linh-vuc" },
-    { label: "Tuyển dụng", href: "/tuyen-dung" },
+    { label: "Cau chuyen thuong hieu", href: "/cau-chuyen" },
+    { label: "Linh vuc hoat dong", href: "/linh-vuc" },
+    { label: "Tuyen dung", href: "/tuyen-dung" },
   ],
   social: [
     { label: "Tiktok", href: "#", icon: TikTokIcon },
@@ -43,37 +46,56 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-[#0f172a] text-white">
+    <footer 
+      className="text-white"
+      style={{ backgroundColor: colors.accent.DEFAULT }}
+    >
       <Container>
         <div className="py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-[#e31937] rounded flex items-center justify-center">
+              <div 
+                className="w-10 h-10 rounded flex items-center justify-center"
+                style={{ backgroundColor: colors.primary.DEFAULT }}
+              >
                 <svg viewBox="0 0 40 40" className="w-8 h-8">
-                  <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">ERA</text>
+                  <text 
+                    x="50%" 
+                    y="55%" 
+                    dominantBaseline="middle" 
+                    textAnchor="middle" 
+                    fill={colors.neutral.white}
+                    fontSize="14" 
+                    fontWeight="bold"
+                  >
+                    ERA
+                  </text>
                 </svg>
               </div>
               <span className="font-bold text-lg">ERA Vietnam</span>
             </div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
-              Công ty Cổ phần Bất động sản ERA Việt Nam
+            <p 
+              className="text-sm font-semibold uppercase tracking-wider mb-4"
+              style={{ color: colors.gray[400] }}
+            >
+              Cong ty Co phan Bat dong san ERA Viet Nam
             </p>
-            <div className="space-y-3 text-sm text-gray-300">
+            <div className="space-y-3 text-sm" style={{ color: colors.gray[300] }}>
               <p className="flex items-start gap-2">
-                <MapPin size={16} className="mt-0.5 text-[#e31937] flex-shrink-0" />
-                <span>Lầu 11, 134-01, 72 Lê Thánh Tôn, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh, Việt Nam</span>
+                <MapPin size={16} className="mt-0.5 flex-shrink-0" style={{ color: colors.primary.DEFAULT }} />
+                <span>Lau 11, 134-01, 72 Le Thanh Ton, Phuong Ben Nghe, Quan 1, TP. Ho Chi Minh, Viet Nam</span>
               </p>
               <p className="flex items-center gap-2">
-                <MapPin size={16} className="text-[#e31937] flex-shrink-0" />
-                <span>VP làm việc: Số 22-24, Đường số 5, KĐT Sala, Phường An Khánh, TP. Thủ Đức</span>
+                <MapPin size={16} className="flex-shrink-0" style={{ color: colors.primary.DEFAULT }} />
+                <span>VP lam viec: So 22-24, Duong so 5, KDT Sala, Phuong An Khanh, TP. Thu Duc</span>
               </p>
               <p className="flex items-center gap-2">
-                <Phone size={16} className="text-[#e31937] flex-shrink-0" />
+                <Phone size={16} className="flex-shrink-0" style={{ color: colors.primary.DEFAULT }} />
                 <span>Hotline: 1800 6701</span>
               </p>
               <p className="flex items-center gap-2">
-                <Mail size={16} className="text-[#e31937] flex-shrink-0" />
+                <Mail size={16} className="flex-shrink-0" style={{ color: colors.primary.DEFAULT }} />
                 <span>info@eravietnam.vn</span>
               </p>
             </div>
@@ -81,28 +103,29 @@ export function Footer() {
 
           {/* Office Locations */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Văn phòng chi nhánh</h3>
-            <div className="space-y-4 text-sm text-gray-300">
+            <h3 className="font-semibold text-lg mb-6">Van phong chi nhanh</h3>
+            <div className="space-y-4 text-sm" style={{ color: colors.gray[300] }}>
               <div>
-                <p className="font-medium text-white mb-1">VP Đà Nẵng:</p>
-                <p>Tầng 2, 358 Trần Hưng Đạo, phường An Hải, TP. Đà Nẵng</p>
+                <p className="font-medium text-white mb-1">VP Da Nang:</p>
+                <p>Tang 2, 358 Tran Hung Dao, phuong An Hai, TP. Da Nang</p>
               </div>
               <div>
-                <p className="font-medium text-white mb-1">VP Hà Nội:</p>
-                <p>Tòa nhà văn phòng, số 38 Hoàng Cầu, Phường Ô Chợ Dừa, Hà Nội</p>
+                <p className="font-medium text-white mb-1">VP Ha Noi:</p>
+                <p>Toa nha van phong, so 38 Hoang Cau, Phuong O Cho Dua, Ha Noi</p>
               </div>
             </div>
           </div>
 
           {/* About Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Về chúng tôi</h3>
+            <h3 className="font-semibold text-lg mb-6">Ve chung toi</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-[#e31937] transition-colors text-sm"
+                    className="text-sm transition-colors hover:text-primary"
+                    style={{ color: colors.gray[300] }}
                   >
                     {link.label}
                   </Link>
@@ -113,7 +136,7 @@ export function Footer() {
 
           {/* Social Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Theo dõi chúng tôi</h3>
+            <h3 className="font-semibold text-lg mb-6">Theo doi chung toi</h3>
             <ul className="space-y-3">
               {footerLinks.social.map((link) => {
                 const Icon = link.icon;
@@ -121,7 +144,8 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-[#e31937] transition-colors text-sm flex items-center gap-3"
+                      className="text-sm flex items-center gap-3 transition-colors hover:text-primary"
+                      style={{ color: colors.gray[300] }}
                     >
                       <Icon />
                       {link.label}
@@ -134,15 +158,29 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-            <p>© 2024 ERA Vietnam. All rights reserved.</p>
+        <div 
+          className="py-6"
+          style={{ borderTop: `1px solid ${colors.gray[800]}` }}
+        >
+          <div 
+            className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm"
+            style={{ color: colors.gray[400] }}
+          >
+            <p>&copy; 2024 ERA Vietnam. All rights reserved.</p>
             <div className="flex gap-6">
-              <Link href="#" className="hover:text-white transition-colors">
-                Điều khoản sử dụng
+              <Link 
+                href="#" 
+                className="transition-colors hover:text-white"
+                style={{ color: colors.gray[400] }}
+              >
+                Dieu khoan su dung
               </Link>
-              <Link href="#" className="hover:text-white transition-colors">
-                Chính sách bảo mật
+              <Link 
+                href="#" 
+                className="transition-colors hover:text-white"
+                style={{ color: colors.gray[400] }}
+              >
+                Chinh sach bao mat
               </Link>
             </div>
           </div>

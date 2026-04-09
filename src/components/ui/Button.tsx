@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ButtonHTMLAttributes, forwardRef } from "react";
+import { colors } from "@/lib/theme";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost";
@@ -11,11 +12,26 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", isLoading, children, ...props }, ref) => {
+    const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed";
+    
     const variants = {
-      primary: "bg-[#e31937] text-white hover:bg-[#c41230]",
-      secondary: "bg-[#1a1a4e] text-white hover:bg-[#0f0f3e]",
-      outline: "border-2 border-[#e31937] text-[#e31937] hover:bg-[#e31937] hover:text-white",
-      ghost: "text-[#1a1a2e] hover:bg-gray-100",
+      primary: {
+        backgroundColor: colors.primary.DEFAULT,
+        color: colors.neutral.white,
+      },
+      secondary: {
+        backgroundColor: colors.secondary.DEFAULT,
+        color: colors.neutral.white,
+      },
+      outline: {
+        border: `2px solid ${colors.primary.DEFAULT}`,
+        color: colors.primary.DEFAULT,
+        backgroundColor: 'transparent',
+      },
+      ghost: {
+        color: colors.neutral.foreground,
+        backgroundColor: 'transparent',
+      },
     };
 
     const sizes = {
@@ -24,15 +40,24 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       lg: "px-8 py-4 text-lg",
     };
 
+    const hoverStyles = {
+      primary: { backgroundColor: colors.primary.dark },
+      secondary: { backgroundColor: colors.secondary.dark },
+      outline: { backgroundColor: colors.primary.DEFAULT, color: colors.neutral.white },
+      ghost: { backgroundColor: colors.gray[100] },
+    };
+
     return (
       <button
         ref={ref}
-        className={cn(
-          "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed",
-          variants[variant],
-          sizes[size],
-          className
-        )}
+        className={cn(baseStyles, sizes[size], className)}
+        style={variants[variant]}
+        onMouseEnter={(e) => {
+          Object.assign(e.currentTarget.style, hoverStyles[variant]);
+        }}
+        onMouseLeave={(e) => {
+          Object.assign(e.currentTarget.style, variants[variant]);
+        }}
         disabled={isLoading || props.disabled}
         {...props}
       >
