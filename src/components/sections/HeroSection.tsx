@@ -2,14 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
-import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const tabs = [
-  { id: "du-an", label: "Dự án" },
-  { id: "chuyen-nhuong", label: "Chuyển nhượng" },
-];
+import { colors } from "@/lib/theme";
 
 const slides = [
   {
@@ -30,8 +24,6 @@ const slides = [
 ];
 
 export function HeroSection() {
-  const [activeTab, setActiveTab] = useState("du-an");
-  const [searchQuery, setSearchQuery] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Auto slide every 7 seconds
@@ -45,7 +37,10 @@ export function HeroSection() {
   }, [nextSlide]);
 
   return (
-    <section className="relative min-h-[calc(100vh-56px)] md:min-h-[calc(100vh-64px)] flex items-center justify-center overflow-hidden">
+    <section 
+      className="relative flex items-center justify-center overflow-hidden"
+      style={{ height: 'calc(100vh - 56px)' }}
+    >
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-0">
         {slides.map((slide, index) => (
@@ -65,88 +60,59 @@ export function HeroSection() {
           </div>
         ))}
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div 
+          className="absolute inset-0"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
+        />
       </div>
 
+      {/* Content - Mobile: bottom, Desktop: center */}
+      <Container className="relative z-10 flex flex-col md:justify-center justify-end h-full pb-20 md:pb-0">
+        <div className="text-center">
+          {/* Main Title - ERA VIETNAM */}
+          <h1 
+            className="text-white mb-4 tracking-tight uppercase text-[48px] md:text-[98px]"
+            style={{ 
+              fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+              fontWeight: 800,
+              lineHeight: 1.1,
+            }}
+          >
+            ERA VIETNAM
+          </h1>
+          
+          {/* Subtitle */}
+          <p 
+            className="text-white uppercase tracking-wider text-[32px]"
+            style={{ 
+              fontFamily: 'var(--font-montserrat), system-ui, sans-serif',
+              fontWeight: 600,
+              letterSpacing: '0.05em',
+              lineHeight: 1.2,
+            }}
+          >
+            EMPOWER PEOPLE,<br />TRANSFORM LIVES
+          </p>
+        </div>
+      </Container>
+
       {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={cn(
-              "w-2 h-2 rounded-full transition-all duration-300",
-              index === currentSlide
-                ? "bg-white w-8"
-                : "bg-white/50 hover:bg-white/70"
-            )}
+            className="h-1 rounded-full transition-all duration-300"
+            style={{
+              width: index === currentSlide ? '40px' : '24px',
+              backgroundColor: index === currentSlide 
+                ? colors.neutral.white 
+                : `${colors.neutral.white}66`,
+            }}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
-
-      {/* Content */}
-      <Container className="relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Title */}
-          <div className="mb-10">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tight">
-              ERA VIETNAM
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 font-normal tracking-[0.2em] uppercase">
-              Empower People, Transform Lives
-            </p>
-          </div>
-
-          {/* Search Box */}
-          <div className="bg-white rounded-xl shadow-2xl p-5 max-w-2xl mx-auto">
-            {/* Tabs */}
-            <div className="flex gap-6 mb-4">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={cn(
-                    "flex items-center gap-2 pb-2 text-sm font-medium transition-colors relative",
-                    activeTab === tab.id
-                      ? "text-[#e31937]"
-                      : "text-gray-500 hover:text-gray-700"
-                  )}
-                >
-                  {tab.label}
-                  {activeTab === tab.id && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#e31937]" />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            {/* Search Input */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <div className="flex-1 relative">
-                <Search
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                  size={20}
-                />
-                <input
-                  type="text"
-                  placeholder="Tìm kiếm theo khu vực, dự án hoặc từ khóa..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-[#e31937] focus:ring-2 focus:ring-[#e31937]/20 outline-none transition-all text-sm"
-                />
-              </div>
-              <Button
-                variant="primary"
-                size="md"
-                className="whitespace-nowrap rounded-lg px-8"
-              >
-                Tìm kiếm
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Container>
     </section>
   );
 }

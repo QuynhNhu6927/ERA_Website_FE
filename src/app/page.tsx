@@ -1,11 +1,11 @@
 import { HeroSection } from "@/components/sections/HeroSection";
 import { GlobalNetworkSection } from "@/components/sections/GlobalNetworkSection";
-import { JoinEraSection } from "@/components/sections/JoinEraSection";
-import { EventsSection } from "@/components/sections/EventsSection";
+import { JoinTeamSection } from "@/components/sections/JoinTeamSection";
 import { AcademySection } from "@/components/sections/AcademySection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { NewsSection } from "@/components/sections/NewsSection";
 import { Footer } from "@/components/layout/Footer";
+import { colors } from "@/lib/theme";
 
 export default function Home() {
   return (
@@ -15,10 +15,9 @@ export default function Home() {
         <GlobalNetworkSection />
       </section>
       
-      {/* Combined Section: JOIN ERA VIETNAM + Events */}
-      <section id="join-team" className="bg-gray-50">
-        <JoinEraSection />
-        <EventsSection />
+      {/* Join Team ERA Section */}
+      <section id="join-team">
+        <JoinTeamSection />
       </section>
       
       <AcademySection />

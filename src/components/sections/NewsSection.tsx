@@ -1,31 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { colors } from "@/lib/theme";
 
 const news = [
   {
     id: 1,
-    title: "Thị trường Bất động sản Việt Nam 2026: Cơ hội cho ngưởi mua nhà",
-    excerpt: "Các chính sách mới và lãi suất ổn định đang tạo đà phục hồi mạnh mẽ cho phân khúc căn hộ cao cấp tại TP.HCM...",
+    title: "Thi truong Bat dong san Viet Nam 2026: Co hoi cho nguoi mua nha",
+    excerpt: "Cac chinh sach moi va lai suat on dinh dang tao da phuc hoi manh me cho phan khuc can ho cao cap tai TP.HCM...",
     image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&q=80",
-    date: "10 Tháng 5, 2024",
+    date: "10 Thang 5, 2024",
   },
   {
     id: 2,
-    title: "ERA Vietnam tổ chức Lễ vinh danh Chuyên viên xuất sắc Quý 1",
-    excerpt: "Hàng trăm giải thưởng giá trị đã được trao cho những nỗ lực không ngừng nghỉ của đội ngũ chuyên viên trong 3 tháng qua...",
+    title: "ERA Vietnam to chuc Le vinh danh Chuyen vien xuat sac Quy 1",
+    excerpt: "Hang tram giai thuong gia tri da duoc trao cho nhung no luc khong ngung nghi cua doi ngu chuyen vien trong 3 thang qua...",
     image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80",
-    date: "10 Tháng 5, 2024",
+    date: "10 Thang 5, 2024",
   },
   {
     id: 3,
-    title: "Cập nhật tính năng mới trên nền tảng My Agency v3.0",
-    excerpt: "Hệ thống giờ đây cho phép chuyên viên tạo tour tham quan ảo 360 độ trực tiếp cho khách hàng từ xa...",
+    title: "Cap nhat tinh nang moi tren nen tang My Agency v3.0",
+    excerpt: "He thong gio day cho phep chuyen vien tao tour tham quan ao 360 do truc tiep cho khach hang tu xa...",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
-    date: "05 Tháng 5, 2024",
+    date: "05 Thang 5, 2024",
   },
 ];
 
@@ -41,19 +42,23 @@ export function NewsSection() {
   };
 
   return (
-    <section className="py-12 md:py-12 bg-white">
+    <section 
+      className="py-12 md:py-12"
+      style={{ backgroundColor: colors.neutral.white }}
+    >
       <Container>
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-3xl md:text-4xl font-bold">
-            <span className="text-[#1a1a4e]">Tin tức & </span>
-            <span className="text-[#e31937]">Sự kiện</span>
+            <span style={{ color: colors.secondary.DEFAULT }}>Tin tuc & </span>
+            <span style={{ color: colors.primary.DEFAULT }}>Su kien</span>
           </h2>
           <a
             href="/tin-tuc"
-            className="hidden md:flex items-center gap-2 text-[#e31937] font-medium hover:gap-3 transition-all"
+            className="hidden md:flex items-center gap-2 font-medium hover:gap-3 transition-all"
+            style={{ color: colors.primary.DEFAULT }}
           >
-            Xem tất cả
+            Xem tat ca
             <ArrowRight size={18} />
           </a>
         </div>
@@ -75,20 +80,35 @@ export function NewsSection() {
               </div>
 
               {/* Content */}
-              <p className="text-sm text-gray-400 mb-2">{item.date}</p>
-              <h3 className="font-semibold text-lg text-gray-900 group-hover:text-[#e31937] transition-colors mb-2 line-clamp-2">
-                {item.title}
+              <p 
+                className="text-sm mb-2"
+                style={{ color: colors.gray[400] }}
+              >
+                {item.date}
+              </p>
+              <h3 
+                className="font-semibold text-lg mb-2 line-clamp-2"
+                style={{ color: colors.neutral.foreground }}
+              >
+                <span 
+                  className="group-hover:text-primary transition-colors"
+                  style={{ color: 'inherit' }}
+                >
+                  {item.title}
+                </span>
               </h3>
-              <p className="text-gray-500 text-sm line-clamp-2">
+              <p 
+                className="text-sm line-clamp-2"
+                style={{ color: colors.gray[500] }}
+              >
                 {item.excerpt}
               </p>
             </article>
           ))}
         </div>
 
-        {/* Mobile Slider - Ribbon Style */}
+        {/* Mobile Slider */}
         <div className="md:hidden">
-          {/* Slider Container */}
           <div className="relative overflow-hidden rounded-2xl">
             <div 
               className="flex transition-transform duration-500 ease-out"
@@ -106,13 +126,23 @@ export function NewsSection() {
                       alt={item.title}
                       className="w-full h-full object-cover"
                     />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div 
+                      className="absolute inset-0"
+                      style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }}
+                    />
                     
                     {/* Content on image */}
                     <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <p className="text-xs text-white/70 mb-1">{item.date}</p>
-                      <h3 className="font-semibold text-white text-base line-clamp-2">
+                      <p 
+                        className="text-xs mb-1"
+                        style={{ color: `${colors.neutral.white}B3` }}
+                      >
+                        {item.date}
+                      </p>
+                      <h3 
+                        className="font-semibold text-base line-clamp-2"
+                        style={{ color: colors.neutral.white }}
+                      >
                         {item.title}
                       </h3>
                     </div>
@@ -124,17 +154,19 @@ export function NewsSection() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
+              style={{ backgroundColor: colors.overlay.light }}
               aria-label="Previous slide"
             >
-              <ChevronLeft size={20} className="text-gray-700" />
+              <ChevronLeft size={20} style={{ color: colors.gray[700] }} />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-lg"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
+              style={{ backgroundColor: colors.overlay.light }}
               aria-label="Next slide"
             >
-              <ChevronRight size={20} className="text-gray-700" />
+              <ChevronRight size={20} style={{ color: colors.gray[700] }} />
             </button>
 
             {/* Dots Indicator */}
@@ -143,12 +175,13 @@ export function NewsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={cn(
-                    "w-2 h-2 rounded-full transition-all",
-                    index === currentIndex
-                      ? "bg-white w-6"
-                      : "bg-white/50"
-                  )}
+                  className="h-2 rounded-full transition-all"
+                  style={{
+                    width: index === currentIndex ? '24px' : '8px',
+                    backgroundColor: index === currentIndex 
+                      ? colors.neutral.white 
+                      : `${colors.neutral.white}80`,
+                  }}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -159,9 +192,10 @@ export function NewsSection() {
           <div className="mt-6 text-center">
             <a
               href="/tin-tuc"
-              className="inline-flex items-center gap-2 text-[#e31937] font-medium"
+              className="inline-flex items-center gap-2 font-medium"
+              style={{ color: colors.primary.DEFAULT }}
             >
-              Xem tất cả
+              Xem tat ca
               <ArrowRight size={18} />
             </a>
           </div>

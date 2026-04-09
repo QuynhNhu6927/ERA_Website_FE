@@ -1,29 +1,101 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a2e;
+  /* ============================================
+     ERA Vietnam - Design System Tokens
+     ============================================ */
+  
+  /* Primary Colors */
   --primary: #e31937;
   --primary-dark: #c41230;
+  --primary-light: #ff1f4a;
+  
+  /* Secondary Colors */
   --secondary: #1a1a4e;
+  --secondary-dark: #0f0f3e;
+  --secondary-light: #252570;
+  
+  /* Accent Colors */
   --accent: #0f172a;
+  --accent-light: #1e293b;
+  
+  /* Neutral Colors */
+  --background: #ffffff;
+  --foreground: #1a1a2e;
+  --white: #ffffff;
+  --black: #000000;
+  
+  /* Gray Scale */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  /* Slate Scale */
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  
+  /* Muted Colors */
   --muted: #64748b;
+  --muted-light: #94a3b8;
+  --muted-lighter: #cbd5e1;
+  
+  /* Border Colors */
   --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --border-dark: #cbd5e1;
+  
+  /* Card Colors */
   --card: #ffffff;
   --card-foreground: #1a1a2e;
+  
+  /* Status Colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+  
+  /* Shadow */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 @theme inline {
+  /* Map CSS variables to Tailwind theme */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
   --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-light: var(--secondary-light);
   --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
   --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --color-muted-lighter: var(--muted-lighter);
   --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-border-dark: var(--border-dark);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
 }
 
 * {
@@ -35,6 +107,37 @@ body {
   color: var(--foreground);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
+
+/* ============================================
+   Custom Utility Classes
+   ============================================ */
+
+/* Text colors using CSS variables */
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.text-muted-custom { color: var(--muted); }
+
+/* Background colors using CSS variables */
+.bg-primary { background-color: var(--primary); }
+.bg-primary-dark { background-color: var(--primary-dark); }
+.bg-secondary { background-color: var(--secondary); }
+.bg-secondary-dark { background-color: var(--secondary-dark); }
+.bg-accent { background-color: var(--accent); }
+.bg-gray-50 { background-color: var(--gray-50); }
+
+/* Border colors using CSS variables */
+.border-primary { border-color: var(--primary); }
+.border-secondary { border-color: var(--secondary); }
+
+/* Hover states */
+.hover\:text-primary:hover { color: var(--primary); }
+.hover\:bg-primary-dark:hover { background-color: var(--primary-dark); }
+.hover\:text-secondary:hover { color: var(--secondary); }
+.hover\:bg-secondary-dark:hover { background-color: var(--secondary-dark); }
+
+/* Focus states */
+.focus\:border-primary:focus { border-color: var(--primary); }
+.focus\:ring-primary:focus { --tw-ring-color: rgb(227 25 55 / 0.2); }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
