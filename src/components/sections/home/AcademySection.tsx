@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -52,8 +53,8 @@ export function AcademySection() {
             </div>
 
             {/* CTA Button - Mobile: full width, Desktop: fit content */}
-            <a
-              href="#"
+            <Link
+              href="/academy"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-white w-full lg:w-fit transition-all duration-200 hover:opacity-90 hover:shadow-lg"
               style={{
                 backgroundColor: colors.primary.DEFAULT,
@@ -67,7 +68,7 @@ export function AcademySection() {
               <svg className="hidden lg:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Right Content - Desktop Image only */}
