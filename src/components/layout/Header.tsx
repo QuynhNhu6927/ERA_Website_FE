@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { X } from "lucide-react";
 import { colors } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 
 const ICON_SIZES = {
   navIcon: 18,
@@ -15,11 +16,11 @@ const ICON_SIZES = {
 };
 
 const navLinks = [
-  { href: "#du-an", label: "Dự án", icon: "/mobile_header/menu_project_icon.svg" },
-  { href: "#join-team", label: "Join Team ERA", icon: "/mobile_header/menu_join_icon.svg" },
-  { href: "#tin-tuc", label: "Tin tức", icon: "/mobile_header/menu_news_icon.svg" },
-  { href: "#lien-he", label: "Liên hệ", icon: "/mobile_header/menu_contact_icon.svg" },
-  { href: "#ve-chung-toi", label: "Về chúng tôi", icon: "/mobile_header/menu_about_icon.svg" },
+  { href: ROUTES.projects, label: "Dự án", icon: "/mobile_header/menu_project_icon.svg" },
+  { href: ROUTES.joinTeam, label: "Join Team ERA", icon: "/mobile_header/menu_join_icon.svg" },
+  { href: ROUTES.news, label: "Tin tức", icon: "/mobile_header/menu_news_icon.svg" },
+  { href: ROUTES.contact, label: "Liên hệ", icon: "/mobile_header/menu_contact_icon.svg" },
+  { href: ROUTES.aboutUs, label: "Về chúng tôi", icon: "/mobile_header/menu_about_icon.svg" },
 ];
 
 export function Header() {
@@ -46,19 +47,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace("#", "");
-    const element = document.getElementById(targetId);
-    if (element) {
-      const headerOffset = 64;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <>
       <header className={cn("fixed top-0 left-0 right-0 z-50 transition-transform duration-300", isVisible ? "translate-y-0" : "-translate-y-full")} style={{ backgroundColor: colors.neutral.white, boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)' }}>
@@ -78,17 +66,24 @@ export function Header() {
                 {navLinks.map((link) => {
                   const isHovered = hoveredItem === link.href;
                   return (
-                    <a key={link.href} href={link.href} onClick={(e) => handleNavClick(e, link.href)} onMouseEnter={() => setHoveredItem(link.href)} onMouseLeave={() => setHoveredItem(null)} className="text-sm transition-all duration-200 cursor-pointer" style={{ color: isHovered ? colors.primary.DEFAULT : colors.gray[700], fontWeight: isHovered ? 800 : 500, fontSize: '14px' }}>
+                    <Link 
+                      key={link.href} 
+                      href={link.href}
+                      onMouseEnter={() => setHoveredItem(link.href)} 
+                      onMouseLeave={() => setHoveredItem(null)} 
+                      className="text-sm transition-all duration-200"
+                      style={{ color: isHovered ? colors.primary.DEFAULT : colors.gray[700], fontWeight: isHovered ? 800 : 500, fontSize: '14px' }}
+                    >
                       {link.label}
-                    </a>
+                    </Link>
                   );
                 })}
               </nav>
-              <Link href="/login" className="flex items-center justify-center px-5 py-2 text-sm transition-colors hover:opacity-90" style={{ backgroundColor: colors.primary.DEFAULT, color: colors.neutral.white, fontWeight: 600, fontSize: '14px', borderRadius: '8px' }}>
+              <Link href={ROUTES.login} className="flex items-center justify-center px-5 py-2 text-sm transition-colors hover:opacity-90" style={{ backgroundColor: colors.primary.DEFAULT, color: colors.neutral.white, fontWeight: 600, fontSize: '14px', borderRadius: '8px' }}>
                 Login/Đăng ký
               </Link>
             </div>
-            <Link href="/login" className="md:hidden p-2 flex items-center justify-center">
+            <Link href={ROUTES.login} className="md:hidden p-2 flex items-center justify-center">
               <img src="/mobile_header/menu_user_icon.svg" alt="User" style={{ width: '40px', height: '40px' }} />
             </Link>
           </div>
@@ -111,10 +106,16 @@ export function Header() {
           <div className="px-5 py-5" style={{ backgroundColor: '#F7F9FC' }}>
             <nav className="flex flex-col gap-6" style={{ fontFamily: 'var(--font-inter)' }}>
               {navLinks.map((link) => (
-                <a key={link.href} href={link.href} onClick={(e) => handleNavClick(e, link.href)} className="flex items-center gap-4 py-3 cursor-pointer" style={{ color: colors.secondary.DEFAULT, fontWeight: 500, fontSize: '16px' }}>
+                <Link 
+                  key={link.href} 
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center gap-4 py-3"
+                  style={{ color: colors.secondary.DEFAULT, fontWeight: 500, fontSize: '16px' }}
+                >
                   <img src={link.icon} alt={link.label} style={{ width: ICON_SIZES.navIcon, height: ICON_SIZES.navIcon }} />
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

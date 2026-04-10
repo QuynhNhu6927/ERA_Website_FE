@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 
 const benefits = [
   {
@@ -11,7 +12,7 @@ const benefits = [
     bgColor: colors.secondary.DEFAULT,
     linkColor: colors.link.cyan,
     linkHoverColor: colors.link.cyanLight,
-    href: "/join/commission",
+    href: ROUTES.commission,
   },
   {
     icon: "/join/join_learn_icon.svg",
@@ -20,7 +21,7 @@ const benefits = [
     bgColor: colors.primary.DEFAULT,
     linkColor: colors.link.yellow,
     linkHoverColor: colors.link.yellowLight,
-    href: "/join/training",
+    href: ROUTES.training,
   },
   {
     icon: "/join/join_product_icon.svg",
@@ -29,7 +30,7 @@ const benefits = [
     bgColor: colors.secondary.DEFAULT,
     linkColor: colors.link.cyan,
     linkHoverColor: colors.link.cyanLight,
-    href: "/join/inventory",
+    href: ROUTES.inventory,
   },
   {
     icon: "/join/join_tech_icon.svg",
@@ -38,7 +39,7 @@ const benefits = [
     bgColor: colors.primary.DEFAULT,
     linkColor: colors.link.yellow,
     linkHoverColor: colors.link.yellowLight,
-    href: "/join/technology",
+    href: ROUTES.technology,
   },
 ];
 
