@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -10,18 +10,9 @@ const stats = [
   { value: 40000, suffix: "+", label: "AGENTS", icon: "/network/network_agent_icon.svg" },
 ];
 
-// YouTube Player type
-interface YouTubePlayer {
-  playVideo: () => void;
-  pauseVideo: () => void;
-  mute: () => void;
-}
-
 // Hook for counting animation
 function useCountUp(end: number, duration: number = 2000, start: boolean = false) {
   const [count, setCount] = useState(0);
-  const countRef = useRef<number>(0);
-  const frameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     if (!start) {
@@ -30,16 +21,15 @@ function useCountUp(end: number, duration: number = 2000, start: boolean = false
     }
 
     const startTime = performance.now();
+    const frameRef = { current: 0 };
     
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       const currentCount = Math.floor(easeOutQuart * end);
       
       setCount(currentCount);
-      countRef.current = currentCount;
 
       if (progress < 1) {
         frameRef.current = requestAnimationFrame(animate);
@@ -48,11 +38,7 @@ function useCountUp(end: number, duration: number = 2000, start: boolean = false
 
     frameRef.current = requestAnimationFrame(animate);
 
-    return () => {
-      if (frameRef.current) {
-        cancelAnimationFrame(frameRef.current);
-      }
-    };
+    return () => cancelAnimationFrame(frameRef.current);
   }, [end, duration, start]);
 
   return count;
@@ -60,72 +46,39 @@ function useCountUp(end: number, duration: number = 2000, start: boolean = false
 
 function StatCounter({ value, suffix, isVisible }: { value: number; suffix: string; isVisible: boolean }) {
   const count = useCountUp(value, 2500, isVisible);
-  
-  const formatNumber = (num: number) => {
-    return num.toLocaleString('vi-VN').replace(/\./g, ',');
-  };
-  
-  return (
-    <span>
-      {formatNumber(count)}{suffix}
-    </span>
-  );
+  const formatNumber = (num: number) => num.toLocaleString('vi-VN').replace(/\./g, ',');
+  return <span>{formatNumber(count)}{suffix}</span>;
 }
 
 export function GlobalNetworkSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isPlayerReady, setIsPlayerReady] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const playerRef = useRef<YouTubePlayer | null>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const wasPlayingRef = useRef(false);
-
   const videoId = "T4gQ37irTtg";
 
-  useEffect(() => {
-    if ((window as unknown as { YT?: { Player: unknown } }).YT?.Player) {
-      return;
-    }
-
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-
-    (window as unknown as { onYouTubeIframeAPIReady?: () => void }).onYouTubeIframeAPIReady = () => {};
-  }, []);
-
-  const initPlayer = useCallback(() => {
-    const YT = (window as unknown as { YT?: { Player: new (element: HTMLIFrameElement, options: {
-      events: { onReady: () => void };
-    }) => YouTubePlayer } }).YT;
-    
-    if (!YT?.Player || !iframeRef.current) return;
-
-    playerRef.current = new YT.Player(iframeRef.current, {
-      events: {
-        onReady: () => {
-          setIsPlayerReady(true);
-          playerRef.current?.mute();
-        }
-      }
-    });
-  }, []);
-
+  // Intersection Observer for stats counter
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          if (isPlayerReady && playerRef.current && !wasPlayingRef.current) {
-            playerRef.current.playVideo();
-            wasPlayingRef.current = true;
-          }
-        } else {
-          if (isPlayerReady && playerRef.current && wasPlayingRef.current) {
-            playerRef.current.pauseVideo();
-          }
         }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Separate observer for video autoplay
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
       },
       { threshold: 0.3 }
     );
@@ -135,7 +88,18 @@ export function GlobalNetworkSection() {
     }
 
     return () => observer.disconnect();
-  }, [isPlayerReady]);
+  }, []);
+
+  // Build video URL based on visibility
+  const getVideoUrl = (isMobile: boolean) => {
+    const baseUrl = `https://www.youtube.com/embed/${videoId}`;
+    const params = new URLSearchParams({
+      rel: '0',
+      mute: '1',
+      autoplay: isInView ? '1' : '0',
+    });
+    return `${baseUrl}?${params.toString()}`;
+  };
 
   return (
     <section 
@@ -187,13 +151,8 @@ export function GlobalNetworkSection() {
             {/* Video - Mobile only */}
             <div className="lg:hidden mb-6 relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
               <iframe
-                ref={(el) => {
-                  if (el && !iframeRef.current) {
-                    iframeRef.current = el;
-                    setTimeout(initPlayer, 100);
-                  }
-                }}
-                src={`https://www.youtube.com/embed/${videoId}?rel=0&enablejsapi=1&mute=1`}
+                key={`mobile-${isInView}`}
+                src={getVideoUrl(true)}
                 title="ERA Global Network Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -264,13 +223,8 @@ export function GlobalNetworkSection() {
           {/* Right Content - YouTube Video - Desktop only */}
           <div className="hidden lg:block lg:col-span-3 relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
             <iframe
-              ref={(el) => {
-                if (el && !iframeRef.current) {
-                  iframeRef.current = el;
-                  setTimeout(initPlayer, 100);
-                }
-              }}
-              src={`https://www.youtube.com/embed/${videoId}?rel=0&enablejsapi=1&mute=1`}
+              key={`desktop-${isInView}`}
+              src={getVideoUrl(false)}
               title="ERA Global Network Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

@@ -2,185 +2,304 @@
 
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { MapPin, Phone, Mail } from "lucide-react";
 import { colors } from "@/lib/theme";
-
-// Social Media Icons as SVG components
-const TikTokIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
-  </svg>
-);
-
-const FacebookIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-  </svg>
-);
-
-const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-  </svg>
-);
-
-const YoutubeIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-    <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-  </svg>
-);
-
-const footerLinks = {
-  company: [
-    { label: "Cau chuyen thuong hieu", href: "/cau-chuyen" },
-    { label: "Linh vuc hoat dong", href: "/linh-vuc" },
-    { label: "Tuyen dung", href: "/tuyen-dung" },
-  ],
-  social: [
-    { label: "Tiktok", href: "#", icon: TikTokIcon },
-    { label: "Facebook", href: "#", icon: FacebookIcon },
-    { label: "Instagram", href: "#", icon: InstagramIcon },
-    { label: "Youtube", href: "#", icon: YoutubeIcon },
-  ],
-};
+import { ROUTES } from "@/lib/routes";
 
 export function Footer() {
   return (
     <footer 
-      className="text-white"
-      style={{ backgroundColor: colors.accent.DEFAULT }}
+      className="text-white py-12 lg:py-16"
+      style={{ backgroundColor: colors.secondary.DEFAULT }}
     >
       <Container>
-        <div className="py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div 
-                className="w-10 h-10 rounded flex items-center justify-center"
-                style={{ backgroundColor: colors.primary.DEFAULT }}
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 mb-10">
+          
+          {/* Company Info - Left side */}
+          <div className="lg:col-span-5">
+            {/* Logo */}
+            <div className="flex items-center gap-3 mb-4">
+              <img 
+                src="/shared/logo_short_white.svg" 
+                alt="ERA Vietnam" 
+                className="h-10 w-auto"
+              />
+              <span 
+                className="text-xl font-bold"
+                style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
               >
-                <svg viewBox="0 0 40 40" className="w-8 h-8">
-                  <text 
-                    x="50%" 
-                    y="55%" 
-                    dominantBaseline="middle" 
-                    textAnchor="middle" 
-                    fill={colors.neutral.white}
-                    fontSize="14" 
-                    fontWeight="bold"
-                  >
-                    ERA
-                  </text>
-                </svg>
-              </div>
-              <span className="font-bold text-lg">ERA Vietnam</span>
+                ERA Vietnam
+              </span>
             </div>
+            
+            {/* Company full name */}
             <p 
-              className="text-sm font-semibold uppercase tracking-wider mb-4"
-              style={{ color: colors.gray[400] }}
+              className="text-sm mb-6 tracking-wider"
+              style={{ 
+                color: colors.gray[300],
+                fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                fontWeight: 500,
+              }}
             >
-              Cong ty Co phan Bat dong san ERA Viet Nam
+              CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN ERA VIỆT NAM
             </p>
-            <div className="space-y-3 text-sm" style={{ color: colors.gray[300] }}>
-              <p className="flex items-start gap-2">
-                <MapPin size={16} className="mt-0.5 flex-shrink-0" style={{ color: colors.primary.DEFAULT }} />
-                <span>Lau 11, 134-01, 72 Le Thanh Ton, Phuong Ben Nghe, Quan 1, TP. Ho Chi Minh, Viet Nam</span>
+            
+            {/* HQ Address */}
+            <div className="mb-6">
+              <h4 
+                className="text-base font-semibold mb-2"
+                style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+              >
+                Trụ sở chính
+              </h4>
+              <p 
+                className="text-sm leading-relaxed"
+                style={{ 
+                  color: colors.gray[300],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                Số 22 - 24, Đường số 5, KĐT Sala, Phường An Khánh, TP. Hồ Chí Minh
               </p>
-              <p className="flex items-center gap-2">
-                <MapPin size={16} className="flex-shrink-0" style={{ color: colors.primary.DEFAULT }} />
-                <span>VP lam viec: So 22-24, Duong so 5, KDT Sala, Phuong An Khanh, TP. Thu Duc</span>
+            </div>
+            
+            {/* Business Registration */}
+            <div className="mb-6">
+              <h4 
+                className="text-base font-semibold mb-2"
+                style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+              >
+                Địa chỉ ĐKKD
+              </h4>
+              <p 
+                className="text-sm leading-relaxed mb-1"
+                style={{ 
+                  color: colors.gray[300],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                MST: 0312393109 - Sở KHĐT TP. Hồ Chí Minh cấp ngày 30/07/2013
               </p>
-              <p className="flex items-center gap-2">
-                <Phone size={16} className="flex-shrink-0" style={{ color: colors.primary.DEFAULT }} />
-                <span>Hotline: 1800 6701</span>
+              <p 
+                className="text-sm leading-relaxed"
+                style={{ 
+                  color: colors.gray[300],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                Lầu 14, L14-01, 72 Lê Thánh Tôn, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh, Việt Nam
               </p>
-              <p className="flex items-center gap-2">
-                <Mail size={16} className="flex-shrink-0" style={{ color: colors.primary.DEFAULT }} />
-                <span>info@eravietnam.vn</span>
+            </div>
+            
+            {/* Contact */}
+            <div className="space-y-1">
+              <p 
+                className="text-sm"
+                style={{ 
+                  color: colors.gray[300],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                Hotline: 1800 6701
+              </p>
+              <p 
+                className="text-sm"
+                style={{ 
+                  color: colors.gray[300],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                Email: info@era.com.vn
               </p>
             </div>
           </div>
-
-          {/* Office Locations */}
-          <div>
-            <h3 className="font-semibold text-lg mb-6">Van phong chi nhanh</h3>
-            <div className="space-y-4 text-sm" style={{ color: colors.gray[300] }}>
-              <div>
-                <p className="font-medium text-white mb-1">VP Da Nang:</p>
-                <p>Tang 2, 358 Tran Hung Dao, phuong An Hai, TP. Da Nang</p>
-              </div>
-              <div>
-                <p className="font-medium text-white mb-1">VP Ha Noi:</p>
-                <p>Toa nha van phong, so 38 Hoang Cau, Phuong O Cho Dua, Ha Noi</p>
-              </div>
+          
+          {/* Branch Offices */}
+          <div className="lg:col-span-3">
+            <h4 
+              className="text-base font-semibold mb-4"
+              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+            >
+              Văn phòng chi nhánh
+            </h4>
+            
+            <div className="mb-4">
+              <p 
+                className="text-sm font-medium mb-1"
+                style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+              >
+                VP Đà Nẵng:
+              </p>
+              <p 
+                className="text-sm leading-relaxed"
+                style={{ 
+                  color: colors.gray[300],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                Tầng 2, 368 Trần Hưng Đạo, phường An Hải, TP. Đà Nẵng
+              </p>
+            </div>
+            
+            <div>
+              <p 
+                className="text-sm font-medium mb-1"
+                style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+              >
+                VP Hà Nội:
+              </p>
+              <p 
+                className="text-sm leading-relaxed"
+                style={{ 
+                  color: colors.gray[300],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                P201 Tòa nhà Viễn Đông, số 36 Hoàng Cầu, Phường Ô Chợ Dừa, Hà Nội
+              </p>
             </div>
           </div>
-
+          
           {/* About Links */}
-          <div>
-            <h3 className="font-semibold text-lg mb-6">Ve chung toi</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm transition-colors hover:text-primary"
-                    style={{ color: colors.gray[300] }}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+          <div className="lg:col-span-2">
+            <h4 
+              className="text-base font-semibold mb-4"
+              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+            >
+              Về chúng tôi
+            </h4>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  href={ROUTES.brandStory}
+                  className="text-sm transition-colors"
+                  style={{ 
+                    color: colors.gray[300],
+                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = colors.primary.DEFAULT}
+                  onMouseLeave={(e) => e.currentTarget.style.color = colors.gray[300]}
+                >
+                  Câu chuyện thương hiệu
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={ROUTES.operations}
+                  className="text-sm transition-colors"
+                  style={{ 
+                    color: colors.gray[300],
+                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = colors.primary.DEFAULT}
+                  onMouseLeave={(e) => e.currentTarget.style.color = colors.gray[300]}
+                >
+                  Lĩnh vực hoạt động
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href={ROUTES.recruitment}
+                  className="text-sm transition-colors"
+                  style={{ 
+                    color: colors.gray[300],
+                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = colors.primary.DEFAULT}
+                  onMouseLeave={(e) => e.currentTarget.style.color = colors.gray[300]}
+                >
+                  Tuyển dụng
+                </Link>
+              </li>
             </ul>
           </div>
-
+          
           {/* Social Links */}
-          <div>
-            <h3 className="font-semibold text-lg mb-6">Theo doi chung toi</h3>
+          <div className="lg:col-span-2">
+            <h4 
+              className="text-base font-semibold mb-4"
+              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+            >
+              Theo dõi chúng tôi
+            </h4>
             <ul className="space-y-3">
-              {footerLinks.social.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm flex items-center gap-3 transition-colors hover:text-primary"
-                      style={{ color: colors.gray[300] }}
-                    >
-                      <Icon />
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
+              <li>
+                <Link 
+                  href="#" 
+                  className="text-sm flex items-center gap-3 transition-colors"
+                  style={{ 
+                    color: colors.gray[300],
+                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = colors.primary.DEFAULT}
+                  onMouseLeave={(e) => e.currentTarget.style.color = colors.gray[300]}
+                >
+                  <img src="/shared/fb_icon.svg" alt="Facebook" className="w-6 h-6" />
+                  Facebook
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="#" 
+                  className="text-sm flex items-center gap-3 transition-colors"
+                  style={{ 
+                    color: colors.gray[300],
+                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = colors.primary.DEFAULT}
+                  onMouseLeave={(e) => e.currentTarget.style.color = colors.gray[300]}
+                >
+                  <img src="/shared/ytb_icon.svg" alt="Youtube" className="w-6 h-6" />
+                  Youtube
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div 
-          className="py-6"
-          style={{ borderTop: `1px solid ${colors.gray[800]}` }}
+          className="pt-6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4"
+          style={{ borderTop: `1px solid ${colors.gray[700]}` }}
         >
-          <div 
-            className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm"
-            style={{ color: colors.gray[400] }}
-          >
-            <p>&copy; 2024 ERA Vietnam. All rights reserved.</p>
+          {/* BCT Logo */}
+          <img 
+            src="/shared/bct_icon.svg" 
+            alt="Bộ Công Thương" 
+            className="h-12 w-auto"
+          />
+          
+          {/* Copyright & Links */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8">
+            <p 
+              className="text-xs"
+              style={{ 
+                color: colors.gray[400],
+                fontFamily: 'var(--font-inter), system-ui, sans-serif',
+              }}
+            >
+              © 2026 ERA Vietnam. All rights reserved.
+            </p>
             <div className="flex gap-6">
               <Link 
-                href="#" 
-                className="transition-colors hover:text-white"
-                style={{ color: colors.gray[400] }}
+                href={ROUTES.terms}
+                className="text-xs transition-colors hover:text-white"
+                style={{ 
+                  color: colors.gray[400],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
               >
-                Dieu khoan su dung
+                Điều khoản sử dụng
               </Link>
               <Link 
-                href="#" 
-                className="transition-colors hover:text-white"
-                style={{ color: colors.gray[400] }}
+                href={ROUTES.privacy}
+                className="text-xs transition-colors hover:text-white"
+                style={{ 
+                  color: colors.gray[400],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
               >
-                Chinh sach bao mat
+                Chính sách bảo mật
               </Link>
             </div>
           </div>

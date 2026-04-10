@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Manrope, Montserrat, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { ToTopButton } from "@/components/layout/ToTopButton";
 
 const inter = Inter({
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Header />
         <div className="flex-1 pt-14 md:pt-16">{children}</div>
+        <Footer />
         <ToTopButton />
       </body>
     </html>
