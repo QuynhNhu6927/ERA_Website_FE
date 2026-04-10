@@ -49,19 +49,25 @@ export function JoinTeamSection() {
       className="relative"
       style={{ backgroundColor: colors.gray[50] }}
     >
-      {/* Background Image Section */}
+      {/* Background Image Section - Mobile: home_join_mb.png, Desktop: home_join.png */}
       <div 
-        className="relative h-[400px] md:h-[500px]"
+        className="relative h-[400px] md:h-[500px] bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage: "url('/home/home_join.png')",
         }}
+        data-desktop-bg="url('/home/home_join.png')"
       >
+        <style>{`
+          @media (min-width: 768px) {
+            [data-desktop-bg] {
+              background-image: url('/home/home_join.png') !important;
+            }
+          }
+        `}</style>
         {/* Overlay */}
         <div 
           className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
         />
         
         {/* Title - centered */}

@@ -15,8 +15,8 @@ const ICON_SIZES = {
   socialIcon: 40,
 };
 
-const navLinks = [
-  { href: ROUTES.projects, label: "Dự án", icon: "/mobile_header/menu_project_icon.svg" },
+const navLinks: { href: string; label: string; icon: string; external?: boolean }[] = [
+  { href: "https://www.era.com.vn/s/du-an", label: "Dự án", icon: "/mobile_header/menu_project_icon.svg", external: true },
   { href: ROUTES.joinTeam, label: "Join Team ERA", icon: "/mobile_header/menu_join_icon.svg" },
   { href: ROUTES.news, label: "Tin tức", icon: "/mobile_header/menu_news_icon.svg" },
   { href: ROUTES.contact, label: "Liên hệ", icon: "/mobile_header/menu_contact_icon.svg" },
@@ -73,14 +73,32 @@ export function Header() {
               <nav className="flex items-center gap-8">
                 {navLinks.map((link) => {
                   const isHovered = hoveredItem === link.href;
+                  const commonProps = {
+                    onMouseEnter: () => setHoveredItem(link.href),
+                    onMouseLeave: () => setHoveredItem(null),
+                    className: "text-sm transition-all duration-200",
+                    style: { color: isHovered ? colors.primary.DEFAULT : colors.gray[700], fontWeight: isHovered ? 800 : 500, fontSize: '14px' }
+                  };
+                  
+                  if (link.external) {
+                    return (
+                      <a 
+                        key={link.href}
+                        {...commonProps}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  }
+                  
                   return (
                     <Link 
-                      key={link.href} 
+                      key={link.href}
+                      {...commonProps}
                       href={link.href}
-                      onMouseEnter={() => setHoveredItem(link.href)} 
-                      onMouseLeave={() => setHoveredItem(null)} 
-                      className="text-sm transition-all duration-200"
-                      style={{ color: isHovered ? colors.primary.DEFAULT : colors.gray[700], fontWeight: isHovered ? 800 : 500, fontSize: '14px' }}
                     >
                       {link.label}
                     </Link>
@@ -173,18 +191,41 @@ export function Header() {
           {/* Section 2: Nav Links */}
           <div className="px-5 py-5" style={{ backgroundColor: '#F7F9FC' }}>
             <nav className="flex flex-col gap-6" style={{ fontFamily: 'var(--font-inter)' }}>
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.href} 
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center gap-4 py-3"
-                  style={{ color: colors.secondary.DEFAULT, fontWeight: 500, fontSize: '16px' }}
-                >
-                  <img src={link.icon} alt={link.label} style={{ width: ICON_SIZES.navIcon, height: ICON_SIZES.navIcon }} />
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const linkClass = "flex items-center gap-4 py-3";
+                const linkStyle = { color: colors.secondary.DEFAULT, fontWeight: 500, fontSize: '16px' };
+                const iconElement = <img src={link.icon} alt={link.label} style={{ width: ICON_SIZES.navIcon, height: ICON_SIZES.navIcon }} />;
+                
+                if (link.external) {
+                  return (
+                    <a 
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={linkClass}
+                      style={linkStyle}
+                    >
+                      {iconElement}
+                      {link.label}
+                    </a>
+                  );
+                }
+                
+                return (
+                  <Link 
+                    key={link.href} 
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={linkClass}
+                    style={linkStyle}
+                  >
+                    {iconElement}
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 

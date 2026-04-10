@@ -45,7 +45,7 @@ export function AcademySection() {
               style={{ aspectRatio: '4/3' }}
             >
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+                src="/home/home_academy.png"
                 alt="ERA Academy Training"
                 className="w-full h-full object-cover"
               />
@@ -86,7 +86,7 @@ export function AcademySection() {
                 style={{ aspectRatio: '4/3' }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+                  src="/home/home_academy.png"
                   alt="ERA Academy Training"
                   className="w-full h-full object-cover"
                 />

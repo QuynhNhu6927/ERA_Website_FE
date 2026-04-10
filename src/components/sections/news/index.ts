@@ -5,3 +5,4 @@ export { NewsProjectSection } from "./NewsProjectSection";
 export { NewsERASection } from "./NewsERASection";
 export { NewsEMagazineSection } from "./NewsEMagazineSection";
 export { NewsPage } from "./NewsPage";
+export { NewsDetailPage } from "./NewsDetailPage";

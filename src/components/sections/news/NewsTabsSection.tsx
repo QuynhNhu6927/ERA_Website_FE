@@ -1,19 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
 const tabs = [
-  { id: "market", label: "Tin Thị Trường" },
-  { id: "project", label: "Tin Dự Án" },
-  { id: "era", label: "ERA News" },
-  { id: "magazine", label: "E-Magazine" },
+  { id: "market", label: "Tin Thị Trường", targetId: "tin-thi-truong" },
+  { id: "project", label: "Tin Dự Án", targetId: "tin-du-an" },
+  { id: "era", label: "ERA News", targetId: "era-news" },
+  { id: "magazine", label: "E-Magazine", targetId: "e-magazine" },
 ];
 
 export function NewsTabsSection() {
   const [activeTab, setActiveTab] = useState("market");
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Update active tab based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+      
+      for (const tab of tabs) {
+        const element = document.getElementById(tab.targetId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveTab(tab.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleTabClick = (tabId: string, targetId: string) => {
+    setActiveTab(tabId);
+    const element = document.getElementById(targetId);
+    if (element) {
+      const offsetTop = element.offsetTop - 120; // Offset for header
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <section className="py-10 bg-white">
@@ -24,8 +57,8 @@ export function NewsTabsSection() {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className="relative pb-3 transition-colors"
+                onClick={() => handleTabClick(tab.id, tab.targetId)}
+                className="group relative pb-3 transition-colors cursor-pointer"
                 style={{
                   color: activeTab === tab.id ? colors.primary.DEFAULT : colors.gray[500],
                   fontFamily: 'var(--font-inter), system-ui, sans-serif',
@@ -33,11 +66,35 @@ export function NewsTabsSection() {
                   fontWeight: 500,
                 }}
               >
-                {tab.label}
+                <span 
+                  className="transition-colors"
+                  style={{ 
+                    color: activeTab === tab.id ? colors.primary.DEFAULT : undefined,
+                  }}
+                  onMouseEnter={(e) => {
+                    if (activeTab !== tab.id) {
+                      e.currentTarget.style.color = colors.primary.DEFAULT;
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (activeTab !== tab.id) {
+                      e.currentTarget.style.color = colors.gray[500];
+                    }
+                  }}
+                >
+                  {tab.label}
+                </span>
                 {/* Active underline */}
                 {activeTab === tab.id && (
                   <span 
                     className="absolute bottom-0 left-0 right-0 h-0.5"
+                    style={{ backgroundColor: colors.primary.DEFAULT }}
+                  />
+                )}
+                {/* Hover underline */}
+                {activeTab !== tab.id && (
+                  <span 
+                    className="absolute bottom-0 left-0 right-0 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
                     style={{ backgroundColor: colors.primary.DEFAULT }}
                   />
                 )}
@@ -73,7 +130,7 @@ export function NewsTabsSection() {
               />
             </div>
             <button
-              className="px-8 py-3 text-white font-medium transition-all duration-200 hover:opacity-90 hover:shadow-lg"
+              className="px-8 py-3 text-white font-medium transition-all duration-200 hover:opacity-90 hover:shadow-lg cursor-pointer"
               style={{ 
                 backgroundColor: colors.primary.DEFAULT,
                 borderRadius: '24px',

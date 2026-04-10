@@ -10,10 +10,10 @@ export function NewsPage() {
     <main>
       <NewsHeroSection />
       <NewsTabsSection />
-      <NewsMarketSection />
-      <NewsProjectSection />
-      <NewsERASection />
-      <NewsEMagazineSection />
+      <section id="tin-thi-truong"><NewsMarketSection /></section>
+      <section id="tin-du-an"><NewsProjectSection /></section>
+      <section id="era-news"><NewsERASection /></section>
+      <section id="e-magazine"><NewsEMagazineSection /></section>
     </main>
   );
 }
