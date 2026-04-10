@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -58,6 +59,7 @@ export function NewsMarketSection() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Left - Featured News (3 cols) */}
           <div className="lg:col-span-3">
+            <Link href="/news/tin-thi-truong" className="block">
             <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01]">
               <img 
                 src={featuredNews.image} 
@@ -105,6 +107,7 @@ export function NewsMarketSection() {
                 </p>
               </div>
             </div>
+            </Link>
           </div>
 
           {/* Right - News List (2 cols) */}

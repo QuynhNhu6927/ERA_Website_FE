@@ -11,7 +11,7 @@ const stats = [
 ];
 
 // Hook for counting animation
-function useCountUp(end: number, duration: number = 2000, start: boolean = false) {
+function useCountUp(end: number, duration: number = 3500, start: boolean = false) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function useCountUp(end: number, duration: number = 2000, start: boolean = false
 }
 
 function StatCounter({ value, suffix, isVisible }: { value: number; suffix: string; isVisible: boolean }) {
-  const count = useCountUp(value, 2500, isVisible);
+  const count = useCountUp(value, 4000, isVisible);
   const formatNumber = (num: number) => num.toLocaleString('vi-VN').replace(/\./g, ',');
   return <span>{formatNumber(count)}{suffix}</span>;
 }

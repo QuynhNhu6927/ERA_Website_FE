@@ -40,6 +40,47 @@ const featuredNews = {
   image: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&q=80",
 };
 
+// Component for side news card with hover effect
+function SideNewsCard({ item }: { item: typeof sideNews[0] }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <article 
+      className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer transition-all duration-300 hover:shadow-md"
+      style={{ 
+        borderLeft: `4px solid ${isHovered ? colors.primary.DEFAULT : 'transparent'}`,
+        transition: 'all 0.3s',
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="p-5 flex flex-col justify-center">
+        <p 
+          className="text-xs mb-2 transition-all duration-200"
+          style={{ 
+            color: isHovered ? colors.primary.DEFAULT : colors.secondary.DEFAULT,
+            fontFamily: 'var(--font-inter)',
+            fontWeight: isHovered ? 700 : 600,
+          }}
+        >
+          {item.category}
+        </p>
+        <h4 
+          className="line-clamp-2 transition-colors"
+          style={{ 
+            color: isHovered ? colors.primary.DEFAULT : colors.neutral.foreground,
+            fontFamily: 'var(--font-inter)',
+            fontWeight: 600,
+            fontSize: '15px',
+          }}
+        >
+          {item.title}
+        </h4>
+      </div>
+    </article>
+  );
+}
+
 export function NewsERASection() {
   const [activeTab, setActiveTab] = useState("press");
 
@@ -166,41 +207,7 @@ export function NewsERASection() {
           {/* Right - Side News List */}
           <div className="space-y-4">
             {sideNews.map((item) => (
-              <article 
-                key={item.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group flex transition-all duration-300 hover:shadow-md"
-              >
-                <div className="w-32 h-32 flex-shrink-0 overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4 flex-1 flex flex-col justify-center">
-                  <p 
-                    className="text-xs mb-2"
-                    style={{ 
-                      color: colors.primary.DEFAULT,
-                      fontFamily: 'var(--font-inter)',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {item.category}
-                  </p>
-                  <h4 
-                    className="line-clamp-2 group-hover:text-primary transition-colors"
-                    style={{ 
-                      color: colors.neutral.foreground,
-                      fontFamily: 'var(--font-inter)',
-                      fontWeight: 600,
-                      fontSize: '15px',
-                    }}
-                  >
-                    {item.title}
-                  </h4>
-                </div>
-              </article>
+              <SideNewsCard key={item.id} item={item} />
             ))}
           </div>
         </div>
