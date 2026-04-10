@@ -91,7 +91,7 @@ export function ProjectsSection() {
           </button>
           {/* Desktop: Text button */}
           <button
-            className="hidden lg:block px-10 py-3 rounded-xl text-white font-medium transition-opacity hover:opacity-90"
+            className="hidden lg:block px-10 py-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90 hover:shadow-lg"
             style={{
               backgroundColor: colors.primary.DEFAULT,
               fontFamily: 'var(--font-manrope), system-ui, sans-serif',

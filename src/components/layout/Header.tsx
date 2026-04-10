@@ -28,10 +28,14 @@ export function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      
+      setIsScrolled(currentScrollY > 50);
+      
       if (currentScrollY < 100) {
         setIsVisible(true);
       } else {
@@ -49,19 +53,23 @@ export function Header() {
 
   return (
     <>
-      <header className={cn("fixed top-0 left-0 right-0 z-50 transition-transform duration-300", isVisible ? "translate-y-0" : "-translate-y-full")} style={{ backgroundColor: colors.neutral.white, boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)' }}>
+      {/* Desktop Header */}
+      <header 
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 hidden md:block",
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        )} 
+        style={{
+          backgroundColor: colors.neutral.white,
+          boxShadow: isScrolled ? '0 1px 3px 0 rgb(0 0 0 / 0.1)' : 'none',
+        }}
+      >
         <Container>
-          <div className="flex items-center justify-between h-14 md:h-16" style={{ fontFamily: 'var(--font-inter)' }}>
-            <Link href="/" className="hidden md:flex items-center">
+          <div className="flex items-center justify-between h-16" style={{ fontFamily: 'var(--font-inter)' }}>
+            <Link href="/" className="flex items-center">
               <Image src="/logo.svg" alt="ERA Vietnam" width={134} height={38} className="h-10 w-auto" priority />
             </Link>
-            <button className="md:hidden p-2 flex items-center justify-center" onClick={() => setIsMobileMenuOpen(true)} aria-label="Open menu">
-              <img src="/mobile_header/menu_hambuger_icon.svg" alt="Menu" style={{ width: '40px', height: '40px' }} />
-            </button>
-            <Link href="/" className="md:hidden flex items-center absolute left-1/2 -translate-x-1/2">
-              <img src="/logo_short.svg" alt="ERA Vietnam" style={{ width: '50px', height: '50px' }} />
-            </Link>
-            <div className="hidden md:flex items-center gap-8">
+            <div className="flex items-center gap-8">
               <nav className="flex items-center gap-8">
                 {navLinks.map((link) => {
                   const isHovered = hoveredItem === link.href;
@@ -79,17 +87,77 @@ export function Header() {
                   );
                 })}
               </nav>
-              <Link href={ROUTES.login} className="flex items-center justify-center px-5 py-2 text-sm transition-colors hover:opacity-90" style={{ backgroundColor: colors.primary.DEFAULT, color: colors.neutral.white, fontWeight: 600, fontSize: '14px', borderRadius: '8px' }}>
+              <Link 
+                href={ROUTES.login} 
+                className="flex items-center justify-center px-5 py-2 text-sm transition-all duration-200 hover:opacity-90 hover:shadow-md" 
+                style={{ backgroundColor: colors.primary.DEFAULT, color: colors.neutral.white, fontWeight: 600, fontSize: '14px', borderRadius: '8px' }}
+              >
                 Login/Đăng ký
               </Link>
             </div>
-            <Link href={ROUTES.login} className="md:hidden p-2 flex items-center justify-center">
-              <img src="/mobile_header/menu_user_icon.svg" alt="User" style={{ width: '40px', height: '40px' }} />
-            </Link>
           </div>
         </Container>
       </header>
 
+      {/* Mobile Header - Floating Pills */}
+      <header 
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 md:hidden",
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        )} 
+      >
+        <div className="px-4 pt-4 flex items-center justify-between">
+          {/* Left: Floating pill with User + Hamburger */}
+          <div 
+            className={cn(
+              "flex items-center gap-1 px-2 py-1.5 rounded-full shadow-lg transition-all duration-300",
+              isScrolled 
+                ? "bg-white/95" 
+                : "bg-white/80 backdrop-blur-sm"
+            )}
+          >
+            <Link href={ROUTES.login} className="p-2 flex items-center justify-center">
+              <img 
+                src="/mobile_header/menu_user_icon.svg" 
+                alt="User" 
+                style={{ width: '24px', height: '24px' }} 
+              />
+            </Link>
+            <div className="w-px h-5 bg-gray-300" />
+            <button 
+              className="p-2 flex items-center justify-center" 
+              onClick={() => setIsMobileMenuOpen(true)} 
+              aria-label="Open menu"
+            >
+              <img 
+                src="/mobile_header/menu_hambuger_icon.svg" 
+                alt="Menu" 
+                style={{ width: '24px', height: '24px' }} 
+              />
+            </button>
+          </div>
+
+          {/* Right: Logo floating */}
+          <div 
+            className={cn(
+              "flex items-center justify-center p-2 rounded-full shadow-lg transition-all duration-300",
+              isScrolled 
+                ? "bg-white/95" 
+                : "bg-white/80 backdrop-blur-sm"
+            )}
+          >
+            <Link href="/" className="flex items-center">
+              <img 
+                src="/logo_short.svg" 
+                alt="ERA Vietnam" 
+                style={{ width: '36px', height: '36px' }} 
+              />
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu Drawer */}
       <div className={cn("fixed inset-0 z-[60] transition-all duration-300 md:hidden", isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none")}>
         <div className="absolute inset-0 bg-black/30" onClick={() => setIsMobileMenuOpen(false)} />
         <div className={cn("absolute top-0 left-0 h-full w-[85%] max-w-[320px] transition-transform duration-300 flex flex-col", isMobileMenuOpen ? "translate-x-0" : "-translate-x-full")} style={{ backgroundColor: colors.neutral.white }}>

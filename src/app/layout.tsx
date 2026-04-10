@@ -39,7 +39,7 @@ export default function RootLayout({
     <html lang="vi" className={`${inter.variable} ${manrope.variable} ${montserrat.variable} ${plusJakartaSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Header />
-        <div className="flex-1 pt-14 md:pt-16">{children}</div>
+        <div className="flex-1 pt-0 md:pt-16">{children}</div>
         <Footer />
         <ToTopButton />
       </body>

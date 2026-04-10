@@ -9,7 +9,7 @@ export const ROUTES = {
   aboutUs: "/ve-chung-toi",
   projects: "/du-an",
   joinTeam: "/join-team",
-  news: "/tin-tuc",
+  news: "/news",
   contact: "/lien-he",
   
   // Auth
