@@ -54,7 +54,7 @@ export function AcademySection() {
             {/* CTA Button - Mobile: full width, Desktop: fit content */}
             <a
               href="#"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-white w-full lg:w-fit transition-opacity hover:opacity-90"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-white w-full lg:w-fit transition-all duration-200 hover:opacity-90 hover:shadow-lg"
               style={{
                 backgroundColor: colors.primary.DEFAULT,
                 fontFamily: 'var(--font-manrope), system-ui, sans-serif',

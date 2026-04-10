@@ -68,7 +68,7 @@ export function NewsSection() {
           </h2>
           <a
             href="/tin-tuc"
-            className="hidden lg:flex items-center gap-2 transition-opacity hover:opacity-80"
+            className="hidden lg:flex items-center gap-2 transition-colors duration-200 hover:text-primary-dark"
             style={{ color: colors.primary.DEFAULT }}
           >
             <span 
@@ -206,7 +206,7 @@ export function NewsSection() {
           {/* View All Button */}
           <a
             href="/tin-tuc"
-            className="mt-8 w-full py-4 rounded-xl text-white text-center block transition-opacity hover:opacity-90"
+            className="mt-8 w-full py-4 rounded-xl text-white text-center block transition-all duration-200 hover:opacity-90 hover:shadow-lg"
             style={{
               backgroundColor: colors.primary.DEFAULT,
               fontFamily: 'var(--font-inter), system-ui, sans-serif',
