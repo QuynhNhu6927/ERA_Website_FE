@@ -16,6 +16,11 @@ const slides = [
     image: "/home/home_banner_hero_2.png",
     alt: "ERA Vietnam Projects",
   },
+  {
+    id: 3,
+    image: "/home/home_banner_hero_1.png",
+    alt: "ERA Vietnam Projects",
+  },
 ];
 
 export function HeroSection() {
@@ -154,6 +159,7 @@ export function HeroSection() {
               fontWeight: 400,
               letterSpacing: '0.05em',
               lineHeight: 1.2,
+              textShadow: '0 3px 15px rgba(0, 0, 0, 0.6), 0 1px 5px rgba(0, 0, 0, 0.5)',
             }}
           >
             EMPOWER PEOPLE,<br className="md:hidden" /> TRANSFORM LIVES
