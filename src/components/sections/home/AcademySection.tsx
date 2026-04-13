@@ -29,7 +29,7 @@ export function AcademySection() {
                 lineHeight: 1.6,
               }}
             >
-              ERA Academy là hệ thống đào tạo thực chiến và phát triển năng lực toàn diện được thiết kế theo tiêu chuẩn quốc tế. Với lộ trình từ nền tảng sơ cấp, thực chiến trung cấp cho đến tư duy nâng cao, chúng tôi trang bị toàn diện kỹ năng môi giới. Ứng dụng công nghệ và xây dựng thương hiệu cá nhân để Agent bứt phá hiệu suất, định hình sự nghiệp bền vững.
+              ERA Academy là hệ thống đào tạo và phát triển năng lực được thiết kế theo tiêu chuẩn quốc tế. Tại đây, Agent được định hướng đào tạo và trang bị đầy đủ kiến thức, kỹ năng cần thiết để trở thành một chuyên viên tư vấn bất động sản toàn diện.
             </p>
 
             {/* Mobile Image - shown between description and button */}
