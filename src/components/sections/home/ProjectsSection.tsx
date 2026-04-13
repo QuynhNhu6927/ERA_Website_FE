@@ -103,32 +103,70 @@ export function ProjectsSection() {
           </button>
         </div>
 
-        {/* Stats - Mobile: centered stacked; Desktop: inline */}
-        <div className="flex flex-col lg:flex-row lg:items-start gap-2 lg:gap-8">
-          {/* Number - Mobile: centered 80px; Desktop: left 300px */}
-          <div 
-            className="text-[80px] lg:text-[300px] leading-none text-center lg:text-left"
-            style={{
-              color: colors.primary.DEFAULT,
-              fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
-              fontWeight: 900,
-            }}
-          >
-            110<span className="text-[40px] lg:text-[150px] align-super">+</span>
+        {/* Mobile: Text on top + Images vertical; Desktop: Images horizontal + Text bottom */}
+        <div className="flex flex-col">
+          {/* Stats - Mobile: top center; Desktop: center */}
+          <div className="flex flex-col lg:flex-col mb-6 lg:mt-6 lg:mb-0 order-1 lg:order-2 text-center">
+            {/* Desktop: 110 DỰ ÁN cùng hàng, cùng size, căn giữa */}
+            <div 
+              className="hidden lg:flex items-baseline mt-10 justify-center gap-4 leading-none"
+              style={{
+                color: '#00B6E9',
+                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                fontWeight: 900,
+                fontSize: 'clamp(80px, 10vw, 140px)',
+              }}
+            >
+              <span>110</span>
+              <span>DỰ ÁN</span>
+            </div>
+            
+            {/* Mobile: 110 DỰ ÁN cùng hàng, cùng size */}
+            <div 
+              className="flex items-baseline justify-center gap-2 lg:hidden leading-none"
+              style={{
+                color: '#00B6E9',
+                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                fontWeight: 900,
+                fontSize: 'clamp(56px, 12vw, 80px)',
+              }}
+            >
+              <span>110</span>
+              <span>DỰ ÁN</span>
+            </div>
+            
+            {/* Subtitle */}
+            <span 
+              className="mt-2 lg:mt-4"
+              style={{
+                color: colors.secondary.DEFAULT,
+                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                fontWeight: 500,
+                fontSize: 'clamp(20px, 5vw, 42px)',
+              }}
+            >
+              Giao dịch thành công năm 2025
+            </span>
           </div>
-          
-          {/* Description - Mobile: centered 24px; Desktop: left 55px */}
-          <p 
-            className="flex-1 text-[24px] lg:text-[55px] text-center lg:text-left lg:pt-12"
-            style={{
-              color: colors.secondary.DEFAULT,
-              fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
-              fontWeight: 500,
-              lineHeight: 1.3,
-            }}
-          >
-            Dự án ghi nhận giao dịch thành công năm 2025
-          </p>
+
+          {/* Project Images - Mobile: vertical stack; Desktop: horizontal */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 order-2 lg:order-1">
+            <img 
+              src="/home/home_pj_01.svg" 
+              alt="Dự án 1"
+              className="w-full h-auto rounded-2xl lg:rounded-3xl"
+            />
+            <img 
+              src="/home/home_pj_02.svg" 
+              alt="Dự án 2"
+              className="w-full h-auto rounded-2xl lg:rounded-3xl"
+            />
+            <img 
+              src="/home/home_pj_03.svg" 
+              alt="Dự án 3"
+              className="w-full h-auto rounded-2xl lg:rounded-3xl"
+            />
+          </div>
         </div>
       </Container>
     </section>

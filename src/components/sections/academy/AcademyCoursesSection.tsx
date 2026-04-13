@@ -146,9 +146,11 @@ export function AcademyCoursesSection() {
           {filteredCourses.map((course) => (
             <article 
               key={course.id}
-              className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group flex flex-col"
+              className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer group flex flex-col"
               style={{ 
                 backgroundColor: course.isHot ? '#CD2037' : colors.neutral.white,
+                transition: 'box-shadow 0.2s ease',
+                willChange: 'box-shadow',
               }}
             >
               {/* Image */}
@@ -156,7 +158,10 @@ export function AcademyCoursesSection() {
                 <img 
                   src={course.image} 
                   alt={course.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover"
+                  style={{ transition: 'transform 0.3s ease' }}
+                  loading="lazy"
+                  decoding="async"
                 />
                 {/* Type Badge */}
                 <span 
@@ -183,7 +188,7 @@ export function AcademyCoursesSection() {
               <div className="p-5 flex flex-col flex-1">
                 {/* Title - fixed min height */}
                 <h3 
-                  className="mb-3 line-clamp-2 group-hover:text-primary transition-colors"
+                  className="mb-3 line-clamp-2 group-hover:text-primary"
                   style={{
                     color: course.isHot ? colors.neutral.white : colors.neutral.foreground,
                     fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',

@@ -1,5 +1,3 @@
-"use client";
-
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -58,6 +56,8 @@ export function NewsEMagazineSection() {
                   src={mag.image} 
                   alt={mag.title}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               

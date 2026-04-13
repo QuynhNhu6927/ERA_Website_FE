@@ -1,5 +1,3 @@
-"use client";
-
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -56,7 +54,7 @@ export function AcademyRoadmapSection() {
           {roadmapCards.map((card) => (
             <article 
               key={card.id}
-              className="rounded-3xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.03]"
+              className="rounded-3xl p-6 cursor-pointer hover:shadow-xl hover:scale-[1.03] transition-all duration-200"
               style={{ 
                 backgroundColor: card.bgColor,
               }}

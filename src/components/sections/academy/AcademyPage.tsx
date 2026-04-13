@@ -1,5 +1,3 @@
-"use client";
-
 import { AcademyHeroSection } from "./AcademyHeroSection";
 import { AcademyRoadmapSection } from "./AcademyRoadmapSection";
 import { AcademyCoursesSection } from "./AcademyCoursesSection";

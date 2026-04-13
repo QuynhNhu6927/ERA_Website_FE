@@ -17,10 +17,10 @@ const ICON_SIZES = {
 
 const navLinks: { href: string; label: string; icon: string; external?: boolean }[] = [
   { href: "https://www.era.com.vn/s/du-an", label: "Dự án", icon: "/mobile_header/menu_project_icon.svg", external: true },
-  { href: ROUTES.joinTeam, label: "Join Team ERA", icon: "/mobile_header/menu_join_icon.svg" },
-  { href: ROUTES.news, label: "Tin tức", icon: "/mobile_header/menu_news_icon.svg" },
-  { href: ROUTES.contact, label: "Liên hệ", icon: "/mobile_header/menu_contact_icon.svg" },
-  { href: ROUTES.aboutUs, label: "Về chúng tôi", icon: "/mobile_header/menu_about_icon.svg" },
+  { href: "/", label: "Join Team ERA", icon: "/mobile_header/menu_join_icon.svg" },
+  { href: "/", label: "Tin tức", icon: "/mobile_header/menu_news_icon.svg" },
+  { href: "/", label: "Liên hệ", icon: "/mobile_header/menu_contact_icon.svg" },
+  { href: "/", label: "Về chúng tôi", icon: "/mobile_header/menu_about_icon.svg" },
 ];
 
 export function Header() {
@@ -72,9 +72,9 @@ export function Header() {
             <div className="flex items-center gap-8">
               <nav className="flex items-center gap-8">
                 {navLinks.map((link) => {
-                  const isHovered = hoveredItem === link.href;
+                  const isHovered = hoveredItem === link.label;
                   const commonProps = {
-                    onMouseEnter: () => setHoveredItem(link.href),
+                    onMouseEnter: () => setHoveredItem(link.label),
                     onMouseLeave: () => setHoveredItem(null),
                     className: "text-sm transition-all duration-200",
                     style: { color: isHovered ? colors.primary.DEFAULT : colors.gray[700], fontWeight: isHovered ? 800 : 500, fontSize: '14px' }
@@ -83,7 +83,7 @@ export function Header() {
                   if (link.external) {
                     return (
                       <a 
-                        key={link.href}
+                        key={link.label}
                         {...commonProps}
                         href={link.href}
                         target="_blank"
@@ -96,7 +96,7 @@ export function Header() {
                   
                   return (
                     <Link 
-                      key={link.href}
+                      key={link.label}
                       {...commonProps}
                       href={link.href}
                     >
@@ -106,7 +106,7 @@ export function Header() {
                 })}
               </nav>
               <Link 
-                href={ROUTES.login} 
+                href="/" 
                 className="flex items-center justify-center px-5 py-2 text-sm transition-all duration-200 hover:opacity-90 hover:shadow-md" 
                 style={{ backgroundColor: colors.primary.DEFAULT, color: colors.neutral.white, fontWeight: 600, fontSize: '14px', borderRadius: '8px' }}
               >
@@ -134,7 +134,7 @@ export function Header() {
                 : "bg-white/80 backdrop-blur-sm"
             )}
           >
-            <Link href={ROUTES.login} className="p-2 flex items-center justify-center">
+            <Link href="/" className="p-2 flex items-center justify-center">
               <img 
                 src="/mobile_header/menu_user_icon.svg" 
                 alt="User" 
@@ -199,7 +199,7 @@ export function Header() {
                 if (link.external) {
                   return (
                     <a 
-                      key={link.href}
+                      key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -215,7 +215,7 @@ export function Header() {
                 
                 return (
                   <Link 
-                    key={link.href} 
+                    key={link.label}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={linkClass}
@@ -248,10 +248,10 @@ export function Header() {
             
             {/* Social Links */}
             <div className="flex items-center gap-4 mb-6">
-              <a href="#" className="flex items-center justify-center">
+              <a href="/" className="flex items-center justify-center">
                 <img src="/mobile_header/menu_fb_icon.svg" alt="Facebook" style={{ width: ICON_SIZES.socialIcon, height: ICON_SIZES.socialIcon }} />
               </a>
-              <a href="#" className="flex items-center justify-center">
+              <a href="/" className="flex items-center justify-center">
                 <img src="/mobile_header/menu_ytb_icon.svg" alt="Youtube" style={{ width: ICON_SIZES.socialIcon, height: ICON_SIZES.socialIcon }} />
               </a>
             </div>

@@ -101,6 +101,8 @@ export function NewsDetailPage() {
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80" 
                 alt="Featured"
                 className="w-full h-auto object-cover"
+                loading="eager"
+                decoding="async"
               />
             </div>
 
@@ -143,13 +145,17 @@ export function NewsDetailPage() {
                 {relatedNews.map((item) => (
                   <article 
                     key={item.id}
-                    className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group transition-all duration-300 hover:shadow-md"
+                    className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md"
+                  style={{ transition: 'box-shadow 0.2s ease' }}
                   >
                     <div className="h-48 overflow-hidden">
                       <img 
                         src={item.image} 
                         alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover"
+                        style={{ transition: 'transform 0.3s ease' }}
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <div className="p-5">
