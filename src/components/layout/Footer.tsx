@@ -53,47 +53,39 @@ export function Footer() {
           </p>
         </div>
 
-        {/* Desktop: 4 Headings in 1 row */}
-        <div className="hidden lg:grid lg:grid-cols-12 gap-6 mb-6">
-          <div className="lg:col-span-4 flex items-center">
-            <h3 
-              className="text-sm tracking-wider font-semibold"
-              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
-            >
-              CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN ERA VIỆT NAM
-            </h3>
-          </div>
-          <div className="lg:col-span-3">
-            <h4 
-              className="text-base font-semibold"
-              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
-            >
-              Văn phòng làm việc
-            </h4>
-          </div>
-          <div className="lg:col-span-2">
-            <h4 
-              className="text-base font-semibold"
-              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
-            >
-              Về chúng tôi
-            </h4>
-          </div>
-          <div className="lg:col-span-3">
-            <h4 
-              className="text-base font-semibold"
-              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
-            >
-              Theo dõi chúng tôi
-            </h4>
-          </div>
+        {/* Desktop: 4 Headings in 1 row - Flexbox */}
+        <div className="hidden lg:flex justify-between mb-6">
+          <h3 
+            className="text-sm tracking-wider font-semibold"
+            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif', width: '28%' }}
+          >
+            CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN ERA VIỆT NAM
+          </h3>
+          <h4 
+            className="text-base font-semibold"
+            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif', width: '22%' }}
+          >
+            Văn phòng làm việc
+          </h4>
+          <h4 
+            className="text-base font-semibold"
+            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif', width: '15%' }}
+          >
+            Về chúng tôi
+          </h4>
+          <h4 
+            className="text-base font-semibold text-left"
+            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif', width: '15%' }}
+          >
+            Theo dõi chúng tôi
+          </h4>
         </div>
 
         {/* Main Footer Content - 4 Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 mb-10">
+        <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-4 mb-10">
           
           {/* Column 1: MST, Address, Contact */}
-          <div className="lg:col-span-4">
+          <div className="lg:w-[28%]">
             <div className="space-y-4">
               <div className="flex items-start gap-2">
                 <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.gray[300] }}>
@@ -179,7 +171,7 @@ export function Footer() {
           </div>
           
           {/* Column 2: Office Locations */}
-          <div className="lg:col-span-3">
+          <div className="lg:w-[22%]">
             {/* Mobile heading */}
             <h4 
               className="lg:hidden text-base font-semibold mb-4 flex items-center gap-2"
@@ -263,7 +255,7 @@ export function Footer() {
           </div>
           
           {/* Column 3: About Links */}
-          <div className="lg:col-span-2">
+          <div className="lg:w-[15%]">
             {/* Mobile heading */}
             <h4 
               className="lg:hidden text-base font-semibold mb-4"
@@ -312,7 +304,7 @@ export function Footer() {
           </div>
           
           {/* Column 4: Social Links */}
-          <div className="lg:col-span-3">
+          <div className="lg:w-[15%]">
             {/* Mobile heading */}
             <h4 
               className="lg:hidden text-base font-semibold mb-4"
