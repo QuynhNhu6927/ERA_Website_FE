@@ -9,19 +9,19 @@ const slides = [
   {
     id: 1,
     image: "/home/home_banner_hero_1.png",
-    imageMobile: "/home/home_banner_hero_1_mb.png",
+    imageMobile: "/home/home_banner_hero_1_mb.jpg",
     alt: "ERA Vietnam Team",
   },
   {
     id: 2,
     image: "/home/home_banner_hero_2.png",
-    imageMobile: "/home/home_banner_hero_2_mb.png",
+    imageMobile: "/home/home_banner_hero_2_mb.jpg",
     alt: "ERA Vietnam Projects",
   },
   {
     id: 3,
     image: "/home/home_banner_hero_1.png",
-    imageMobile: "/home/home_banner_hero_1_mb.png",
+    imageMobile: "/home/home_banner_hero_1_mb.jpg",
     alt: "ERA Vietnam Projects",
   },
 ];
@@ -128,6 +128,8 @@ export function HeroSection() {
                   backgroundImage: `url('${slide.imageMobile}')`,
                 }}
               />
+              {/* Overlay tối cho mobile */}
+              <div className="absolute inset-0 bg-black/60 lg:hidden" />
               <div
                 className="hidden lg:block absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
