@@ -9,16 +9,19 @@ const slides = [
   {
     id: 1,
     image: "/home/home_banner_hero_1.png",
+    imageMobile: "/home/home_banner_hero_1_mb.png",
     alt: "ERA Vietnam Team",
   },
   {
     id: 2,
     image: "/home/home_banner_hero_2.png",
+    imageMobile: "/home/home_banner_hero_2_mb.png",
     alt: "ERA Vietnam Projects",
   },
   {
     id: 3,
     image: "/home/home_banner_hero_1.png",
+    imageMobile: "/home/home_banner_hero_1_mb.png",
     alt: "ERA Vietnam Projects",
   },
 ];
@@ -120,7 +123,13 @@ export function HeroSection() {
               style={{ width: '100vw' }}
             >
               <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat lg:hidden"
+                style={{
+                  backgroundImage: `url('${slide.imageMobile}')`,
+                }}
+              />
+              <div
+                className="hidden lg:block absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
                   backgroundImage: `url('${slide.image}')`,
                 }}
