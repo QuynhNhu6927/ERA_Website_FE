@@ -7,24 +7,24 @@ import { colors } from "@/lib/theme";
 const news = [
   {
     id: 1,
-    title: "Thị trường Bất động sản Việt Nam 2024: Cơ hội cho ngườI mua nhà",
-    excerpt: "Các chính sách mới và lãi suất ổn định đang tạo đà phục hồi mạnh mẽ cho phân khúc căn hộ cao cấp tại TP.HCM...",
-    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&q=80",
-    date: "15 Tháng 5, 2024",
+    title: "Góc nhìn toàn cảnh xu hướng thị trường bất động sản năm 2026",
+    excerpt: "Thị trường bất động sản năm 2026 bước vào giai đoạn tái cấu trúc mạnh mẽ, chuyển dịch từ đầu cơ sang giá trị thực.",
+    image: "/home/home_news_01.jpg",
+    date: "Tháng 4, 2026",
   },
   {
     id: 2,
-    title: "ERA Vietnam tổ chức Lễ vinh danh Chuyên viên xuất sắc Quý 1",
-    excerpt: "Hàng trăm giải thưởng giá trị đã được trao cho những nỗ lực không ngừng nghỉ của đội ngũ chuyên viên trong 3 tháng qua...",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80",
-    date: "10 Tháng 5, 2024",
+    title: "ERA Vietnam tổ chức thành công VNBC 2026 tại The Grand Hồ Tràm",
+    excerpt: "Sự kiện là một hành trình trải nghiệm đa giác quan: từ những bài học đắt giá, những khoảnh khắc vinh danh xúc động, cho đến đại tiệc giải trí 5 sao đầy gắn kết.",
+    image: "/home/home_news_02.jpg",
+    date: "Tháng 3, 2026",
   },
   {
     id: 3,
-    title: "Cập nhật tính năng mới trên nền tảng My Agency v3.0",
-    excerpt: "Hệ thống giờ đây cho phép chuyên viên tạo tour tham quan ảo 360 độ trực tiếp cho khách hàng từ xa...",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
-    date: "05 Tháng 5, 2024",
+    title: "Lễ ra quân dự án Vinhomes Hải Vân Bay - “Siêu dự án” được mong chờ nhất miền Trung",
+    excerpt: "Dự kiến, phân khu Bạch Vân sẽ chính thức 'khóa sổ' vào tuần tới khi quỹ căn đang cạn dần một cách nhanh chóng.",
+    image: "/home/home_news_03.jpg",
+    date: "Tháng 4, 2026",
   },
 ];
 
@@ -67,7 +67,7 @@ export function NewsSection() {
             </span>
           </h2>
           <a
-            href="/tin-tuc"
+            href="/"
             className="hidden lg:flex items-center gap-2 transition-colors duration-200 hover:text-primary-dark"
             style={{ color: colors.primary.DEFAULT }}
           >
@@ -205,7 +205,7 @@ export function NewsSection() {
 
           {/* View All Button */}
           <a
-            href="/tin-tuc"
+            href="/"
             className="mt-8 w-full py-4 rounded-xl text-white text-center block transition-all duration-200 hover:opacity-90 hover:shadow-lg"
             style={{
               backgroundColor: colors.primary.DEFAULT,

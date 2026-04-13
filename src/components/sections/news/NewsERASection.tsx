@@ -40,35 +40,25 @@ const featuredNews = {
   image: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&q=80",
 };
 
-// Component for side news card with hover effect
 function SideNewsCard({ item }: { item: typeof sideNews[0] }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <article 
-      className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer transition-all duration-300 hover:shadow-md"
-      style={{ 
-        borderLeft: `4px solid ${isHovered ? colors.primary.DEFAULT : 'transparent'}`,
-        transition: 'all 0.3s',
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="group bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer hover:shadow-md border-l-4 border-transparent hover:border-primary transition-all duration-200"
     >
       <div className="p-5 flex flex-col justify-center">
         <p 
-          className="text-xs mb-2 transition-all duration-200"
+          className="text-xs mb-2 font-semibold group-hover:text-primary group-hover:font-bold transition-colors duration-200"
           style={{ 
-            color: isHovered ? colors.primary.DEFAULT : colors.secondary.DEFAULT,
+            color: colors.secondary.DEFAULT,
             fontFamily: 'var(--font-inter)',
-            fontWeight: isHovered ? 700 : 600,
           }}
         >
           {item.category}
         </p>
         <h4 
-          className="line-clamp-2 transition-colors"
+          className="line-clamp-2 group-hover:text-primary transition-colors duration-200"
           style={{ 
-            color: isHovered ? colors.primary.DEFAULT : colors.neutral.foreground,
+            color: colors.neutral.foreground,
             fontFamily: 'var(--font-inter)',
             fontWeight: 600,
             fontSize: '15px',
@@ -113,7 +103,7 @@ export function NewsERASection() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className="relative pb-2 transition-all duration-200 hover:text-primary text-sm"
+                className="relative pb-2 transition-colors duration-200 hover:text-primary text-sm"
                 style={{
                   color: activeTab === tab.id ? colors.primary.DEFAULT : colors.gray[500],
                   fontFamily: 'var(--font-inter), system-ui, sans-serif',
@@ -133,7 +123,7 @@ export function NewsERASection() {
 
           {/* Button */}
           <button
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium w-fit transition-all duration-200 hover:opacity-90 hover:shadow-xl"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium w-fit transition-opacity duration-200 hover:opacity-90 hover:shadow-xl"
             style={{ backgroundColor: colors.primary.DEFAULT }}
           >
             Tất cả hoạt động
@@ -146,12 +136,14 @@ export function NewsERASection() {
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left - Featured News */}
-          <article className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group transition-all duration-300 hover:shadow-md hover:scale-[1.01]">
+          <article className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md transition-shadow duration-200">
             <div className="h-64 overflow-hidden">
               <img 
                 src={featuredNews.image} 
                 alt={featuredNews.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300"
+                loading="eager"
+                decoding="async"
               />
             </div>
             <div className="p-6">

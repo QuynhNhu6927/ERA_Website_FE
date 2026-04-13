@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
@@ -64,7 +62,10 @@ export function NewsMarketSection() {
               <img 
                 src={featuredNews.image} 
                 alt={featuredNews.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover"
+                style={{ transition: 'transform 0.3s ease' }}
+                loading="eager"
+                decoding="async"
               />
               
               {/* Gradient Overlay */}
@@ -120,7 +121,10 @@ export function NewsMarketSection() {
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-cover"
+                    style={{ transition: 'transform 0.2s ease' }}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="flex-1 py-1">

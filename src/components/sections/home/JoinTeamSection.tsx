@@ -12,7 +12,7 @@ const benefits = [
     bgColor: colors.secondary.DEFAULT,
     linkColor: colors.link.cyan,
     linkHoverColor: colors.link.cyanLight,
-    href: ROUTES.commission,
+    href: "/",
   },
   {
     icon: "/join/join_learn_icon.svg",
@@ -21,7 +21,7 @@ const benefits = [
     bgColor: colors.primary.DEFAULT,
     linkColor: colors.link.yellow,
     linkHoverColor: colors.link.yellowLight,
-    href: ROUTES.training,
+    href: "/",
   },
   {
     icon: "/join/join_product_icon.svg",
@@ -30,7 +30,7 @@ const benefits = [
     bgColor: colors.secondary.DEFAULT,
     linkColor: colors.link.cyan,
     linkHoverColor: colors.link.cyanLight,
-    href: ROUTES.inventory,
+    href: "/",
   },
   {
     icon: "/join/join_tech_icon.svg",
@@ -39,7 +39,7 @@ const benefits = [
     bgColor: colors.primary.DEFAULT,
     linkColor: colors.link.yellow,
     linkHoverColor: colors.link.yellowLight,
-    href: ROUTES.technology,
+    href: "/",
   },
 ];
 
@@ -49,50 +49,58 @@ export function JoinTeamSection() {
       className="relative"
       style={{ backgroundColor: colors.gray[50] }}
     >
-      {/* Background Image Section - Mobile: home_join_mb.png, Desktop: home_join.png */}
-      <div 
-        className="relative h-[400px] md:h-[500px] bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/home/home_join.png')",
-        }}
-        data-desktop-bg="url('/home/home_join.png')"
-      >
-        <style>{`
-          @media (min-width: 768px) {
-            [data-desktop-bg] {
-              background-image: url('/home/home_join.png') !important;
-            }
-          }
-        `}</style>
-        {/* Overlay */}
+      {/* Background Image Section */}
+      <div className="px-4 md:px-0 pt-4 md:pt-0">
         <div 
-          className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
-        />
-        
-        {/* Title - centered */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h2 
-            className="text-white text-[36px] lg:text-[72px]"
-            style={{
-              fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
-              fontWeight: 900,
-            }}
-          >
-            JOIN TEAM ERA
-          </h2>
+          className="relative h-[240px] sm:h-[280px] md:h-[500px] bg-cover bg-center rounded-2xl md:rounded-none overflow-hidden"
+          style={{
+            backgroundImage: "url('/home/home_join.png')",
+          }}
+        >
+          {/* Overlay */}
+          <div 
+            className="absolute inset-0"
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
+          />
+          
+          {/* Title - centered - DESKTOP ONLY */}
+          <div className="hidden md:flex absolute inset-0 items-center justify-center">
+            <h2 
+              className="text-white text-[48px] lg:text-[72px]"
+              style={{
+                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                fontWeight: 900,
+              }}
+            >
+              JOIN TEAM ERA
+            </h2>
+          </div>
         </div>
       </div>
 
-      {/* Cards Section - overlapping */}
-      <div className="relative -mt-32 pb-16">
+      {/* Cards Section */}
+      <div className="relative mt-6 md:-mt-32 pb-12 md:pb-16">
         <Container>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {/* Mobile Title - Below image */}
+          <div className="md:hidden mb-6 text-center">
+            <h2 
+              className="text-[32px]"
+              style={{
+                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                fontWeight: 900,
+              }}
+            >
+              <span style={{ color: colors.secondary.DEFAULT }}>JOIN TEAM </span>
+              <span style={{ color: colors.primary.DEFAULT }}>ERA</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {benefits.map((benefit, index) => (
               <a
                 key={index}
                 href={benefit.href}
-                className="group rounded-xl p-4 lg:p-6 flex flex-col min-h-[160px] lg:min-h-[280px] transition-transform duration-300 hover:scale-[1.02] cursor-pointer"
+                className="group rounded-2xl md:rounded-xl p-4 lg:p-6 flex flex-col min-h-[140px] md:min-h-[160px] lg:min-h-[280px] transition-transform duration-300 hover:scale-[1.02] cursor-pointer"
                 style={{ backgroundColor: benefit.bgColor }}
               >
                 {/* Icon with white background */}
@@ -107,20 +115,20 @@ export function JoinTeamSection() {
                   />
                 </div>
 
-                {/* Title - Plus Jakarta Sans, 700, 16px mobile, 24px desktop */}
+                {/* Title */}
                 <h3 
-                  className="text-white mb-2 lg:mb-3"
+                  className="text-white md:mb-2 lg:mb-3"
                   style={{
                     fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                     fontWeight: 700,
-                    fontSize: '16px',
+                    fontSize: '14px',
                     lineHeight: 1.3,
                   }}
                 >
                   {benefit.title}
                 </h3>
 
-                {/* Description - Manrope, 500, 14px - hidden on mobile */}
+                {/* Description - Desktop only */}
                 <p 
                   className="hidden lg:block mb-6 flex-1"
                   style={{
@@ -134,7 +142,7 @@ export function JoinTeamSection() {
                   {benefit.description}
                 </p>
 
-                {/* Learn More - Manrope, 700, 14px - hidden on mobile */}
+                {/* Learn More - Desktop only */}
                 <span 
                   className="hidden lg:flex items-center gap-2 text-sm transition-colors duration-200"
                   style={{
@@ -142,12 +150,6 @@ export function JoinTeamSection() {
                     fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                     fontWeight: 700,
                     fontSize: '14px',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = benefit.linkHoverColor;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = benefit.linkColor;
                   }}
                 >
                   Learn More

@@ -11,20 +11,12 @@ export function AcademySection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="flex flex-col order-2 lg:order-1">
-            {/* Title - Mobile: 48px centered, Desktop: 72px left */}
-            <h2 
-              className="mb-4 lg:mb-6 text-center lg:text-left leading-none"
-              style={{
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
-                fontWeight: 900,
-                fontSize: '48px',
-              }}
-            >
-              <span style={{ color: colors.secondary.DEFAULT }}>ERA</span>
-              <br className="lg:hidden" />
-              <span className="hidden lg:inline"> </span>
-              <span style={{ color: colors.primary.DEFAULT }}>ACADEMY</span>
-            </h2>
+            {/* Logo - ERA Academy */}
+            <img 
+              src="/home/aca_era_logo.svg" 
+              alt="ERA Academy"
+              className="h-20 md:h-20 lg:h-24 w-auto mb-6 lg:mb-10 mx-auto lg:ml-0 lg:mr-auto block"
+            />
 
             {/* Description - Mobile: centered, Desktop: left */}
             <p 
@@ -54,7 +46,7 @@ export function AcademySection() {
 
             {/* CTA Button - Mobile: full width, Desktop: fit content */}
             <Link
-              href="/academy"
+              href="/"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-white w-full lg:w-fit transition-all duration-200 hover:opacity-90 hover:shadow-lg"
               style={{
                 backgroundColor: colors.primary.DEFAULT,

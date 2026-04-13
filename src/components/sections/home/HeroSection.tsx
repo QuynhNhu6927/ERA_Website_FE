@@ -16,11 +16,6 @@ const slides = [
     image: "/home/home_banner_hero_2.png",
     alt: "ERA Vietnam Projects",
   },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
-    alt: "Modern Building",
-  },
 ];
 
 export function HeroSection() {
@@ -96,7 +91,7 @@ export function HeroSection() {
   return (
     <section 
       ref={sectionRef}
-      className="relative flex items-center justify-center overflow-hidden h-[70vh] md:h-[80vh] cursor-grab active:cursor-grabbing"
+      className="relative flex items-center justify-center overflow-hidden h-[60vh] md:h-[70vh] cursor-grab active:cursor-grabbing"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -145,6 +140,7 @@ export function HeroSection() {
               fontFamily: 'var(--font-manrope), system-ui, sans-serif',
               fontWeight: 800,
               lineHeight: 1.1,
+              textShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.4)',
             }}
           >
             ERA VIETNAM
@@ -155,12 +151,12 @@ export function HeroSection() {
             className="text-white uppercase tracking-wider text-[32px]"
             style={{ 
               fontFamily: 'var(--font-montserrat), system-ui, sans-serif',
-              fontWeight: 600,
+              fontWeight: 400,
               letterSpacing: '0.05em',
               lineHeight: 1.2,
             }}
           >
-            EMPOWER PEOPLE,<br />TRANSFORM LIVES
+            EMPOWER PEOPLE,<br className="md:hidden" /> TRANSFORM LIVES
           </p>
         </div>
       </Container>
