@@ -63,7 +63,7 @@ export function NewsSection() {
               className="hidden lg:inline"
               style={{ color: colors.secondary.DEFAULT }}
             >
-              Tin tức & Sự kiện
+              TIN TỨC & SỰ KIỆN
             </span>
           </h2>
           <a

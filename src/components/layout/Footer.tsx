@@ -12,9 +12,23 @@ export function Footer() {
       style={{ backgroundColor: colors.secondary.DEFAULT }}
     >
       <Container>
-        {/* Top Section - Logo and Company Name */}
-        <div className="mb-8">
-          {/* Logo */}
+        {/* Desktop: Logo only on top left */}
+        <div className="hidden lg:flex items-center gap-3 mb-6">
+          <img 
+            src="/shared/logo_short_white.svg" 
+            alt="ERA Vietnam" 
+            className="h-10 w-auto"
+          />
+          <span 
+            className="text-xl font-bold"
+            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+          >
+            ERA Vietnam
+          </span>
+        </div>
+
+        {/* Mobile: Logo + Company Name */}
+        <div className="lg:hidden mb-8">
           <div className="flex items-center gap-3 mb-2">
             <img 
               src="/shared/logo_short_white.svg" 
@@ -28,8 +42,6 @@ export function Footer() {
               ERA Vietnam
             </span>
           </div>
-          
-          {/* Company full name */}
           <p 
             className="text-sm tracking-wider font-semibold"
             style={{ 
@@ -41,14 +53,49 @@ export function Footer() {
           </p>
         </div>
 
+        {/* Desktop: 4 Headings in 1 row */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-6 mb-6">
+          <div className="lg:col-span-4 flex items-center">
+            <h3 
+              className="text-sm tracking-wider font-semibold"
+              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+            >
+              CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN ERA VIỆT NAM
+            </h3>
+          </div>
+          <div className="lg:col-span-3">
+            <h4 
+              className="text-base font-semibold"
+              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+            >
+              Văn phòng làm việc
+            </h4>
+          </div>
+          <div className="lg:col-span-2">
+            <h4 
+              className="text-base font-semibold"
+              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+            >
+              Về chúng tôi
+            </h4>
+          </div>
+          <div className="lg:col-span-3">
+            <h4 
+              className="text-base font-semibold"
+              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+            >
+              Theo dõi chúng tôi
+            </h4>
+          </div>
+        </div>
+
         {/* Main Footer Content - 4 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 mb-10">
           
           {/* Column 1: MST, Address, Contact */}
           <div className="lg:col-span-4">
-            {/* MST & Address with icons */}
-            <div className="space-y-3">
-              <div className="flex items-start gap-2 mb-3">
+            <div className="space-y-4">
+              <div className="flex items-start gap-2">
                 <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.gray[300] }}>
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
@@ -63,7 +110,7 @@ export function Footer() {
                     MST: 0312393109 - Sở KHĐT TP. Hồ Chí Minh cấp ngày 30/07/2013
                   </p>
                   <p 
-                    className="text-xs leading-relaxed"
+                    className="text-xs leading-relaxed mt-1"
                     style={{ 
                       color: colors.gray[300],
                       fontFamily: 'var(--font-inter), system-ui, sans-serif',
@@ -74,7 +121,30 @@ export function Footer() {
                 </div>
               </div>
               
-              {/* Hotline */}
+              {/* Main Office - mobile only */}
+              <div className="flex items-start gap-2 lg:hidden">
+                <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.neutral.white }}>
+                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                </svg>
+                <div>
+                  <p 
+                    className="text-sm font-semibold"
+                    style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+                  >
+                    Trụ sở chính
+                  </p>
+                  <p 
+                    className="text-xs leading-relaxed mt-1"
+                    style={{ 
+                      color: colors.gray[300],
+                      fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                    }}
+                  >
+                    Số 22 - 24, Đường số 5, KĐT Sala, Phường An Khánh, TP. Hồ Chí Minh
+                  </p>
+                </div>
+              </div>
+              
               <div className="flex items-center gap-2">
                 <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.gray[300] }}>
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -90,7 +160,6 @@ export function Footer() {
                 </p>
               </div>
               
-              {/* Email */}
               <div className="flex items-center gap-2">
                 <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.gray[300] }}>
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -111,15 +180,19 @@ export function Footer() {
           
           {/* Column 2: Office Locations */}
           <div className="lg:col-span-3">
+            {/* Mobile heading */}
             <h4 
-              className="text-base font-semibold mb-4"
+              className="lg:hidden text-base font-semibold mb-4 flex items-center gap-2"
               style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
             >
-              Văn phòng làm việc
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.neutral.white }}>
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              Văn Phòng Chi Nhánh
             </h4>
             
-            {/* Main Office */}
-            <div className="mb-4">
+            {/* Desktop: Trụ sở chính */}
+            <div className="hidden lg:block mb-4">
               <div className="flex items-start gap-2 mb-1">
                 <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.neutral.white }}>
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -142,7 +215,6 @@ export function Footer() {
               </p>
             </div>
             
-            {/* Da Nang */}
             <div className="mb-4">
               <div className="flex items-start gap-2 mb-1">
                 <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.neutral.white }}>
@@ -166,7 +238,6 @@ export function Footer() {
               </p>
             </div>
             
-            {/* Ha Noi */}
             <div>
               <div className="flex items-start gap-2 mb-1">
                 <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.neutral.white }}>
@@ -193,8 +264,9 @@ export function Footer() {
           
           {/* Column 3: About Links */}
           <div className="lg:col-span-2">
+            {/* Mobile heading */}
             <h4 
-              className="text-base font-semibold mb-4"
+              className="lg:hidden text-base font-semibold mb-4"
               style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
             >
               Về chúng tôi
@@ -202,7 +274,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link 
-                  href={ROUTES.brandStory}
+                  href="/"
                   className="text-sm transition-colors hover:opacity-80"
                   style={{ 
                     color: colors.gray[300],
@@ -214,7 +286,7 @@ export function Footer() {
               </li>
               <li>
                 <Link 
-                  href={ROUTES.operations}
+                  href="/"
                   className="text-sm transition-colors hover:opacity-80"
                   style={{ 
                     color: colors.gray[300],
@@ -226,7 +298,7 @@ export function Footer() {
               </li>
               <li>
                 <Link 
-                  href={ROUTES.recruitment}
+                  href="/"
                   className="text-sm transition-colors hover:opacity-80"
                   style={{ 
                     color: colors.gray[300],
@@ -241,57 +313,61 @@ export function Footer() {
           
           {/* Column 4: Social Links */}
           <div className="lg:col-span-3">
+            {/* Mobile heading */}
             <h4 
-              className="text-base font-semibold mb-4"
+              className="lg:hidden text-base font-semibold mb-4"
               style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
             >
               Theo dõi chúng tôi
             </h4>
-            <ul className="space-y-3">
-              <li>
-                <Link 
-                  href="#" 
-                  className="text-sm flex items-center gap-3 transition-colors hover:opacity-80"
-                  style={{ 
-                    color: colors.gray[300],
-                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                  }}
-                >
-                  <img src="/shared/fb_icon.svg" alt="Facebook" className="w-6 h-6" />
-                  Facebook
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="#" 
-                  className="text-sm flex items-center gap-3 transition-colors hover:opacity-80"
-                  style={{ 
-                    color: colors.gray[300],
-                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                  }}
-                >
-                  <img src="/shared/ytb_icon.svg" alt="Youtube" className="w-6 h-6" />
-                  Youtube
-                </Link>
-              </li>
-            </ul>
+            <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-3">
+              {/* Mobile: icon only */}
+              <Link 
+                href="/" 
+                className="lg:hidden transition-colors hover:opacity-80"
+              >
+                <img src="/shared/fb_icon.svg" alt="Facebook" className="w-10 h-10" />
+              </Link>
+              <Link 
+                href="/" 
+                className="lg:hidden transition-colors hover:opacity-80"
+              >
+                <img src="/shared/ytb_icon.svg" alt="Youtube" className="w-10 h-10" />
+              </Link>
+              {/* Desktop: icon + text */}
+              <Link 
+                href="/" 
+                className="hidden lg:flex items-center gap-3 text-sm transition-colors hover:opacity-80"
+                style={{ 
+                  color: colors.gray[300],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                <img src="/shared/fb_icon.svg" alt="Facebook" className="w-6 h-6" />
+                Facebook
+              </Link>
+              <Link 
+                href="/" 
+                className="hidden lg:flex items-center gap-3 text-sm transition-colors hover:opacity-80"
+                style={{ 
+                  color: colors.gray[300],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                <img src="/shared/ytb_icon.svg" alt="Youtube" className="w-6 h-6" />
+                Youtube
+              </Link>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div 
-          className="pt-6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4"
+          className="pt-6 flex flex-col gap-4"
           style={{ borderTop: `1px solid ${colors.gray[700]}` }}
         >
-          {/* BCT Logo */}
-          <img 
-            src="/shared/bct_icon.svg" 
-            alt="Bộ Công Thương" 
-            className="h-12 w-auto"
-          />
-          
-          {/* Copyright & Links */}
-          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8">
+          {/* Copyright & Links - Mobile */}
+          <div className="flex flex-col gap-3 lg:hidden">
             <p 
               className="text-xs"
               style={{ 
@@ -303,7 +379,7 @@ export function Footer() {
             </p>
             <div className="flex gap-6">
               <Link 
-                href={ROUTES.terms}
+                href="/"
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
@@ -313,7 +389,49 @@ export function Footer() {
                 Điều khoản sử dụng
               </Link>
               <Link 
-                href={ROUTES.privacy}
+                href="/"
+                className="text-xs transition-colors hover:text-white"
+                style={{ 
+                  color: colors.gray[400],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                Chính sách bảo mật
+              </Link>
+            </div>
+          </div>
+          
+          {/* BCT Logo */}
+          <img 
+            src="/shared/bct_icon.svg" 
+            alt="Bộ Công Thương" 
+            className="h-12 w-auto self-start"
+          />
+          
+          {/* Copyright & Links - Desktop */}
+          <div className="hidden lg:flex flex-row justify-between items-center gap-4">
+            <p 
+              className="text-xs"
+              style={{ 
+                color: colors.gray[400],
+                fontFamily: 'var(--font-inter), system-ui, sans-serif',
+              }}
+            >
+              © 2026 ERA Vietnam. All rights reserved.
+            </p>
+            <div className="flex gap-6">
+              <Link 
+                href="/"
+                className="text-xs transition-colors hover:text-white"
+                style={{ 
+                  color: colors.gray[400],
+                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                }}
+              >
+                Điều khoản sử dụng
+              </Link>
+              <Link 
+                href="/"
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
