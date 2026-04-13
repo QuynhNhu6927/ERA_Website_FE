@@ -118,7 +118,7 @@ export function JoinTeamSection() {
                   style={{
                     fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                     fontWeight: 700,
-                    fontSize: '14px',
+                    fontSize: 'clamp(14px, 4vw, 24px)',
                     lineHeight: 1.3,
                   }}
                 >

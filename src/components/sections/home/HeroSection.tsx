@@ -128,11 +128,6 @@ export function HeroSection() {
             </div>
           ))}
         </div>
-        {/* Overlay - Darkened */}
-        <div 
-          className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.55)' }}
-        />
       </div>
 
       {/* Content - Mobile: bottom, Desktop: center */}
