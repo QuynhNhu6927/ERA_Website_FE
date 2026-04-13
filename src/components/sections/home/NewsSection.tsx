@@ -55,7 +55,7 @@ export function NewsSection() {
           >
             <span 
               className="lg:hidden"
-              style={{ color: colors.primary.DEFAULT }}
+              style={{ color: colors.secondary.DEFAULT }}
             >
               TIN TỨC & SỰ KIỆN
             </span>
