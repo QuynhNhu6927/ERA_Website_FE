@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -95,10 +96,13 @@ export function NewsSection() {
             >
               {/* Image */}
               <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4">
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  loading="lazy"
                 />
               </div>
 
@@ -149,13 +153,16 @@ export function NewsSection() {
                 className="flex gap-4 cursor-pointer"
               >
                 {/* Thumbnail */}
-                <div 
-                  className="w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden"
+                <div
+                  className="relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden"
                 >
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="96px"
+                    loading="lazy"
                   />
                 </div>
                 

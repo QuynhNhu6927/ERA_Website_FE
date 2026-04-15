@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -96,13 +97,15 @@ export function NewsDetailPage() {
             </p>
 
             {/* Featured Image */}
-            <div className="rounded-2xl overflow-hidden mb-8">
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80" 
+            <div className="relative rounded-2xl overflow-hidden mb-8 aspect-video">
+              <Image
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80"
                 alt="Featured"
-                className="w-full h-auto object-cover"
+                fill
+                className="object-cover"
+                sizes="100vw"
                 loading="eager"
-                decoding="async"
+                priority
               />
             </div>
 
@@ -148,14 +151,15 @@ export function NewsDetailPage() {
                     className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md"
                   style={{ transition: 'box-shadow 0.2s ease' }}
                   >
-                    <div className="h-48 overflow-hidden">
-                      <img 
-                        src={item.image} 
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                         style={{ transition: 'transform 0.3s ease' }}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         loading="lazy"
-                        decoding="async"
                       />
                     </div>
                     <div className="p-5">
@@ -209,25 +213,25 @@ export function NewsDetailPage() {
               </h4>
               <div className="flex items-center gap-3">
                 {/* Facebook */}
-                <a 
-                  href="#" 
+                <a
+                  href="#"
                   className="w-10 h-10 flex items-center justify-center transition-opacity hover:opacity-80"
                 >
-                  <img src="/shared/fb_icon.svg" alt="Facebook" className="w-10 h-10" />
+                  <Image src="/shared/fb_icon.svg" alt="Facebook" width={40} height={40} className="w-10 h-10" />
                 </a>
                 {/* Twitter/X */}
-                <a 
-                  href="#" 
+                <a
+                  href="#"
                   className="w-10 h-10 flex items-center justify-center transition-opacity hover:opacity-80"
                 >
-                  <img src="/shared/x_icon.svg" alt="X" className="w-10 h-10" />
+                  <Image src="/shared/x_icon.svg" alt="X" width={40} height={40} className="w-10 h-10" />
                 </a>
                 {/* LinkedIn */}
-                <a 
-                  href="#" 
+                <a
+                  href="#"
                   className="w-10 h-10 flex items-center justify-center transition-opacity hover:opacity-80"
                 >
-                  <img src="/shared/linkedin_icon.svg" alt="LinkedIn" className="w-10 h-10" />
+                  <Image src="/shared/linkedin_icon.svg" alt="LinkedIn" width={40} height={40} className="w-10 h-10" />
                 </a>
               </div>
             </div>

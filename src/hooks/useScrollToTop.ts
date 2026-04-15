@@ -6,12 +6,26 @@ export function useScrollToTop(threshold: number = 400) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    let rafId: number | null = null;
+    let currentVisible = false;
+
     const handleScroll = () => {
-      setIsVisible(window.scrollY > threshold);
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        const shouldBeVisible = window.scrollY > threshold;
+        if (shouldBeVisible !== currentVisible) {
+          currentVisible = shouldBeVisible;
+          setIsVisible(shouldBeVisible);
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [threshold]);
 
   const scrollToTop = () => {

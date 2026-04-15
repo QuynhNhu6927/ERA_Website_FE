@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -29,26 +29,34 @@ export function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      setIsScrolled(currentScrollY > 50);
-      
-      if (currentScrollY < 100) {
-        setIsVisible(true);
-      } else {
-        if (currentScrollY > lastScrollY) {
-          setIsVisible(false);
-        } else {
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
+        const currentScrollY = window.scrollY;
+
+        setIsScrolled(currentScrollY > 50);
+
+        if (currentScrollY < 100) {
           setIsVisible(true);
+        } else {
+          if (currentScrollY > lastScrollY) {
+            setIsVisible(false);
+          } else {
+            setIsVisible(true);
+          }
         }
-      }
-      setLastScrollY(currentScrollY);
+        setLastScrollY(currentScrollY);
+      });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [lastScrollY]);
 
   return (
@@ -135,10 +143,12 @@ export function Header() {
             )}
           >
             <Link href="/" className="p-2 flex items-center justify-center">
-              <img 
-                src="/mobile_header/menu_user_icon.svg" 
-                alt="User" 
-                style={{ width: '24px', height: '24px' }} 
+              <Image
+                src="/mobile_header/menu_user_icon.svg"
+                alt="User"
+                width={24}
+                height={24}
+                style={{ width: '24px', height: '24px' }}
               />
             </Link>
             <div className="w-px h-5 bg-gray-300" />
@@ -147,10 +157,12 @@ export function Header() {
               onClick={() => setIsMobileMenuOpen(true)} 
               aria-label="Open menu"
             >
-              <img 
-                src="/mobile_header/menu_hambuger_icon.svg" 
-                alt="Menu" 
-                style={{ width: '24px', height: '24px' }} 
+              <Image
+                src="/mobile_header/menu_hambuger_icon.svg"
+                alt="Menu"
+                width={24}
+                height={24}
+                style={{ width: '24px', height: '24px' }}
               />
             </button>
           </div>
@@ -165,10 +177,12 @@ export function Header() {
             )}
           >
             <Link href="/" className="flex items-center">
-              <img 
-                src="/logo_short.svg" 
-                alt="ERA Vietnam" 
-                style={{ width: '36px', height: '36px' }} 
+              <Image
+                src="/logo_short.svg"
+                alt="ERA Vietnam"
+                width={36}
+                height={36}
+                style={{ width: '36px', height: '36px' }}
               />
             </Link>
           </div>
@@ -194,7 +208,7 @@ export function Header() {
               {navLinks.map((link) => {
                 const linkClass = "flex items-center gap-4 py-3";
                 const linkStyle = { color: colors.secondary.DEFAULT, fontWeight: 500, fontSize: '16px' };
-                const iconElement = <img src={link.icon} alt={link.label} style={{ width: ICON_SIZES.navIcon, height: ICON_SIZES.navIcon }} />;
+                const iconElement = <Image src={link.icon} alt={link.label} width={ICON_SIZES.navIcon} height={ICON_SIZES.navIcon} style={{ width: ICON_SIZES.navIcon, height: ICON_SIZES.navIcon }} />;
                 
                 if (link.external) {
                   return (
@@ -242,17 +256,17 @@ export function Header() {
                 </span>
               </div>
               <a href="tel:18006701" className="flex items-center justify-center" style={{ backgroundColor: colors.primary.DEFAULT, width: '48px', height: '48px', borderRadius: '12px', boxShadow: `0px 4px 6px -4px ${colors.primary.hotline}33, 0px 10px 15px -3px ${colors.primary.hotline}33` }}>
-                <img src="/mobile_header/menu_hotline_icon.svg" alt="Call" style={{ width: ICON_SIZES.hotlineIcon, height: ICON_SIZES.hotlineIcon }} />
+                <Image src="/mobile_header/menu_hotline_icon.svg" alt="Call" width={ICON_SIZES.hotlineIcon} height={ICON_SIZES.hotlineIcon} style={{ width: ICON_SIZES.hotlineIcon, height: ICON_SIZES.hotlineIcon }} />
               </a>
             </div>
             
             {/* Social Links */}
             <div className="flex items-center gap-4 mb-6">
               <a href="/" className="flex items-center justify-center">
-                <img src="/mobile_header/menu_fb_icon.svg" alt="Facebook" style={{ width: ICON_SIZES.socialIcon, height: ICON_SIZES.socialIcon }} />
+                <Image src="/mobile_header/menu_fb_icon.svg" alt="Facebook" width={ICON_SIZES.socialIcon} height={ICON_SIZES.socialIcon} style={{ width: ICON_SIZES.socialIcon, height: ICON_SIZES.socialIcon }} />
               </a>
               <a href="/" className="flex items-center justify-center">
-                <img src="/mobile_header/menu_ytb_icon.svg" alt="Youtube" style={{ width: ICON_SIZES.socialIcon, height: ICON_SIZES.socialIcon }} />
+                <Image src="/mobile_header/menu_ytb_icon.svg" alt="Youtube" width={ICON_SIZES.socialIcon} height={ICON_SIZES.socialIcon} style={{ width: ICON_SIZES.socialIcon, height: ICON_SIZES.socialIcon }} />
               </a>
             </div>
             

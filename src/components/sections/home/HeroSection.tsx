@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
 import { colors } from "@/lib/theme";
@@ -30,8 +31,9 @@ export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
-  const [translateX, setTranslateX] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const translateXRef = useRef(0);
   const autoSlideRef = useRef<NodeJS.Timeout | null>(null);
 
   const nextSlide = useCallback(() => {
@@ -54,28 +56,40 @@ export function HeroSection() {
   const handleStart = (clientX: number) => {
     setIsDragging(true);
     setStartX(clientX);
-    setTranslateX(0);
+    translateXRef.current = 0;
+    if (sliderRef.current) {
+      sliderRef.current.classList.remove('transition-transform');
+    }
     if (autoSlideRef.current) clearInterval(autoSlideRef.current);
   };
 
   const handleMove = (clientX: number) => {
     if (!isDragging) return;
     const diff = clientX - startX;
-    setTranslateX(diff);
+    translateXRef.current = diff;
+    if (sliderRef.current) {
+      sliderRef.current.style.transform = `translateX(calc(-${currentSlide * 100}vw + ${diff}px))`;
+    }
   };
 
   const handleEnd = () => {
     if (!isDragging) return;
     setIsDragging(false);
-    
+
     const threshold = 50; // Minimum swipe distance
-    if (translateX > threshold) {
+    if (translateXRef.current > threshold) {
       prevSlide();
-    } else if (translateX < -threshold) {
+    } else if (translateXRef.current < -threshold) {
       nextSlide();
+    } else {
+      // Snap back to current slide
+      if (sliderRef.current) {
+        sliderRef.current.classList.add('transition-transform');
+        sliderRef.current.style.transform = `translateX(calc(-${currentSlide * 100}vw))`;
+      }
     }
-    setTranslateX(0);
-    
+    translateXRef.current = 0;
+
     // Restart auto slide
     autoSlideRef.current = setInterval(nextSlide, 7000);
   };
@@ -110,32 +124,43 @@ export function HeroSection() {
     >
       {/* Background Slideshow - Smooth Slide Effect */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div 
+        <div
+          ref={sliderRef}
           className="absolute inset-y-0 left-0 flex transition-transform duration-500 ease-out h-full"
           style={{
-            transform: `translateX(calc(-${currentSlide * 100}vw + ${isDragging ? translateX : 0}px))`,
+            transform: `translateX(calc(-${currentSlide * 100}vw))`,
           }}
         >
-          {slides.map((slide) => (
+          {slides.map((slide, index) => (
             <div
               key={slide.id}
               className="relative h-full flex-shrink-0 overflow-hidden"
               style={{ width: '100vw' }}
             >
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat lg:hidden"
-                style={{
-                  backgroundImage: `url('${slide.imageMobile}')`,
-                }}
-              />
+              <div className="absolute inset-0 lg:hidden">
+                <Image
+                  src={slide.imageMobile}
+                  alt={slide.alt}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority={index === 0}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
               {/* Overlay tối cho mobile */}
-              <div className="absolute inset-0 bg-black/60 lg:hidden" />
-              <div
-                className="hidden lg:block absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{
-                  backgroundImage: `url('${slide.image}')`,
-                }}
-              />
+              <div className="absolute inset-0 bg-black/40 lg:hidden" />
+              <div className="hidden lg:block absolute inset-0">
+                <Image
+                  src={slide.image}
+                  alt={slide.alt}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority={index === 0}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
             </div>
           ))}
         </div>
