@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -64,9 +65,11 @@ export function AcademyRoadmapSection() {
                 className="w-14 h-14 rounded-3xl flex items-center justify-center mb-5"
                 style={{ backgroundColor: colors.neutral.white }}
               >
-                <img 
-                  src={card.icon} 
+                <Image
+                  src={card.icon}
                   alt={card.title}
+                  width={28}
+                  height={28}
                   className="w-7 h-7"
                 />
               </div>

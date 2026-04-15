@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -151,7 +152,7 @@ export function GlobalNetworkSection() {
             {/* Video - Mobile only */}
             <div className="lg:hidden mb-6 relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
               <iframe
-                key={`mobile-${isInView}`}
+                key="era-video-mobile"
                 src={getVideoUrl(true)}
                 title="ERA Global Network Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -185,9 +186,11 @@ export function GlobalNetworkSection() {
                   className="grid grid-cols-[40px_1fr] gap-4 items-center rounded-xl p-4 bg-gray-50 lg:!bg-transparent lg:flex lg:flex-col lg:items-start lg:gap-0 lg:p-0"
                 >
                   {/* Icon - Mobile: 40px in left column, Desktop: 25px top */}
-                  <img 
-                    src={stat.icon} 
+                  <Image
+                    src={stat.icon}
                     alt={stat.label}
+                    width={40}
+                    height={40}
                     className="w-[40px] h-[40px] lg:w-[25px] lg:h-[25px] lg:mb-2"
                   />
                   {/* Text - Mobile: right column left aligned, Desktop: normal */}
@@ -223,7 +226,7 @@ export function GlobalNetworkSection() {
           {/* Right Content - YouTube Video - Desktop only */}
           <div className="hidden lg:block lg:col-span-3 relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
             <iframe
-              key={`desktop-${isInView}`}
+              key="era-video-desktop"
               src={getVideoUrl(false)}
               title="ERA Global Network Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

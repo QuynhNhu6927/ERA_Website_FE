@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -151,20 +152,29 @@ export function ProjectsSection() {
 
           {/* Project Images - Mobile: vertical stack; Desktop: horizontal */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 order-2 lg:order-1">
-            <img 
-              src="/home/home_pj_01.svg" 
+            <Image
+              src="/home/home_pj_01.webp"
               alt="Dự án 1"
+              width={800}
+              height={600}
               className="w-full h-auto rounded-2xl lg:rounded-3xl"
+              loading="lazy"
             />
-            <img 
-              src="/home/home_pj_02.svg" 
+            <Image
+              src="/home/home_pj_02.webp"
               alt="Dự án 2"
+              width={800}
+              height={600}
               className="w-full h-auto rounded-2xl lg:rounded-3xl"
+              loading="lazy"
             />
-            <img 
-              src="/home/home_pj_03.svg" 
+            <Image
+              src="/home/home_pj_03.webp"
               alt="Dự án 3"
+              width={800}
+              height={600}
               className="w-full h-auto rounded-2xl lg:rounded-3xl"
+              loading="lazy"
             />
           </div>
         </div>

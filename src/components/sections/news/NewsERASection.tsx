@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -137,13 +138,15 @@ export function NewsERASection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left - Featured News */}
           <article className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md transition-shadow duration-200">
-            <div className="h-64 overflow-hidden">
-              <img 
-                src={featuredNews.image} 
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src={featuredNews.image}
                 alt={featuredNews.title}
-                className="w-full h-full object-cover transition-transform duration-300"
+                fill
+                className="object-cover transition-transform duration-300"
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="eager"
-                decoding="async"
+                priority
               />
             </div>
             <div className="p-6">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -155,13 +156,14 @@ export function AcademyCoursesSection() {
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden flex-shrink-0">
-                <img 
-                  src={course.image} 
+                <Image
+                  src={course.image}
                   alt={course.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                   style={{ transition: 'transform 0.3s ease' }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   loading="lazy"
-                  decoding="async"
                 />
                 {/* Type Badge */}
                 <span 

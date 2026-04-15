@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
@@ -12,9 +13,11 @@ export function AcademySection() {
           {/* Left Content */}
           <div className="flex flex-col order-2 lg:order-1">
             {/* Logo - ERA Academy */}
-            <img 
-              src="/home/aca_era_logo.svg" 
+            <Image
+              src="/home/aca_era_logo.svg"
               alt="ERA Academy"
+              width={200}
+              height={96}
               className="h-20 md:h-20 lg:h-24 w-auto mb-6 lg:mb-10 mx-auto lg:ml-0 lg:mr-auto block"
             />
 
@@ -33,14 +36,17 @@ export function AcademySection() {
             </p>
 
             {/* Mobile Image - shown between description and button */}
-            <div 
-              className="lg:hidden mb-6 rounded-2xl overflow-hidden"
+            <div
+              className="relative lg:hidden mb-6 rounded-2xl overflow-hidden"
               style={{ aspectRatio: '4/3' }}
             >
-              <img
+              <Image
                 src="/home/home_academy.png"
                 alt="ERA Academy Training"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="100vw"
+                loading="lazy"
               />
             </div>
 
@@ -74,14 +80,17 @@ export function AcademySection() {
               }}
             >
               {/* Main Image */}
-              <div 
-                className="rounded-lg overflow-hidden"
+              <div
+                className="relative rounded-lg overflow-hidden"
                 style={{ aspectRatio: '4/3' }}
               >
-                <img
+                <Image
                   src="/home/home_academy.png"
                   alt="ERA Academy Training"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
                 />
               </div>
             </div>

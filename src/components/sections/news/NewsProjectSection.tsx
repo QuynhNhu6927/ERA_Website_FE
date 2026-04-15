@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -58,16 +59,17 @@ export function NewsProjectSection() {
           <div className="lg:col-span-2 space-y-6">
             {sideNews.map((item) => (
               <div key={item.id} className="flex gap-4 cursor-pointer group transition-opacity duration-200 hover:opacity-80">
-                <div 
-                  className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0"
+                <div
+                  className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0"
                 >
-                  <img 
-                    src={item.image} 
+                  <Image
+                    src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     style={{ transition: 'transform 0.2s ease' }}
+                    sizes="96px"
                     loading="lazy"
-                    decoding="async"
                   />
                 </div>
                 <div className="flex-1 py-1">
@@ -100,13 +102,15 @@ export function NewsProjectSection() {
           {/* Right - Featured News (3 cols) */}
           <div className="lg:col-span-3">
             <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01]">
-              <img 
-                src={featuredNews.image} 
+              <Image
+                src={featuredNews.image}
                 alt={featuredNews.title}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 style={{ transition: 'transform 0.3s ease' }}
+                sizes="100vw"
                 loading="eager"
-                decoding="async"
+                priority
               />
               
               {/* Gradient Overlay */}

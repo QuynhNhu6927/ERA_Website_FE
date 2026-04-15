@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -52,12 +53,13 @@ export function NewsEMagazineSection() {
               <div 
                 className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4 shadow-lg transition-transform duration-300 group-hover:scale-[1.02]"
               >
-                <img 
-                  src={mag.image} 
+                <Image
+                  src={mag.image}
                   alt={mag.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   loading="lazy"
-                  decoding="async"
                 />
               </div>
               

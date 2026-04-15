@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 import { ROUTES } from "@/lib/routes";
@@ -105,9 +106,11 @@ export function JoinTeamSection() {
                   className="w-10 h-10 lg:w-12 lg:h-12 rounded-lg flex items-center justify-center mb-3 lg:mb-4"
                   style={{ backgroundColor: colors.neutral.white }}
                 >
-                  <img 
-                    src={benefit.icon} 
+                  <Image
+                    src={benefit.icon}
                     alt={benefit.title}
+                    width={24}
+                    height={24}
                     className="w-5 h-5 lg:w-6 lg:h-6"
                   />
                 </div>

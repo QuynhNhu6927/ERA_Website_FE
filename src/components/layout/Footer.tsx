@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
@@ -14,9 +15,11 @@ export function Footer() {
       <Container>
         {/* Desktop: Logo only on top left */}
         <div className="hidden lg:flex items-center gap-3 mb-6">
-          <img 
-            src="/shared/logo_short_white.svg" 
-            alt="ERA Vietnam" 
+          <Image
+            src="/shared/logo_short_white.svg"
+            alt="ERA Vietnam"
+            width={40}
+            height={40}
             className="h-10 w-auto"
           />
           <span 
@@ -30,9 +33,11 @@ export function Footer() {
         {/* Mobile: Logo + Company Name */}
         <div className="lg:hidden mb-8">
           <div className="flex items-center gap-3 mb-2">
-            <img 
-              src="/shared/logo_short_white.svg" 
-              alt="ERA Vietnam" 
+            <Image
+              src="/shared/logo_short_white.svg"
+              alt="ERA Vietnam"
+              width={40}
+              height={40}
               className="h-10 w-auto"
             />
             <span 
@@ -318,13 +323,13 @@ export function Footer() {
                 href="/" 
                 className="lg:hidden transition-colors hover:opacity-80"
               >
-                <img src="/shared/fb_icon.svg" alt="Facebook" className="w-10 h-10" />
+                <Image src="/shared/fb_icon.svg" alt="Facebook" width={40} height={40} className="w-10 h-10" />
               </Link>
               <Link 
                 href="/" 
                 className="lg:hidden transition-colors hover:opacity-80"
               >
-                <img src="/shared/ytb_icon.svg" alt="Youtube" className="w-10 h-10" />
+                <Image src="/shared/ytb_icon.svg" alt="Youtube" width={40} height={40} className="w-10 h-10" />
               </Link>
               {/* Desktop: icon + text */}
               <Link 
@@ -335,7 +340,7 @@ export function Footer() {
                   fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
-                <img src="/shared/fb_icon.svg" alt="Facebook" className="w-6 h-6" />
+                <Image src="/shared/fb_icon.svg" alt="Facebook" width={24} height={24} className="w-6 h-6" />
                 Facebook
               </Link>
               <Link 
@@ -346,7 +351,7 @@ export function Footer() {
                   fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
-                <img src="/shared/ytb_icon.svg" alt="Youtube" className="w-6 h-6" />
+                <Image src="/shared/ytb_icon.svg" alt="Youtube" width={24} height={24} className="w-6 h-6" />
                 Youtube
               </Link>
             </div>
@@ -394,9 +399,11 @@ export function Footer() {
           </div>
           
           {/* BCT Logo */}
-          <img 
-            src="/shared/bct_icon.svg" 
-            alt="Bộ Công Thương" 
+          <Image
+            src="/shared/bct_icon.svg"
+            alt="Bộ Công Thương"
+            width={120}
+            height={48}
             className="h-12 w-auto self-start"
           />
           
