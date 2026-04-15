@@ -399,11 +399,9 @@ export function Footer() {
           </div>
           
           {/* BCT Logo */}
-          <Image
+          <img
             src="/shared/bct_icon.svg"
             alt="Bộ Công Thương"
-            width={120}
-            height={48}
             className="h-12 w-auto self-start"
           />
           
