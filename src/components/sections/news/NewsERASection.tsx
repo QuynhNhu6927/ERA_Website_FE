@@ -17,19 +17,19 @@ const sideNews = [
     id: 1,
     category: "SỰ KIỆN KÝ KẾT",
     title: "Hợp tác chiến lược giữa ERA Vietnam và ngân hàng Techcombank",
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 2,
     category: "ĐỘI NGŨ",
     title: "Bổ nhiệm Giám đốc Điều hành mới khu vực miền Bắc",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 3,
     category: "HOẠT ĐỘNG NỘI BỘ",
     title: "Giải chạy ERA Connect: Nâng cao tinh thần đồng đội 2023",
-    image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&q=80&w=800",
   },
 ];
 
@@ -44,7 +44,7 @@ const featuredNews = {
 function SideNewsCard({ item }: { item: typeof sideNews[0] }) {
   return (
     <article 
-      className="group bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer hover:shadow-md border-l-4 border-transparent hover:border-primary transition-all duration-200"
+      className="group bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer hover:shadow-md border-l-4 border-transparent hover:border-primary transition-[box-shadow,border-color] duration-200 will-change-transform"
     >
       <div className="p-5 flex flex-col justify-center">
         <p 

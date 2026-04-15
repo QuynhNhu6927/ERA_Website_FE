@@ -5,44 +5,44 @@ import { colors } from "@/lib/theme";
 const sideNews = [
   {
     id: 1,
-    title: "Quy hoạch hạ tầng mới tại khu Đông TP.HCM",
-    time: "12 giờ trước",
+    title: "ERA Vietnam công bố báo cáo tài chính Quý 3/2024",
+    time: "15 Tháng 10, 2024",
     readTime: "5 phút đọc",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 2,
-    title: "Dòng tiền đầu tư đang dồn về phân khúc nghỉ dưỡng",
-    time: "1 ngày trước",
+    title: "ERA Vietnam ký kết hợp tác chiến lược với đối tác quốc tế",
+    time: "10 Tháng 9, 2024",
     readTime: "4 phút đọc",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 3,
-    title: "Luật Đất Đai sửa đổi: Những điểm mới cần lưu ý",
-    time: "2 ngày trước",
+    title: "ERA Vietnam ra mắt chương trình đào tạo Agent chuyên nghiệp",
+    time: "05 Tháng 9, 2024",
     readTime: "8 phút đọc",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
   },
 ];
 
 const featuredNews = {
-  title: "Tác động của lãi suất ngân hàng đến thị trường Bất Động Sản 2024",
-  excerpt: "Phân tích chuyên sâu về sự dịch chuyển dòng vốn và những dự báo mới nhất từ các chuyên gia kinh tế hàng đầu.",
-  image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
+  title: "ERA Vietnam công bố định hướng chiến lược Move Up 2026",
+  excerpt: "Tập trung vào trải nghiệm khách hàng và số hóa toàn diện quy trình môi giới, khẳng định vị thế dẫn đầu thị trường.",
+  image: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&q=80",
 };
 
-export function NewsProjectSection() {
+export function NewsPressSection() {
   return (
     <section className="py-12 bg-white">
       <Container>
         {/* Section Title */}
         <div className="flex items-center gap-3 mb-8">
-          <div 
+          <div
             className="w-1 h-6 rounded-full"
             style={{ backgroundColor: colors.primary.DEFAULT }}
           />
-          <h2 
+          <h2
             style={{
               color: colors.primary.DEFAULT,
               fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
@@ -50,7 +50,7 @@ export function NewsProjectSection() {
               fontSize: '30px',
             }}
           >
-            Tin Dự Án
+            Thông cáo báo chí
           </h2>
         </div>
 
@@ -59,9 +59,7 @@ export function NewsProjectSection() {
           <div className="lg:col-span-2 space-y-6">
             {sideNews.map((item) => (
               <div key={item.id} className="flex gap-4 cursor-pointer group transition-opacity duration-200 hover:opacity-80">
-                <div
-                  className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0"
-                >
+                <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -72,9 +70,9 @@ export function NewsProjectSection() {
                   />
                 </div>
                 <div className="flex-1 py-1">
-                  <h3 
+                  <h3
                     className="mb-2 line-clamp-2 group-hover:text-primary transition-colors"
-                    style={{ 
+                    style={{
                       color: colors.neutral.foreground,
                       fontFamily: 'var(--font-inter)',
                       fontWeight: 700,
@@ -83,8 +81,8 @@ export function NewsProjectSection() {
                   >
                     {item.title}
                   </h3>
-                  <p 
-                    style={{ 
+                  <p
+                    style={{
                       color: colors.gray[400],
                       fontFamily: 'var(--font-inter)',
                       fontWeight: 400,
@@ -110,17 +108,17 @@ export function NewsProjectSection() {
                 loading="eager"
                 priority
               />
-              
+
               {/* Gradient Overlay */}
-              <div 
+              <div
                 className="absolute inset-0"
-                style={{ 
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 100%)' 
+                style={{
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 100%)'
                 }}
               />
-              
+
               {/* Badge */}
-              <div 
+              <div
                 className="absolute top-6 left-6 px-4 py-1.5 rounded-full text-xs font-semibold text-white"
                 style={{ backgroundColor: colors.primary.DEFAULT }}
               >
@@ -129,9 +127,9 @@ export function NewsProjectSection() {
 
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 
+                <h3
                   className="text-white mb-3 leading-tight"
-                  style={{ 
+                  style={{
                     fontFamily: 'var(--font-plus-jakarta)',
                     fontWeight: 700,
                     fontSize: '30px',
@@ -139,9 +137,9 @@ export function NewsProjectSection() {
                 >
                   {featuredNews.title}
                 </h3>
-                <p 
+                <p
                   className="text-white/80 line-clamp-2"
-                  style={{ 
+                  style={{
                     fontFamily: 'var(--font-inter)',
                     fontWeight: 400,
                     fontSize: '16px',

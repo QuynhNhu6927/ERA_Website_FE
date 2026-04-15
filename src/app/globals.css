@@ -6,7 +6,7 @@
      ============================================ */
   
   /* Primary Colors */
-  --primary: #e31937;
+  --primary: #b61722;
   --primary-dark: #c41230;
   --primary-light: #ff1f4a;
   
@@ -137,7 +137,7 @@ body {
 
 /* Focus states */
 .focus\:border-primary:focus { border-color: var(--primary); }
-.focus\:ring-primary:focus { --tw-ring-color: rgb(227 25 55 / 0.2); }
+.focus\:ring-primary:focus { --tw-ring-color: rgb(182 23 34 / 0.2); }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -155,4 +155,12 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
