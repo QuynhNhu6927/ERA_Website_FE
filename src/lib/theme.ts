@@ -86,6 +86,9 @@ export const colors = {
     yellowLight: "#fef08a",
   },
 
+  // Accent Colors
+  accentBlue: "#00B6E9",
+
   // Overlay
   overlay: {
     dark: "rgba(0, 0, 0, 0.5)",
@@ -100,7 +103,7 @@ export const colors = {
 export const themeClasses = {
   // Background
   bg: {
-    primary: "bg-[#e31937]",
+    primary: "bg-[#b61722]",
     primaryDark: "bg-[#c41230]",
     secondary: "bg-[#1a1a4e]",
     secondaryDark: "bg-[#0f0f3e]",
@@ -113,7 +116,7 @@ export const themeClasses = {
 
   // Text
   text: {
-    primary: "text-[#e31937]",
+    primary: "text-[#b61722]",
     secondary: "text-[#1a1a4e]",
     muted: "text-gray-500",
     white: "text-white",
@@ -128,7 +131,7 @@ export const themeClasses = {
 
   // Border
   border: {
-    primary: "border-[#e31937]",
+    primary: "border-[#b61722]",
     secondary: "border-[#1a1a4e]",
     gray100: "border-gray-100",
     gray200: "border-gray-200",
@@ -138,21 +141,21 @@ export const themeClasses = {
   // Hover States
   hover: {
     primary: "hover:bg-[#c41230]",
-    primaryText: "hover:text-[#e31937]",
+    primaryText: "hover:text-[#b61722]",
     secondary: "hover:bg-[#0f0f3e]",
     secondaryText: "hover:text-[#1a1a4e]",
   },
 
   // Focus States
   focus: {
-    primary: "focus:border-[#e31937] focus:ring-2 focus:ring-[#e31937]/20",
+    primary: "focus:border-[#b61722] focus:ring-2 focus:ring-[#b61722]/20",
     secondary: "focus:border-[#1a1a4e] focus:ring-2 focus:ring-[#1a1a4e]/20",
   },
 
   // Gradient
   gradient: {
     overlay: "bg-gradient-to-t from-black/80 via-black/20 to-transparent",
-    primary: "bg-gradient-to-r from-[#e31937] to-[#c41230]",
+    primary: "bg-gradient-to-r from-[#b61722] to-[#c41230]",
   },
 } as const;
 
@@ -196,7 +199,7 @@ export function withOpacity(color: string, opacity: number): string {
 
 /**
  * Get Tailwind arbitrary value for color
- * Example: color("primary") -> "[#e31937]"
+ * Example: color("primary") -> "[#b61722]"
  */
 export function color(name: keyof typeof colors): string {
   const colorMap: Record<string, string> = {

@@ -9,21 +9,21 @@ const sideNews = [
     title: "Quy hoạch hạ tầng mới tại khu Đông TP.HCM",
     time: "12 giờ trước",
     readTime: "5 phút đọc",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 2,
     title: "Dòng tiền đầu tư đang dồn về phân khúc nghỉ dưỡng",
     time: "1 ngày trước",
     readTime: "4 phút đọc",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 3,
     title: "Luật Đất Đai sửa đổi: Những điểm mới cần lưu ý",
     time: "2 ngày trước",
     readTime: "8 phút đọc",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
   },
 ];
 
@@ -59,13 +59,12 @@ export function NewsMarketSection() {
           {/* Left - Featured News (3 cols) */}
           <div className="lg:col-span-3">
             <Link href="/news/tin-thi-truong" className="block">
-            <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01]">
+            <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01] will-change-transform">
               <Image
                 src={featuredNews.image}
                 alt={featuredNews.title}
                 fill
                 className="object-cover"
-                style={{ transition: 'transform 0.3s ease' }}
                 sizes="100vw"
                 loading="eager"
                 priority
@@ -126,7 +125,6 @@ export function NewsMarketSection() {
                     alt={item.title}
                     fill
                     className="object-cover"
-                    style={{ transition: 'transform 0.2s ease' }}
                     sizes="96px"
                     loading="lazy"
                   />

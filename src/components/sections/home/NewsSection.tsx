@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 
 const news = [
   {
@@ -68,7 +69,7 @@ export function NewsSection() {
             </span>
           </h2>
           <a
-            href="/"
+            href={ROUTES.news}
             className="hidden lg:flex items-center gap-2 transition-colors duration-200 hover:text-primary-dark"
             style={{ color: colors.primary.DEFAULT }}
           >
@@ -212,7 +213,7 @@ export function NewsSection() {
 
           {/* View All Button */}
           <a
-            href="/"
+            href={ROUTES.news}
             className="mt-8 w-full py-4 rounded-xl text-white text-center block transition-all duration-200 hover:opacity-90 hover:shadow-lg"
             style={{
               backgroundColor: colors.primary.DEFAULT,
