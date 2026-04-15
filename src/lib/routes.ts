@@ -10,7 +10,7 @@ export const ROUTES = {
   projects: "/du-an",
   joinTeam: "/join-team",
   news: "/news",
-  contact: "/lien-he",
+  contact: "/contact",
   
   // Auth
   login: "/login",

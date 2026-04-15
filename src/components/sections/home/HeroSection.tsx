@@ -131,7 +131,37 @@ export function HeroSection() {
             transform: `translateX(calc(-${currentSlide * 100}vw))`,
           }}
         >
-          {slides.map((slide, index) => (
+          {/* Slide 1 - eager loaded as LCP */}
+          <div
+            className="relative h-full flex-shrink-0 overflow-hidden"
+            style={{ width: '100vw' }}
+          >
+            <div className="absolute inset-0 lg:hidden">
+              <Image
+                src={slides[0].imageMobile}
+                alt={slides[0].alt}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority
+                loading="eager"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black/40 lg:hidden" />
+            <div className="hidden lg:block absolute inset-0">
+              <Image
+                src={slides[0].image}
+                alt={slides[0].alt}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority
+                loading="eager"
+              />
+            </div>
+          </div>
+          {/* Slides 2-3 - lazy loaded */}
+          {slides.slice(1).map((slide) => (
             <div
               key={slide.id}
               className="relative h-full flex-shrink-0 overflow-hidden"
@@ -144,11 +174,9 @@ export function HeroSection() {
                   fill
                   className="object-cover"
                   sizes="100vw"
-                  priority={index === 0}
-                  loading={index === 0 ? 'eager' : 'lazy'}
+                  loading="lazy"
                 />
               </div>
-              {/* Overlay tối cho mobile */}
               <div className="absolute inset-0 bg-black/40 lg:hidden" />
               <div className="hidden lg:block absolute inset-0">
                 <Image
@@ -157,8 +185,7 @@ export function HeroSection() {
                   fill
                   className="object-cover"
                   sizes="100vw"
-                  priority={index === 0}
-                  loading={index === 0 ? 'eager' : 'lazy'}
+                  loading="lazy"
                 />
               </div>
             </div>

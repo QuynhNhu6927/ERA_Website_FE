@@ -13,11 +13,9 @@ export function AcademySection() {
           {/* Left Content */}
           <div className="flex flex-col order-2 lg:order-1">
             {/* Logo - ERA Academy */}
-            <Image
+            <img
               src="/home/aca_era_logo.svg"
               alt="ERA Academy"
-              width={200}
-              height={96}
               className="h-20 md:h-20 lg:h-24 w-auto mb-6 lg:mb-10 mx-auto lg:ml-0 lg:mr-auto block"
             />
 
