@@ -58,9 +58,9 @@ export function NewsDetailPage() {
 
           {/* Article Content */}
           <article className="pb-12">
-            {/* Headline + Source */}
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-8">
-              <h2 
+            {/* Headline */}
+            <div className="mb-8">
+              <h2
                 style={{
                   color: colors.primary.DEFAULT,
                   fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
@@ -71,16 +71,6 @@ export function NewsDetailPage() {
               >
                 HEADLINE
               </h2>
-              <p 
-                className="lg:pt-4"
-                style={{
-                  color: colors.gray[500],
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: '14px',
-                }}
-              >
-                Trích nguồn:........
-              </p>
             </div>
 
             {/* Intro Text */}
@@ -130,6 +120,18 @@ export function NewsDetailPage() {
               </p>
             </div>
 
+            {/* Source */}
+            <p
+              className="mb-12 text-right"
+              style={{
+                color: colors.gray[500],
+                fontFamily: 'var(--font-inter)',
+                fontSize: '14px',
+              }}
+            >
+              Trích nguồn:........
+            </p>
+
             {/* Related News */}
             <div className="mb-12">
               <h3 
@@ -146,10 +148,9 @@ export function NewsDetailPage() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedNews.map((item) => (
-                  <article 
+                  <article
                     key={item.id}
-                    className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md"
-                  style={{ transition: 'box-shadow 0.2s ease' }}
+                    className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md transition-transform duration-300 hover:scale-[1.02] will-change-transform"
                   >
                     <div className="relative h-48 overflow-hidden">
                       <Image
@@ -199,8 +200,8 @@ export function NewsDetailPage() {
             </div>
 
             {/* Share Section */}
-            <div>
-              <h4 
+            <div className="mb-8">
+              <h4
                 className="mb-4"
                 style={{
                   color: colors.neutral.foreground,
@@ -233,8 +234,15 @@ export function NewsDetailPage() {
                 >
                   <Image src="/shared/linkedin_icon.svg" alt="LinkedIn" width={40} height={40} className="w-10 h-10" />
                 </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 flex items-center justify-center transition-opacity hover:opacity-80"
+                >
+                  <Image src="/news/news_share_icon.svg" alt="LinkedIn" width={40} height={40} className="w-10 h-10" />
+                </a>
               </div>
             </div>
+
           </article>
       </Container>
     </main>
