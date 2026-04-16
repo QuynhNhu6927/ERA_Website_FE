@@ -5,30 +5,30 @@ import { colors } from "@/lib/theme";
 const sideNews = [
   {
     id: 1,
-    title: "ERA Vietnam công bố báo cáo tài chính Quý 3/2024",
-    time: "15 Tháng 10, 2024",
+    title: "Quy hoạch hạ tầng mới tại khu Đông TP.HCM",
+    time: "12 giờ trước",
     readTime: "5 phút đọc",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 2,
-    title: "ERA Vietnam ký kết hợp tác chiến lược với đối tác quốc tế",
-    time: "10 Tháng 9, 2024",
+    title: "Quy hoạch hạ tầng mới tại khu Đông TP.HCM",
+    time: "12 giờ trước",
     readTime: "4 phút đọc",
     image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 3,
-    title: "ERA Vietnam ra mắt chương trình đào tạo Agent chuyên nghiệp",
-    time: "05 Tháng 9, 2024",
+    title: "Quy hoạch hạ tầng mới tại khu Đông TP.HCM",
+    time: "12 giờ trước",
     readTime: "8 phút đọc",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
   },
 ];
 
 const featuredNews = {
-  title: "ERA Vietnam công bố định hướng chiến lược Move Up 2026",
-  excerpt: "Tập trung vào trải nghiệm khách hàng và số hóa toàn diện quy trình môi giới, khẳng định vị thế dẫn đầu thị trường.",
+  title: "Tác động của lãi suất ngân hàng đến thị trường Bất Động Sản 2024",
+  excerpt: "Phân tích chuyên sâu về sự dịch chuyển dòng vốn và những dự báo mới nhất từ các chuyên gia kinh tế hàng đầu.",
   image: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&q=80",
 };
 
@@ -56,9 +56,12 @@ export function NewsPressSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Left - News List (2 cols) */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 flex flex-col gap-4 h-full">
             {sideNews.map((item) => (
-              <div key={item.id} className="flex gap-4 cursor-pointer group transition-opacity duration-200 hover:opacity-80">
+              <article
+                key={item.id}
+                className="flex gap-4 cursor-pointer group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200 flex-1"
+              >
                 <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
                   <Image
                     src={item.image}
@@ -92,7 +95,7 @@ export function NewsPressSection() {
                     {item.time} • {item.readTime}
                   </p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 
@@ -117,16 +120,14 @@ export function NewsPressSection() {
                 }}
               />
 
-              {/* Badge */}
-              <div
-                className="absolute top-6 left-6 px-4 py-1.5 rounded-full text-xs font-semibold text-white"
-                style={{ backgroundColor: colors.primary.DEFAULT }}
-              >
-                TIÊU ĐIỂM
-              </div>
-
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div
+                  className="inline-flex px-4 py-1.5 rounded-full text-xs font-semibold text-white mb-3"
+                  style={{ backgroundColor: colors.primary.DEFAULT }}
+                >
+                  TIÊU ĐIỂM
+                </div>
                 <h3
                   className="text-white mb-3 leading-tight"
                   style={{

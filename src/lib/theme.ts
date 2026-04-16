@@ -70,24 +70,13 @@ export const colors = {
     dark: "#cbd5e1",
   },
 
-  // Status Colors
-  status: {
-    success: "#22c55e",
-    warning: "#f59e0b",
-    error: "#ef4444",
-    info: "#3b82f6",
-  },
-
-  // Custom Link Colors
-  link: {
-    cyan: "#08CAFF",
-    cyanLight: "#7dd3fc",
-    yellow: "#F7B900",
-    yellowLight: "#fef08a",
-  },
-
   // Accent Colors
-  accentBlue: "#00B6E9",
+  orangeVivid: "#F97316",
+  orangeVividDark: "#EA580C",
+  cyanBright: "#33CCFF",
+  cyanBrightDark: "#2AB8E6",
+  yellowVivid: "#F7B900",
+  yellowVividDark: "#D97706",
 
   // Overlay
   overlay: {
@@ -208,6 +197,9 @@ export function color(name: keyof typeof colors): string {
     accent: colors.accent.DEFAULT,
     muted: colors.muted.DEFAULT,
     border: colors.border.DEFAULT,
+    orangeVivid: colors.orangeVivid,
+    cyanBright: colors.cyanBright,
+    yellowVivid: colors.yellowVivid,
   };
 
   return colorMap[name] || colors.primary.DEFAULT;

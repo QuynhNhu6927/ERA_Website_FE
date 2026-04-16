@@ -45,7 +45,7 @@ export function ContactOfficesSection() {
         <div className="flex items-center gap-3 mb-8">
           <div
             className="w-1 h-6 rounded-full"
-            style={{ backgroundColor: colors.primary.DEFAULT }}
+            style={{ backgroundColor: colors.secondary.DEFAULT }}
           />
           <h2
             style={{
@@ -79,10 +79,12 @@ export function ContactOfficesSection() {
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
                       <p
-                        className="text-[10px] font-bold tracking-wider mb-1"
+                        className="tracking-wider mb-1"
                         style={{
-                          color: isActive ? '#F7B900' : colors.gray[400],
+                          color: isActive ? colors.orangeVivid : colors.cyanBright,
                           fontFamily: 'var(--font-inter)',
+                          fontWeight: 600,
+                          fontSize: '12px',
                         }}
                       >
                         {office.region}
@@ -90,10 +92,10 @@ export function ContactOfficesSection() {
                       <h3
                         className="mb-3"
                         style={{
-                          color: isActive ? colors.neutral.white : colors.neutral.foreground,
-                          fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                          color: isActive ? colors.neutral.white : colors.gray[600],
+                          fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                           fontWeight: 700,
-                          fontSize: '18px',
+                          fontSize: '20px',
                         }}
                       >
                         {office.name}
@@ -114,10 +116,11 @@ export function ContactOfficesSection() {
                           <circle cx="12" cy="10" r="3"/>
                         </svg>
                         <p
-                          className="text-xs"
                           style={{
-                            color: isActive ? 'rgba(255,255,255,0.85)' : colors.gray[500],
+                            color: isActive ? colors.neutral.white : colors.gray[800],
                             fontFamily: 'var(--font-inter)',
+                            fontWeight: 400,
+                            fontSize: '14px',
                             lineHeight: 1.5,
                           }}
                         >
@@ -155,30 +158,40 @@ export function ContactOfficesSection() {
           </div>
 
           {/* Right - Map */}
-          <div className="lg:col-span-2 relative rounded-2xl overflow-hidden h-[400px] lg:h-auto min-h-[400px]">
-            <iframe
-              key={active.mapSrc}
-              src={active.mapSrc}
-              title={`ERA Vietnam Office - ${active.name}`}
-              allowFullScreen
-              loading="lazy"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 0 }}
-            />
-            {/* Map Overlay Badge */}
+          <div className="lg:col-span-2 relative h-[400px] lg:h-full">
             <div
-              className="absolute top-4 left-4 px-4 py-2 rounded-lg"
-              style={{ backgroundColor: 'rgba(60, 100, 90, 0.9)' }}
+              className="relative rounded-xl p-3 h-full"
+              style={{
+                backgroundColor: colors.neutral.white,
+                boxShadow: '0 20px 50px -12px rgba(0, 0, 0, 0.15)',
+              }}
             >
-              <p
-                className="text-white text-sm font-semibold"
-                style={{ fontFamily: 'var(--font-inter)' }}
-              >
-                ERA Vietnam
-              </p>
-              <div className="flex items-center gap-3 mt-1">
-                <span className="text-white/80 text-xs">3 OFFICES</span>
-                <span className="text-white/80 text-xs">2000+ AGENTS</span>
+              <div className="absolute inset-3 rounded-lg overflow-hidden">
+                <iframe
+                  key={active.mapSrc}
+                  src={active.mapSrc}
+                  title={`ERA Vietnam Office - ${active.name}`}
+                  allowFullScreen
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0 }}
+                />
+                {/* Map Overlay Badge */}
+                <div
+                  className="absolute top-4 left-4 px-4 py-2 rounded-lg"
+                  style={{ backgroundColor: 'rgba(60, 100, 90, 0.9)' }}
+                >
+                  <p
+                    className="text-white text-sm font-semibold"
+                    style={{ fontFamily: 'var(--font-inter)' }}
+                  >
+                    ERA Vietnam
+                  </p>
+                  <div className="flex items-center gap-3 mt-1">
+                    <span className="text-white/80 text-xs">3 OFFICES</span>
+                    <span className="text-white/80 text-xs">2000+ AGENTS</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
