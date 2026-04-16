@@ -1,19 +1,20 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes, forwardRef } from "react";
+import { ButtonHTMLAttributes, forwardRef, ReactElement, isValidElement, cloneElement } from "react";
 import { colors } from "@/lib/theme";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
+  asChild?: boolean;
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", isLoading, children, ...props }, ref) => {
-    const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed";
-    
+const Button = forwardRef<any, ButtonProps>(
+  ({ className, variant = "primary", size = "md", isLoading, asChild, children, style: userStyle, ...props }, ref) => {
+    const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md";
+
     const variants = {
       primary: {
         backgroundColor: colors.primary.DEFAULT,
@@ -35,7 +36,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const sizes = {
-      sm: "px-4 py-2 text-sm",
+      sm: "px-5 py-2 text-sm",
       md: "px-6 py-3 text-base",
       lg: "px-8 py-4 text-lg",
     };
@@ -47,16 +48,37 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ghost: { backgroundColor: colors.gray[100] },
     };
 
+    const mergedClassName = cn(baseStyles, sizes[size], className);
+
+    if (asChild && isValidElement(children)) {
+      const child = children as ReactElement<any>;
+      return cloneElement(child, {
+        className: cn(mergedClassName, child.props.className),
+        style: { ...variants[variant], ...userStyle, ...child.props.style },
+        onMouseEnter: (e: React.MouseEvent<HTMLElement>) => {
+          Object.assign(e.currentTarget.style, hoverStyles[variant]);
+          child.props.onMouseEnter?.(e);
+        },
+        onMouseLeave: (e: React.MouseEvent<HTMLElement>) => {
+          Object.assign(e.currentTarget.style, { ...variants[variant], ...userStyle });
+          child.props.onMouseLeave?.(e);
+        },
+        ref,
+        disabled: isLoading || props.disabled || child.props.disabled,
+        ...props,
+      });
+    }
+
     return (
       <button
         ref={ref}
-        className={cn(baseStyles, sizes[size], className)}
-        style={variants[variant]}
+        className={mergedClassName}
+        style={{ ...variants[variant], ...userStyle }}
         onMouseEnter={(e) => {
           Object.assign(e.currentTarget.style, hoverStyles[variant]);
         }}
         onMouseLeave={(e) => {
-          Object.assign(e.currentTarget.style, variants[variant]);
+          Object.assign(e.currentTarget.style, { ...variants[variant], ...userStyle });
         }}
         disabled={isLoading || props.disabled}
         {...props}

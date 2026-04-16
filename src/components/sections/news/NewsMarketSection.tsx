@@ -78,16 +78,14 @@ export function NewsMarketSection() {
                 }}
               />
               
-              {/* Badge */}
-              <div 
-                className="absolute top-6 left-6 px-4 py-1.5 rounded-full text-xs font-semibold text-white"
-                style={{ backgroundColor: colors.primary.DEFAULT }}
-              >
-                TIÊU ĐIỂM
-              </div>
-
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div 
+                  className="inline-flex px-4 py-1.5 rounded-full text-xs font-semibold text-white mb-3"
+                  style={{ backgroundColor: colors.primary.DEFAULT }}
+                >
+                  TIÊU ĐIỂM
+                </div>
                 <h3 
                   className="text-white mb-3 leading-tight"
                   style={{ 
@@ -114,12 +112,13 @@ export function NewsMarketSection() {
           </div>
 
           {/* Right - News List (2 cols) */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 flex flex-col gap-4 h-full">
             {sideNews.map((item) => (
-              <div key={item.id} className="flex gap-4 cursor-pointer group transition-opacity duration-200 hover:opacity-80">
-                <div
-                  className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0"
-                >
+              <article
+                key={item.id}
+                className="flex gap-4 cursor-pointer group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200 flex-1"
+              >
+                <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -130,9 +129,9 @@ export function NewsMarketSection() {
                   />
                 </div>
                 <div className="flex-1 py-1">
-                  <h3 
+                  <h3
                     className="mb-2 line-clamp-2 group-hover:text-primary transition-colors"
-                    style={{ 
+                    style={{
                       color: colors.neutral.foreground,
                       fontFamily: 'var(--font-inter)',
                       fontWeight: 700,
@@ -141,8 +140,8 @@ export function NewsMarketSection() {
                   >
                     {item.title}
                   </h3>
-                  <p 
-                    style={{ 
+                  <p
+                    style={{
                       color: colors.gray[400],
                       fontFamily: 'var(--font-inter)',
                       fontWeight: 400,
@@ -152,7 +151,7 @@ export function NewsMarketSection() {
                     {item.time} • {item.readTime}
                   </p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>

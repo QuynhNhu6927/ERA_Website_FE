@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { colors } from "@/lib/theme";
 
 const magazines = [
@@ -65,7 +66,7 @@ export function NewsEMagazineSection() {
               {/* Blue corner */}
               <div
                 className="absolute top-0 right-0 w-10 h-10 rounded-bl-2xl"
-                style={{ backgroundColor: colors.accentBlue }}
+                style={{ backgroundColor: colors.cyanBright }}
               />
 
               {/* Magazine Cover */}
@@ -129,17 +130,14 @@ export function NewsEMagazineSection() {
                 </div>
 
                 <div className="mt-auto">
-                  <button
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded text-white text-sm font-medium transition-opacity duration-200 hover:opacity-90"
-                    style={{ backgroundColor: colors.primary.DEFAULT }}
-                  >
+                  <Button variant="primary" size="sm" className="gap-2">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7 10 12 15 17 10"/>
                       <line x1="12" y1="15" x2="12" y2="3"/>
                     </svg>
                     DOWNLOAD
-                  </button>
+                  </Button>
                 </div>
               </div>
             </article>

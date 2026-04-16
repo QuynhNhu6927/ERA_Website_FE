@@ -1,90 +1,55 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
-
-const tabs = [
-  { id: "press", label: "Thông cáo báo chí" },
-  { id: "event", label: "Sự kiện ký kết" },
-  { id: "team", label: "Đội ngũ & Coreteam" },
-  { id: "internal", label: "Hoạt động nội bộ" },
-];
 
 const sideNews = [
   {
     id: 1,
-    category: "SỰ KIỆN KÝ KẾT",
-    title: "Hợp tác chiến lược giữa ERA Vietnam và ngân hàng Techcombank",
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800",
+    title: "Tin tức Châu Á Thái Bình Dương",
+    time: "12 giờ trước",
+    readTime: "5 phút đọc",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
+    flagCode: "cn",
   },
   {
     id: 2,
-    category: "ĐỘI NGŨ",
-    title: "Bổ nhiệm Giám đốc Điều hành mới khu vực miền Bắc",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
+    title: "Tin tức ERA USA",
+    time: "12 giờ trước",
+    readTime: "5 phút đọc",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
+    flagCode: "us",
   },
   {
     id: 3,
-    category: "HOẠT ĐỘNG NỘI BỘ",
-    title: "Giải chạy ERA Connect: Nâng cao tinh thần đồng đội 2023",
-    image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&q=80&w=800",
+    title: "Tin tức ERA Vietnam",
+    time: "12 giờ trước",
+    readTime: "5 phút đọc",
+    image: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&q=80&w=800",
+    flagCode: "vn",
   },
 ];
 
 const featuredNews = {
   title: "ERA Vietnam công bố định hướng chiến lược Move Up 2026",
   excerpt: "Tập trung vào trải nghiệm khách hàng và số hóa toàn diện quy trình môi giới, khẳng định vị thế dẫn đầu thị trường.",
-  author: "Phòng Truyền Thông",
-  date: "15 Tháng 10, 2023",
   image: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&q=80",
+  flagCode: "vn",
 };
 
-function SideNewsCard({ item }: { item: typeof sideNews[0] }) {
-  return (
-    <article 
-      className="group bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer hover:shadow-md border-l-4 border-transparent hover:border-primary transition-[box-shadow,border-color] duration-200 will-change-transform"
-    >
-      <div className="p-5 flex flex-col justify-center">
-        <p 
-          className="text-xs mb-2 font-semibold group-hover:text-primary group-hover:font-bold transition-colors duration-200"
-          style={{ 
-            color: colors.secondary.DEFAULT,
-            fontFamily: 'var(--font-inter)',
-          }}
-        >
-          {item.category}
-        </p>
-        <h4 
-          className="line-clamp-2 group-hover:text-primary transition-colors duration-200"
-          style={{ 
-            color: colors.neutral.foreground,
-            fontFamily: 'var(--font-inter)',
-            fontWeight: 600,
-            fontSize: '15px',
-          }}
-        >
-          {item.title}
-        </h4>
-      </div>
-    </article>
-  );
-}
-
 export function NewsERASection() {
-  const [activeTab, setActiveTab] = useState("press");
-
   return (
     <section className="py-12" style={{ backgroundColor: colors.gray[50] }}>
       <Container>
         {/* Section Title */}
-        <div className="flex items-center gap-3 mb-6">
-          <div 
+        <div className="flex items-center gap-3 mb-8">
+          <div
             className="w-1 h-6 rounded-full"
             style={{ backgroundColor: colors.primary.DEFAULT }}
           />
-          <h2 
+          <h2
             style={{
               color: colors.primary.DEFAULT,
               fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
@@ -96,113 +61,117 @@ export function NewsERASection() {
           </h2>
         </div>
 
-        {/* Tabs + Button Row */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
-          {/* Tabs */}
-          <div className="flex gap-6 lg:gap-8">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className="relative pb-2 transition-colors duration-200 hover:text-primary text-sm"
-                style={{
-                  color: activeTab === tab.id ? colors.primary.DEFAULT : colors.gray[500],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                  fontWeight: activeTab === tab.id ? 500 : 400,
-                }}
-              >
-                {tab.label}
-                {activeTab === tab.id && (
-                  <span 
-                    className="absolute bottom-0 left-0 right-0 h-0.5"
-                    style={{ backgroundColor: colors.primary.DEFAULT }}
-                  />
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Button */}
-          <button
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium w-fit transition-opacity duration-200 hover:opacity-90 hover:shadow-xl"
-            style={{ backgroundColor: colors.primary.DEFAULT }}
-          >
-            Tất cả hoạt động
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17"/>
-            </svg>
-          </button>
-        </div>
-
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Left - Featured News */}
-          <article className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md transition-shadow duration-200">
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src={featuredNews.image}
-                alt={featuredNews.title}
-                fill
-                className="object-cover transition-transform duration-300"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                loading="eager"
-                priority
-              />
-            </div>
-            <div className="p-6">
-              <h3 
-                className="mb-3 line-clamp-2 group-hover:text-primary transition-colors"
-                style={{ 
-                  color: colors.neutral.foreground,
-                  fontFamily: 'var(--font-inter)',
-                  fontWeight: 700,
-                  fontSize: '20px',
-                }}
-              >
-                {featuredNews.title}
-              </h3>
-              <p 
-                className="mb-4 line-clamp-2"
-                style={{ 
-                  color: colors.gray[500],
-                  fontFamily: 'var(--font-inter)',
-                  fontWeight: 400,
-                  fontSize: '14px',
-                }}
-              >
-                {featuredNews.excerpt}
-              </p>
-              
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div 
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                  style={{ backgroundColor: colors.primary.DEFAULT }}
-                >
-                  ERA
-                </div>
-                <div>
-                  <p 
-                    className="text-sm font-medium"
-                    style={{ color: colors.neutral.foreground }}
+          <div className="lg:col-span-3">
+            <Link href="/news/era-news" className="block">
+              <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01] will-change-transform">
+                <Image
+                  src={featuredNews.image}
+                  alt={featuredNews.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  loading="eager"
+                  priority
+                />
+
+                {/* Gradient Overlay */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 100%)'
+                  }}
+                />
+
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div
+                    className="inline-flex px-4 py-1.5 rounded-full text-xs font-semibold text-white mb-3"
+                    style={{ backgroundColor: colors.primary.DEFAULT }}
                   >
-                    {featuredNews.author}
-                  </p>
-                  <p 
-                    className="text-xs"
-                    style={{ color: colors.gray[400] }}
+                    PHÒNG TRUYỀN THÔNG
+                  </div>
+                  <h3
+                    className="text-white mb-3 leading-tight"
+                    style={{
+                      fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                      fontWeight: 700,
+                      fontSize: '30px',
+                    }}
                   >
-                    {featuredNews.date}
-                  </p>
+                    ERA Vietnam{' '}
+                    <span style={{ color: colors.cyanBrightDark }}>công bố định hướng chiến lược Move Up 2026</span>
+                  </h3>
+                  <div className="flex items-center justify-between gap-4">
+                    <p
+                      className="text-white/80 line-clamp-2"
+                      style={{
+                        fontFamily: 'var(--font-inter)',
+                        fontWeight: 400,
+                        fontSize: '16px',
+                      }}
+                    >
+                      {featuredNews.excerpt}
+                    </p>
+                    <img
+                      src={`https://flagcdn.com/w40/${featuredNews.flagCode}.png`}
+                      alt=""
+                      className="w-8 h-auto flex-shrink-0"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </Link>
+          </div>
 
           {/* Right - Side News List */}
-          <div className="space-y-4">
+          <div className="lg:col-span-2 flex flex-col gap-4 h-full">
             {sideNews.map((item) => (
-              <SideNewsCard key={item.id} item={item} />
+              <article
+                key={item.id}
+                className="flex gap-4 cursor-pointer group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200 flex-1"
+              >
+                <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    sizes="96px"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex-1 py-1 flex flex-col h-full">
+                  <h3
+                    className="mb-2 line-clamp-2 group-hover:text-primary transition-colors"
+                    style={{
+                      color: colors.neutral.foreground,
+                      fontFamily: 'var(--font-inter)',
+                      fontWeight: 700,
+                      fontSize: '18px',
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    style={{
+                      color: colors.gray[400],
+                      fontFamily: 'var(--font-inter)',
+                      fontWeight: 400,
+                      fontSize: '14px',
+                    }}
+                  >
+                    {item.time} • {item.readTime}
+                  </p>
+                  <img
+                    src={`https://flagcdn.com/w40/${item.flagCode}.png`}
+                    alt=""
+                    className="w-6 h-auto mt-auto pt-2"
+                  />
+                </div>
+              </article>
             ))}
           </div>
         </div>

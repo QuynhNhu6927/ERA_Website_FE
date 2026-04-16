@@ -12,7 +12,7 @@ export function ContactHeroSection() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1600')`,
+              backgroundImage: `url('/contact/contact_hero_banner.jpg')`,
             }}
           />
 
@@ -28,8 +28,8 @@ export function ContactHeroSection() {
               className="mb-4 uppercase"
               style={{
                 fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
-                fontWeight: 900,
-                fontSize: 'clamp(32px, 6vw, 56px)',
+                fontWeight: 800,
+                fontSize: '54px',
                 lineHeight: 1.15,
                 color: colors.neutral.white,
               }}
@@ -41,9 +41,9 @@ export function ContactHeroSection() {
               className="max-w-2xl"
               style={{
                 color: colors.neutral.white,
-                fontFamily: 'var(--font-manrope), system-ui, sans-serif',
-                fontWeight: 400,
-                fontSize: '16px',
+                fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                fontWeight: 500,
+                fontSize: '18px',
                 lineHeight: 1.7,
               }}
             >

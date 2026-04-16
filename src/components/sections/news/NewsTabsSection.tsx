@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { colors } from "@/lib/theme";
 
 const tabs = [
@@ -13,40 +14,9 @@ const tabs = [
 ];
 
 export function NewsTabsSection() {
-  const [activeTab, setActiveTab] = useState("market");
   const [searchQuery, setSearchQuery] = useState("");
-  const isClickScrollingRef = useRef(false);
 
-  // Use IntersectionObserver for zero-main-thread scroll spy
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    tabs.forEach((tab) => {
-      const element = document.getElementById(tab.targetId);
-      if (!element) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (isClickScrollingRef.current) return;
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
-            setActiveTab(tab.id);
-          }
-        },
-        { threshold: [0.15, 0.3, 0.5] }
-      );
-
-      observer.observe(element);
-      observers.push(observer);
-    });
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-  }, []);
-
-  const handleTabClick = (tabId: string, targetId: string) => {
-    setActiveTab(tabId);
-    isClickScrollingRef.current = true;
+  const handleTabClick = (targetId: string) => {
     const element = document.getElementById(targetId);
     if (element) {
       const offsetTop = element.offsetTop - 120;
@@ -55,9 +25,6 @@ export function NewsTabsSection() {
         behavior: "smooth",
       });
     }
-    window.setTimeout(() => {
-      isClickScrollingRef.current = false;
-    }, 800);
   };
 
   return (
@@ -69,36 +36,19 @@ export function NewsTabsSection() {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => handleTabClick(tab.id, tab.targetId)}
-                className="group relative pb-3 cursor-pointer whitespace-nowrap flex-shrink-0"
+                onClick={() => handleTabClick(tab.targetId)}
+                className="group relative pb-3 cursor-pointer whitespace-nowrap flex-shrink-0 text-gray-500 hover:text-primary transition-colors duration-200"
                 style={{
                   fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   fontSize: '18px',
                   fontWeight: 500,
                 }}
               >
+                {tab.label}
                 <span
-                  className="text-gray-500 group-hover:text-primary transition-colors duration-200 whitespace-nowrap"
-                  style={{
-                    color: activeTab === tab.id ? colors.primary.DEFAULT : undefined,
-                  }}
-                >
-                  {tab.label}
-                </span>
-                {/* Active underline */}
-                {activeTab === tab.id && (
-                  <span 
-                    className="absolute bottom-0 left-0 right-0 h-0.5"
-                    style={{ backgroundColor: colors.primary.DEFAULT }}
-                  />
-                )}
-                {/* Hover underline */}
-                {activeTab !== tab.id && (
-                  <span 
-                    className="absolute bottom-0 left-0 right-0 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200"
-                    style={{ backgroundColor: colors.primary.DEFAULT }}
-                  />
-                )}
+                  className="absolute bottom-0 left-0 right-0 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200"
+                  style={{ backgroundColor: colors.primary.DEFAULT }}
+                />
               </button>
             ))}
           </div>
@@ -106,10 +56,10 @@ export function NewsTabsSection() {
           {/* Search */}
           <div className="flex items-center gap-3">
             <div
-              className="flex items-center px-5 py-3 flex-1 lg:w-[280px] transition-shadow duration-200 hover:shadow-md"
+              className="flex items-center px-5 py-3 h-12 flex-1 lg:w-[380px] transition-shadow duration-200 hover:shadow-md"
               style={{
                 backgroundColor: colors.neutral.white,
-                borderRadius: '24px',
+                borderRadius: '12px',
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
               }}
             >
@@ -126,20 +76,17 @@ export function NewsTabsSection() {
                 }}
               />
             </div>
-            <button
-              className="w-12 h-12 flex items-center justify-center text-white font-medium transition-opacity duration-200 hover:opacity-90 hover:shadow-lg cursor-pointer flex-shrink-0"
-              style={{
-                backgroundColor: colors.primary.DEFAULT,
-                borderRadius: '50%',
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
-              }}
+            <Button
               aria-label="Tìm kiếm"
+              variant="primary"
+              size="sm"
+              className="h-12 w-12 rounded-xl p-0 flex-shrink-0"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="8"/>
                 <path d="m21 21-4.3-4.3"/>
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
       </Container>

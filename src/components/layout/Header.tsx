@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { X } from "lucide-react";
 import { colors } from "@/lib/theme";
 import { ROUTES } from "@/lib/routes";
@@ -18,7 +19,7 @@ const ICON_SIZES = {
 const navLinks: { href: string; label: string; icon: string; external?: boolean }[] = [
   { href: "http://duan.era.com.vn/", label: "Dự án", icon: "/mobile_header/menu_project_icon.svg", external: true },
   { href: "https://app.era.com.vn/register", label: "Join Team ERA", icon: "/mobile_header/menu_join_icon.svg", external: true },
-  { href: "/", label: "Tin tức", icon: "/mobile_header/menu_news_icon.svg" },
+  { href: ROUTES.news, label: "Tin tức", icon: "/mobile_header/menu_news_icon.svg" },
   { href: ROUTES.contact, label: "Liên hệ", icon: "/mobile_header/menu_contact_icon.svg" },
   { href: "/", label: "Về chúng tôi", icon: "/mobile_header/menu_about_icon.svg" },
 ];
@@ -113,13 +114,11 @@ export function Header() {
                   );
                 })}
               </nav>
-              <Link 
-                href="/" 
-                className="flex items-center justify-center px-5 py-2 text-sm transition-all duration-200 hover:opacity-90 hover:shadow-md" 
-                style={{ backgroundColor: colors.primary.DEFAULT, color: colors.neutral.white, fontWeight: 600, fontSize: '14px', borderRadius: '8px' }}
-              >
-                Login/Đăng ký
-              </Link>
+              <Button asChild variant="primary" size="sm">
+                <Link href="/">
+                  Login/Đăng ký
+                </Link>
+              </Button>
             </div>
           </div>
         </Container>
