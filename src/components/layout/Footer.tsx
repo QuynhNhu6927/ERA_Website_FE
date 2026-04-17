@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer 
       className="text-white py-12 lg:py-16"
-      style={{ backgroundColor: colors.secondary.DEFAULT }}
+      style={{ backgroundColor: colors.primary.navy.DEFAULT }}
     >
       <Container>
         {/* Desktop: Logo only on top left */}
@@ -24,7 +24,7 @@ export function Footer() {
           />
           <span 
             className="text-xl font-bold"
-            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+            style={{ }}
           >
             ERA Vietnam
           </span>
@@ -42,7 +42,7 @@ export function Footer() {
             />
             <span 
               className="text-xl font-bold"
-              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+              style={{ }}
             >
               ERA Vietnam
             </span>
@@ -51,7 +51,6 @@ export function Footer() {
             className="text-sm tracking-wider font-semibold"
             style={{ 
               color: colors.neutral.white,
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
             }}
           >
             CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN ERA VIỆT NAM
@@ -62,25 +61,25 @@ export function Footer() {
         <div className="hidden lg:flex justify-between mb-6">
           <h3 
             className="text-sm tracking-wider font-semibold"
-            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif', width: '28%' }}
+            style={{ width: '28%' }}
           >
             CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN ERA VIỆT NAM
           </h3>
           <h4 
             className="text-base font-semibold"
-            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif', width: '22%' }}
+            style={{ width: '22%' }}
           >
             Văn phòng làm việc
           </h4>
           <h4 
             className="text-base font-semibold"
-            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif', width: '15%' }}
+            style={{ width: '15%' }}
           >
             Về chúng tôi
           </h4>
           <h4 
             className="text-base font-semibold text-left"
-            style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif', width: '15%' }}
+            style={{ width: '15%' }}
           >
             Theo dõi chúng tôi
           </h4>
@@ -101,7 +100,6 @@ export function Footer() {
                     className="text-xs leading-relaxed"
                     style={{ 
                       color: colors.gray[300],
-                      fontFamily: 'var(--font-inter), system-ui, sans-serif',
                     }}
                   >
                     MST: 0312393109 - Sở KHĐT TP. Hồ Chí Minh cấp ngày 30/07/2013
@@ -110,7 +108,6 @@ export function Footer() {
                     className="text-xs leading-relaxed mt-1"
                     style={{ 
                       color: colors.gray[300],
-                      fontFamily: 'var(--font-inter), system-ui, sans-serif',
                     }}
                   >
                     Địa chỉ ĐKKD: Lầu 14, L14-01, 72 Lê Thánh Tôn, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh, Việt Nam
@@ -126,7 +123,7 @@ export function Footer() {
                 <div>
                   <p 
                     className="text-sm font-semibold"
-                    style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+                    style={{ }}
                   >
                     Trụ sở chính
                   </p>
@@ -134,7 +131,6 @@ export function Footer() {
                     className="text-xs leading-relaxed mt-1"
                     style={{ 
                       color: colors.gray[300],
-                      fontFamily: 'var(--font-inter), system-ui, sans-serif',
                     }}
                   >
                     Số 22 - 24, Đường số 5, KĐT Sala, Phường An Khánh, TP. Hồ Chí Minh
@@ -150,7 +146,6 @@ export function Footer() {
                   className="text-xs"
                   style={{ 
                     color: colors.gray[300],
-                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   }}
                 >
                   Hotline: 1800 6701
@@ -166,7 +161,6 @@ export function Footer() {
                   className="text-xs"
                   style={{ 
                     color: colors.gray[300],
-                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   }}
                 >
                   Email: info@era.com.vn
@@ -180,7 +174,7 @@ export function Footer() {
             {/* Mobile heading */}
             <h4 
               className="lg:hidden text-base font-semibold mb-4 flex items-center gap-2"
-              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+              style={{ }}
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" style={{ color: colors.neutral.white }}>
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -196,7 +190,7 @@ export function Footer() {
                 </svg>
                 <p 
                   className="text-sm font-semibold"
-                  style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+                  style={{ }}
                 >
                   Trụ sở chính
                 </p>
@@ -205,7 +199,6 @@ export function Footer() {
                 className="text-xs leading-relaxed pl-6"
                 style={{ 
                   color: colors.gray[300],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
                 Số 22 - 24, Đường số 5, KĐT Sala, Phường An Khánh, TP. Hồ Chí Minh
@@ -219,7 +212,7 @@ export function Footer() {
                 </svg>
                 <p 
                   className="text-sm font-semibold"
-                  style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+                  style={{ }}
                 >
                   VP Đà Nẵng:
                 </p>
@@ -228,7 +221,6 @@ export function Footer() {
                 className="text-xs leading-relaxed pl-6"
                 style={{ 
                   color: colors.gray[300],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
                 Tầng 2, 368 Trần Hưng Đạo, phường An Hải, TP. Đà Nẵng
@@ -242,7 +234,7 @@ export function Footer() {
                 </svg>
                 <p 
                   className="text-sm font-semibold"
-                  style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+                  style={{ }}
                 >
                   VP Hà Nội:
                 </p>
@@ -251,7 +243,6 @@ export function Footer() {
                 className="text-xs leading-relaxed pl-6"
                 style={{ 
                   color: colors.gray[300],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
                 P201 Toà nhà Viễn Đông, số 36 Hoàng Cầu, Phường Ô Chợ Dừa, Hà Nội
@@ -264,7 +255,7 @@ export function Footer() {
             {/* Mobile heading */}
             <h4 
               className="lg:hidden text-base font-semibold mb-4"
-              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+              style={{ }}
             >
               Về chúng tôi
             </h4>
@@ -275,7 +266,6 @@ export function Footer() {
                   className="text-sm transition-colors hover:opacity-80"
                   style={{ 
                     color: colors.gray[300],
-                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   }}
                 >
                   Câu chuyện thương hiệu
@@ -287,7 +277,6 @@ export function Footer() {
                   className="text-sm transition-colors hover:opacity-80"
                   style={{ 
                     color: colors.gray[300],
-                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   }}
                 >
                   Lĩnh vực hoạt động
@@ -299,7 +288,6 @@ export function Footer() {
                   className="text-sm transition-colors hover:opacity-80"
                   style={{ 
                     color: colors.gray[300],
-                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   }}
                 >
                   Tuyển dụng
@@ -313,7 +301,7 @@ export function Footer() {
             {/* Mobile heading */}
             <h4 
               className="lg:hidden text-base font-semibold mb-4"
-              style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+              style={{ }}
             >
               Theo dõi chúng tôi
             </h4>
@@ -337,7 +325,6 @@ export function Footer() {
                 className="hidden lg:flex items-center gap-3 text-sm transition-colors hover:opacity-80"
                 style={{ 
                   color: colors.gray[300],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
                 <Image src="/shared/fb_icon.svg" alt="Facebook" width={24} height={24} className="w-6 h-6" />
@@ -348,7 +335,6 @@ export function Footer() {
                 className="hidden lg:flex items-center gap-3 text-sm transition-colors hover:opacity-80"
                 style={{ 
                   color: colors.gray[300],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
                 <Image src="/shared/ytb_icon.svg" alt="Youtube" width={24} height={24} className="w-6 h-6" />
@@ -369,7 +355,6 @@ export function Footer() {
               className="text-xs"
               style={{ 
                 color: colors.gray[400],
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
               }}
             >
               © 2026 ERA Vietnam. All rights reserved.
@@ -380,7 +365,6 @@ export function Footer() {
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
                 Điều khoản sử dụng
@@ -390,7 +374,6 @@ export function Footer() {
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
                 Chính sách bảo mật
@@ -411,7 +394,6 @@ export function Footer() {
               className="text-xs"
               style={{ 
                 color: colors.gray[400],
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
               }}
             >
               © 2026 ERA Vietnam. All rights reserved.
@@ -422,7 +404,6 @@ export function Footer() {
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
                 Điều khoản sử dụng
@@ -432,7 +413,6 @@ export function Footer() {
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 }}
               >
                 Chính sách bảo mật

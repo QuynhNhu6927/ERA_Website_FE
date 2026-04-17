@@ -46,7 +46,6 @@ export function NewsMarketSection() {
           <h2 
             style={{
               color: colors.primary.DEFAULT,
-              fontFamily: 'var(--font-plus-jakarta-sans), system-ui, sans-serif',
               fontWeight: 700,
               fontSize: '30px',
             }}
@@ -88,8 +87,7 @@ export function NewsMarketSection() {
                 </div>
                 <h3 
                   className="text-white mb-3 leading-tight"
-                  style={{ 
-                    fontFamily: 'var(--font-plus-jakarta)',
+                  style={{
                     fontWeight: 700,
                     fontSize: '30px',
                   }}
@@ -98,8 +96,7 @@ export function NewsMarketSection() {
                 </h3>
                 <p 
                   className="text-white/80 line-clamp-2"
-                  style={{ 
-                    fontFamily: 'var(--font-inter)',
+                  style={{
                     fontWeight: 400,
                     fontSize: '16px',
                   }}
@@ -133,7 +130,6 @@ export function NewsMarketSection() {
                     className="mb-2 line-clamp-2 group-hover:text-primary transition-colors"
                     style={{
                       color: colors.neutral.foreground,
-                      fontFamily: 'var(--font-inter)',
                       fontWeight: 700,
                       fontSize: '18px',
                     }}
@@ -143,7 +139,6 @@ export function NewsMarketSection() {
                   <p
                     style={{
                       color: colors.gray[400],
-                      fontFamily: 'var(--font-inter)',
                       fontWeight: 400,
                       fontSize: '14px',
                     }}

@@ -97,7 +97,6 @@ export function AcademyCoursesSection() {
           <h2 
             style={{
               color: colors.primary.DEFAULT,
-              fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
               fontWeight: 800,
               fontSize: '36px',
               marginBottom: '8px',
@@ -108,7 +107,6 @@ export function AcademyCoursesSection() {
           <p 
             style={{
               color: colors.gray[500],
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
               fontWeight: 400,
               fontSize: '16px',
             }}
@@ -126,7 +124,6 @@ export function AcademyCoursesSection() {
               className="relative pb-2 transition-colors text-sm"
               style={{
                 color: activeTab === tab.id ? colors.primary.DEFAULT : colors.gray[500],
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 fontSize: '16px',
                 fontWeight: activeTab === tab.id ? 500 : 400,
               }}
@@ -169,7 +166,7 @@ export function AcademyCoursesSection() {
                 <span 
                   className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
                   style={{ 
-                    backgroundColor: course.type === "Online" ? colors.primary.DEFAULT : colors.secondary.DEFAULT,
+                    backgroundColor: course.type === "Online" ? colors.primary.DEFAULT : colors.primary.navy.DEFAULT,
                     color: colors.neutral.white,
                   }}
                 >
@@ -193,7 +190,6 @@ export function AcademyCoursesSection() {
                   className="mb-3 line-clamp-2 group-hover:text-primary"
                   style={{
                     color: course.isHot ? colors.neutral.white : colors.neutral.foreground,
-                    fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                     fontWeight: 700,
                     fontSize: '20px',
                     lineHeight: 1.3,
@@ -216,7 +212,6 @@ export function AcademyCoursesSection() {
                   <span 
                     style={{
                       color: course.isHot ? withOpacity(colors.neutral.white, 0.9) : colors.gray[500],
-                      fontFamily: 'var(--font-inter), system-ui, sans-serif',
                       fontWeight: 500,
                       fontSize: '14px',
                     }}
@@ -229,8 +224,7 @@ export function AcademyCoursesSection() {
                 <div className="flex items-center justify-between mt-auto pt-2">
                   <span 
                     style={{
-                      color: course.isHot ? colors.yellowVivid : (course.status === "coming" ? colors.primary.DEFAULT : colors.gray[500]),
-                      fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                      color: course.isHot ? colors.tertiary.orange.DEFAULT : (course.status === "coming" ? colors.primary.DEFAULT : colors.gray[500]),
                       fontWeight: 700,
                       fontSize: '16px',
                     }}
@@ -242,8 +236,7 @@ export function AcademyCoursesSection() {
                     <button
                       className="px-4 py-1.5 rounded text-white text-sm font-medium transition-opacity hover:opacity-90"
                       style={{ 
-                        backgroundColor: colors.indigo,
-                        fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                        backgroundColor: colors.primary.navy.DEFAULT,
                         fontWeight: 600,
                         fontSize: '14px',
                         borderRadius: '8px',
@@ -256,9 +249,8 @@ export function AcademyCoursesSection() {
                     <button
                       className="px-4 py-1.5 rounded text-sm font-medium transition-opacity hover:opacity-90"
                       style={{ 
-                        backgroundColor: colors.yellowVivid,
+                        backgroundColor: colors.tertiary.orange.DEFAULT,
                         color: colors.neutral.black,
-                        fontFamily: 'var(--font-inter), system-ui, sans-serif',
                         fontWeight: 600,
                         fontSize: '14px',
                         borderRadius: '8px',
@@ -273,7 +265,6 @@ export function AcademyCoursesSection() {
                       style={{ 
                         backgroundColor: colors.gray[100],
                         color: colors.gray[500],
-                        fontFamily: 'var(--font-inter), system-ui, sans-serif',
                         fontWeight: 600,
                         fontSize: '14px',
                         borderRadius: '8px',

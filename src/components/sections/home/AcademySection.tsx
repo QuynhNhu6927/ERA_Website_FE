@@ -25,7 +25,6 @@ export function AcademySection() {
               className="mb-6 lg:mb-8 lg:max-w-lg text-center lg:text-left"
               style={{
                 color: colors.gray[600],
-                fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                 fontWeight: 400,
                 fontSize: '18px',
                 lineHeight: 1.6,
@@ -50,7 +49,7 @@ export function AcademySection() {
             </div>
 
             {/* CTA Button - Mobile: full width, Desktop: fit content */}
-            <Button asChild variant="primary" size="lg" className="w-full lg:w-fit gap-3 uppercase" style={{ fontFamily: 'var(--font-manrope), system-ui, sans-serif' } as React.CSSProperties}>
+            <Button asChild variant="primary" size="lg" className="w-full lg:w-fit gap-3 uppercase" style={{ } as React.CSSProperties}>
               <Link href="/">
                 Xem thông tin chi tiết
                 <svg className="hidden lg:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -90,13 +89,12 @@ export function AcademySection() {
             <div 
               className="absolute -bottom-4 left-4 px-5 py-3 rounded-lg"
               style={{
-                backgroundColor: colors.secondary.DEFAULT,
+                backgroundColor: colors.primary.navy.DEFAULT,
               }}
             >
               <p 
                 className="text-white text-sm"
                 style={{
-                  fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                   fontWeight: 500,
                   lineHeight: 1.4,
                 }}

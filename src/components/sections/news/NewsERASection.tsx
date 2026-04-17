@@ -52,7 +52,6 @@ export function NewsERASection() {
           <h2
             style={{
               color: colors.primary.DEFAULT,
-              fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
               fontWeight: 700,
               fontSize: '24px',
             }}
@@ -96,19 +95,17 @@ export function NewsERASection() {
                   <h3
                     className="text-white mb-3 leading-tight"
                     style={{
-                      fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                       fontWeight: 700,
                       fontSize: '30px',
                     }}
                   >
                     ERA Vietnam{' '}
-                    <span style={{ color: colors.cyanBrightDark }}>công bố định hướng chiến lược Move Up 2026</span>
+                    <span style={{ color: colors.secondary.dark }}>công bố định hướng chiến lược Move Up 2026</span>
                   </h3>
                   <div className="flex items-center justify-between gap-4">
                     <p
                       className="text-white/80 line-clamp-2"
                       style={{
-                        fontFamily: 'var(--font-inter)',
                         fontWeight: 400,
                         fontSize: '16px',
                       }}
@@ -148,7 +145,6 @@ export function NewsERASection() {
                     className="mb-2 line-clamp-2 group-hover:text-primary transition-colors"
                     style={{
                       color: colors.neutral.foreground,
-                      fontFamily: 'var(--font-inter)',
                       fontWeight: 700,
                       fontSize: '18px',
                     }}
@@ -158,7 +154,6 @@ export function NewsERASection() {
                   <p
                     style={{
                       color: colors.gray[400],
-                      fontFamily: 'var(--font-inter)',
                       fontWeight: 400,
                       fontSize: '14px',
                     }}

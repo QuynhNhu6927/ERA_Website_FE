@@ -19,7 +19,7 @@ export function Badge({ children, className, variant = "default" }: BadgeProps) 
       color: colors.neutral.white,
     },
     secondary: {
-      backgroundColor: colors.secondary.DEFAULT,
+      backgroundColor: colors.primary.navy.DEFAULT,
       color: colors.neutral.white,
     },
     outline: {

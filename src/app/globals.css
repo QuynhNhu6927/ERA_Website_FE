@@ -6,18 +6,15 @@
      ============================================ */
   
   /* Primary Colors */
-  --primary: #b61722;
-  --primary-dark: #c41230;
-  --primary-light: #ff1f4a;
+  --primary: #C8102E;
+  --primary-dark: #990038;
   
   /* Secondary Colors */
-  --secondary: #1a1a4e;
-  --secondary-dark: #0f0f3e;
-  --secondary-light: #252570;
+  --secondary: #41B3E0;
+  --secondary-dark: #2A8FB5;
   
   /* Accent Colors */
   --accent: #0f172a;
-  --accent-light: #1e293b;
   
   /* Neutral Colors */
   --background: #ffffff;
@@ -64,6 +61,11 @@
   --error: #ef4444;
   --info: #3b82f6;
   
+  /* Legacy font aliases (all route to Inter) */
+  --font-manrope: var(--font-inter);
+  --font-montserrat: var(--font-inter);
+  --font-plus-jakarta: var(--font-inter);
+  
   /* Shadow */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -78,10 +80,8 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
-  --color-primary-light: var(--primary-light);
   --color-secondary: var(--secondary);
   --color-secondary-dark: var(--secondary-dark);
-  --color-secondary-light: var(--secondary-light);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
   --color-muted: var(--muted);
@@ -105,7 +105,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* ============================================

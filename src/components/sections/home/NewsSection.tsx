@@ -50,20 +50,19 @@ export function NewsSection() {
         <div className="flex items-center justify-between mb-10">
           <h2 
             className="text-[28px] lg:text-[36px]"
-            style={{ 
-              fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+            style={{
               fontWeight: 800,
             }}
           >
             <span 
               className="lg:hidden"
-              style={{ color: colors.secondary.DEFAULT }}
+              style={{ color: colors.primary.navy.DEFAULT }}
             >
               TIN TỨC & SỰ KIỆN
             </span>
             <span 
               className="hidden lg:inline"
-              style={{ color: colors.secondary.DEFAULT }}
+              style={{ color: colors.primary.navy.DEFAULT }}
             >
               TIN TỨC & SỰ KIỆN
             </span>
@@ -75,7 +74,6 @@ export function NewsSection() {
           >
             <span 
               style={{
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 fontWeight: 700,
                 fontSize: '16px',
               }}
@@ -112,7 +110,6 @@ export function NewsSection() {
                 className="mb-2"
                 style={{ 
                   color: colors.gray[400],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   fontWeight: 400,
                   fontSize: '12px',
                 }}
@@ -123,7 +120,6 @@ export function NewsSection() {
                 className="mb-2 line-clamp-2 transition-colors group-hover:text-primary"
                 style={{ 
                   color: colors.neutral.foreground,
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   fontWeight: 600,
                   fontSize: '18px',
                 }}
@@ -134,7 +130,6 @@ export function NewsSection() {
                 className="line-clamp-2"
                 style={{ 
                   color: colors.gray[500],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   fontWeight: 400,
                   fontSize: '14px',
                 }}
@@ -174,7 +169,6 @@ export function NewsSection() {
                     className="mb-1"
                     style={{ 
                       color: colors.primary.DEFAULT,
-                      fontFamily: 'var(--font-inter), system-ui, sans-serif',
                       fontWeight: 600,
                       fontSize: '12px',
                       textTransform: 'uppercase',
@@ -187,7 +181,6 @@ export function NewsSection() {
                     className="mb-1 line-clamp-2"
                     style={{ 
                       color: colors.neutral.foreground,
-                      fontFamily: 'var(--font-inter), system-ui, sans-serif',
                       fontWeight: 600,
                       fontSize: '16px',
                       lineHeight: 1.4,
@@ -199,7 +192,6 @@ export function NewsSection() {
                   <p 
                     style={{ 
                       color: colors.gray[400],
-                      fontFamily: 'var(--font-inter), system-ui, sans-serif',
                       fontWeight: 400,
                       fontSize: '12px',
                     }}
@@ -217,7 +209,6 @@ export function NewsSection() {
             className="mt-8 w-full py-4 rounded-xl text-white text-center block transition-all duration-200 hover:opacity-90 hover:shadow-lg"
             style={{
               backgroundColor: colors.primary.DEFAULT,
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
               fontWeight: 600,
               fontSize: '16px',
               textTransform: 'uppercase',

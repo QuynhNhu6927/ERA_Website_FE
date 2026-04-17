@@ -17,8 +17,8 @@ const contactCards = [
     title: "Bộ phận Vận Hành",
     description: "Giải đáp các vấn đề liên quan đến hệ thống, quy trình vận hành và hỗ trợ trực tiếp đội ngũ Agent.",
     action: "thongbao@era.com.vn",
-    actionColor: colors.secondary.DEFAULT,
-    borderColor: colors.secondary.DEFAULT,
+    actionColor: colors.primary.navy.DEFAULT,
+    borderColor: colors.primary.navy.DEFAULT,
   },
   {
     id: 3,
@@ -26,8 +26,8 @@ const contactCards = [
     title: "Bộ phận Marketing",
     description: "Kết nối để trao đổi về các cơ hội hợp tác truyền thông, sự kiện và chiến dịch quảng bá thương hiệu.",
     action: "mkt@era.com.vn",
-    actionColor: colors.orangeVivid,
-    borderColor: colors.orangeVivid,
+    actionColor: colors.tertiary.orange.DEFAULT,
+    borderColor: colors.tertiary.orange.DEFAULT,
   },
   {
     id: 4,
@@ -35,8 +35,8 @@ const contactCards = [
     title: "Bộ phận Tuyển dụng",
     description: "Chào đón bạn trở thành một phần của ERA Vietnam.",
     action: "hr@era.com.vn",
-    actionColor: colors.cyanBright,
-    borderColor: colors.cyanBright,
+    actionColor: colors.secondary.DEFAULT,
+    borderColor: colors.secondary.DEFAULT,
   },
 ];
 
@@ -63,7 +63,6 @@ export function ContactCardsSection() {
                   className="mb-1 md:mb-2"
                   style={{
                     color: colors.neutral.foreground,
-                    fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                     fontWeight: 700,
                     fontSize: '16px',
                     lineHeight: 1.3,
@@ -76,7 +75,6 @@ export function ContactCardsSection() {
                   className="hidden md:block mb-4 flex-1"
                   style={{
                     color: colors.gray[500],
-                    fontFamily: 'var(--font-inter)',
                     fontWeight: 400,
                     fontSize: '14px',
                     lineHeight: 1.6,
@@ -87,7 +85,7 @@ export function ContactCardsSection() {
 
                 <span
                   className="font-bold"
-                  style={{ color: card.actionColor, fontFamily: 'var(--font-manrope), system-ui, sans-serif', fontWeight: 700, fontSize: '16px' }}
+                  style={{ color: card.actionColor, fontWeight: 700, fontSize: '16px' }}
                 >
                   {card.action}
                 </span>

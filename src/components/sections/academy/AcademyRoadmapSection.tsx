@@ -3,9 +3,9 @@ import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
 const roadmapColors = [
-  colors.cyanBright,
-  colors.orangeVivid,
-  colors.secondary.navy,
+  colors.primary.navy.DEFAULT,
+  colors.tertiary.orange.DEFAULT,
+  colors.primary.navy.DEFAULT,
   colors.primary.DEFAULT,
 ];
 
@@ -49,7 +49,6 @@ export function AcademyRoadmapSection() {
           className="text-center mb-10"
           style={{
             color: colors.primary.DEFAULT,
-            fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
             fontWeight: 800,
             fontSize: '36px',
           }}
@@ -85,7 +84,6 @@ export function AcademyRoadmapSection() {
               <h3 
                 className="text-white mb-3"
                 style={{
-                  fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                   fontWeight: 700,
                   fontSize: '20px',
                 }}
@@ -97,7 +95,6 @@ export function AcademyRoadmapSection() {
               <p 
                 className="text-white/90"
                 style={{
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   fontWeight: 400,
                   fontSize: '14px',
                   lineHeight: 1.5,

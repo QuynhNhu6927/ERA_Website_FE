@@ -74,7 +74,7 @@ export function Header() {
         }}
       >
         <Container>
-          <div className="flex items-center justify-between h-16" style={{ fontFamily: 'var(--font-inter)' }}>
+          <div className="flex items-center justify-between h-16" style={{ }}>
             <Link href="/" className="flex items-center">
               <Image src="/logo.svg" alt="ERA Vietnam" width={134} height={38} className="h-10 w-auto" priority />
             </Link>
@@ -203,10 +203,10 @@ export function Header() {
 
           {/* Section 2: Nav Links */}
           <div className="px-5 py-5" style={{ backgroundColor: colors.gray[50] }}>
-            <nav className="flex flex-col gap-6" style={{ fontFamily: 'var(--font-inter)' }}>
+            <nav className="flex flex-col gap-6" style={{ }}>
               {navLinks.map((link) => {
                 const linkClass = "flex items-center gap-4 py-3";
-                const linkStyle = { color: colors.secondary.DEFAULT, fontWeight: 500, fontSize: '16px' };
+                const linkStyle = { color: colors.primary.navy.DEFAULT, fontWeight: 500, fontSize: '16px' };
                 const iconElement = <Image src={link.icon} alt={link.label} width={ICON_SIZES.navIcon} height={ICON_SIZES.navIcon} style={{ width: ICON_SIZES.navIcon, height: ICON_SIZES.navIcon }} />;
                 
                 if (link.external) {
@@ -247,10 +247,10 @@ export function Header() {
             {/* Hotline */}
             <div className="flex items-center justify-between mb-6">
               <div className="flex flex-col">
-                <p className="uppercase tracking-wider mb-2" style={{ color: colors.gray[500], fontFamily: 'var(--font-manrope)', fontWeight: 700, fontSize: '10px' }}>
+                <p className="uppercase tracking-wider mb-2" style={{ color: colors.gray[500], fontWeight: 700, fontSize: '10px' }}>
                   HOTLINE HỖ TRỢ 24/7
                 </p>
-                <span style={{ color: colors.primary.DEFAULT, fontFamily: 'var(--font-manrope)', fontWeight: 900, fontSize: '24px' }}>
+                <span style={{ color: colors.primary.DEFAULT, fontWeight: 900, fontSize: '24px' }}>
                   1800 6701
                 </span>
               </div>
@@ -270,7 +270,7 @@ export function Header() {
             </div>
             
             {/* Footer Text */}
-            <p className="text-xs mt-auto pt-4" style={{ color: colors.gray[700], fontFamily: 'var(--font-manrope)', fontSize: '10px' }}>
+            <p className="text-xs mt-auto pt-4" style={{ color: colors.gray[700], fontSize: '10px' }}>
               © 2024 ERA Vietnam. Một thương hiệu thuộc hệ thống ERA Real Estate toàn cầu. Bản quyền đã được bảo hộ.
             </p>
           </div>

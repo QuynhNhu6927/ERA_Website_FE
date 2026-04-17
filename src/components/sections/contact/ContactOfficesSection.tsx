@@ -45,12 +45,11 @@ export function ContactOfficesSection() {
         <div className="flex items-center gap-3 mb-8">
           <div
             className="w-1 h-6 rounded-full"
-            style={{ backgroundColor: colors.secondary.DEFAULT }}
+            style={{ backgroundColor: colors.primary.navy.DEFAULT }}
           />
           <h2
             style={{
-              color: colors.secondary.DEFAULT,
-              fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+              color: colors.primary.navy.DEFAULT,
               fontWeight: 700,
               fontSize: '30px',
             }}
@@ -71,9 +70,8 @@ export function ContactOfficesSection() {
                   onClick={() => setActiveOffice(office.id)}
                   className="px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-colors"
                   style={{
-                    backgroundColor: isActive ? colors.secondary.DEFAULT : colors.gray[100],
+                    backgroundColor: isActive ? colors.primary.navy.DEFAULT : colors.gray[100],
                     color: isActive ? colors.neutral.white : colors.gray[500],
-                    fontFamily: 'var(--font-inter)',
                   }}
                 >
                   {office.id === "south" ? "TPHCM" : office.id === "central" ? "Đà Nẵng" : "Hà Nội"}
@@ -108,13 +106,12 @@ export function ContactOfficesSection() {
           {/* Info Card */}
           <div
             className="rounded-xl p-5"
-            style={{ backgroundColor: colors.secondary.DEFAULT }}
+            style={{ backgroundColor: colors.primary.navy.DEFAULT }}
           >
             <p
               className="tracking-wider mb-1"
               style={{
-                color: colors.orangeVivid,
-                fontFamily: 'var(--font-inter)',
+                color: colors.tertiary.orange.DEFAULT,
                 fontWeight: 600,
                 fontSize: '12px',
               }}
@@ -125,7 +122,6 @@ export function ContactOfficesSection() {
               className="mb-3"
               style={{
                 color: colors.neutral.white,
-                fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                 fontWeight: 700,
                 fontSize: '20px',
               }}
@@ -141,7 +137,6 @@ export function ContactOfficesSection() {
               <p
                 style={{
                   color: colors.neutral.white,
-                  fontFamily: 'var(--font-inter)',
                   fontWeight: 400,
                   fontSize: '14px',
                   lineHeight: 1.5,
@@ -157,7 +152,6 @@ export function ContactOfficesSection() {
               <p
                 style={{
                   color: withOpacity(colors.neutral.white, 0.85),
-                  fontFamily: 'var(--font-inter)',
                   fontSize: '14px',
                 }}
               >
@@ -179,7 +173,7 @@ export function ContactOfficesSection() {
                   onClick={() => setActiveOffice(office.id)}
                   className="w-full text-left rounded-xl p-5 transition-shadow duration-200 hover:shadow-md"
                   style={{
-                    backgroundColor: isActive ? colors.secondary.DEFAULT : colors.neutral.white,
+                    backgroundColor: isActive ? colors.primary.navy.DEFAULT : colors.neutral.white,
                     boxShadow: isActive
                       ? `0 10px 30px ${withOpacity(colors.neutral.black, 0.18)}`
                       : `0 4px 14px ${withOpacity(colors.neutral.black, 0.08)}`,
@@ -190,8 +184,7 @@ export function ContactOfficesSection() {
                       <p
                         className="tracking-wider mb-1"
                         style={{
-                          color: isActive ? colors.orangeVivid : colors.cyanBright,
-                          fontFamily: 'var(--font-inter)',
+                          color: isActive ? colors.tertiary.orange.DEFAULT : colors.secondary.DEFAULT,
                           fontWeight: 600,
                           fontSize: '12px',
                         }}
@@ -202,7 +195,6 @@ export function ContactOfficesSection() {
                         className="mb-3"
                         style={{
                           color: isActive ? colors.neutral.white : colors.gray[600],
-                          fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                           fontWeight: 700,
                           fontSize: '20px',
                         }}
@@ -227,7 +219,6 @@ export function ContactOfficesSection() {
                         <p
                           style={{
                             color: isActive ? colors.neutral.white : colors.gray[800],
-                            fontFamily: 'var(--font-inter)',
                             fontWeight: 400,
                             fontSize: '14px',
                             lineHeight: 1.5,
@@ -244,7 +235,6 @@ export function ContactOfficesSection() {
                           className="text-xs"
                           style={{
                             color: isActive ? withOpacity(colors.neutral.white, 0.85) : colors.gray[500],
-                            fontFamily: 'var(--font-inter)',
                           }}
                         >
                           {office.phone}

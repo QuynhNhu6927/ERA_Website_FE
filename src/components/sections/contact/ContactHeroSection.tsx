@@ -27,7 +27,6 @@ export function ContactHeroSection() {
             <h1
               className="uppercase"
               style={{
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                 fontWeight: 800,
                 fontSize: 'clamp(40px, 10vw, 54px)',
                 lineHeight: 1.15,
@@ -42,7 +41,6 @@ export function ContactHeroSection() {
               className="max-w-2xl hidden md:block mt-4"
               style={{
                 color: colors.neutral.white,
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
                 fontWeight: 500,
                 fontSize: '18px',
                 lineHeight: 1.7,

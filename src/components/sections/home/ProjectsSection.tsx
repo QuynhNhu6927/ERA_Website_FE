@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { colors, withOpacity } from "@/lib/theme";
 
 export function ProjectsSection() {
@@ -18,13 +19,12 @@ export function ProjectsSection() {
         <h2 
           className="mb-4 text-center lg:text-left"
           style={{
-            fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
             fontWeight: 900,
           }}
         >
           <span 
             className="text-[32px] lg:text-[48px] lg:mr-2"
-            style={{ color: colors.secondary.DEFAULT }}
+            style={{ color: colors.primary.navy.DEFAULT }}
           >
             DANH MỤC DỰ ÁN
           </span>
@@ -42,7 +42,6 @@ export function ProjectsSection() {
           className="mb-10 text-center lg:text-left"
           style={{
             color: colors.gray[600],
-            fontFamily: 'var(--font-manrope), system-ui, sans-serif',
             fontWeight: 400,
             fontSize: '18px',
             lineHeight: 1.6,
@@ -76,32 +75,28 @@ export function ProjectsSection() {
               className="flex-1 outline-none text-sm bg-transparent"
               style={{ 
                 color: colors.gray[700],
-                fontFamily: 'var(--font-manrope), system-ui, sans-serif',
               }}
             />
           </div>
           {/* Mobile: Icon button */}
-          <button
-            className="lg:hidden w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ backgroundColor: colors.primary.DEFAULT }}
+          <Button
+            variant="primary"
+            size="sm"
+            className="lg:hidden w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 p-0"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
               <circle cx="11" cy="11" r="8"/>
               <path d="m21 21-4.3-4.3"/>
             </svg>
-          </button>
+          </Button>
           {/* Desktop: Text button */}
-          <button
-            className="hidden lg:block px-10 py-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90 hover:shadow-lg"
-            style={{
-              backgroundColor: colors.primary.DEFAULT,
-              fontFamily: 'var(--font-manrope), system-ui, sans-serif',
-              fontWeight: 600,
-              fontSize: '14px',
-            }}
+          <Button
+            variant="primary"
+            size="md"
+            className="hidden lg:block px-10 py-3 rounded-xl font-semibold text-sm"
           >
             Tìm kiếm
-          </button>
+          </Button>
         </div>
 
         {/* Mobile: Text on top + Images vertical; Desktop: Images horizontal + Text bottom */}
@@ -112,8 +107,7 @@ export function ProjectsSection() {
             <div 
               className="hidden lg:flex items-baseline mt-10 justify-center gap-4 leading-none"
               style={{
-                color: '#00B6E9',
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                color: colors.secondary.DEFAULT,
                 fontWeight: 900,
                 fontSize: 'clamp(80px, 10vw, 140px)',
               }}
@@ -126,8 +120,7 @@ export function ProjectsSection() {
             <div 
               className="flex items-baseline justify-center gap-2 lg:hidden leading-none"
               style={{
-                color: '#00B6E9',
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                color: colors.secondary.DEFAULT,
                 fontWeight: 900,
                 fontSize: 'clamp(56px, 12vw, 80px)',
               }}
@@ -140,8 +133,7 @@ export function ProjectsSection() {
             <span 
               className="mt-2 lg:mt-4"
               style={{
-                color: colors.secondary.DEFAULT,
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                color: colors.primary.navy.DEFAULT,
                 fontWeight: 500,
                 fontSize: 'clamp(20px, 5vw, 42px)',
               }}
