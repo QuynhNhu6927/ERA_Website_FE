@@ -45,7 +45,6 @@ export function NewsPressSection() {
           <h2
             style={{
               color: colors.primary.DEFAULT,
-              fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
               fontWeight: 700,
               fontSize: '30px',
             }}
@@ -77,7 +76,6 @@ export function NewsPressSection() {
                     className="mb-2 line-clamp-2 group-hover:text-primary transition-colors"
                     style={{
                       color: colors.neutral.foreground,
-                      fontFamily: 'var(--font-inter)',
                       fontWeight: 700,
                       fontSize: '18px',
                     }}
@@ -87,7 +85,6 @@ export function NewsPressSection() {
                   <p
                     style={{
                       color: colors.gray[400],
-                      fontFamily: 'var(--font-inter)',
                       fontWeight: 400,
                       fontSize: '14px',
                     }}
@@ -131,7 +128,6 @@ export function NewsPressSection() {
                 <h3
                   className="text-white mb-3 leading-tight"
                   style={{
-                    fontFamily: 'var(--font-plus-jakarta)',
                     fontWeight: 700,
                     fontSize: '30px',
                   }}
@@ -141,7 +137,6 @@ export function NewsPressSection() {
                 <p
                   className="text-white/80 line-clamp-2"
                   style={{
-                    fontFamily: 'var(--font-inter)',
                     fontWeight: 400,
                     fontSize: '16px',
                   }}

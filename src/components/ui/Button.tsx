@@ -21,7 +21,7 @@ const Button = forwardRef<any, ButtonProps>(
         color: colors.neutral.white,
       },
       secondary: {
-        backgroundColor: colors.secondary.DEFAULT,
+        backgroundColor: colors.primary.navy.DEFAULT,
         color: colors.neutral.white,
       },
       outline: {
@@ -42,7 +42,7 @@ const Button = forwardRef<any, ButtonProps>(
     };
 
     const hoverStyles = {
-      primary: { backgroundColor: colors.primary.dark },
+      primary: { backgroundColor: colors.primary.dark.DEFAULT },
       secondary: { backgroundColor: colors.secondary.dark },
       outline: { backgroundColor: colors.primary.DEFAULT, color: colors.neutral.white },
       ghost: { backgroundColor: colors.gray[100] },

@@ -27,8 +27,7 @@ export function ContactFormSection() {
             <h2
               className="mb-2"
               style={{
-                color: colors.secondary.DEFAULT,
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                color: colors.primary.navy.DEFAULT,
                 fontWeight: 700,
                 fontSize: '40px',
                 lineHeight: 1.15,
@@ -42,7 +41,6 @@ export function ContactFormSection() {
               className="mb-6 lg:mb-0"
               style={{
                 color: colors.gray[600],
-                fontFamily: 'var(--font-inter)',
                 fontWeight: 400,
                 fontSize: '16px',
                 lineHeight: 1.6,
@@ -62,7 +60,7 @@ export function ContactFormSection() {
                 <div>
                   <label
                     className="block text-xs font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: colors.gray[600], fontFamily: 'var(--font-inter)', fontWeight: 600 }}
+                    style={{ color: colors.gray[600], fontWeight: 600 }}
                   >
                     Họ và tên
                   </label>
@@ -75,7 +73,6 @@ export function ContactFormSection() {
                     style={{
                       backgroundColor: colors.gray[50],
                       color: colors.neutral.foreground,
-                      fontFamily: 'var(--font-inter)',
                       fontSize: '14px',
                       '--tw-ring-color': `${colors.primary.DEFAULT}33`,
                     } as React.CSSProperties}
@@ -84,7 +81,7 @@ export function ContactFormSection() {
                 <div>
                   <label
                     className="block text-xs font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: colors.gray[600], fontFamily: 'var(--font-inter)', fontWeight: 600 }}
+                    style={{ color: colors.gray[600], fontWeight: 600 }}
                   >
                     Số điện thoại
                   </label>
@@ -97,7 +94,6 @@ export function ContactFormSection() {
                     style={{
                       backgroundColor: colors.gray[50],
                       color: colors.neutral.foreground,
-                      fontFamily: 'var(--font-inter)',
                       fontSize: '14px',
                       '--tw-ring-color': `${colors.primary.DEFAULT}33`,
                     } as React.CSSProperties}
@@ -108,7 +104,7 @@ export function ContactFormSection() {
               <div>
                 <label
                   className="block text-xs font-semibold uppercase tracking-wider mb-2"
-                  style={{ color: colors.gray[600], fontFamily: 'var(--font-inter)', fontWeight: 600 }}
+                  style={{ color: colors.gray[600], fontWeight: 600 }}
                 >
                   Email
                 </label>
@@ -121,7 +117,6 @@ export function ContactFormSection() {
                   style={{
                     backgroundColor: colors.gray[50],
                     color: colors.neutral.foreground,
-                    fontFamily: 'var(--font-inter)',
                     fontSize: '14px',
                     '--tw-ring-color': `${colors.primary.DEFAULT}33`,
                   } as React.CSSProperties}
@@ -131,7 +126,7 @@ export function ContactFormSection() {
               <div>
                 <label
                   className="block text-xs font-semibold uppercase tracking-wider mb-2"
-                  style={{ color: colors.gray[600], fontFamily: 'var(--font-inter)', fontWeight: 600 }}
+                  style={{ color: colors.gray[600], fontWeight: 600 }}
                 >
                   LỜI NHẮN
                 </label>
@@ -144,7 +139,6 @@ export function ContactFormSection() {
                   style={{
                     backgroundColor: colors.gray[50],
                     color: colors.neutral.foreground,
-                    fontFamily: 'var(--font-inter)',
                     fontSize: '14px',
                     '--tw-ring-color': `${colors.primary.DEFAULT}33`,
                   } as React.CSSProperties}
@@ -156,7 +150,7 @@ export function ContactFormSection() {
                 variant="primary"
                 size="md"
                 className="w-full rounded-3xl py-4 mt-auto"
-                style={{ fontFamily: 'var(--font-inter)', fontSize: '16px', fontWeight: 600 } as React.CSSProperties}
+                style={{ fontSize: '16px', fontWeight: 600 } as React.CSSProperties}
               >
                 Gửi yêu cầu tư vấn
               </Button>
@@ -174,13 +168,12 @@ export function ContactFormSection() {
             </div>
             <div
               className="p-5 md:p-6 flex-shrink-0"
-              style={{ backgroundColor: colors.secondary.DEFAULT }}
+              style={{ backgroundColor: colors.primary.navy.DEFAULT }}
             >
               <h3
                 className="mb-1"
                 style={{
                   color: colors.neutral.white,
-                  fontFamily: 'var(--font-inter)',
                   fontWeight: 600,
                   fontSize: '18px',
                 }}
@@ -191,7 +184,6 @@ export function ContactFormSection() {
                 className="mb-3"
                 style={{
                   color: withOpacity(colors.neutral.white, 0.8),
-                  fontFamily: 'var(--font-inter)',
                   fontWeight: 400,
                   fontSize: '14px',
                   lineHeight: 1.5,
@@ -202,7 +194,7 @@ export function ContactFormSection() {
               <a
                 href="/"
                 className="inline-flex items-center gap-1 transition-opacity hover:opacity-80"
-                style={{ color: colors.neutral.white, fontFamily: 'var(--font-inter)', fontWeight: 700, fontSize: '16px' }}
+                style={{ color: colors.neutral.white, fontWeight: 700, fontSize: '16px' }}
               >
                 Gia nhập ERA ngay
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

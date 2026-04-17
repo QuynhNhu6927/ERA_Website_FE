@@ -37,8 +37,7 @@ export function NewsDetailPage() {
             <h1 
               className="mb-2"
               style={{
-                color: colors.secondary.DEFAULT,
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                color: colors.primary.navy.DEFAULT,
                 fontWeight: 900,
                 fontSize: '40px',
               }}
@@ -48,7 +47,6 @@ export function NewsDetailPage() {
             <p 
               style={{
                 color: colors.gray[500],
-                fontFamily: 'var(--font-inter)',
                 fontSize: '16px',
               }}
             >
@@ -63,7 +61,6 @@ export function NewsDetailPage() {
               <h2
                 style={{
                   color: colors.primary.DEFAULT,
-                  fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                   fontWeight: 900,
                   fontSize: '48px',
                   lineHeight: 1.2,
@@ -78,7 +75,6 @@ export function NewsDetailPage() {
               className="mb-8"
               style={{
                 color: colors.neutral.foreground,
-                fontFamily: 'var(--font-inter)',
                 fontSize: '16px',
                 lineHeight: 1.7,
               }}
@@ -104,7 +100,6 @@ export function NewsDetailPage() {
               className="mb-12"
               style={{
                 color: colors.neutral.foreground,
-                fontFamily: 'var(--font-inter)',
                 fontSize: '16px',
                 lineHeight: 1.7,
               }}
@@ -125,7 +120,6 @@ export function NewsDetailPage() {
               className="mb-12 text-right"
               style={{
                 color: colors.gray[500],
-                fontFamily: 'var(--font-inter)',
                 fontSize: '14px',
               }}
             >
@@ -137,8 +131,7 @@ export function NewsDetailPage() {
               <h3 
                 className="mb-6"
                 style={{
-                  color: colors.secondary.DEFAULT,
-                  fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                  color: colors.primary.navy.DEFAULT,
                   fontWeight: 900,
                   fontSize: '32px',
                 }}
@@ -168,7 +161,6 @@ export function NewsDetailPage() {
                         className="text-xs mb-2"
                         style={{ 
                           color: colors.gray[400],
-                          fontFamily: 'var(--font-inter)',
                         }}
                       >
                         {item.date}
@@ -177,7 +169,6 @@ export function NewsDetailPage() {
                         className="mb-2 line-clamp-2 group-hover:text-primary transition-colors"
                         style={{ 
                           color: colors.neutral.foreground,
-                          fontFamily: 'var(--font-inter)',
                           fontWeight: 700,
                           fontSize: '16px',
                         }}
@@ -188,7 +179,6 @@ export function NewsDetailPage() {
                         className="text-sm line-clamp-3"
                         style={{ 
                           color: colors.gray[500],
-                          fontFamily: 'var(--font-inter)',
                         }}
                       >
                         {item.excerpt}
@@ -205,7 +195,6 @@ export function NewsDetailPage() {
                 className="mb-4"
                 style={{
                   color: colors.neutral.foreground,
-                  fontFamily: 'var(--font-plus-jakarta)',
                   fontWeight: 700,
                   fontSize: '20px',
                 }}

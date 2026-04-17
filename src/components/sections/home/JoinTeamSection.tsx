@@ -10,8 +10,8 @@ const benefits = [
     icon: "/join/join_money_icon.svg",
     title: "Cơ chế hoa hồng đột phá",
     description: "Tối đa hóa thu nhập cá nhân với chính sách hoa hồng tùy tiến triển đỉnh cao.",
-    bgColor: colors.secondary.DEFAULT,
-    linkColor: colors.cyanBright,
+    bgColor: colors.primary.navy.DEFAULT,
+    linkColor: colors.primary.navy.DEFAULT,
     href: "/",
   },
   {
@@ -19,15 +19,15 @@ const benefits = [
     title: "Đào tạo tiêu chuẩn quốc tế",
     description: "Nâng tầm kỹ năng với hệ thống ERA Academy.",
     bgColor: colors.primary.DEFAULT,
-    linkColor: colors.yellowVivid,
+    linkColor: colors.tertiary.orange.DEFAULT,
     href: "/",
   },
   {
     icon: "/join/join_product_icon.svg",
     title: "Đa dạng nguồn hàng phân phối",
     description: "Dễ dàng tìm kiếm sản phẩm phù hợp cho mọi khách hàng với đủ hàng không lo.",
-    bgColor: colors.secondary.DEFAULT,
-    linkColor: colors.cyanBright,
+    bgColor: colors.primary.navy.DEFAULT,
+    linkColor: colors.primary.navy.DEFAULT,
     href: "/",
   },
   {
@@ -35,7 +35,7 @@ const benefits = [
     title: "Đặc quyền công nghệ bán hàng",
     description: "Làm chủ mọi giao dịch với hệ sinh thái My ERA.",
     bgColor: colors.primary.DEFAULT,
-    linkColor: colors.yellowVivid,
+    linkColor: colors.tertiary.orange.DEFAULT,
     href: "/",
   },
 ];
@@ -62,7 +62,6 @@ export function JoinTeamSection() {
             <h2 
               className="text-white text-[48px] lg:text-[72px]"
               style={{
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                 fontWeight: 900,
               }}
             >
@@ -80,11 +79,10 @@ export function JoinTeamSection() {
             <h2 
               className="text-[32px]"
               style={{
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                 fontWeight: 900,
               }}
             >
-              <span style={{ color: colors.secondary.DEFAULT }}>JOIN TEAM </span>
+              <span style={{ color: colors.primary.navy.DEFAULT }}>JOIN TEAM </span>
               <span style={{ color: colors.primary.DEFAULT }}>ERA</span>
             </h2>
           </div>
@@ -115,7 +113,6 @@ export function JoinTeamSection() {
                 <h3 
                   className="text-white md:mb-2 lg:mb-3"
                   style={{
-                    fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                     fontWeight: 700,
                     fontSize: 'clamp(14px, 4vw, 24px)',
                     lineHeight: 1.3,
@@ -129,7 +126,6 @@ export function JoinTeamSection() {
                   className="hidden lg:block mb-6 flex-1"
                   style={{
                     color: withOpacity(colors.neutral.white, 0.9),
-                    fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                     fontWeight: 500,
                     fontSize: '14px',
                     lineHeight: 1.5,
@@ -143,7 +139,6 @@ export function JoinTeamSection() {
                   className="hidden lg:flex items-center gap-2 text-sm transition-colors duration-200"
                   style={{
                     color: benefit.linkColor,
-                    fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                     fontWeight: 700,
                     fontSize: '14px',
                   }}

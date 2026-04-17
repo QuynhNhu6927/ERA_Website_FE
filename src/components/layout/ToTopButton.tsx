@@ -25,7 +25,7 @@ export function ToTopButton() {
         boxShadow: `0 10px 15px -3px ${withOpacity(colors.neutral.black, 0.1)}, 0 4px 6px -4px ${withOpacity(colors.neutral.black, 0.1)}`,
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = colors.primary.dark;
+        e.currentTarget.style.backgroundColor = colors.primary.dark.DEFAULT;
         e.currentTarget.style.transform = 'translateY(-4px)';
         e.currentTarget.style.boxShadow = `0 20px 25px -5px ${withOpacity(colors.neutral.black, 0.1)}, 0 8px 10px -6px ${withOpacity(colors.neutral.black, 0.1)}`;
       }}

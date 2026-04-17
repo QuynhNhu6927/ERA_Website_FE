@@ -115,14 +115,13 @@ export function GlobalNetworkSection() {
             {/* Title - Mobile: 48px centered, Desktop: 72px left */}
             <h2 
               className="leading-none mb-2 text-center lg:text-left"
-              style={{ 
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+              style={{
                 fontWeight: 900,
               }}
             >
               <span 
                 className="text-[48px] lg:text-[72px]"
-                style={{ color: colors.secondary.DEFAULT }}
+                style={{ color: colors.primary.navy.DEFAULT }}
               >
                 ERA Global
               </span>
@@ -140,7 +139,6 @@ export function GlobalNetworkSection() {
               className="mb-6 lg:mb-10 text-center lg:text-left"
               style={{ 
                 color: colors.gray[500],
-                fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                 fontWeight: 500,
                 fontSize: '24px',
                 letterSpacing: '-1.8px',
@@ -166,8 +164,7 @@ export function GlobalNetworkSection() {
             <p 
               className="mb-8 text-center lg:text-left"
               style={{ 
-                color: colors.secondary.DEFAULT,
-                fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                color: colors.primary.navy.DEFAULT,
                 fontWeight: 400,
                 lineHeight: 1.4,
                 letterSpacing: '-0.8px',
@@ -199,8 +196,7 @@ export function GlobalNetworkSection() {
                     <p 
                       className="text-[48px] lg:text-[30px] leading-[1.1] lg:leading-[1.2]"
                       style={{ 
-                        color: colors.secondary.navy,
-                        fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
+                        color: colors.primary.navy.DEFAULT,
                         fontWeight: 800,
                       }}
                     >
@@ -210,8 +206,7 @@ export function GlobalNetworkSection() {
                     <p 
                       className="uppercase tracking-wider text-[24px] lg:text-[14px] lg:mt-1"
                       style={{ 
-                        color: colors.secondary.navy,
-                        fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                        color: colors.primary.navy.DEFAULT,
                         fontWeight: 600,
                       }}
                     >

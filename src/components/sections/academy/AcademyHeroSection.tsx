@@ -24,7 +24,6 @@ export function AcademyHeroSection() {
             <h1 
               className="text-white mb-2"
               style={{
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                 fontWeight: 900,
                 fontSize: 'clamp(40px, 8vw, 72px)',
                 lineHeight: 1.1,
@@ -35,7 +34,6 @@ export function AcademyHeroSection() {
             <p 
               className="text-white/90 mb-6 max-w-lg"
               style={{
-                fontFamily: 'var(--font-manrope)',
                 fontSize: '16px',
                 lineHeight: 1.5,
               }}

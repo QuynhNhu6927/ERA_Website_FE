@@ -90,7 +90,6 @@ function MarqueeTabs({ onTabClick }: { onTabClick: (id: string) => void }) {
           onClick={() => onTabClick(tab.targetId)}
           className="relative pb-3 cursor-pointer flex-shrink-0 text-gray-500 hover:text-primary transition-colors duration-200 whitespace-nowrap"
           style={{
-            fontFamily: 'var(--font-inter), system-ui, sans-serif',
             fontSize: '18px',
             fontWeight: 500,
           }}
@@ -132,7 +131,6 @@ export function NewsTabsSection() {
                 onClick={() => handleTabClick(tab.targetId)}
                 className="group relative pb-3 cursor-pointer whitespace-nowrap flex-shrink-0 text-gray-500 hover:text-primary transition-colors duration-200"
                 style={{
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   fontSize: '18px',
                   fontWeight: 500,
                 }}
@@ -164,7 +162,6 @@ export function NewsTabsSection() {
                 className="flex-1 bg-transparent outline-none min-w-0"
                 style={{
                   color: colors.gray[700],
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
                   fontSize: '14px',
                 }}
               />

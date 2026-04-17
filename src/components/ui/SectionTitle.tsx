@@ -37,7 +37,7 @@ export function SectionTitle({
         </p>
       )}
       <h2 className={cn("text-3xl md:text-4xl lg:text-5xl font-bold", titleClassName)}>
-        <span style={{ color: colors.secondary.DEFAULT }}>{title}</span>
+        <span style={{ color: colors.primary.navy.DEFAULT }}>{title}</span>
         {highlight && (
           <span style={{ color: colors.primary.DEFAULT }}> {highlight}</span>
         )}

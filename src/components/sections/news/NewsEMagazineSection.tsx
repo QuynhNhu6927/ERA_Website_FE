@@ -47,7 +47,6 @@ export function NewsEMagazineSection() {
           <h2
             style={{
               color: colors.primary.DEFAULT,
-              fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
               fontWeight: 700,
               fontSize: '24px',
             }}
@@ -66,7 +65,7 @@ export function NewsEMagazineSection() {
               {/* Blue corner */}
               <div
                 className="absolute top-0 right-0 w-10 h-10 rounded-bl-2xl"
-                style={{ backgroundColor: colors.cyanBright }}
+                style={{ backgroundColor: colors.secondary.DEFAULT }}
               />
 
               {/* Magazine Cover */}
@@ -87,7 +86,6 @@ export function NewsEMagazineSection() {
                   className="mb-1"
                   style={{
                     color: colors.neutral.foreground,
-                    fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                     fontWeight: 700,
                     fontSize: '18px',
                   }}
@@ -98,7 +96,6 @@ export function NewsEMagazineSection() {
                   className="text-xs mb-3"
                   style={{
                     color: colors.gray[400],
-                    fontFamily: 'var(--font-inter)',
                     fontWeight: 500,
                   }}
                 >
@@ -111,7 +108,6 @@ export function NewsEMagazineSection() {
                     className="text-[10px] font-bold uppercase mb-1"
                     style={{
                       color: colors.primary.DEFAULT,
-                      fontFamily: 'var(--font-inter)',
                     }}
                   >
                     Tóm tắt bởi AI
@@ -120,7 +116,6 @@ export function NewsEMagazineSection() {
                     className="text-sm line-clamp-3"
                     style={{
                       color: colors.gray[600],
-                      fontFamily: 'var(--font-inter)',
                       fontWeight: 400,
                       lineHeight: 1.5,
                     }}

@@ -199,8 +199,7 @@ export function HeroSection() {
           {/* Main Title - ERA VIETNAM */}
           <h1 
             className="text-white mb-4 tracking-tight uppercase text-[48px] md:text-[98px]"
-            style={{ 
-              fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+            style={{
               fontWeight: 800,
               lineHeight: 1.1,
               textShadow: `0 4px 20px ${withOpacity(colors.neutral.black, 0.5)}, 0 2px 8px ${withOpacity(colors.neutral.black, 0.4)}`,
@@ -212,8 +211,7 @@ export function HeroSection() {
           {/* Subtitle */}
           <p 
             className="text-white uppercase tracking-wider text-[32px]"
-            style={{ 
-              fontFamily: 'var(--font-montserrat), system-ui, sans-serif',
+            style={{
               fontWeight: 400,
               letterSpacing: '0.05em',
               lineHeight: 1.2,

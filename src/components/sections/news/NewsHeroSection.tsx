@@ -27,7 +27,6 @@ export function NewsHeroSection() {
             <h1
               className="mb-4"
               style={{
-                fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                 fontWeight: 900,
                 fontSize: 'clamp(60px, 8vw, 72px)',
                 lineHeight: 1.1,
@@ -42,7 +41,6 @@ export function NewsHeroSection() {
               className="max-w-xl hidden md:block"
               style={{
                 color: colors.neutral.white,
-                fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                 fontWeight: 400,
                 fontSize: '16px',
                 lineHeight: 1.7,
