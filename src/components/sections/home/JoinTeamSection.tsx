@@ -11,7 +11,7 @@ const benefits = [
     title: "Cơ chế hoa hồng đột phá",
     description: "Tối đa hóa thu nhập cá nhân với chính sách hoa hồng tùy tiến triển đỉnh cao.",
     bgColor: colors.primary.navy.DEFAULT,
-    linkColor: colors.primary.navy.DEFAULT,
+    linkColor: colors.secondary.DEFAULT,
     href: "/",
   },
   {
@@ -27,7 +27,7 @@ const benefits = [
     title: "Đa dạng nguồn hàng phân phối",
     description: "Dễ dàng tìm kiếm sản phẩm phù hợp cho mọi khách hàng với đủ hàng không lo.",
     bgColor: colors.primary.navy.DEFAULT,
-    linkColor: colors.primary.navy.DEFAULT,
+    linkColor: colors.secondary.DEFAULT,
     href: "/",
   },
   {
