@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 import { ROUTES } from "@/lib/routes";
 
 const benefits = [
@@ -128,7 +128,7 @@ export function JoinTeamSection() {
                 <p 
                   className="hidden lg:block mb-6 flex-1"
                   style={{
-                    color: 'rgba(255, 255, 255, 0.9)',
+                    color: withOpacity(colors.neutral.white, 0.9),
                     fontFamily: 'var(--font-manrope), system-ui, sans-serif',
                     fontWeight: 500,
                     fontSize: '14px',

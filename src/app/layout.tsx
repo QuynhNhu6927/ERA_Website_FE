@@ -40,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={`${inter.variable} ${manrope.variable} ${montserrat.variable} ${plusJakartaSans.variable} h-full antialiased`}>
+    <html lang="vi" data-scroll-behavior="smooth" className={`${inter.variable} ${manrope.variable} ${montserrat.variable} ${plusJakartaSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Header />
         <div className="flex-1 pt-0 md:pt-16">{children}</div>

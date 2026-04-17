@@ -77,6 +77,8 @@ export const colors = {
   cyanBrightDark: "#2AB8E6",
   yellowVivid: "#F7B900",
   yellowVividDark: "#D97706",
+  indigo: "#3E5BA4",
+  teal: "#3C645A",
 
   // Overlay
   overlay: {
@@ -200,6 +202,8 @@ export function color(name: keyof typeof colors): string {
     orangeVivid: colors.orangeVivid,
     cyanBright: colors.cyanBright,
     yellowVivid: colors.yellowVivid,
+    indigo: colors.indigo,
+    teal: colors.teal,
   };
 
   return colorMap[name] || colors.primary.DEFAULT;

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 
 export function ProjectsSection() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,7 +56,7 @@ export function ProjectsSection() {
           className="flex items-center gap-3 lg:gap-4 p-3 lg:p-4 lg:pr-5 rounded-2xl lg:rounded-3xl mb-12 lg:mb-16"
           style={{ 
             backgroundColor: colors.neutral.white, 
-            boxShadow: '0 10px 60px rgba(0,0,0,0.12)' 
+            boxShadow: `0 10px 60px ${withOpacity(colors.neutral.black, 0.12)}` 
           }}
         >
           <div 

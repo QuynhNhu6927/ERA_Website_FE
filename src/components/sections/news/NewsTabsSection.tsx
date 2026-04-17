@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 
 const tabs = [
   { id: "market", label: "Tin Thị Trường", targetId: "tin-thi-truong" },
@@ -12,6 +12,99 @@ const tabs = [
   { id: "press", label: "Thông cáo báo chí", targetId: "thong-cao-bao-chi" },
   { id: "magazine", label: "E-Magazine", targetId: "e-magazine" },
 ];
+
+function MarqueeTabs({ onTabClick }: { onTabClick: (id: string) => void }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let lastTime = performance.now();
+    const step = (time: number) => {
+      if (!container || isDraggingRef.current) {
+        rafRef.current = requestAnimationFrame(step);
+        return;
+      }
+      const delta = time - lastTime;
+      if (delta > 16) {
+        container.scrollLeft += 0.5;
+        const singleSetWidth = container.scrollWidth / 3;
+        if (container.scrollLeft >= singleSetWidth * 2) {
+          container.scrollLeft -= singleSetWidth;
+        }
+        lastTime = time;
+      }
+      rafRef.current = requestAnimationFrame(step);
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    isDraggingRef.current = true;
+    startXRef.current = e.pageX - container.offsetLeft;
+    scrollLeftRef.current = container.scrollLeft;
+    container.style.cursor = "grabbing";
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const container = scrollRef.current;
+    if (!container || !isDraggingRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startXRef.current) * 1.2;
+    container.scrollLeft = scrollLeftRef.current - walk;
+  };
+
+  const stopDrag = () => {
+    const container = scrollRef.current;
+    if (container) container.style.cursor = "grab";
+    isDraggingRef.current = false;
+  };
+
+  const duplicatedTabs = [...tabs, ...tabs, ...tabs];
+
+  return (
+    <div
+      ref={scrollRef}
+      className="flex gap-4 overflow-x-auto scrollbar-hide select-none w-full"
+      style={{ cursor: "grab", scrollbarWidth: "none", msOverflowStyle: "none" }}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={stopDrag}
+      onMouseLeave={stopDrag}
+    >
+      {duplicatedTabs.map((tab, idx) => (
+        <button
+          key={`${tab.id}-${idx}`}
+          onClick={() => onTabClick(tab.targetId)}
+          className="relative pb-3 cursor-pointer flex-shrink-0 text-gray-500 hover:text-primary transition-colors duration-200 whitespace-nowrap"
+          style={{
+            fontFamily: 'var(--font-inter), system-ui, sans-serif',
+            fontSize: '18px',
+            fontWeight: 500,
+          }}
+        >
+          {tab.label}
+          <span
+            className="absolute bottom-0 left-0 right-0 h-0.5 scale-x-0 hover:scale-x-100 transition-transform origin-left duration-200"
+            style={{ backgroundColor: colors.primary.DEFAULT }}
+          />
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export function NewsTabsSection() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,8 +124,8 @@ export function NewsTabsSection() {
     <section className="py-10 bg-white">
       <Container>
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          {/* Tabs */}
-          <div className="flex gap-4 lg:gap-8">
+          {/* Desktop Tabs */}
+          <div className="hidden lg:flex gap-4 lg:gap-8">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -54,13 +147,13 @@ export function NewsTabsSection() {
           </div>
 
           {/* Search */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-shrink-0 w-full lg:w-auto">
             <div
               className="flex items-center px-5 py-3 h-12 flex-1 lg:w-[380px] transition-shadow duration-200 hover:shadow-md"
               style={{
                 backgroundColor: colors.neutral.white,
                 borderRadius: '12px',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                boxShadow: `0 4px 20px ${withOpacity(colors.neutral.black, 0.08)}`,
               }}
             >
               <input
@@ -87,6 +180,11 @@ export function NewsTabsSection() {
                 <path d="m21 21-4.3-4.3"/>
               </svg>
             </Button>
+          </div>
+
+          {/* Mobile Tabs - Marquee */}
+          <div className="lg:hidden order-3">
+            <MarqueeTabs onTabClick={handleTabClick} />
           </div>
         </div>
       </Container>

@@ -137,7 +137,7 @@ body {
 
 /* Focus states */
 .focus\:border-primary:focus { border-color: var(--primary); }
-.focus\:ring-primary:focus { --tw-ring-color: rgb(182 23 34 / 0.2); }
+.focus\:ring-primary:focus { --tw-ring-color: rgb(var(--tw-ring-primary) / 0.2); }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {

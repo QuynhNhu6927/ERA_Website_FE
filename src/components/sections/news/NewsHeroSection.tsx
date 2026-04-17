@@ -1,44 +1,45 @@
 import { Container } from "@/components/ui/Container";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 
 export function NewsHeroSection() {
   return (
-    <section className="pt-10 bg-white">
-      <Container>
-        <div 
-          className="relative h-[360px] md:h-[480px] rounded-3xl overflow-hidden"
+    <section className="bg-white md:pt-10">
+      <Container className="px-0 sm:px-8 lg:px-10">
+        <div
+          className="relative h-[60vh] md:h-[480px] overflow-hidden md:rounded-3xl"
         >
           {/* Background Image */}
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: `url('/news/news_banner.jpg')`,
             }}
           />
-          
+
           {/* Overlay */}
-          <div 
+          <div
             className="absolute inset-0"
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)' }}
+            style={{ backgroundColor: withOpacity(colors.neutral.black, 0.35) }}
           />
-          
+
           {/* Content */}
-          <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-12 lg:px-16">
-            <h1 
+          <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-12 lg:px-16">
+            <h1
               className="mb-4"
               style={{
                 fontFamily: 'var(--font-plus-jakarta), system-ui, sans-serif',
                 fontWeight: 900,
-                fontSize: 'clamp(40px, 8vw, 72px)',
+                fontSize: 'clamp(60px, 8vw, 72px)',
                 lineHeight: 1.1,
+                textShadow: `0 4px 20px ${withOpacity(colors.neutral.black, 0.5)}, 0 2px 8px ${withOpacity(colors.neutral.black, 0.4)}`,
               }}
             >
-              <span style={{ color: colors.neutral.white }}>ERA</span>
-              <span style={{ color: colors.primary.DEFAULT }}>INSIGHTS</span>
+              <span className="block md:inline" style={{ color: colors.neutral.white }}>ERA</span>
+              <span className="block md:inline" style={{ color: colors.primary.DEFAULT }}>INSIGHTS</span>
             </h1>
-            
-            <p 
-              className="max-w-xl"
+
+            <p
+              className="max-w-xl hidden md:block"
               style={{
                 color: colors.neutral.white,
                 fontFamily: 'var(--font-manrope), system-ui, sans-serif',

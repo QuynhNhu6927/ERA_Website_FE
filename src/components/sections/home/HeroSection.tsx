@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 
 const slides = [
   {
@@ -203,7 +203,7 @@ export function HeroSection() {
               fontFamily: 'var(--font-manrope), system-ui, sans-serif',
               fontWeight: 800,
               lineHeight: 1.1,
-              textShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.4)',
+              textShadow: `0 4px 20px ${withOpacity(colors.neutral.black, 0.5)}, 0 2px 8px ${withOpacity(colors.neutral.black, 0.4)}`,
             }}
           >
             ERA VIETNAM
@@ -217,7 +217,7 @@ export function HeroSection() {
               fontWeight: 400,
               letterSpacing: '0.05em',
               lineHeight: 1.2,
-              textShadow: '0 3px 15px rgba(0, 0, 0, 0.6), 0 1px 5px rgba(0, 0, 0, 0.5)',
+              textShadow: `0 4px 20px ${withOpacity(colors.neutral.black, 0.5)}, 0 2px 8px ${withOpacity(colors.neutral.black, 0.4)}`,
             }}
           >
             EMPOWER PEOPLE,<br className="md:hidden" /> TRANSFORM LIVES

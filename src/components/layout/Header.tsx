@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { X } from "lucide-react";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 import { ROUTES } from "@/lib/routes";
 
 const ICON_SIZES = {
@@ -70,7 +70,7 @@ export function Header() {
         )} 
         style={{
           backgroundColor: colors.neutral.white,
-          boxShadow: isScrolled ? '0 1px 3px 0 rgb(0 0 0 / 0.1)' : 'none',
+          boxShadow: isScrolled ? `0 1px 3px 0 ${withOpacity(colors.neutral.black, 0.1)}` : 'none',
         }}
       >
         <Container>
@@ -125,63 +125,63 @@ export function Header() {
       </header>
 
       {/* Mobile Header - Floating Pills */}
-      <header 
+      <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 md:hidden",
           isVisible ? "translate-y-0" : "-translate-y-full"
-        )} 
+        )}
       >
-        <div className="px-4 pt-4 flex items-center justify-between">
+        <div className="px-3 pt-3 flex items-center justify-between">
           {/* Left: Floating pill with User + Hamburger */}
-          <div 
+          <div
             className={cn(
-              "flex items-center gap-1 px-2 py-1.5 rounded-full shadow-lg transition-all duration-300",
-              isScrolled 
-                ? "bg-white/95" 
-                : "bg-white/80 backdrop-blur-sm"
+              "flex items-center gap-0.5 px-1.5 py-1 rounded-full shadow-lg transition-all duration-300 bg-white",
+              isScrolled
+                ? "shadow-md"
+                : ""
             )}
           >
-            <Link href="/" className="p-2 flex items-center justify-center">
+            <Link href="/" className="p-1.5 flex items-center justify-center">
               <Image
                 src="/mobile_header/menu_user_icon.svg"
                 alt="User"
-                width={24}
-                height={24}
-                style={{ width: '24px', height: '24px' }}
+                width={20}
+                height={20}
+                style={{ width: '20px', height: '20px' }}
               />
             </Link>
-            <div className="w-px h-5 bg-gray-300" />
-            <button 
-              className="p-2 flex items-center justify-center" 
-              onClick={() => setIsMobileMenuOpen(true)} 
+            <div className="w-px h-4 bg-gray-300" />
+            <button
+              className="p-1.5 flex items-center justify-center"
+              onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open menu"
             >
               <Image
                 src="/mobile_header/menu_hambuger_icon.svg"
                 alt="Menu"
-                width={24}
-                height={24}
-                style={{ width: '24px', height: '24px' }}
+                width={20}
+                height={20}
+                style={{ width: '20px', height: '20px' }}
               />
             </button>
           </div>
 
           {/* Right: Logo floating */}
-          <div 
+          <div
             className={cn(
-              "flex items-center justify-center p-2 rounded-full shadow-lg transition-all duration-300",
-              isScrolled 
-                ? "bg-white/95" 
-                : "bg-white/80 backdrop-blur-sm"
+              "flex items-center justify-center p-1.5 rounded-full shadow-lg transition-all duration-300 bg-white",
+              isScrolled
+                ? "shadow-md"
+                : ""
             )}
           >
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo_short.svg"
                 alt="ERA Vietnam"
-                width={36}
-                height={36}
-                style={{ width: '36px', height: '36px' }}
+                width={28}
+                height={28}
+                style={{ width: '28px', height: '28px' }}
               />
             </Link>
           </div>
@@ -194,7 +194,7 @@ export function Header() {
         <div className={cn("absolute top-0 left-0 h-full w-[85%] max-w-[320px] transition-transform duration-300 flex flex-col", isMobileMenuOpen ? "translate-x-0" : "-translate-x-full")} style={{ backgroundColor: colors.neutral.white }}>
           
           {/* Section 1: Header */}
-          <div className="flex items-center justify-between px-5 py-4" style={{ backgroundColor: '#FFFFFFCC' }}>
+          <div className="flex items-center justify-between px-5 py-4" style={{ backgroundColor: withOpacity(colors.neutral.white, 0.8) }}>
             <Image src="/logo.svg" alt="ERA Vietnam" width={120} height={36} className="h-9 w-auto" priority />
             <button className="p-2" style={{ color: colors.gray[700] }} onClick={() => setIsMobileMenuOpen(false)} aria-label="Close menu">
               <X size={14} />
@@ -202,7 +202,7 @@ export function Header() {
           </div>
 
           {/* Section 2: Nav Links */}
-          <div className="px-5 py-5" style={{ backgroundColor: '#F7F9FC' }}>
+          <div className="px-5 py-5" style={{ backgroundColor: colors.gray[50] }}>
             <nav className="flex flex-col gap-6" style={{ fontFamily: 'var(--font-inter)' }}>
               {navLinks.map((link) => {
                 const linkClass = "flex items-center gap-4 py-3";
@@ -243,7 +243,7 @@ export function Header() {
           </div>
 
           {/* Section 3: Hotline + Social + Footer */}
-          <div className="flex-1 px-5 py-6 flex flex-col" style={{ backgroundColor: '#F2F4F7' }}>
+          <div className="flex-1 px-5 py-6 flex flex-col" style={{ backgroundColor: colors.gray[100] }}>
             {/* Hotline */}
             <div className="flex items-center justify-between mb-6">
               <div className="flex flex-col">
