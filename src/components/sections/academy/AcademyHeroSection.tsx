@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 
 export function AcademyHeroSection() {
   return (

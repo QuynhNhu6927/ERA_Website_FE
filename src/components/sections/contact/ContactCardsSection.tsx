@@ -44,51 +44,54 @@ export function ContactCardsSection() {
   return (
     <section className="py-12 md:py-16" style={{ backgroundColor: colors.gray[50] }}>
       <Container>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {contactCards.map((card) => (
             <article
               key={card.id}
-              className="bg-white rounded-2xl p-6 flex flex-col transition-all duration-200 hover:shadow-md hover:scale-[1.02] will-change-transform"
+              className="bg-white rounded-2xl p-4 md:p-6 flex flex-row md:flex-col items-start md:items-stretch gap-4 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 will-change-transform"
               style={{ borderBottom: `4px solid ${card.borderColor}` }}
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ backgroundColor: `${card.borderColor}15` }}
               >
                 <img src={card.icon} alt={card.title} className="w-6 h-6" />
               </div>
 
-              <h3
-                className="mb-2"
-                style={{
-                  color: colors.neutral.foreground,
-                  fontFamily: 'var(--font-manrope), system-ui, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '20px',
-                }}
-              >
-                {card.title}
-              </h3>
+              <div className="flex-1 min-w-0 flex flex-col justify-center">
+                <h3
+                  className="mb-1 md:mb-2"
+                  style={{
+                    color: colors.neutral.foreground,
+                    fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                    fontWeight: 700,
+                    fontSize: '16px',
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {card.title}
+                </h3>
 
-              <p
-                className="mb-4 flex-1"
-                style={{
-                  color: colors.gray[500],
-                  fontFamily: 'var(--font-inter)',
-                  fontWeight: 400,
-                  fontSize: '14px',
-                  lineHeight: 1.6,
-                }}
-              >
-                {card.description}
-              </p>
+                <p
+                  className="hidden md:block mb-4 flex-1"
+                  style={{
+                    color: colors.gray[500],
+                    fontFamily: 'var(--font-inter)',
+                    fontWeight: 400,
+                    fontSize: '14px',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {card.description}
+                </p>
 
-              <span
-                className="font-bold"
-                style={{ color: card.actionColor, fontFamily: 'var(--font-manrope), system-ui, sans-serif', fontWeight: 700, fontSize: '18px' }}
-              >
-                {card.action}
-              </span>
+                <span
+                  className="font-bold"
+                  style={{ color: card.actionColor, fontFamily: 'var(--font-manrope), system-ui, sans-serif', fontWeight: 700, fontSize: '16px' }}
+                >
+                  {card.action}
+                </span>
+              </div>
             </article>
           ))}
         </div>

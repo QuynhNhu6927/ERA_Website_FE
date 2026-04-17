@@ -3,7 +3,7 @@
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { cn } from "@/lib/utils";
 import { ArrowUp } from "lucide-react";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 
 export function ToTopButton() {
   const { isVisible, scrollToTop } = useScrollToTop(400);
@@ -22,17 +22,17 @@ export function ToTopButton() {
       style={{ 
         backgroundColor: colors.primary.DEFAULT,
         color: colors.neutral.white,
-        boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        boxShadow: `0 10px 15px -3px ${withOpacity(colors.neutral.black, 0.1)}, 0 4px 6px -4px ${withOpacity(colors.neutral.black, 0.1)}`,
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = colors.primary.dark;
         e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)';
+        e.currentTarget.style.boxShadow = `0 20px 25px -5px ${withOpacity(colors.neutral.black, 0.1)}, 0 8px 10px -6px ${withOpacity(colors.neutral.black, 0.1)}`;
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.backgroundColor = colors.primary.DEFAULT;
         e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)';
+        e.currentTarget.style.boxShadow = `0 10px 15px -3px ${withOpacity(colors.neutral.black, 0.1)}, 0 4px 6px -4px ${withOpacity(colors.neutral.black, 0.1)}`;
       }}
       aria-label="Scroll to top"
     >

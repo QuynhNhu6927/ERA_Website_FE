@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 
 const sideNews = [
   {
@@ -81,7 +81,7 @@ export function NewsERASection() {
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 100%)'
+                    background: `linear-gradient(to top, ${withOpacity(colors.neutral.black, 0.85)} 0%, ${withOpacity(colors.neutral.black, 0.4)} 40%, ${withOpacity(colors.neutral.black, 0.1)} 100%)`
                   }}
                 />
 

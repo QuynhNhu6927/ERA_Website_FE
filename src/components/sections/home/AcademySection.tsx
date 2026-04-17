@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 
 export function AcademySection() {
   return (
@@ -67,7 +67,7 @@ export function AcademySection() {
               className="relative rounded-xl p-3"
               style={{ 
                 backgroundColor: colors.neutral.white,
-                boxShadow: '0 20px 50px -12px rgba(0, 0, 0, 0.15)',
+                boxShadow: `0 20px 50px -12px ${withOpacity(colors.neutral.black, 0.15)}`,
               }}
             >
               {/* Main Image */}

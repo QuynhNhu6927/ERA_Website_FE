@@ -2,33 +2,40 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
+const roadmapColors = [
+  colors.cyanBright,
+  colors.orangeVivid,
+  colors.secondary.navy,
+  colors.primary.DEFAULT,
+];
+
 const roadmapCards = [
   {
     id: 1,
     title: "ONBOARDING",
     description: "Nền tảng vững chắc cho khởi đầu bứt phá tại ERA Vietnam.",
-    bgColor: "#00BFFF",
+    bgColor: roadmapColors[0],
     icon: "/academy/aca_onboard_icon.svg",
   },
   {
     id: 2,
     title: "EXPERT SERIES",
     description: "Chuỗi đào tạo chuyên sâu về kỹ năng và kiến thức thị trường.",
-    bgColor: "#F78C00",
+    bgColor: roadmapColors[1],
     icon: "/academy/aca_series_icon.svg",
   },
   {
     id: 3,
     title: "PRO COACHING",
     description: "Kèm cặp 1:1 từ những thủ lĩnh thực chiến hàng đầu.",
-    bgColor: "#0C0C44",
+    bgColor: roadmapColors[2],
     icon: "/academy/aca_coach_icon.svg",
   },
   {
     id: 4,
     title: "REALTY TALK",
     description: "Giao lưu, chia sẻ kinh nghiệm thực tế từ các chuyên gia.",
-    bgColor: "#CD2037",
+    bgColor: roadmapColors[3],
     icon: "/academy/aca_talk_icon.svg",
   },
 ];

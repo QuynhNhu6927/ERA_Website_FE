@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
 
 const tabs = [
   { id: "all", label: "Tất cả" },
@@ -215,7 +215,7 @@ export function AcademyCoursesSection() {
                   </div>
                   <span 
                     style={{
-                      color: course.isHot ? 'rgba(255,255,255,0.9)' : colors.gray[500],
+                      color: course.isHot ? withOpacity(colors.neutral.white, 0.9) : colors.gray[500],
                       fontFamily: 'var(--font-inter), system-ui, sans-serif',
                       fontWeight: 500,
                       fontSize: '14px',
@@ -229,7 +229,7 @@ export function AcademyCoursesSection() {
                 <div className="flex items-center justify-between mt-auto pt-2">
                   <span 
                     style={{
-                      color: course.isHot ? '#FFBF00' : (course.status === "coming" ? colors.primary.DEFAULT : colors.gray[500]),
+                      color: course.isHot ? colors.yellowVivid : (course.status === "coming" ? colors.primary.DEFAULT : colors.gray[500]),
                       fontFamily: 'var(--font-inter), system-ui, sans-serif',
                       fontWeight: 700,
                       fontSize: '16px',
@@ -242,7 +242,7 @@ export function AcademyCoursesSection() {
                     <button
                       className="px-4 py-1.5 rounded text-white text-sm font-medium transition-opacity hover:opacity-90"
                       style={{ 
-                        backgroundColor: '#3E5BA4',
+                        backgroundColor: colors.indigo,
                         fontFamily: 'var(--font-inter), system-ui, sans-serif',
                         fontWeight: 600,
                         fontSize: '14px',
@@ -256,7 +256,7 @@ export function AcademyCoursesSection() {
                     <button
                       className="px-4 py-1.5 rounded text-sm font-medium transition-opacity hover:opacity-90"
                       style={{ 
-                        backgroundColor: '#FFBF00',
+                        backgroundColor: colors.yellowVivid,
                         color: colors.neutral.black,
                         fontFamily: 'var(--font-inter), system-ui, sans-serif',
                         fontWeight: 600,
