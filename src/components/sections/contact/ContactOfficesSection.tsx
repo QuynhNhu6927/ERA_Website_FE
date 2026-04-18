@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors, withOpacity } from "@/lib/theme";
 
 const offices = [
@@ -39,8 +39,7 @@ export function ContactOfficesSection() {
   const active = offices.find((o) => o.id === activeOffice) || offices[0];
 
   return (
-    <section className="py-12 md:py-16 bg-white">
-      <Container>
+    <Section padding="sm" bg="white">
         {/* Section Title */}
         <div className="flex items-center gap-3 mb-8">
           <div
@@ -279,7 +278,6 @@ export function ContactOfficesSection() {
             </div>
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

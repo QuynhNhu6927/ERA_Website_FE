@@ -1,8 +1,9 @@
 "use client";
 
+import { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors, withOpacity } from "@/lib/theme";
 
 const sideNews = [
@@ -39,10 +40,9 @@ const featuredNews = {
   flagCode: "vn",
 };
 
-export function NewsERASection() {
+export const NewsERASection = memo(function NewsERASection() {
   return (
-    <section className="py-12" style={{ backgroundColor: colors.gray[50] }}>
-      <Container>
+    <Section padding="sm" bg="gray">
         {/* Section Title */}
         <div className="flex items-center gap-3 mb-8">
           <div
@@ -65,15 +65,14 @@ export function NewsERASection() {
           {/* Left - Featured News */}
           <div className="lg:col-span-3">
             <Link href="/news/era-news" className="block">
-              <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01] will-change-transform">
+              <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01]">
                 <Image
                   src={featuredNews.image}
                   alt={featuredNews.title}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 60vw"
-                  loading="eager"
-                  priority
+                  loading="lazy"
                 />
 
                 {/* Gradient Overlay */}
@@ -170,7 +169,6 @@ export function NewsERASection() {
             ))}
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
-}
+});

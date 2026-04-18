@@ -1,10 +1,9 @@
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors, withOpacity } from "@/lib/theme";
 
 export function ContactHeroSection() {
   return (
-    <section className="bg-white md:pt-10">
-      <Container className="px-0 sm:px-8 lg:px-10">
+    <Section padding="none" bg="white" containerClassName="px-0 sm:px-8 lg:px-10" className="md:pt-10">
         <div
           className="relative h-[60vh] md:h-[480px] overflow-hidden md:rounded-3xl"
         >
@@ -51,7 +50,6 @@ export function ContactHeroSection() {
             </p>
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

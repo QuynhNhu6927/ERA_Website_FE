@@ -1,10 +1,10 @@
-import { Container } from "@/components/ui/Container";
+import { memo } from "react";
+import { Section } from "@/components/ui/Section";
 import { colors, withOpacity } from "@/lib/theme";
 
-export function NewsHeroSection() {
+export const NewsHeroSection = memo(function NewsHeroSection() {
   return (
-    <section className="bg-white md:pt-10">
-      <Container className="px-0 sm:px-8 lg:px-10">
+    <Section padding="none" bg="white" containerClassName="px-0 sm:px-8 lg:px-10" className="md:pt-10">
         <div
           className="relative h-[60vh] md:h-[480px] overflow-hidden md:rounded-3xl"
         >
@@ -50,7 +50,6 @@ export function NewsHeroSection() {
             </p>
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
-}
+});

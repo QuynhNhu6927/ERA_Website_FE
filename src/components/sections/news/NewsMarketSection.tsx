@@ -1,6 +1,7 @@
+import { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors, withOpacity } from "@/lib/theme";
 
 const sideNews = [
@@ -33,10 +34,9 @@ const featuredNews = {
   image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
 };
 
-export function NewsMarketSection() {
+export const NewsMarketSection = memo(function NewsMarketSection() {
   return (
-    <section className="py-12" style={{ backgroundColor: colors.gray[50] }}>
-      <Container>
+    <Section padding="sm" bg="gray">
         {/* Section Title */}
         <div className="flex items-center gap-3 mb-8">
           <div 
@@ -58,15 +58,14 @@ export function NewsMarketSection() {
           {/* Left - Featured News (3 cols) */}
           <div className="lg:col-span-3">
             <Link href="/news/tin-thi-truong" className="block">
-            <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01] will-change-transform">
+            <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01]">
               <Image
                 src={featuredNews.image}
                 alt={featuredNews.title}
                 fill
                 className="object-cover"
                 sizes="100vw"
-                loading="eager"
-                priority
+                loading="lazy"
               />
               
               {/* Gradient Overlay */}
@@ -150,7 +149,6 @@ export function NewsMarketSection() {
             ))}
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
-}
+});

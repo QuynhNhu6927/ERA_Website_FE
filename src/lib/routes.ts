@@ -8,7 +8,7 @@ export const ROUTES = {
   home: "/",
   aboutUs: "/ve-chung-toi",
   projects: "/du-an",
-  joinTeam: "/join-team",
+  join: "/join",
   news: "/news",
   contact: "/contact",
   
