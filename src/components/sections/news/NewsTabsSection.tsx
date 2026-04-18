@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { Container } from "@/components/ui/Container";
+import { useState, useRef, useEffect, memo } from "react";
+import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { colors, withOpacity } from "@/lib/theme";
 
@@ -105,7 +105,7 @@ function MarqueeTabs({ onTabClick }: { onTabClick: (id: string) => void }) {
   );
 }
 
-export function NewsTabsSection() {
+export const NewsTabsSection = memo(function NewsTabsSection() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleTabClick = (targetId: string) => {
@@ -120,8 +120,7 @@ export function NewsTabsSection() {
   };
 
   return (
-    <section className="py-10 bg-white">
-      <Container>
+    <Section padding="xs" bg="white">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           {/* Desktop Tabs */}
           <div className="hidden lg:flex gap-4 lg:gap-8">
@@ -184,7 +183,6 @@ export function NewsTabsSection() {
             <MarqueeTabs onTabClick={handleTabClick} />
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
-}
+});

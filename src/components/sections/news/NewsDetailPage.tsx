@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
@@ -28,7 +29,7 @@ const relatedNews = [
   },
 ];
 
-export function NewsDetailPage() {
+export const NewsDetailPage = memo(function NewsDetailPage() {
   return (
     <main style={{ backgroundColor: colors.gray[50] }}>
       <Container>
@@ -143,7 +144,7 @@ export function NewsDetailPage() {
                 {relatedNews.map((item) => (
                   <article
                     key={item.id}
-                    className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md transition-transform duration-300 hover:scale-[1.02] will-change-transform"
+                    className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md transition-transform duration-300 hover:scale-[1.02]"
                   >
                     <div className="relative h-48 overflow-hidden">
                       <Image
@@ -236,4 +237,4 @@ export function NewsDetailPage() {
       </Container>
     </main>
   );
-}
+});

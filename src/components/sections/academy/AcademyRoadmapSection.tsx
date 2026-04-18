@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors } from "@/lib/theme";
 
 const roadmapColors = [
@@ -42,8 +42,7 @@ const roadmapCards = [
 
 export function AcademyRoadmapSection() {
   return (
-    <section className="py-12 md:py-16 bg-white">
-      <Container>
+    <Section padding="sm" bg="white">
         {/* Section Title */}
         <h2 
           className="text-center mb-10"
@@ -105,7 +104,6 @@ export function AcademyRoadmapSection() {
             </article>
           ))}
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

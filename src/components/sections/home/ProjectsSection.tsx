@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { colors, withOpacity } from "@/lib/theme";
 
@@ -10,11 +10,9 @@ export function ProjectsSection() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <section 
-      className="py-16 md:py-20"
-      style={{ backgroundColor: colors.gray[50] }}
+    <Section
+      padding="md" bg="gray"
     >
-      <Container>
         {/* Title - Mobile: stacked centered 32px; Desktop: inline left 48px */}
         <h2 
           className="mb-4 text-center lg:text-left"
@@ -170,7 +168,6 @@ export function ProjectsSection() {
             />
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

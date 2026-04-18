@@ -113,7 +113,7 @@ export function HeroSection() {
   return (
     <section 
       ref={sectionRef}
-      className="relative flex items-center justify-center overflow-hidden h-[60vh] md:h-[70vh] cursor-grab active:cursor-grabbing"
+      className="relative flex items-center justify-center overflow-hidden h-[60vh] md:h-[80vh] cursor-grab active:cursor-grabbing"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}

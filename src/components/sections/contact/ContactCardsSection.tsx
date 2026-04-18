@@ -1,4 +1,4 @@
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors } from "@/lib/theme";
 
 const contactCards = [
@@ -42,8 +42,7 @@ const contactCards = [
 
 export function ContactCardsSection() {
   return (
-    <section className="py-12 md:py-16" style={{ backgroundColor: colors.gray[50] }}>
-      <Container>
+    <Section padding="sm" bg="gray">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {contactCards.map((card) => (
             <article
@@ -93,7 +92,6 @@ export function ContactCardsSection() {
             </article>
           ))}
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

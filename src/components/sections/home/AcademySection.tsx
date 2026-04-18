@@ -2,14 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { colors, withOpacity } from "@/lib/theme";
 
 export function AcademySection() {
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <Container>
+    <Section padding="lg" bg="white">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="flex flex-col order-2 lg:order-1">
@@ -106,7 +105,6 @@ export function AcademySection() {
             </div>
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

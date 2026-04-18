@@ -1,5 +1,6 @@
+import { memo } from "react";
 import Image from "next/image";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { colors } from "@/lib/theme";
 
@@ -34,10 +35,9 @@ const magazines = [
   },
 ];
 
-export function NewsEMagazineSection() {
+export const NewsEMagazineSection = memo(function NewsEMagazineSection() {
   return (
-    <section className="py-12" style={{ backgroundColor: colors.gray[50] }}>
-      <Container>
+    <Section padding="sm" bg="gray">
         {/* Section Title */}
         <div className="flex items-center gap-3 mb-8">
           <div
@@ -138,7 +138,6 @@ export function NewsEMagazineSection() {
             </article>
           ))}
         </div>
-      </Container>
-    </section>
+    </Section>
   );
-}
+});

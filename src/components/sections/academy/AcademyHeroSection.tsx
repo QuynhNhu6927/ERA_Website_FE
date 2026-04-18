@@ -1,10 +1,9 @@
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors, withOpacity } from "@/lib/theme";
 
 export function AcademyHeroSection() {
   return (
-    <section className="pt-10 bg-white">
-      <Container>
+    <Section padding="none" bg="white" className="pt-10">
         <div 
           className="relative h-[360px] md:h-[480px] rounded-3xl overflow-hidden"
           style={{
@@ -48,7 +47,6 @@ export function AcademyHeroSection() {
             </button>
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

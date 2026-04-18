@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors } from "@/lib/theme";
 import { ROUTES } from "@/lib/routes";
 
@@ -42,10 +42,9 @@ export function NewsSection() {
   };
 
   return (
-    <section 
-      className="py-16 lg:py-20 bg-white"
+    <Section 
+      padding="xl" bg="white"
     >
-      <Container>
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           <h2 
@@ -217,7 +216,6 @@ export function NewsSection() {
             Xem tất cả tin tức
           </a>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

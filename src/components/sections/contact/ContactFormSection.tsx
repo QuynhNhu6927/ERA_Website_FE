@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { colors, withOpacity } from "@/lib/theme";
 
@@ -19,8 +19,7 @@ export function ContactFormSection() {
   };
 
   return (
-    <section className="py-12 md:py-20" style={{ backgroundColor: colors.gray[50] }}>
-      <Container>
+    <Section padding="md" bg="gray">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-8 lg:gap-12">
           {/* Title */}
           <div className="lg:col-span-1">
@@ -159,7 +158,7 @@ export function ContactFormSection() {
 
           {/* Image + CTA Card */}
           <div className="row-start-3 lg:row-start-2 lg:col-start-1 rounded-3xl overflow-hidden flex flex-col flex-1 min-h-0">
-            <div className="relative w-full" style={{ aspectRatio: '16/10' }}>
+            <div className="relative w-full" style={{ aspectRatio: '16/6' }}>
               <img
                 src="/contact/contact_inbox_form.jpg"
                 alt="ERA Vietnam Team"
@@ -196,7 +195,7 @@ export function ContactFormSection() {
                 className="inline-flex items-center gap-1 transition-opacity hover:opacity-80"
                 style={{ color: colors.neutral.white, fontWeight: 700, fontSize: '16px' }}
               >
-                Gia nhập ERA ngay
+                Gia nhập ERA ngayx
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
@@ -204,7 +203,6 @@ export function ContactFormSection() {
             </div>
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

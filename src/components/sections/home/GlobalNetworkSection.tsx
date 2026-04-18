@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors } from "@/lib/theme";
 
 const stats = [
@@ -103,11 +103,10 @@ export function GlobalNetworkSection() {
   };
 
   return (
-    <section 
+    <Section
       ref={sectionRef}
-      className="py-16 md:py-20 bg-white"
+      padding="md" bg="white"
     >
-      <Container>
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-center">
           
           {/* Left Content */}
@@ -231,7 +230,6 @@ export function GlobalNetworkSection() {
             />
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

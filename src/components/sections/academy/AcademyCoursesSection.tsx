@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { colors, withOpacity } from "@/lib/theme";
 
 const tabs = [
@@ -90,8 +90,7 @@ export function AcademyCoursesSection() {
     : courses.filter(c => c.category === activeTab);
 
   return (
-    <section className="py-12" style={{ backgroundColor: colors.gray[50] }}>
-      <Container>
+    <Section padding="sm" bg="gray">
         {/* Section Title */}
         <div className="text-center mb-8">
           <h2 
@@ -278,7 +277,6 @@ export function AcademyCoursesSection() {
             </article>
           ))}
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }
