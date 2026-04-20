@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { Section } from "@/components/ui/Section";
+import { Button } from "@/components/ui/Button";
 import { colors, withOpacity } from "@/lib/theme";
 
 export function AcademyHeroSection() {
@@ -20,31 +22,30 @@ export function AcademyHeroSection() {
           
           {/* Content - Aligned to bottom */}
           <div className="relative z-10 h-full flex flex-col justify-end px-8 md:px-12 lg:px-16 pb-8 md:pb-12">
-            <h1 
-              className="text-white mb-2"
-              style={{
-                fontWeight: 900,
-                fontSize: 'clamp(40px, 8vw, 72px)',
-                lineHeight: 1.1,
-              }}
-            >
-              ERA ACADEMY
-            </h1>
+            <div className="mb-2">
+              <img
+                src="/academy/academy_logo_white.svg"
+                alt="ERA Academy"
+                className="h-auto w-[clamp(180px,30vw,350px)]"
+              />
+            </div>
             <p 
-              className="text-white/90 mb-6 max-w-lg"
+              className="text-white/90 mb-3 max-w-lg"
               style={{
                 fontSize: '16px',
                 lineHeight: 1.5,
+                textShadow: `0 4px 20px ${withOpacity(colors.neutral.black, 0.5)}, 0 2px 8px ${withOpacity(colors.neutral.black, 0.4)}`,
               }}
             >
               Hệ thống đào tạo và phát triển năng lực toàn diện tại ERA Vietnam
             </p>
-            <button
-              className="w-fit px-6 py-3 rounded-full text-white font-semibold transition-all duration-200 hover:opacity-90 hover:shadow-lg"
-              style={{ backgroundColor: colors.primary.DEFAULT }}
+            <Button
+              variant="primary"
+              size="md"
+              className="w-fit rounded-[20px]"
             >
               ĐĂNG KÝ TƯ VẤN LỘ TRÌNH
-            </button>
+            </Button>
           </div>
         </div>
     </Section>

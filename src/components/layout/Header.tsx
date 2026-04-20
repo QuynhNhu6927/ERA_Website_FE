@@ -17,7 +17,7 @@ const ICON_SIZES = {
 };
 
 const navLinks: { href: string; label: string; icon: string; external?: boolean }[] = [
-  { href: "http://duan.era.com.vn/", label: "Dự án", icon: "/mobile_header/menu_project_icon.svg", external: true },
+  { href: "/", label: "Dự án", icon: "/mobile_header/menu_project_icon.svg"},
   { href: ROUTES.join, label: "Join Team ERA", icon: "/mobile_header/menu_join_icon.svg"},
   { href: ROUTES.news, label: "Tin tức", icon: "/mobile_header/menu_news_icon.svg" },
   { href: ROUTES.contact, label: "Liên hệ", icon: "/mobile_header/menu_contact_icon.svg" },
