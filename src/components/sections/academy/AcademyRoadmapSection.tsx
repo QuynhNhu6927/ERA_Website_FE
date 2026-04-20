@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { colors } from "@/lib/theme";
 
 const roadmapColors = [
-  colors.primary.navy.DEFAULT,
+  colors.secondary.DEFAULT,
   colors.tertiary.orange.DEFAULT,
   colors.primary.navy.DEFAULT,
   colors.primary.DEFAULT,

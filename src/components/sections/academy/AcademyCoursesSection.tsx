@@ -1,282 +1,96 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { colors, withOpacity } from "@/lib/theme";
+import {
+  OnboardingTab,
+  ExpertSeriesTab,
+  ProcoachingTab,
+  InternationalTab,
+} from "./courses";
 
 const tabs = [
-  { id: "all", label: "Tất cả" },
-  { id: "onboarding", label: "On Boarding" },
-  { id: "expert", label: "Expert" },
-  { id: "coaching", label: "Pro Coaching" },
-  { id: "tech", label: "Tech & AI" },
-];
-
-const courses = [
-  {
-    id: 1,
-    title: "Resales 101: Quy trình chuyển nhượng",
-    trainer: "Nguyễn Văn A",
-    date: "15/10/2024",
-    type: "Offline",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
-    status: "available",
-    category: "onboarding",
-    isHot: false,
-  },
-  {
-    id: 2,
-    title: "Marketing 101: Xây dựng thương hiệu cá nhân",
-    trainer: "Trần Thị B",
-    date: "Sắp ra mắt",
-    type: "Online",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80",
-    status: "coming",
-    category: "expert",
-    isHot: true,
-  },
-  {
-    id: 3,
-    title: "Dự án Cao cấp: Phân tích và Tiếp cận khách hàng",
-    trainer: "Lê Văn C",
-    date: "20/10/2024",
-    type: "Offline",
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80",
-    status: "available",
-    category: "coaching",
-    isHot: false,
-  },
-  {
-    id: 4,
-    title: "Resales 101: Quy trình chuyển nhượng",
-    trainer: "Nguyễn Văn A",
-    date: "15/10/2024",
-    type: "Offline",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
-    status: "available",
-    category: "onboarding",
-    isHot: false,
-  },
-  {
-    id: 5,
-    title: "Marketing 101: Xây dựng thương hiệu cá nhân",
-    trainer: "Trần Thị B",
-    date: "Sắp ra mắt",
-    type: "Online",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80",
-    status: "waiting",
-    category: "expert",
-    isHot: false,
-  },
-  {
-    id: 6,
-    title: "Dự án Cao cấp: Phân tích và Tiếp cận khách hàng",
-    trainer: "Lê Văn C",
-    date: "20/10/2024",
-    type: "Offline",
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80",
-    status: "available",
-    category: "coaching",
-    isHot: false,
-  },
+  { id: "onboarding", label: "Onboarding", Component: OnboardingTab },
+  { id: "expert", label: "Expert Series", Component: ExpertSeriesTab },
+  { id: "coaching", label: "Procoaching", Component: ProcoachingTab },
+  { id: "international", label: "Đào tạo Quốc tế", Component: InternationalTab },
 ];
 
 export function AcademyCoursesSection() {
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState("onboarding");
+  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
-  const filteredCourses = activeTab === "all" 
-    ? courses 
-    : courses.filter(c => c.category === activeTab);
+  const ActiveComponent = tabs.find((t) => t.id === activeTab)?.Component ?? OnboardingTab;
 
   return (
-    <Section padding="sm" bg="gray">
-        {/* Section Title */}
-        <div className="text-center mb-8">
-          <h2 
-            style={{
-              color: colors.primary.DEFAULT,
-              fontWeight: 800,
-              fontSize: '36px',
-              marginBottom: '8px',
-            }}
-          >
-            CÁC KHOÁ HỌC NỔI BẬT
-          </h2>
-          <p 
-            style={{
-              color: colors.gray[500],
-              fontWeight: 400,
-              fontSize: '16px',
-            }}
-          >
-            Cập nhật những kiến thức mới nhất trong ngành BĐS
-          </p>
-        </div>
+    <Section padding="md" bg="gray">
+      {/* Title */}
+      <div className="text-center mb-4">
+        <h2
+          style={{
+            color: colors.primary.DEFAULT,
+            fontWeight: 900,
+            fontSize: "clamp(32px, 5vw, 48px)",
+            lineHeight: 1.1,
+          }}
+        >
+          CÁC KHOÁ HỌC NỔI BẬT
+        </h2>
+        <p
+          className="max-w-2xl mx-auto mt-2"
+          style={{
+            color: colors.gray[600],
+            fontWeight: 400,
+            fontSize: "15px",
+            lineHeight: 1.5,
+          }}
+        >
+          Hệ thống khóa học đa dạng, dẫn dắt từ kiến thức nền tảng cho đến kỹ năng thực chiến chuyên sâu, giúp bạn tự tin làm chủ mọi giao dịch.
+        </p>
+      </div>
 
-        {/* Tabs */}
-        <div className="flex gap-6 lg:gap-10 justify-center mb-8">
-          {tabs.map((tab) => (
+      {/* Tabs */}
+      <div className="flex flex-wrap gap-3 justify-center mb-10">
+        {tabs.map((tab) => {
+          const isActive = activeTab === tab.id;
+          const isHovered = hoveredTab === tab.id;
+          const bg = isActive
+            ? colors.primary.DEFAULT
+            : isHovered
+              ? withOpacity(colors.primary.DEFAULT, 0.08)
+              : colors.neutral.white;
+          const textColor = isActive
+            ? colors.neutral.white
+            : isHovered
+              ? colors.primary.DEFAULT
+              : colors.gray[600];
+          const border = isActive
+            ? colors.primary.DEFAULT
+            : isHovered
+              ? colors.primary.DEFAULT
+              : colors.gray[300];
+          return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className="relative pb-2 transition-colors text-sm"
+              onMouseEnter={() => setHoveredTab(tab.id)}
+              onMouseLeave={() => setHoveredTab(null)}
+              className="px-6 py-2.5 rounded-lg text-sm font-medium transition-all border"
               style={{
-                color: activeTab === tab.id ? colors.primary.DEFAULT : colors.gray[500],
-                fontSize: '16px',
-                fontWeight: activeTab === tab.id ? 500 : 400,
+                backgroundColor: bg,
+                color: textColor,
+                borderColor: border,
               }}
             >
               {tab.label}
-              {activeTab === tab.id && (
-                <span 
-                  className="absolute bottom-0 left-0 right-0 h-0.5"
-                  style={{ backgroundColor: colors.primary.DEFAULT }}
-                />
-              )}
             </button>
-          ))}
-        </div>
+          );
+        })}
+      </div>
 
-        {/* Course Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCourses.map((course) => (
-            <article 
-              key={course.id}
-              className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer group flex flex-col"
-              style={{ 
-                backgroundColor: course.isHot ? '#CD2037' : colors.neutral.white,
-                transition: 'box-shadow 0.2s ease',
-                willChange: 'box-shadow',
-              }}
-            >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden flex-shrink-0">
-                <Image
-                  src={course.image}
-                  alt={course.title}
-                  fill
-                  className="object-cover"
-                  style={{ transition: 'transform 0.3s ease' }}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  loading="lazy"
-                />
-                {/* Type Badge */}
-                <span 
-                  className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
-                  style={{ 
-                    backgroundColor: course.type === "Online" ? colors.primary.DEFAULT : colors.primary.navy.DEFAULT,
-                    color: colors.neutral.white,
-                  }}
-                >
-                  {course.type}
-                </span>
-                {/* HOT Badge */}
-                {course.isHot && (
-                  <span 
-                    className="absolute top-3 right-3 w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                    style={{ backgroundColor: colors.primary.DEFAULT }}
-                  >
-                    HOT
-                  </span>
-                )}
-              </div>
-
-              {/* Content - Flex column with justify-between for equal alignment */}
-              <div className="p-5 flex flex-col flex-1">
-                {/* Title - fixed min height */}
-                <h3 
-                  className="mb-3 line-clamp-2 group-hover:text-primary"
-                  style={{
-                    color: course.isHot ? colors.neutral.white : colors.neutral.foreground,
-                    fontWeight: 700,
-                    fontSize: '20px',
-                    lineHeight: 1.3,
-                    minHeight: '52px',
-                  }}
-                >
-                  {course.title}
-                </h3>
-
-                {/* Trainer - fixed position */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div 
-                    className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                    style={{ backgroundColor: course.isHot ? colors.neutral.white : colors.primary.DEFAULT,
-                             color: course.isHot ? colors.primary.DEFAULT : colors.neutral.white,
-                    }}
-                  >
-                    {course.trainer.charAt(0)}
-                  </div>
-                  <span 
-                    style={{
-                      color: course.isHot ? withOpacity(colors.neutral.white, 0.9) : colors.gray[500],
-                      fontWeight: 500,
-                      fontSize: '14px',
-                    }}
-                  >
-                    Trainer: {course.trainer}
-                  </span>
-                </div>
-
-                {/* Footer - pushed to bottom */}
-                <div className="flex items-center justify-between mt-auto pt-2">
-                  <span 
-                    style={{
-                      color: course.isHot ? colors.tertiary.orange.DEFAULT : (course.status === "coming" ? colors.primary.DEFAULT : colors.gray[500]),
-                      fontWeight: 700,
-                      fontSize: '16px',
-                    }}
-                  >
-                    {course.date}
-                  </span>
-                  
-                  {course.status === "available" && (
-                    <button
-                      className="px-4 py-1.5 rounded text-white text-sm font-medium transition-opacity hover:opacity-90"
-                      style={{ 
-                        backgroundColor: colors.primary.navy.DEFAULT,
-                        fontWeight: 600,
-                        fontSize: '14px',
-                        borderRadius: '8px',
-                      }}
-                    >
-                      Đăng ký
-                    </button>
-                  )}
-                  {course.status === "coming" && (
-                    <button
-                      className="px-4 py-1.5 rounded text-sm font-medium transition-opacity hover:opacity-90"
-                      style={{ 
-                        backgroundColor: colors.tertiary.orange.DEFAULT,
-                        color: colors.neutral.black,
-                        fontWeight: 600,
-                        fontSize: '14px',
-                        borderRadius: '8px',
-                      }}
-                    >
-                      Chờ thông báo
-                    </button>
-                  )}
-                  {course.status === "waiting" && (
-                    <button
-                      className="px-4 py-1.5 rounded text-sm font-medium"
-                      style={{ 
-                        backgroundColor: colors.gray[100],
-                        color: colors.gray[500],
-                        fontWeight: 600,
-                        fontSize: '14px',
-                        borderRadius: '8px',
-                      }}
-                    >
-                      Chờ thông báo
-                    </button>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+      {/* Active Tab Content */}
+      <ActiveComponent />
     </Section>
   );
 }
