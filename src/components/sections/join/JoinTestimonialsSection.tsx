@@ -123,6 +123,7 @@ export function JoinTestimonialsSection() {
 
               {/* Quote */}
               <p
+                className="italic"
                 style={{
                   color: colors.gray[700],
                   fontWeight: 400,
@@ -130,7 +131,7 @@ export function JoinTestimonialsSection() {
                   lineHeight: 1.7,
                 }}
               >
-                {t.quote}
+                &ldquo;{t.quote}&rdquo;
               </p>
             </div>
           ))}

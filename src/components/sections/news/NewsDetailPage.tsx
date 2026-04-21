@@ -1,9 +1,12 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { colors } from "@/lib/theme";
+import { colors, withOpacity } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const relatedNews = [
   {
@@ -29,211 +32,391 @@ const relatedNews = [
   },
 ];
 
+const socialLinks = [
+  { name: "Facebook", src: "/shared/fb_icon.svg", href: "#" },
+  { name: "Twitter", src: "/shared/x_icon.svg", href: "#" },
+  { name: "LinkedIn", src: "/shared/linkedin_icon.svg", href: "#" },
+  { name: "Share", src: "/news/news_share_icon.svg", href: "#" },
+];
+
 export const NewsDetailPage = memo(function NewsDetailPage() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(e.target as Node)
+      ) {
+        setIsSearchOpen(false);
+      }
+    }
+    if (isSearchOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [isSearchOpen]);
+
   return (
     <main style={{ backgroundColor: colors.gray[50] }}>
       <Container>
-          {/* Header - Category + Date */}
-          <div className="pt-8 pb-6">
-            <h1 
-              className="mb-2"
-              style={{
-                color: colors.primary.navy.DEFAULT,
-                fontWeight: 900,
-                fontSize: '40px',
-              }}
+        <article className="pt-20 md:pt-16 pb-12">
+          {/* Breadcrumb + Search */}
+          <div
+            ref={searchRef}
+            className="mb-4 flex items-center justify-between gap-3"
+          >
+            {/* Breadcrumb text — hidden on mobile only when search open */}
+            <div
+              className={cn(
+                "flex items-center min-w-0 transition-all duration-200",
+                isSearchOpen ? "opacity-0 w-0 overflow-hidden lg:opacity-100 lg:w-auto" : ""
+              )}
             >
-              TIN TỨC
-            </h1>
-            <p 
+              <Link
+                href={ROUTES.news}
+                style={{ color: colors.gray[500], fontSize: "14px" }}
+                className="hover:text-primary transition-colors flex-shrink-0"
+              >
+                Tin tức
+              </Link>
+              <span
+                className="mx-2 flex-shrink-0"
+                style={{ color: colors.gray[400] }}
+              >
+                /
+              </span>
+              <span
+                className="truncate"
+                style={{
+                  color: colors.primary.DEFAULT,
+                  fontSize: "14px",
+                  fontWeight: 700,
+                }}
+              >
+                Tin Thị Trường
+              </span>
+            </div>
+
+            {/* Desktop search — always visible */}
+            <div className="hidden lg:flex items-center gap-2">
+              <div
+                className="flex items-center gap-2 px-3 py-2 rounded-lg w-[260px]"
+                style={{ backgroundColor: colors.gray[100] }}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={colors.gray[400]}
+                  strokeWidth="2"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-1 bg-transparent outline-none text-sm min-w-0"
+                  style={{ color: colors.neutral.foreground }}
+                />
+              </div>
+              <button
+                className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg"
+                style={{ backgroundColor: colors.primary.DEFAULT }}
+                aria-label="Tìm kiếm"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={colors.neutral.white}
+                  strokeWidth="2.5"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Mobile search input — expands when active */}
+            <div
+              className={cn(
+                "flex items-center gap-2 transition-all duration-300 overflow-hidden lg:hidden",
+                isSearchOpen ? "flex-1" : "w-0 opacity-0"
+              )}
+            >
+              <div
+                className="flex-1 flex items-center gap-2 px-3 py-2 rounded-lg"
+                style={{ backgroundColor: colors.gray[100] }}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={colors.gray[400]}
+                  strokeWidth="2"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-1 bg-transparent outline-none text-sm min-w-0"
+                  style={{ color: colors.neutral.foreground }}
+                  autoFocus={isSearchOpen}
+                />
+              </div>
+
+              {/* Search submit button */}
+              <button
+                className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg"
+                style={{ backgroundColor: colors.primary.DEFAULT }}
+                aria-label="Tìm kiếm"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={colors.neutral.white}
+                  strokeWidth="2.5"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+              </button>
+
+              {/* Close button */}
+              <button
+                onClick={() => {
+                  setIsSearchOpen(false);
+                  setSearchQuery("");
+                }}
+                className="flex-shrink-0 p-1"
+                aria-label="Đóng tìm kiếm"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={colors.gray[500]}
+                  strokeWidth="2"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Mobile search toggle button */}
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className={cn(
+                "lg:hidden flex items-center justify-center w-8 h-8 rounded-lg transition-colors flex-shrink-0",
+                isSearchOpen ? "hidden" : ""
+              )}
+              style={{ backgroundColor: colors.primary.DEFAULT }}
+              aria-label="Mở tìm kiếm"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke={colors.neutral.white}
+                strokeWidth="2.5"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Title */}
+          <h1
+            className="mb-4"
+            style={{
+              color: colors.primary.DEFAULT,
+              fontWeight: 800,
+              fontSize: "clamp(24px, 4vw, 32px)",
+              lineHeight: 1.3,
+            }}
+          >
+            Tác động của lãi suất ngân hàng đến thị trường Bất Động Sản 2024
+          </h1>
+
+          {/* Excerpt */}
+          <p
+            className="mb-8"
+            style={{
+              color: colors.gray[600],
+              fontSize: "15px",
+              lineHeight: 1.6,
+            }}
+          >
+            Thành lập năm 1971 tại Mỹ, ERA (Electronic Realty Associates) tự hào là một trong những thương hiệu môi giới bất động sản nhượng quyền hàng đầu thế giới, trực thuộc sự điều hành của Compass International Holdings - Công ty môi giới bất động sản nhà ở lớn nhất Hoa Kỳ.
+          </p>
+
+          {/* Featured Image */}
+          <div className="relative rounded-2xl overflow-hidden mb-8 aspect-video">
+            <Image
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80"
+              alt="Featured"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              loading="eager"
+              priority
+            />
+          </div>
+
+          {/* Body Content */}
+          <div
+            className="mb-8"
+            style={{
+              color: colors.neutral.foreground,
+              fontSize: "15px",
+              lineHeight: 1.8,
+            }}
+          >
+            <p className="mb-4">
+              Khu dịch vụ du lịch sinh thái, nghỉ dưỡng và giải trí tại bán đảo Tha La, hồ Dầu Tiếng đang được mờigọi đầu tư với tổng vốn hơn 18.000 tỷ đồng.
+            </p>
+            <p className="mb-4">
+              UBND xã Dầu Tiếng, TP HCM vừa công bố thông tin mờigọi nhà đầu tư đăng ký thực hiện dự án Khu dịch vụ du lịch sinh thái, nghỉ dưỡng và giải trí tại bán đảo Tha La, hồ Dầu Tiếng. Dự án có quy mô sử dụng đất gần 207 ha, tổng vốn đầu tư dự kiến hơn 18.000 tỷ đồng.
+            </p>
+            <p>
+              Theo định hướng, dự án có khả năng phục vụ khoảng 29.500 lượt khách mỗi ngày, trong đó khách lưu trú hơn 11.000 ngườii. Tiến độ thực hiện kéo dài 14 năm kể từ khi hoàn tất thủ tục lựa chọn nhà đầu tư và ký kết hợp đồng. Toàn bộ dự án dự kiến hoàn thành, nghiệm thu và đưa vào vận hành từ quý IV/2040.
+            </p>
+          </div>
+
+          {/* Source + Date row */}
+          <div className="flex items-center justify-between mb-10">
+            <p
               style={{
                 color: colors.gray[500],
-                fontSize: '16px',
+                fontSize: "14px",
+              }}
+            >
+              Trích nguồn:.......
+            </p>
+            <p
+              style={{
+                color: colors.gray[500],
+                fontSize: "14px",
               }}
             >
               April 10, 2026
             </p>
           </div>
 
-          {/* Article Content */}
-          <article className="pb-12">
-            {/* Headline */}
-            <div className="mb-8">
-              <h2
-                style={{
-                  color: colors.primary.DEFAULT,
-                  fontWeight: 900,
-                  fontSize: '48px',
-                  lineHeight: 1.2,
-                }}
-              >
-                HEADLINE
-              </h2>
-            </div>
-
-            {/* Intro Text */}
-            <p 
-              className="mb-8"
+          {/* Share Section */}
+          <div className="mb-10">
+            <h4
+              className="mb-3"
               style={{
                 color: colors.neutral.foreground,
-                fontSize: '16px',
-                lineHeight: 1.7,
+                fontWeight: 700,
+                fontSize: "16px",
               }}
             >
-              Thành lập năm 1971 tại Mỹ, ERA (Electronic Realty Associates) tự hào là một trong những thương hiệu môi giới bất động sản nhượng quyền hàng đầu thế giới, trực thuộc sự điều hành của Compass International Holdings - Công ty môi giới bất động sản nhà ở lớn nhất Hoa Kỳ.
-            </p>
-
-            {/* Featured Image */}
-            <div className="relative rounded-2xl overflow-hidden mb-8 aspect-video">
-              <Image
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80"
-                alt="Featured"
-                fill
-                className="object-cover"
-                sizes="100vw"
-                loading="eager"
-                priority
-              />
+              Chia sẻ
+            </h4>
+            <div className="flex items-center gap-3">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  aria-label={link.name}
+                  className="flex items-center justify-center transition-opacity hover:opacity-80"
+                >
+                  <Image
+                    src={link.src}
+                    alt={link.name}
+                    width={36}
+                    height={36}
+                    className="w-9 h-9"
+                  />
+                </a>
+              ))}
             </div>
+          </div>
 
-            {/* Body Content */}
-            <div 
-              className="mb-12"
+          {/* Related News */}
+          <div>
+            <h3
+              className="mb-6"
               style={{
-                color: colors.neutral.foreground,
-                fontSize: '16px',
-                lineHeight: 1.7,
+                color: colors.primary.navy.DEFAULT,
+                fontWeight: 900,
+                fontSize: "28px",
               }}
             >
-              <p className="mb-4">
-                Khu dịch vụ du lịch sinh thái, nghỉ dưỡng và giải trí tại bán đảo Tha La, hồ Dầu Tiếng đang được mờigọi đầu tư với tổng vốn hơn 18.000 tỷ đồng.
-              </p>
-              <p className="mb-4">
-                UBND xã Dầu Tiếng, TP HCM vừa công bố thông tin mờigọi nhà đầu tư đăng ký thực hiện dự án Khu dịch vụ du lịch sinh thái, nghỉ dưỡng và giải trí tại bán đảo Tha La, hồ Dầu Tiếng. Dự án có quy mô sử dụng đất gần 207 ha, tổng vốn đầu tư dự kiến hơn 18.000 tỷ đồng.
-              </p>
-              <p>
-                Theo định hướng, dự án có khả năng phục vụ khoảng 29.500 lượt khách mỗi ngày, trong đó khách lưu trú hơn 11.000 ngườii. Tiến độ thực hiện kéo dài 14 năm kể từ khi hoàn tất thủ tục lựa chọn nhà đầu tư và ký kết hợp đồng. Toàn bộ dự án dự kiến hoàn thành, nghiệm thu và đưa vào vận hành từ quý IV/2040.
-              </p>
+              Tin tức liên quan
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedNews.map((item) => (
+                <article
+                  key={item.id}
+                  className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md transition-transform duration-300 hover:scale-[1.02]"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                      style={{ transition: "transform 0.3s ease" }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <p
+                      className="text-xs mb-2"
+                      style={{
+                        color: colors.gray[400],
+                      }}
+                    >
+                      {item.date}
+                    </p>
+                    <h4
+                      className="mb-2 line-clamp-2 group-hover:text-primary transition-colors"
+                      style={{
+                        color: colors.neutral.foreground,
+                        fontWeight: 700,
+                        fontSize: "16px",
+                      }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p
+                      className="text-sm line-clamp-3"
+                      style={{
+                        color: colors.gray[500],
+                      }}
+                    >
+                      {item.excerpt}
+                    </p>
+                  </div>
+                </article>
+              ))}
             </div>
-
-            {/* Source */}
-            <p
-              className="mb-12 text-right"
-              style={{
-                color: colors.gray[500],
-                fontSize: '14px',
-              }}
-            >
-              Trích nguồn:........
-            </p>
-
-            {/* Related News */}
-            <div className="mb-12">
-              <h3 
-                className="mb-6"
-                style={{
-                  color: colors.primary.navy.DEFAULT,
-                  fontWeight: 900,
-                  fontSize: '32px',
-                }}
-              >
-                Tin tức liên quan
-              </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {relatedNews.map((item) => (
-                  <article
-                    key={item.id}
-                    className="bg-white rounded-2xl overflow-hidden shadow-sm cursor-pointer group hover:shadow-md transition-transform duration-300 hover:scale-[1.02]"
-                  >
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                        style={{ transition: 'transform 0.3s ease' }}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="p-5">
-                      <p 
-                        className="text-xs mb-2"
-                        style={{ 
-                          color: colors.gray[400],
-                        }}
-                      >
-                        {item.date}
-                      </p>
-                      <h4 
-                        className="mb-2 line-clamp-2 group-hover:text-primary transition-colors"
-                        style={{ 
-                          color: colors.neutral.foreground,
-                          fontWeight: 700,
-                          fontSize: '16px',
-                        }}
-                      >
-                        {item.title}
-                      </h4>
-                      <p 
-                        className="text-sm line-clamp-3"
-                        style={{ 
-                          color: colors.gray[500],
-                        }}
-                      >
-                        {item.excerpt}
-                      </p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-
-            {/* Share Section */}
-            <div className="mb-8">
-              <h4
-                className="mb-4"
-                style={{
-                  color: colors.neutral.foreground,
-                  fontWeight: 700,
-                  fontSize: '20px',
-                }}
-              >
-                Chia sẻ
-              </h4>
-              <div className="flex items-center gap-3">
-                {/* Facebook */}
-                <a
-                  href="#"
-                  className="w-10 h-10 flex items-center justify-center transition-opacity hover:opacity-80"
-                >
-                  <Image src="/shared/fb_icon.svg" alt="Facebook" width={40} height={40} className="w-10 h-10" />
-                </a>
-                {/* Twitter/X */}
-                <a
-                  href="#"
-                  className="w-10 h-10 flex items-center justify-center transition-opacity hover:opacity-80"
-                >
-                  <Image src="/shared/x_icon.svg" alt="X" width={40} height={40} className="w-10 h-10" />
-                </a>
-                {/* LinkedIn */}
-                <a
-                  href="#"
-                  className="w-10 h-10 flex items-center justify-center transition-opacity hover:opacity-80"
-                >
-                  <Image src="/shared/linkedin_icon.svg" alt="LinkedIn" width={40} height={40} className="w-10 h-10" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 flex items-center justify-center transition-opacity hover:opacity-80"
-                >
-                  <Image src="/news/news_share_icon.svg" alt="LinkedIn" width={40} height={40} className="w-10 h-10" />
-                </a>
-              </div>
-            </div>
-
-          </article>
+          </div>
+        </article>
       </Container>
     </main>
   );

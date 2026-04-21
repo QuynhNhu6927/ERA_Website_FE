@@ -67,7 +67,7 @@ export function NewsSection() {
             </span>
           </h2>
           <a
-            href={ROUTES.news}
+            href="#"
             className="hidden lg:flex items-center gap-2 transition-colors duration-200 hover:text-primary-dark"
             style={{ color: colors.primary.DEFAULT }}
           >

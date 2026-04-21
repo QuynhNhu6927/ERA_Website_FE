@@ -105,14 +105,14 @@ export function AcademyTestimonialsSection() {
 
             {/* Quote text */}
             <p
-              className="mb-6"
+              className="mb-6 italic"
               style={{
                 color: withOpacity(colors.neutral.white, 0.9),
                 fontSize: '14px',
                 lineHeight: 1.7,
               }}
             >
-              {t.quote}
+              &ldquo;{t.quote}&rdquo;
             </p>
 
             {/* Author */}

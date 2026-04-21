@@ -9,7 +9,7 @@ const benefits = [
   {
     icon: "/join/join_money_icon.svg",
     title: "Cơ chế hoa hồng đột phá",
-    description: "Tối đa hóa thu nhập cá nhân với chính sách hoa hồng tùy tiến triển đỉnh cao.",
+    description: "Tối đa hóa thu nhập cá nhân với chính sách hoa hồng lũy tiến hấp dẫn.",
     bgColor: colors.primary.navy.DEFAULT,
     linkColor: colors.secondary.DEFAULT,
     href: "/",
@@ -17,7 +17,7 @@ const benefits = [
   {
     icon: "/join/join_learn_icon.svg",
     title: "Đào tạo tiêu chuẩn quốc tế",
-    description: "Nâng tầm kỹ năng với hệ thống ERA Academy.",
+    description: "Nâng tầm kỹ năng với hệ thống ERA Academy",
     bgColor: colors.primary.DEFAULT,
     linkColor: colors.tertiary.orange.DEFAULT,
     href: "/",
@@ -25,7 +25,7 @@ const benefits = [
   {
     icon: "/join/join_product_icon.svg",
     title: "Đa dạng nguồn hàng phân phối",
-    description: "Dễ dàng tìm kiếm sản phẩm phù hợp cho mọi khách hàng với đủ hàng không lo.",
+    description: "Dễ dàng tìm kiếm sản phẩm phù hợp cho mọi khách hàng với rổ hàng khổng lồ",
     bgColor: colors.primary.navy.DEFAULT,
     linkColor: colors.secondary.DEFAULT,
     href: "/",
@@ -33,7 +33,7 @@ const benefits = [
   {
     icon: "/join/join_tech_icon.svg",
     title: "Đặc quyền công nghệ bán hàng",
-    description: "Làm chủ mọi giao dịch với hệ sinh thái My ERA.",
+    description: "Làm chủ mọi giao dịch với hệ sinh thái My ERA",
     bgColor: colors.primary.DEFAULT,
     linkColor: colors.tertiary.orange.DEFAULT,
     href: "/",
@@ -134,7 +134,7 @@ export function JoinTeamSection() {
                   {benefit.description}
                 </p>
 
-                {/* Learn More - Desktop only */}
+                {/* Xem thêm - Desktop only */}
                 <span 
                   className="hidden lg:flex items-center gap-2 text-sm transition-colors duration-200"
                   style={{
@@ -143,7 +143,7 @@ export function JoinTeamSection() {
                     fontSize: '14px',
                   }}
                 >
-                  Learn More
+                  Xem thêm
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
