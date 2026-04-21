@@ -11,10 +11,10 @@ const termsSections: LegalSection[] = [
     content: (
       <>
         <p className="mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Chào mừng bạn đến với ERA Việt. Bằng việc truy cập và sử dụng website này, bạn đồng ý tuân thủ các điều khoản và điều kiện được nêu dưới đây. Vui lòng đọc kỹ các nội dung này.
         </p>
         <p>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+          Website ERA Việt Nam được quản lý và vận hành bởi Công ty Cổ phần Bất động sản ERA Việt Nam. Trang web cung cấp thông tin, dịch vụ về lĩnh vực bất động sản cho người dùng.
         </p>
       </>
     ),
@@ -25,11 +25,12 @@ const termsSections: LegalSection[] = [
     content: (
       <>
         <p className="mb-4">
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
+          Bằng việc truy cập, duyệt hoặc đăng ký tài khoản trên ERA Việt Nam, bạn xác nhận rằng bạn đã đọc, hiểu và đồng ý chịu sự ràng buộc bởi các điều khoản này.
         </p>
-        <p>
-          Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
-        </p>
+        <ul className="list-disc pl-5 space-y-2 mb-4">
+          <li>Nếu bạn không đồng ý với bất kỳ phần nào của các điều khoản này, vui lòng ngừng sử dụng website ngay lập tức.</li>
+          <li>Bạn cam kết rằng bạn đủ tuổi hợp pháp để tham gia các hoạt động trên website.</li>
+        </ul>
       </>
     ),
   },
@@ -39,17 +40,13 @@ const termsSections: LegalSection[] = [
     content: (
       <>
         <p className="mb-4">
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+          Bạn cam kết chỉ sử dụng website cho các mục đích hợp pháp và tuân thủ các quy định sau:
         </p>
         <ul className="list-disc pl-5 space-y-2 mb-4">
-          <li>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</li>
-          <li>Et harum quidem rerum facilis est et expedita distinctio.</li>
-          <li>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</li>
-          <li>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores.</li>
+          <li>Không được phép: Sao chép, sửa đổi, phân phối hoặc sử dụng nội dung website vì mục đích thương mại mà không có sự cho phép bằng văn bản của chúng tôi.</li>
+          <li>Không được phép: Sử dụng phần mềm, bot hoặc các biện pháp can thiệp kỹ thuật nhằm làm gián đoạn, gây hại hoặc thu thập dữ liệu trái phép từ hệ thống.</li>
+          <li>Không được phép: Đăng tải nội dung xúc phạm, đồi trụy, vi phạm bản quyền hoặc có tính chất gây hại tới cộng đồng.</li>
         </ul>
-        <p>
-          Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
-        </p>
       </>
     ),
   },
@@ -59,13 +56,10 @@ const termsSections: LegalSection[] = [
     content: (
       <>
         <p className="mb-4">
-          Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+          Tất cả nội dung có trên website, bao gồm nhưng không giới hạn ở: văn bản, hình ảnh, logo, biểu tượng, video, thiết kế, mã nguồn và dữ liệu, đều thuộc sở hữu độc quyền của Công ty Cổ phần Bất động sản ERA Việt Nam hoặc bên thứ ba đã cấp phép cho chúng tôi.
         </p>
         <p className="mb-4">
-          Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-        </p>
-        <p>
-          Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          Bạn không được phép sử dụng, sao chép hoặc phát hành bất kỳ tài liệu nào trên website mà không có sự đồng ý trước của chủ sở hữu quyền sở hữu trí tuệ.
         </p>
       </>
     ),
@@ -76,13 +70,10 @@ const termsSections: LegalSection[] = [
     content: (
       <>
         <p className="mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Dịch vụ "như hiện trạng": Website được cung cấp trên cơ sở "như hiện trạng" (as-is). Chúng tôi không đảm bảo rằng website sẽ hoạt động không bị gián đoạn, không có lỗi hoặc không có virus.
         </p>
         <p className="mb-4">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          Miễn trừ trách nhiệm: Trong phạm vi tối đa mà pháp luật cho phép, Công ty Cổ phần Bất động sản ERA Việt Nam sẽ không chịu trách nhiệm cho bất kỳ thiệt hại trực tiếp, gián tiếp, ngẫu nhiên hoặc hậu quả nào phát sinh từ việc sử dụng hoặc không thể sử dụng website, ngay cả khi chúng tôi đã được thông báo về khả năng xảy ra các thiệt hại đó.
         </p>
       </>
     ),
@@ -93,10 +84,7 @@ const termsSections: LegalSection[] = [
     content: (
       <>
         <p className="mb-4">
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
-        </p>
-        <p>
-          Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+          Chúng tôi có quyền cập nhật, sửa đổi hoặc thay thế các điều khoản này tại bất kỳ thời điểm nào mà không cần thông báo trước. Các thay đổi sẽ có hiệu lực ngay khi được đăng tải trên website. Việc bạn tiếp tục sử dụng website sau khi các thay đổi được đăng tải đồng nghĩa với việc bạn chấp nhận các điều khoản mới.
         </p>
       </>
     ),
@@ -107,10 +95,7 @@ const termsSections: LegalSection[] = [
     content: (
       <>
         <p className="mb-4">
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
-        </p>
-        <p>
-          Id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+          Các điều khoản sử dụng này được điều chỉnh và giải thích theo pháp luật của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam. Mọi tranh chấp phát sinh từ hoặc liên quan đến các điều khoản này sẽ được giải quyết tại tòa án có thẩm quyền tại Thành phố Hồ Chí Minh.
         </p>
       </>
     ),
@@ -121,10 +106,7 @@ const termsSections: LegalSection[] = [
     content: (
       <>
         <p className="mb-4">
-          Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
-        </p>
-        <p className="mb-4">
-          Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+         Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào liên quan đến Điều khoản sử dụng này, vui lòng liên hệ với chúng tôi qua:
         </p>
         <div className="mt-4">
           <p className="mb-1">
