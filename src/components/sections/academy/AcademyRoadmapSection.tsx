@@ -49,25 +49,25 @@ export function AcademyRoadmapSection() {
           style={{
             color: colors.primary.DEFAULT,
             fontWeight: 800,
-            fontSize: '36px',
+            fontSize: 'clamp(28px, 5vw, 36px)',
           }}
         >
           LỘ TRÌNH CHI TIẾT
         </h2>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 grid-rows-4 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 gap-5">
           {roadmapCards.map((card) => (
             <article 
               key={card.id}
-              className="rounded-3xl p-6 cursor-pointer hover:shadow-xl hover:scale-[1.03] transition-all duration-200"
+              className="rounded-3xl p-6 cursor-pointer hover:shadow-xl hover:scale-[1.03] transition-all duration-200 flex flex-row items-center gap-4 h-full lg:flex-col lg:items-start"
               style={{ 
                 backgroundColor: card.bgColor,
               }}
             >
               {/* Icon Container */}
               <div 
-                className="w-14 h-14 rounded-3xl flex items-center justify-center mb-5"
+                className="w-14 h-14 rounded-3xl flex items-center justify-center flex-shrink-0 mb-0 lg:mb-5"
                 style={{ backgroundColor: colors.neutral.white }}
               >
                 <Image
@@ -79,28 +79,31 @@ export function AcademyRoadmapSection() {
                 />
               </div>
               
-              {/* Title */}
-              <h3 
-                className="text-white mb-3"
-                style={{
-                  fontWeight: 700,
-                  fontSize: '20px',
-                }}
-              >
-                {card.title}
-              </h3>
-              
-              {/* Description */}
-              <p 
-                className="text-white/90"
-                style={{
-                  fontWeight: 400,
-                  fontSize: '14px',
-                  lineHeight: 1.5,
-                }}
-              >
-                {card.description}
-              </p>
+              {/* Text Content */}
+              <div className="flex-1 min-w-0">
+                {/* Title */}
+                <h3 
+                  className="text-white mb-1 lg:mb-3"
+                  style={{
+                    fontWeight: 700,
+                    fontSize: '20px',
+                  }}
+                >
+                  {card.title}
+                </h3>
+                
+                {/* Description */}
+                <p 
+                  className="text-white/90"
+                  style={{
+                    fontWeight: 400,
+                    fontSize: '14px',
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {card.description}
+                </p>
+              </div>
             </article>
           ))}
         </div>

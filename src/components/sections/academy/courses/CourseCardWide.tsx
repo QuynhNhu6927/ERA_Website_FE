@@ -116,7 +116,7 @@ export function CourseCardWide({ course, reverse = false }: CourseCardWideProps)
             size="sm"
             className="rounded-[10px] px-5 flex-shrink-0"
           >
-            Learn More
+            Xem thêm
           </Button>
         </div>
       </div>
