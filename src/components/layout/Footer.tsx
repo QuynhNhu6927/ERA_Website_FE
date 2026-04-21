@@ -361,7 +361,7 @@ export function Footer() {
             </p>
             <div className="flex gap-6">
               <Link 
-                href="/"
+                href={ROUTES.terms}
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
@@ -370,7 +370,7 @@ export function Footer() {
                 Điều khoản sử dụng
               </Link>
               <Link 
-                href="/"
+                href={ROUTES.privacy}
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
@@ -400,7 +400,7 @@ export function Footer() {
             </p>
             <div className="flex gap-6">
               <Link 
-                href="/"
+                href={ROUTES.terms}
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
@@ -409,7 +409,7 @@ export function Footer() {
                 Điều khoản sử dụng
               </Link>
               <Link 
-                href="/"
+                href={ROUTES.privacy}
                 className="text-xs transition-colors hover:text-white"
                 style={{ 
                   color: colors.gray[400],
