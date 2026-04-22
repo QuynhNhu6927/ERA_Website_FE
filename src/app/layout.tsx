@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { ToTopButton } from "@/components/layout/ToTopButton";
+import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,10 +22,7 @@ export default function RootLayout({
   return (
     <html lang="vi" data-scroll-behavior="smooth" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <Header />
-        <div className="flex-1 pt-0 md:pt-16">{children}</div>
-        <Footer />
-        <ToTopButton />
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
