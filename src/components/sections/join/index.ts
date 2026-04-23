@@ -1,8 +1,12 @@
 export { JoinPage } from "./JoinPage";
 export { JoinHeroSection } from "./JoinHeroSection";
+export { JoinCoreValuesSection } from "./JoinCoreValuesSection";
+export { JoinRecruitmentSection } from "./JoinRecruitmentSection";
 export { JoinFinancialSection } from "./JoinFinancialSection";
 export { JoinWhySection } from "./JoinWhySection";
 export { JoinAcademySection } from "./JoinAcademySection";
 export { JoinTestimonialsSection } from "./JoinTestimonialsSection";
 export { JoinEnvironmentSection } from "./JoinEnvironmentSection";
 export { JoinOpportunitySection } from "./JoinOpportunitySection";
+export { JoinApplySection } from "./JoinApplySection";
+export { JobDetailPage } from "./JobDetailPage";

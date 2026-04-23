@@ -1,14 +1,20 @@
 "use client";
 
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import { Section } from "@/components/ui/Section";
-import { colors, withOpacity } from "@/lib/theme";
+import { colors } from "@/lib/theme";
+import { JoinGalleryModal } from "./JoinGalleryModal";
 
 const galleryImages = [
   "/join/join_envi_1.jpg",
   "/join/join_envi_3.jpg",
   "/join/join_envi_2.jpg",
   "/join/join_envi_4.jpg",
+  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800",
 ];
 
 const teamAvatars = [
@@ -18,14 +24,25 @@ const teamAvatars = [
 ];
 
 export function JoinEnvironmentSection() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const openGallery = useCallback(() => {
+    setCurrentIndex(4); // mặc định mở ở ảnh thứ 5 (các ảnh demo)
+    setIsOpen(true);
+  }, []);
+
   return (
-    <Section padding="md" bg="white">
+    <Section padding="md" bg="gray">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Left: Gallery */}
         <div className="flex gap-4">
           {/* Cột trái: lệch lên trên */}
           <div className="flex-1 flex flex-col gap-4 -translate-y-5">
-            <div className="rounded-2xl overflow-hidden aspect-[4/3]">
+            <button
+              onClick={openGallery}
+              className="text-left rounded-2xl overflow-hidden aspect-[4/3] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
               <Image
                 src={galleryImages[0]}
                 alt="ERA Team Event"
@@ -34,8 +51,11 @@ export function JoinEnvironmentSection() {
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-            </div>
-            <div className="rounded-2xl overflow-hidden aspect-[4/3]">
+            </button>
+            <button
+              onClick={openGallery}
+              className="text-left rounded-2xl overflow-hidden aspect-[4/3] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
               <Image
                 src={galleryImages[2]}
                 alt="ERA Office"
@@ -44,11 +64,14 @@ export function JoinEnvironmentSection() {
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-            </div>
+            </button>
           </div>
           {/* Cột phải: lệch xuống dưới */}
           <div className="flex-1 flex flex-col gap-4 translate-y-5">
-            <div className="rounded-2xl overflow-hidden aspect-[4/3]">
+            <button
+              onClick={openGallery}
+              className="text-left rounded-2xl overflow-hidden aspect-[4/3] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
               <Image
                 src={galleryImages[1]}
                 alt="ERA Anniversary"
@@ -57,8 +80,11 @@ export function JoinEnvironmentSection() {
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-            </div>
-            <div className="rounded-2xl overflow-hidden aspect-[4/3]">
+            </button>
+            <button
+              onClick={openGallery}
+              className="text-left rounded-2xl overflow-hidden aspect-[4/3] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
               <Image
                 src={galleryImages[3]}
                 alt="ERA Activity"
@@ -67,7 +93,7 @@ export function JoinEnvironmentSection() {
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-            </div>
+            </button>
           </div>
         </div>
 
@@ -128,6 +154,13 @@ export function JoinEnvironmentSection() {
           </div>
         </div>
       </div>
+
+      <JoinGalleryModal
+        images={galleryImages}
+        currentIndex={currentIndex}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
     </Section>
   );
 }

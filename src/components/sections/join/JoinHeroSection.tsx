@@ -12,7 +12,7 @@ export function JoinHeroSection() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/join/join_hero_banner.jpg')" }}
+        style={{ backgroundImage: "url('/join/join_op_01.jpg')" }}
       />
       {/* Dark Overlay */}
       <div
@@ -32,8 +32,8 @@ export function JoinHeroSection() {
               textShadow,
             }}
           >
-            PHÁ VỠ{" "}
-            <span style={{ color: colors.primary.DEFAULT}}>GIỚI HẠN</span>
+            KIẾN TẠO{" "}
+            <span style={{ color: colors.primary.DEFAULT}}>SỰ NGHIỆP</span>
           </h1>
           <h2
             className="mb-6"
@@ -45,7 +45,7 @@ export function JoinHeroSection() {
               textShadow,
             }}
           >
-            TỰ DO TÀI CHÍNH
+            TẠI ERA REAL ESTATE
           </h2>
           <Button
             variant="primary"
@@ -53,7 +53,7 @@ export function JoinHeroSection() {
             className="px-6 py-3 gap-2"
             style={{ borderRadius: '12px' }}
           >
-            Khám Phá Cơ Hội Agent
+            Ứng tuyển ngay
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
