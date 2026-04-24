@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { colors, withOpacity } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 
 export function ContactFormSection() {
   const [formData, setFormData] = useState({
@@ -191,11 +192,11 @@ export function ContactFormSection() {
                 Trở thành một phần của cộng đồng môi giới bất động sản toàn cầu.
               </p>
               <a
-                href="/"
+                href={ROUTES.join}
                 className="inline-flex items-center gap-1 transition-opacity hover:opacity-80"
                 style={{ color: colors.neutral.white, fontWeight: 700, fontSize: '16px' }}
               >
-                Gia nhập ERA ngayx
+                Gia nhập ERA ngay
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>

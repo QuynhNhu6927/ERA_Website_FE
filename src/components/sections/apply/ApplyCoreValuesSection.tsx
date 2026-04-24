@@ -42,7 +42,7 @@ const values = [
   },
 ];
 
-export function JoinCoreValuesSection() {
+export function ApplyCoreValuesSection() {
   return (
     <Section padding="md" bg="gray">
       {/* Title */}

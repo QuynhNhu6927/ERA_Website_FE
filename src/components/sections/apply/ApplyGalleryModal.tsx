@@ -4,19 +4,19 @@ import { useEffect, useCallback, useState } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-interface JoinGalleryModalProps {
+interface ApplyGalleryModalProps {
   images: string[];
   currentIndex: number;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function JoinGalleryModal({
+export function ApplyGalleryModal({
   images,
   currentIndex,
   isOpen,
   onClose,
-}: JoinGalleryModalProps) {
+}: ApplyGalleryModalProps) {
   const [activeIndex, setActiveIndex] = useState(currentIndex);
 
   useEffect(() => {

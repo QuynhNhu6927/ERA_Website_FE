@@ -47,7 +47,7 @@ const jobs = [
   },
 ];
 
-export function JoinRecruitmentSection() {
+export function ApplyRecruitmentSection() {
   const [activeTab, setActiveTab] = useState("all");
 
   const filteredJobs =
@@ -127,7 +127,7 @@ export function JoinRecruitmentSection() {
             </div>
 
             <Link
-              href="/join/chuyen-vien-marketing-du-an"
+              href="/apply/chi-tiet-cong-viec"
               className="flex-shrink-0 px-6 py-2.5 rounded-full text-sm font-semibold text-white transition-colors"
               style={{ backgroundColor: colors.primary.DEFAULT }}
               onMouseEnter={(e) => {

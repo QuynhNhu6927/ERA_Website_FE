@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { colors } from "@/lib/theme";
 import { useAuth } from "@/hooks/useAuth";
+import { ROUTES } from "@/lib/routes";
 
 export function LoginSection() {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ export function LoginSection() {
 
     const result = await login({ email, password });
     if (result) {
-      window.location.href = "/";
+      window.location.href = ROUTES.home;
     }
   };
 

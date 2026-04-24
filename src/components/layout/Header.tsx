@@ -136,7 +136,7 @@ export function Header() {
       >
         <Container>
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center">
+            <Link href={ROUTES.home} className="flex items-center">
               <Image src="/logo.svg" alt="ERA Vietnam" width={134} height={38} className="h-10 w-auto" priority />
             </Link>
             <div className="flex items-center gap-8">
@@ -293,7 +293,7 @@ export function Header() {
               isScrolled ? "shadow-md" : ""
             )}
           >
-            <Link href="/" className="flex items-center">
+            <Link href={ROUTES.home} className="flex items-center">
               <Image
                 src="/logo_short.svg"
                 alt="ERA Vietnam"

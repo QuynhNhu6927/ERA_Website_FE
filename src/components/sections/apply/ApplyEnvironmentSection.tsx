@@ -4,7 +4,7 @@ import { useState, useCallback } from "react";
 import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { colors } from "@/lib/theme";
-import { JoinGalleryModal } from "./JoinGalleryModal";
+import { ApplyGalleryModal } from "./ApplyGalleryModal";
 
 const galleryImages = [
   "/join/join_envi_1.jpg",
@@ -23,7 +23,7 @@ const teamAvatars = [
   "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=60",
 ];
 
-export function JoinEnvironmentSection() {
+export function ApplyEnvironmentSection() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -155,7 +155,7 @@ export function JoinEnvironmentSection() {
         </div>
       </div>
 
-      <JoinGalleryModal
+      <ApplyGalleryModal
         images={galleryImages}
         currentIndex={currentIndex}
         isOpen={isOpen}

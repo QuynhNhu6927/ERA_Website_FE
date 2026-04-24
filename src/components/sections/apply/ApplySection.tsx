@@ -16,7 +16,7 @@ const positions = [
   "Nhân viên văn phòng",
 ];
 
-export function JoinApplySection() {
+export function ApplySection() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [position, setPosition] = useState("");
