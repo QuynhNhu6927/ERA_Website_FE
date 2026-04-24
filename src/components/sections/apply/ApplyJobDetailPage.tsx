@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { colors } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 import { Button } from "@/components/ui/Button";
 import { MapPin, Briefcase, CircleCheck, GraduationCap, Users, Gift, ArrowRight, Upload, ChevronDown } from "lucide-react";
 
@@ -35,15 +36,15 @@ const otherJobs = [
   { title: "Thực Tập Sinh Thiết Kế", location: "TP. HCM", type: "Thực tập" },
 ];
 
-export function JobDetailPage() {
+export function ApplyJobDetailPage() {
   return (
     <main className="min-h-screen bg-white pt-16 md:pt-0">
       {/* Breadcrumb */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-2">
         <div className="flex items-center gap-2 text-sm">
-          <Link href="/" className="text-gray-500 hover:text-gray-700 transition-colors flex-shrink-0">Trang chủ</Link>
+          <Link href={ROUTES.home} className="text-gray-500 hover:text-gray-700 transition-colors flex-shrink-0">Trang chủ</Link>
           <span className="text-gray-400 flex-shrink-0">/</span>
-          <Link href="/join" className="text-gray-500 hover:text-gray-700 transition-colors flex-shrink-0">Join team ERA</Link>
+          <Link href={ROUTES.join} className="text-gray-500 hover:text-gray-700 transition-colors flex-shrink-0">Join team ERA</Link>
           <span className="text-gray-400 flex-shrink-0">/</span>
           <span className="truncate font-bold" style={{ color: colors.primary.DEFAULT, fontSize: "14px" }}>Chuyên Viên Marketing Dự Án</span>
         </div>
@@ -137,7 +138,7 @@ export function JobDetailPage() {
                       <span className="w-1 h-1 rounded-full bg-gray-300" />
                       <span>{job.type}</span>
                     </div>
-                    <Link href="/join/chuyen-vien-marketing-du-an" className="inline-flex items-center gap-1 text-xs font-medium transition-colors" style={{ color: colors.primary.DEFAULT }}>
+                    <Link href="/apply/chi-tiet-cong-viec" className="inline-flex items-center gap-1 text-xs font-medium transition-colors" style={{ color: colors.primary.DEFAULT }}>
                       Xem chi tiết <ArrowRight size={12} />
                     </Link>
                   </div>

@@ -36,7 +36,7 @@ const testimonials = [
   },
 ];
 
-export function JoinTestimonialsSection() {
+export function ApplyTestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const prev = () =>

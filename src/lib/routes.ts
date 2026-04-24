@@ -9,6 +9,7 @@ export const ROUTES = {
   aboutUs: "/ve-chung-toi",
   projects: "/du-an",
   join: "/join",
+  apply: "/apply",
   academy: "/academy",
   news: "/news",
   contact: "/contact",
@@ -21,6 +22,9 @@ export const ROUTES = {
   training: "/join/training",
   inventory: "/join/inventory",
   technology: "/join/technology",
+
+  // Apply Sub-pages
+  applyDetail: "/apply/chi-tiet-cong-viec",
   
   // Footer Links
   brandStory: "/cau-chuyen-thuong-hieu",
