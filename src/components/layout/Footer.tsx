@@ -284,7 +284,7 @@ export function Footer() {
               </li>
               <li>
                 <Link 
-                  href="/"
+                  href="/join"
                   className="text-sm transition-colors hover:opacity-80"
                   style={{ 
                     color: colors.gray[300],
