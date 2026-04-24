@@ -43,18 +43,18 @@ export function JoinHeroSection() {
             </h1>
 
             <div
-              className="inline-block rounded-2xl px-5 py-3 mb-8 max-w-xs"
+              className="inline-block rounded-2xl px-5 py-3 mb-8 max-w-sm"
               style={{ backgroundColor: colors.primary.navy.DEFAULT }}
             >
               <span
-                className="text-sm md:text-base font-semibold whitespace-normal"
-                style={{ color: colors.neutral.white }}
+                className="font-semibold whitespace-normal"
+                style={{ color: colors.neutral.white, fontSize: "clamp(15px, 1.3vw, 24px)" }}
               >
                 Trở thành chuyên viên tư vấn bất động sản tại ERA Vietnam
               </span>
             </div>
 
-            <ul className="space-y-4 max-w-md">
+            <ul className="space-y-4 max-w-sm">
               {benefits.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <CircleCheck
@@ -63,8 +63,8 @@ export function JoinHeroSection() {
                     style={{ color: colors.primary.DEFAULT }}
                   />
                   <span
-                    className="text-lg md:text-xl font-medium"
-                    style={{ color: colors.gray[700] }}
+                    className="font-medium"
+                    style={{ color: colors.gray[700], fontSize: "clamp(13px, 1.1vw, 17px)" }}
                   >
                     {item}
                   </span>
