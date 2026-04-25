@@ -1,12 +1,5 @@
 export { JoinPage } from "./JoinPage";
-export { ApplyHeroSection } from "../apply/ApplyHeroSection";
-export { ApplyCoreValuesSection } from "../apply/ApplyCoreValuesSection";
-export { ApplyRecruitmentSection } from "../apply/ApplyRecruitmentSection";
-export { JoinFinancialSection } from "./JoinFinancialSection";
-export { JoinWhySection } from "./JoinWhySection";
-export { JoinAcademySection } from "./JoinAcademySection";
-export { ApplyTestimonialsSection } from "../apply/ApplyTestimonialsSection";
-export { ApplyEnvironmentSection } from "../apply/ApplyEnvironmentSection";
-export { JoinOpportunitySection } from "./JoinOpportunitySection";
-export { ApplySection } from "../apply/ApplySection";
-export { ApplyJobDetailPage } from "../apply/ApplyJobDetailPage";
+export { JoinCTASection } from "./JoinCTASection";
+export { JoinCompassSection } from "./JoinCompassSection";
+export { JoinDifferenceSection } from "./JoinDifferenceSection";
+export { JoinHeroSection } from "./JoinHeroSection";
