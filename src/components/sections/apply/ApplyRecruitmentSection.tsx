@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { colors } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 
 const tabs = [
   { key: "all", label: "Tất cả" },
@@ -127,7 +128,7 @@ export function ApplyRecruitmentSection() {
             </div>
 
             <Link
-              href="/apply/chi-tiet-cong-viec"
+              href={ROUTES.applyDetail}
               className="flex-shrink-0 px-6 py-2.5 rounded-full text-sm font-semibold text-white transition-colors"
               style={{ backgroundColor: colors.primary.DEFAULT }}
               onMouseEnter={(e) => {
