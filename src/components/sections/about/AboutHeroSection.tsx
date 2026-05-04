@@ -47,8 +47,6 @@ export function AboutHeroSection() {
 
           <Link
             href={ROUTES.compass}
-            target="_blank"
-            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition-all hover:shadow-lg flex-shrink-0"
             style={{ backgroundColor: colors.primary.DEFAULT }}
             onMouseEnter={(e) => {

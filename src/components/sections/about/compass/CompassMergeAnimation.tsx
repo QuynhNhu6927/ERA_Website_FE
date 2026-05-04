@@ -11,36 +11,43 @@ interface CompassMergeAnimationProps {
 
 export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
   const [step, setStep] = useState(0);
-  const [moveX, setMoveX] = useState(112);
+  const [moveX, setMoveX] = useState(136);
 
-  // Calculate move distance based on screen width
   useEffect(() => {
-    const update = () => setMoveX(window.innerWidth >= 768 ? 152 : 112);
+    const update = () => setMoveX(window.innerWidth >= 768 ? 200 : 136);
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Animation sequence (restarts on cycle change)
   useEffect(() => {
     setStep(0);
     const timers: NodeJS.Timeout[] = [];
-    timers.push(setTimeout(() => setStep(1), 300));     // circles appear
-    timers.push(setTimeout(() => setStep(2), 1000));    // cross appears
-    timers.push(setTimeout(() => setStep(3), 2000));    // cross rotates more + fades out
-    timers.push(setTimeout(() => setStep(4), 2500));    // circles move in
-    timers.push(setTimeout(() => setStep(5), 3100));    // merge + flash
-    timers.push(setTimeout(() => setStep(6), 3900));    // scale up + image
-    timers.push(setTimeout(() => setStep(7), 4000));    // neon start
-    timers.push(setTimeout(() => setStep(8), 9000));    // neon disappear after 1 full rotation (5s)
-    timers.push(setTimeout(() => setStep(9), 11000));   // shrink (2s pause after neon)
+
+    timers.push(setTimeout(() => setStep(1), 300));     
+    timers.push(setTimeout(() => setStep(2), 1000));    
+    timers.push(setTimeout(() => setStep(3), 2000));    
+    timers.push(setTimeout(() => setStep(4), 2500));    // bắt đầu move (gần chạm)
+    
+    // 👉 đẩy flash sớm hơn một chút để cảm giác "chạm"
+    timers.push(setTimeout(() => setStep(5), 2750));    // flash start (chạm)
+    
+    // 👉 giữ flash đủ lâu cho merge hoàn tất
+    timers.push(setTimeout(() => setStep(6), 3250));    // flash end + delay 0.5s
+    
+    timers.push(setTimeout(() => setStep(7), 4000));    
+    timers.push(setTimeout(() => setStep(8), 4100));    
+    timers.push(setTimeout(() => setStep(9), 9100));    
+    timers.push(setTimeout(() => setStep(10), 11100));  
+
     return () => timers.forEach(clearTimeout);
   }, [cycle]);
 
-  const circleSizeClass = "w-24 h-24 md:w-36 md:h-36";
+  const circleSizeClass = "w-28 h-28 md:w-44 md:h-44";
+  const bigCircleScale = step >= 6 ? 1.4 : 1;
 
   return (
-    <div className="relative w-80 h-44 md:w-[28rem] md:h-44">
+    <div className="relative w-96 h-52 md:w-[36rem] md:h-52">
       {/* Cross */}
       {step >= 2 && step < 4 && (
         <motion.div
@@ -59,7 +66,7 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
           }}
         >
           <span
-            className="text-4xl md:text-6xl font-light leading-none"
+            className="text-5xl md:text-7xl font-light leading-none"
             style={{ color: colors.primary.DEFAULT }}
           >
             ×
@@ -67,19 +74,19 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
         </motion.div>
       )}
 
-      {/* Circle 1 - Anywhere */}
+      {/* Circle 1 */}
       <motion.div
         className={`absolute top-1/2 -translate-y-1/2 z-10 ${circleSizeClass} rounded-full bg-white shadow-2xl flex items-center justify-center p-4 md:p-6`}
         style={{ left: 0 }}
         initial={{ scale: 0, opacity: 0 }}
         animate={{
-          scale: step >= 5 ? 0 : step >= 1 ? 1 : 0,
-          opacity: step >= 5 ? 0 : step >= 1 ? 1 : 0,
+          scale: step >= 10 ? 0 : step >= 1 ? 1 : 0,
+          opacity: step >= 10 ? 0 : step >= 1 ? 1 : 0,
           x: step >= 4 ? moveX : 0,
         }}
         transition={{
           scale: { type: "spring", stiffness: 260, damping: 18 },
-          x: { duration: 0.6, ease: "easeInOut" },
+          x: { duration: 0.4, ease: "easeInOut" },
           opacity: { duration: 0.4 },
         }}
       >
@@ -99,19 +106,19 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
         </motion.div>
       </motion.div>
 
-      {/* Circle 2 - Compass */}
+      {/* Circle 2 */}
       <motion.div
         className={`absolute top-1/2 -translate-y-1/2 z-10 ${circleSizeClass} rounded-full bg-white shadow-2xl flex items-center justify-center p-4 md:p-6`}
         style={{ right: 0 }}
         initial={{ scale: 0, opacity: 0 }}
         animate={{
-          scale: step >= 5 ? 0 : step >= 1 ? 1 : 0,
-          opacity: step >= 5 ? 0 : step >= 1 ? 1 : 0,
+          scale: step >= 10 ? 0 : step >= 1 ? 1 : 0,
+          opacity: step >= 10 ? 0 : step >= 1 ? 1 : 0,
           x: step >= 4 ? -moveX : 0,
         }}
         transition={{
           scale: { type: "spring", stiffness: 260, damping: 18 },
-          x: { duration: 0.6, ease: "easeInOut" },
+          x: { duration: 0.4, ease: "easeInOut" },
           opacity: { duration: 0.4 },
         }}
       >
@@ -131,28 +138,26 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
         </motion.div>
       </motion.div>
 
-      {/* Big merged circle with neon glow wrapper */}
+      {/* Merged */}
       {step >= 5 && (
         <motion.div
           className="absolute left-1/2 top-1/2 z-30"
           style={{ x: "-50%", y: "-50%" }}
-          initial={{ scale: 0, opacity: 0 }}
+          initial={{ scale: 1, opacity: 0 }}
           animate={{
-            scale: step >= 9 ? 0 : step >= 6 ? 1.4 : 1,
-            opacity: step >= 9 ? 0 : 1,
+            scale: step >= 10 ? 0 : bigCircleScale,
+            opacity: step >= 10 ? 0 : 1,
           }}
           transition={{
-            scale: step >= 9
-              ? { duration: 0.8, ease: "easeInOut" }
-              : { type: "spring", stiffness: 260, damping: 18 },
-            opacity: { duration: step >= 9 ? 0.6 : 0.4 },
+            scale: { type: "spring", stiffness: 260, damping: 18 },
+            opacity: { duration: 0.4 },
           }}
         >
-          {/* Flash effect on merge */}
+          {/* Flash */}
           <AnimatePresence>
             {step >= 5 && step < 6 && (
               <motion.div
-                className="absolute left-1/2 top-1/2 z-20 rounded-full bg-[#1E40AF]"
+                className="absolute left-1/2 top-1/2 z-0 rounded-full bg-[#1E40AF] pointer-events-none"
                 style={{
                   x: "-50%",
                   y: "-50%",
@@ -163,47 +168,29 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
                 initial={{ scale: 0.3, opacity: 0 }}
                 animate={{ scale: 1.2, opacity: 0.95 }}
                 exit={{ scale: 1.8, opacity: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               />
             )}
           </AnimatePresence>
 
-          {/* Neon glowing orbs behind circle */}
-          {step >= 7 && step < 8 && (
+          {/* Neon giữ nguyên */}
+          {step >= 8 && step < 9 && (
             <>
-              {/* Orb 1 */}
-              <motion.div
-                className="absolute inset-[-2px] md:inset-[-4px] rounded-full pointer-events-none"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 5, ease: "linear" }}
-              >
-                <div
-                  className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 rounded-full"
-                  style={{
-                    background: "radial-gradient(circle, rgba(30, 64, 175, 0.95) 0%, rgba(30, 64, 175, 0.5) 40%, transparent 70%)",
-                    filter: "blur(16px)",
-                  }}
-                />
+              <motion.div className="absolute inset-[-2px] md:inset-[-4px] rounded-full pointer-events-none"
+                animate={{ rotate: 360 }} transition={{ duration: 5, ease: "linear" }}>
+                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 rounded-full"
+                  style={{ background: "radial-gradient(circle, rgba(30,64,175,0.95) 0%, rgba(30,64,175,0.5) 40%, transparent 70%)", filter: "blur(16px)" }} />
               </motion.div>
-              {/* Orb 2 */}
-              <motion.div
-                className="absolute inset-[-2px] md:inset-[-4px] rounded-full pointer-events-none"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 5, ease: "linear" }}
-              >
-                <div
-                  className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 rounded-full"
-                  style={{
-                    background: "radial-gradient(circle, rgba(30, 64, 175, 0.95) 0%, rgba(30, 64, 175, 0.5) 40%, transparent 70%)",
-                    filter: "blur(16px)",
-                  }}
-                />
+              <motion.div className="absolute inset-[-2px] md:inset-[-4px] rounded-full pointer-events-none"
+                animate={{ rotate: -360 }} transition={{ duration: 5, ease: "linear" }}>
+                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 rounded-full"
+                  style={{ background: "radial-gradient(circle, rgba(30,64,175,0.95) 0%, rgba(30,64,175,0.5) 40%, transparent 70%)", filter: "blur(16px)" }} />
               </motion.div>
             </>
           )}
 
-          {/* White circle with logo */}
-          <div className={`${circleSizeClass} rounded-full bg-white shadow-2xl flex items-center justify-center p-4 md:p-6 relative`}>
+          {/* Logo xuất hiện cùng lúc scale */}
+          <div className={`${circleSizeClass} rounded-full bg-white shadow-2xl flex items-center justify-center p-4 md:p-6 relative z-10`}>
             <motion.div
               className="w-full h-full"
               initial={{ opacity: 0 }}
