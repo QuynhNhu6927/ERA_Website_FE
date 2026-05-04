@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import ROUTES from "@/lib/routes";
 
 export function AboutEraApacSection() {
   return (
@@ -49,7 +50,7 @@ export function AboutEraApacSection() {
             </div>
 
             <Link
-              href="/ve-chung-toi/apac"
+              href={ROUTES.apac}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg mt-8"
               style={{ backgroundColor: colors.primary.navy.DEFAULT }}
               onMouseEnter={(e) => {

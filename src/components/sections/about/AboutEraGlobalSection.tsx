@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import ROUTES from "@/lib/routes";
 
 export function AboutEraGlobalSection() {
   return (
@@ -40,7 +41,7 @@ export function AboutEraGlobalSection() {
             </div>
 
             <Link
-              href="/ve-chung-toi/era-real-estate"
+              href={ROUTES.era}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg mt-8"
               style={{ backgroundColor: colors.primary.navy.DEFAULT }}
               onMouseEnter={(e) => {
@@ -73,7 +74,7 @@ export function AboutEraGlobalSection() {
                 alt="ERA Sign"
                 width={200}
                 height={80}
-                className="absolute -bottom-1 -right-4 md:-right-14 w-[55%] md:w-[60%] h-auto object-contain pointer-events-none"
+                className="absolute -bottom-0 -right-4 md:-right-20 w-[55%] md:w-[70%] h-auto object-contain pointer-events-none"
               />
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Container } from "@/components/ui/Container";
+import ROUTES from "@/lib/routes";
 import { colors } from "@/lib/theme";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import Link from "next/link";
 export function AboutHeroSection() {
   return (
     <section
-      className="relative min-h-[500px] md:min-h-[600px] flex items-center"
+      className="relative min-h-[500px] md:min-h-[550px] flex items-center"
       style={{
         backgroundImage:
           "linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.4)), url('/about/about_hero_banner.png')",
@@ -45,7 +46,7 @@ export function AboutHeroSection() {
           </div>
 
           <Link
-            href="https://www.compass.com"
+            href={ROUTES.compass}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition-all hover:shadow-lg flex-shrink-0"

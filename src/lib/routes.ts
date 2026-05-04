@@ -7,6 +7,9 @@ export const ROUTES = {
   // Main Pages
   home: "/",
   aboutUs: "/ve-chung-toi",
+  compass: "/ve-chung-toi/compass",
+  apac: "/ve-chung-toi/apac",
+  era: "/ve-chung-toi/era-real-estate",
   //projects: "/du-an",
   join: "/gia-nhap",
   apply: "/ung-tuyen",
