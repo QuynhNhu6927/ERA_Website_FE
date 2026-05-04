@@ -7,24 +7,24 @@ export const ROUTES = {
   // Main Pages
   home: "/",
   aboutUs: "/ve-chung-toi",
-  projects: "/du-an",
-  join: "/join",
-  apply: "/apply",
+  //projects: "/du-an",
+  join: "/gia-nhap",
+  apply: "/ung-tuyen",
   academy: "/academy",
-  news: "/news",
-  contact: "/contact",
+  news: "/tin-tuc",
+  contact: "/lien-he",
   
   // Auth
   login: "/login",
   
   // Join Team Sub-pages
-  commission: "/join/commission",
-  training: "/join/training",
-  inventory: "/join/inventory",
-  technology: "/join/technology",
+  commission: "/gia-nhap/commission",
+  training: "/gia-nhap/training",
+  inventory: "/gia-nhap/inventory",
+  technology: "/gia-nhap/technology",
 
   // Apply Sub-pages
-  applyDetail: "/apply/chi-tiet-cong-viec",
+  applyDetail: "/ung-tuyen/chi-tiet-cong-viec",
   
   // Footer Links
   brandStory: "/cau-chuyen-thuong-hieu",

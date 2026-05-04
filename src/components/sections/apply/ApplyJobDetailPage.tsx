@@ -66,9 +66,16 @@ export function ApplyJobDetailPage() {
               </span>
             </div>
           </div>
-          <a href="#apply-form" className="flex-shrink-0 px-8 py-3 rounded-full text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all" style={{ backgroundColor: colors.primary.DEFAULT }}>
+          <button
+            type="button"
+            onClick={() => {
+              document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="flex-shrink-0 px-8 py-3 rounded-full text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all cursor-pointer"
+            style={{ backgroundColor: colors.primary.DEFAULT }}
+          >
             Ứng Tuyển Ngay
-          </a>
+          </button>
         </div>
       </div>
 
@@ -138,7 +145,7 @@ export function ApplyJobDetailPage() {
                       <span className="w-1 h-1 rounded-full bg-gray-300" />
                       <span>{job.type}</span>
                     </div>
-                    <Link href="/apply/chi-tiet-cong-viec" className="inline-flex items-center gap-1 text-xs font-medium transition-colors" style={{ color: colors.primary.DEFAULT }}>
+                    <Link href={ROUTES.applyDetail} className="inline-flex items-center gap-1 text-xs font-medium transition-colors" style={{ color: colors.primary.DEFAULT }}>
                       Xem chi tiết <ArrowRight size={12} />
                     </Link>
                   </div>

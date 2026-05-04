@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { colors } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 
 const cards = [
   {
@@ -154,7 +155,7 @@ export function JoinDifferenceSection() {
         {/* CTA Button */}
         <div className="flex justify-center">
           <Button asChild variant="primary" size="lg">
-            <a href="#">GIA NHẬP TEAM ERA NGAY</a>
+            <a href={ROUTES.apply}>GIA NHẬP TEAM ERA NGAY</a>
           </Button>
         </div>
       </Container>

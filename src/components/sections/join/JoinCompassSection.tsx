@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { CompassOrbit } from "./CompassOrbit";
 import { colors } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 
 const stats = [
   {
@@ -176,7 +177,7 @@ export function JoinCompassSection() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-5">
                 <Button asChild variant="primary" size="md">
-                  <a href="#" className="gap-2">
+                  <a href={ROUTES.apply} className="gap-2">
                     Gia nhập ERA ngay
                     <svg
                       width="16"

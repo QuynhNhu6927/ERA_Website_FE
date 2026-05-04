@@ -53,12 +53,13 @@ function CultureRow({
       </span>
       <h3 className="text-2xl md:text-3xl font-bold mt-4 leading-tight">
         <span className="text-[#C8102E]">{titleRed}</span>
+        <br />
         <span className="text-[#0C0C44]">{titleNavy}</span>
       </h3>
       <ul className="mt-5 space-y-3 text-gray-700 text-[15px] leading-relaxed">
         {bullets.map((b, i) => (
           <li key={i} className="flex gap-3">
-            <span className="text-[#C8102E] text-lg leading-none mt-0.5 shrink-0">
+            <span className="text-lg leading-none mt-0.5 shrink-0">
               •
             </span>
             <span>{b}</span>
@@ -101,7 +102,7 @@ export function JoinCultureSection() {
           <CultureRow
             tag="Môi trường"
             titleRed="Năng động &"
-            titleNavy=" Chuyên nghiệp"
+            titleNavy="Chuyên nghiệp"
             bullets={[
               "Làm việc trong không gian mở tiêu chuẩn quốc tế, khơi nguồn cảm hứng để bạn tự do phát huy tối đa năng lực cá nhân.",
               "Môi trường không khoảng cách giúp mọi ý tưởng đều được lắng nghe.",
@@ -114,13 +115,13 @@ export function JoinCultureSection() {
           <CultureRow
             tag="Văn hoá"
             titleRed="Teamwork &"
-            titleNavy=" Chủ động"
+            titleNavy="Chủ động"
             bullets={[
               'Đề cao tinh thần "One ERA" gắn kết. Không có sự đơn độc, chúng tôi cùng nhau chủ động bứt phá và chinh phục mọi mục tiêu.',
               "Sự thành công của mỗi cá nhân là niềm tự hào của tập thể.",
             ]}
-            mainImage="/academy/aca_courses_int1.jpg"
-            overlapImage="/join/join_envi_4.jpg"
+            mainImage="/join/join_op_01.jpg"
+            overlapImage="/academy/aca_courses_int1.jpg"
             reverse
           />
 
@@ -128,7 +129,7 @@ export function JoinCultureSection() {
           <CultureRow
             tag="Cách làm"
             titleRed="Công nghệ"
-            titleNavy=" hỗ trợ tối ưu"
+            titleNavy="hỗ trợ tối ưu"
             bullets={[
               "Làm việc thông minh thay vì làm việc chăm chỉ.",
               "Ứng dụng hệ sinh thái số hóa toàn diện giúp Agent rút ngắn thời gian chốt deal, quản lý giỏ hàng và khách hàng mọi lúc mọi nơi.",

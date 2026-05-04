@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 
 export function JoinCTASection() {
   return (
@@ -24,7 +25,7 @@ export function JoinCTASection() {
         </h2>
 
         <Link
-          href="/apply/"
+          href={ROUTES.apply}
           className="inline-block px-8 py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-200 hover:shadow-lg"
           style={{
             backgroundColor: colors.neutral.white,
