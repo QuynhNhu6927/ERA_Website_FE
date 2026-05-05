@@ -80,7 +80,14 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
           animate={{ scale: step >= 3 ? 0 : 1, opacity: step >= 3 ? 0 : 1, rotate: step >= 3 ? 720 : 360 }}
           transition={{ type: "spring", stiffness: 200, damping: 15 }}
         >
-          <span className="text-5xl md:text-7xl font-light leading-none" style={{ color: colors.primary.DEFAULT }}>×</span>
+          <svg
+            viewBox="0 0 80 80"
+            className="w-14 h-14 md:w-18 md:h-18"
+            fill="none"
+          >
+            <line x1="16" y1="16" x2="64" y2="64" stroke={colors.primary.DEFAULT} strokeWidth="10" strokeLinecap="round" />
+            <line x1="64" y1="16" x2="16" y2="64" stroke={colors.primary.DEFAULT} strokeWidth="10" strokeLinecap="round" />
+          </svg>
         </motion.div>
       )}
 
