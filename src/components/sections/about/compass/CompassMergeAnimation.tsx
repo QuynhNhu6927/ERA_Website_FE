@@ -71,8 +71,8 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
             <div
               className="w-40 h-40 md:w-56 md:h-56 rounded-full"
               style={{
-                background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(37,99,235,0.85) 35%, transparent 65%)",
-                boxShadow: "0 0 80px 40px rgba(255,255,255,0.8), 0 0 140px 70px rgba(37,99,235,0.5)",
+                background: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.7) 45%, rgba(29,78,216,0.95) 70%, transparent 100%)",
+                boxShadow: "0 0 60px 30px rgba(59,130,246,0.4), 0 0 120px 60px rgba(37,99,235,0.7)",
               }}
             />
           </motion.div>
