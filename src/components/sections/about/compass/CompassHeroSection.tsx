@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { CompassMergeAnimation } from "@/components/sections/about/compass/CompassMergeAnimation";
 
@@ -12,9 +13,6 @@ export function CompassHeroSection() {
     const timer = setInterval(() => setCycle((c) => c + 1), 18000);
     return () => clearInterval(timer);
   }, []);
-
-  const paragraph1 =
-    "Năm 2026, Anywhere (tập đoàn về dịch vụ bất động sản lớn nhất thế giới) chính thức sáp nhập cùng Compass (thương hiệu môi giới bất động sản nhà ở Top 1 Hoa Kỳ), ra mắt dưới tên gọi COMPASS INTERNATIONAL HOLDINGS.";
 
   const paragraph2 =
     "Bằng cách kết hợp mạng lưới nhượng quyền thương hiệu rộng khắp của Anywhere với nền tảng công nghệ môi giới đột phá của Compass, chúng tôi đang từng bước tái định nghĩa chuẩn mực của ngành môi giới toàn cầu, tối ưu hóa mọi trải nghiệm giao dịch thông qua sức mạnh của dữ liệu và công nghệ.";
@@ -34,16 +32,26 @@ export function CompassHeroSection() {
 
       <Container className="relative z-10">
         <div className="flex flex-col items-center pt-16 md:pt-20 pb-16 md:pb-24 px-4">
-          {/* Title + intro text */}
+          {/* Logo image + intro text */}
           <div className="text-center mb-10 md:mb-14">
-            <h1 className="text-6xl md:text-8xl font-serif tracking-tight text-black">
-              COMPASS
-            </h1>
-            <h2 className="text-lg md:text-2xl tracking-[0.3em] text-black mt-2 md:mt-3">
-              INTERNATIONAL HOLDINGS
-            </h2>
+            <div className="relative w-64 h-16 md:w-96 md:h-24 mx-auto">
+              <Image
+                src="/about/about_compass_inter.png"
+                alt="Compass International Holdings"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-3xl mx-auto mt-6 md:mt-8">
-              {paragraph1}
+              Năm 2026,{" "}
+              <span className="font-medium text-black">
+                Anywhere (tập đoàn về dịch vụ bất động sản lớn nhất thế giới) chính thức sáp nhập cùng Compass
+              </span>{" "}
+              (thương hiệu môi giới bất động sản nhà ở Top 1 Hoa Kỳ), ra mắt dưới tên gọi{" "}
+              <span className="whitespace-nowrap">
+                COMPASS INTERNATIONAL HOLDINGS.
+              </span>
             </p>
           </div>
 
