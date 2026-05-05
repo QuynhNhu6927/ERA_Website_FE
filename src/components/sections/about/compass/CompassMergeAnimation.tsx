@@ -26,22 +26,34 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
     timers.push(setTimeout(() => setStep(1), 300));     // circles appear
     timers.push(setTimeout(() => setStep(2), 1000));    // cross appears
     timers.push(setTimeout(() => setStep(3), 2000));    // cross rotates + fades out
-    timers.push(setTimeout(() => setStep(4), 2500));    // circles move in (logos fade out)
-    timers.push(setTimeout(() => setStep(5), 2700));    // circles touch → flash appear
-    timers.push(setTimeout(() => setStep(6), 2900));    // flash gone, merged circle appear
-    timers.push(setTimeout(() => setStep(7), 3900));    // scale up (1s after merge)
-    timers.push(setTimeout(() => setStep(8), 4000));    // logo appear
-    timers.push(setTimeout(() => setStep(9), 4100));    // neon start
-    timers.push(setTimeout(() => setStep(10), 9100));   // neon disappear (5s rotation)
-    timers.push(setTimeout(() => setStep(11), 11100));  // everything fade out
+    timers.push(setTimeout(() => setStep(4), 2500));    // circles move in
+    timers.push(setTimeout(() => setStep(5), 3000));    // circles touch → flash appear + logos fade
+    timers.push(setTimeout(() => setStep(6), 3400));    // flash gone, merged circle appear
+    timers.push(setTimeout(() => setStep(7), 4400));    // scale up (1s after merge)
+    timers.push(setTimeout(() => setStep(8), 4500));    // logo appear
+    timers.push(setTimeout(() => setStep(9), 4600));    // neon start
+    timers.push(setTimeout(() => setStep(10), 9600));   // neon disappear (5s rotation)
+    timers.push(setTimeout(() => setStep(11), 11600));  // everything fade out
     return () => timers.forEach(clearTimeout);
   }, [cycle]);
 
   const circleSizeClass = "w-28 h-28 md:w-44 md:h-44";
   const bigCircleScale = step >= 7 ? 1.4 : 1;
 
+  const isGooey = step >= 4 && step < 7;
+
   return (
     <div className="relative w-96 h-52 md:w-[36rem] md:h-52">
+      {/* SVG Gooey filter */}
+      <svg className="absolute w-0 h-0">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
       {/* Cross */}
       {step >= 2 && step < 4 && (
         <motion.div
@@ -86,69 +98,75 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
         )}
       </AnimatePresence>
 
-      {/* Circle 1 - Anywhere */}
-      <motion.div
-        className={`absolute top-1/2 -translate-y-1/2 z-10 ${circleSizeClass} rounded-full bg-white shadow-2xl flex items-center justify-center p-4 md:p-6`}
-        style={{ left: 0 }}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{
-          scale: step >= 11 ? 0 : step >= 1 ? 1 : 0,
-          opacity: step >= 11 ? 0 : step >= 1 ? 1 : 0,
-          x: step >= 4 ? moveX : 0,
-        }}
-        transition={{
-          scale: { type: "spring", stiffness: 260, damping: 18 },
-          x: { duration: 0.4, ease: "easeInOut" },
-          opacity: { duration: 0.4 },
-        }}
+      {/* Circles with gooey merge effect */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{ filter: isGooey ? "url(#goo)" : "none" }}
       >
+        {/* Circle 1 - Anywhere */}
         <motion.div
-          className="w-full h-full"
-          animate={{ opacity: step >= 4 ? 0 : 1 }}
-          transition={{ duration: 0.3 }}
+          className={`absolute top-1/2 -translate-y-1/2 ${circleSizeClass} rounded-full bg-white flex items-center justify-center p-4 md:p-6 ${isGooey ? "" : "shadow-2xl"}`}
+          style={{ left: 0 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{
+            scale: step >= 11 ? 0 : step >= 1 ? 1 : 0,
+            opacity: step >= 11 ? 0 : step >= 1 ? 1 : 0,
+            x: step >= 4 ? moveX : 0,
+          }}
+          transition={{
+            scale: { type: "spring", stiffness: 260, damping: 18 },
+            x: { duration: 0.9, ease: "easeOut" },
+            opacity: { duration: 0.5 },
+          }}
         >
-          <Image
-            src="/about/about_anywhere_hero.png"
-            alt="Anywhere"
-            width={140}
-            height={140}
-            className="object-contain w-full h-full"
-            priority
-          />
+          <motion.div
+            className="w-full h-full"
+            animate={{ opacity: step >= 5 ? 0 : 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Image
+              src="/about/about_anywhere_hero.png"
+              alt="Anywhere"
+              width={140}
+              height={140}
+              className="object-contain w-full h-full"
+              priority
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
 
-      {/* Circle 2 - Compass */}
-      <motion.div
-        className={`absolute top-1/2 -translate-y-1/2 z-10 ${circleSizeClass} rounded-full bg-white shadow-2xl flex items-center justify-center p-4 md:p-6`}
-        style={{ right: 0 }}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{
-          scale: step >= 11 ? 0 : step >= 1 ? 1 : 0,
-          opacity: step >= 11 ? 0 : step >= 1 ? 1 : 0,
-          x: step >= 4 ? -moveX : 0,
-        }}
-        transition={{
-          scale: { type: "spring", stiffness: 260, damping: 18 },
-          x: { duration: 0.4, ease: "easeInOut" },
-          opacity: { duration: 0.4 },
-        }}
-      >
+        {/* Circle 2 - Compass */}
         <motion.div
-          className="w-full h-full"
-          animate={{ opacity: step >= 4 ? 0 : 1 }}
-          transition={{ duration: 0.3 }}
+          className={`absolute top-1/2 -translate-y-1/2 ${circleSizeClass} rounded-full bg-white flex items-center justify-center p-4 md:p-6 ${isGooey ? "" : "shadow-2xl"}`}
+          style={{ right: 0 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{
+            scale: step >= 11 ? 0 : step >= 1 ? 1 : 0,
+            opacity: step >= 11 ? 0 : step >= 1 ? 1 : 0,
+            x: step >= 4 ? -moveX : 0,
+          }}
+          transition={{
+            scale: { type: "spring", stiffness: 260, damping: 18 },
+            x: { duration: 0.9, ease: "easeOut" },
+            opacity: { duration: 0.5 },
+          }}
         >
-          <Image
-            src="/about/about_compass_hero.png"
-            alt="Compass"
-            width={140}
-            height={140}
-            className="object-contain w-full h-full"
-            priority
-          />
+          <motion.div
+            className="w-full h-full"
+            animate={{ opacity: step >= 5 ? 0 : 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Image
+              src="/about/about_compass_hero.png"
+              alt="Compass"
+              width={140}
+              height={140}
+              className="object-contain w-full h-full"
+              priority
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Merged circle wrapper with neon and logo */}
       {step >= 6 && (
