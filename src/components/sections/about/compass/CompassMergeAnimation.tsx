@@ -27,11 +27,11 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
     timers.push(setTimeout(() => setStep(2), 1000));    // cross pop
     timers.push(setTimeout(() => setStep(3), 2000));    // cross shrink
     timers.push(setTimeout(() => setStep(4), 2500));    // blobs move in
-    timers.push(setTimeout(() => setStep(5), 3600));    // glow appear (touch)
-    timers.push(setTimeout(() => setStep(6), 4000));    // logos fade
+    timers.push(setTimeout(() => setStep(5), 3900));    // flash when blobs half-merged
+    timers.push(setTimeout(() => setStep(6), 4100));    // logos fade
     timers.push(setTimeout(() => setStep(7), 4200));    // center blob reveal + left/right hide
-    timers.push(setTimeout(() => setStep(8), 4300));    // glow fade
-    timers.push(setTimeout(() => setStep(9), 4800));    // emerge — scale up (1s after merge)
+    timers.push(setTimeout(() => setStep(8), 4550));    // glow fade
+    timers.push(setTimeout(() => setStep(9), 4600));    // emerge — scale up (1s after merge)
     timers.push(setTimeout(() => setStep(10), 7000));   // rings fade out
     timers.push(setTimeout(() => setStep(11), 7500));   // neon appear
     timers.push(setTimeout(() => setStep(12), 13000));  // neon fade out
@@ -57,17 +57,25 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
         </defs>
       </svg>
 
-      {/* Glow / Flash effect */}
+      {/* Flash effect — camera-like burst */}
       <AnimatePresence>
         {step >= 5 && step < 8 && (
           <motion.div
-            className="absolute left-1/2 top-1/2 z-10 w-28 h-28 md:w-40 md:h-40 rounded-full bg-[#3b82f6] pointer-events-none"
-            style={{ x: "-50%", y: "-50%", filter: "blur(24px)", mixBlendMode: "screen" }}
+            className="absolute left-1/2 top-1/2 pointer-events-none"
+            style={{ x: "-50%", y: "-50%" }}
             initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: step >= 7 ? 5 : 3, opacity: step >= 7 ? 0 : 1 }}
+            animate={{ scale: [0, 1.2, 4], opacity: [0, 1, 0] }}
             exit={{ opacity: 0 }}
-            transition={{ duration: step >= 7 ? 0.5 : 0.8, ease: "easeInOut" }}
-          />
+            transition={{ duration: 0.35, times: [0, 0.15, 1], ease: "easeOut" }}
+          >
+            <div
+              className="w-40 h-40 md:w-56 md:h-56 rounded-full"
+              style={{
+                background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(37,99,235,0.85) 35%, transparent 65%)",
+                boxShadow: "0 0 80px 40px rgba(255,255,255,0.8), 0 0 140px 70px rgba(37,99,235,0.5)",
+              }}
+            />
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -124,6 +132,26 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
             />
           </motion.div>
         </motion.div>
+      )}
+
+      {/* Radiating rings — behind merged circle, vivid & slow */}
+      {step >= 9 && step < 11 && (
+        <>
+          <motion.div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 rounded-full border-2 border-[#3b82f6] pointer-events-none"
+            style={{ boxShadow: "0 0 24px 6px rgba(59,130,246,0.3)" }}
+            initial={{ scale: 0.8, opacity: 0.9 }}
+            animate={{ scale: 1.6, opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 rounded-full border-2 border-[#60a5fa] pointer-events-none"
+            style={{ boxShadow: "0 0 24px 6px rgba(96,165,250,0.25)" }}
+            initial={{ scale: 0.8, opacity: 0.85 }}
+            animate={{ scale: 1.8, opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.25 }}
+          />
+        </>
       )}
 
       {/* Gooey container — blobs only */}
@@ -212,34 +240,6 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
       >
         <Image src="/about/about_compass_inter.png" alt="Compass International" width={180} height={180} className="object-contain w-full h-full" priority />
       </motion.div>
-
-      {/* Radiating rings — appear & expand with emerge, fade out independently */}
-      {step >= 9 && step < 11 && (
-        <>
-          <motion.div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#3b82f6] pointer-events-none"
-            initial={{ width: 240, height: 240, opacity: 0.9 }}
-            animate={{ width: 360, height: 360, opacity: 0 }}
-            transition={{
-              width: { duration: 0.6, ease: "easeOut" },
-              height: { duration: 0.6, ease: "easeOut" },
-              opacity: { duration: 0.4, delay: 0.6 },
-            }}
-          />
-          <motion.div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#93c5fd] pointer-events-none"
-            initial={{ width: 240, height: 240, opacity: 0.8 }}
-            animate={{ width: 440, height: 440, opacity: 0 }}
-            transition={{
-              width: { duration: 0.6, ease: "easeOut", delay: 0.15 },
-              height: { duration: 0.6, ease: "easeOut", delay: 0.15 },
-              opacity: { duration: 0.4, delay: 0.75 },
-            }}
-          />
-        </>
-      )}
-
-
     </div>
   );
 }
