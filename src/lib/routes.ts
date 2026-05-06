@@ -17,8 +17,6 @@ export const ROUTES = {
   news: "/tin-tuc",
   contact: "/lien-he",
   
-  // Auth
-  login: "/login",
   
   // Join Team Sub-pages
   commission: "/gia-nhap/commission",

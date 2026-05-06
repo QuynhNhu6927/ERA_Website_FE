@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { colors, withOpacity } from "@/lib/theme";
+import { ROUTES } from "@/lib/routes";
 
 const sideNews = [
   {
@@ -57,7 +58,7 @@ export const NewsMarketSection = memo(function NewsMarketSection() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Left - Featured News (3 cols) */}
           <div className="lg:col-span-3">
-            <Link href="/news/tin-thi-truong" className="block">
+            <Link href={`${ROUTES.news}/tin-thi-truong`} className="block">
             <div className="relative h-[420px] rounded-2xl overflow-hidden cursor-pointer group transition-transform duration-300 hover:scale-[1.01]">
               <Image
                 src={featuredNews.image}

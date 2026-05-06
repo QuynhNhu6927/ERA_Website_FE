@@ -30,7 +30,6 @@ const defaultLayout: Required<LayoutConfig> = {
  * "/some-page": { header: false },
  */
 const specialLayouts: Record<string, LayoutConfig> = {
-  "/only-me-can-loign": { header: false, footer: false, toTop: false },
 };
 
 function normalizePathname(pathname: string): string {

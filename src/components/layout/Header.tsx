@@ -6,10 +6,9 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { X, LogOut, ChevronDown } from "lucide-react";
+import { X } from "lucide-react";
 import { colors, withOpacity } from "@/lib/theme";
 import { ROUTES } from "@/lib/routes";
-import { User } from "@/types/user";
 
 const ICON_SIZES = {
   navIcon: 18,
@@ -27,41 +26,11 @@ const navLinks: { href: string; label: string; icon: string; external?: boolean 
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isUserDrawerOpen, setIsUserDrawerOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const rafRef = useRef<number | null>(null);
-  const profileRef = useRef<HTMLDivElement>(null);
-
-  const displayName = user?.fullName || user?.name || "User";
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("era_user");
-      if (stored) {
-        setUser(JSON.parse(stored));
-      }
-    } catch {
-      setUser(null);
-    }
-  }, []);
-
-  // Close profile dropdown on click outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
-        setIsProfileOpen(false);
-      }
-    };
-    if (isProfileOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isProfileOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,37 +58,7 @@ export function Header() {
       window.removeEventListener("scroll", handleScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [lastScrollY]);
-
-  const handleLogout = () => {
-    localStorage.removeItem("era_access_token");
-    localStorage.removeItem("era_user");
-    setUser(null);
-    setIsProfileOpen(false);
-    setIsMobileMenuOpen(false);
-    setIsUserDrawerOpen(false);
-    window.location.reload();
-  };
-
-  const AvatarCircle = ({ size = 36, className = "" }: { size?: number; className?: string }) => (
-    <div
-      className={cn("rounded-full flex items-center justify-center text-sm font-bold text-white overflow-hidden shrink-0", className)}
-      style={{ backgroundColor: colors.primary.DEFAULT, width: size, height: size }}
-      title={displayName}
-    >
-      {user?.avatar ? (
-        <Image
-          src={user.avatar}
-          alt={displayName}
-          width={size}
-          height={size}
-          className="w-full h-full object-cover"
-        />
-      ) : (
-        displayName.charAt(0).toUpperCase()
-      )}
-    </div>
-  );
+  });
 
   return (
     <>
@@ -175,62 +114,9 @@ export function Header() {
                   );
                 })}
               </nav>
-              {user ? (
-                <div className="relative" ref={profileRef}>
-                  <button
-                    onClick={() => setIsProfileOpen((prev) => !prev)}
-                    className="flex items-center gap-1 outline-none"
-                    aria-label="Open profile menu"
-                  >
-                    <AvatarCircle size={36} />
-                    <ChevronDown
-                      size={14}
-                      className={cn("transition-transform duration-200", isProfileOpen && "rotate-180")}
-                      style={{ color: colors.gray[500] }}
-                    />
-                  </button>
-                  
-                  {/* Profile Dropdown */}
-                  {isProfileOpen && (
-                    <div
-                      className="absolute right-0 top-full mt-2 w-56 rounded-xl shadow-xl border overflow-hidden"
-                      style={{
-                        backgroundColor: colors.neutral.white,
-                        borderColor: colors.gray[200],
-                      }}
-                    >
-                      <div className="px-4 py-3 border-b" style={{ borderColor: colors.gray[100] }}>
-                        <p className="text-sm font-semibold" style={{ color: colors.gray[900] }}>
-                          {displayName}
-                        </p>
-                        <p className="text-xs mt-0.5" style={{ color: colors.gray[500] }}>
-                          {user.email}
-                        </p>
-                      </div>
-                      <span
-                        className="block px-4 py-2.5 text-sm transition-colors hover:bg-gray-50 cursor-pointer"
-                        style={{ color: colors.gray[700] }}
-                      >
-                        Quản lý nội dung
-                      </span>
-                      <button
-                        onClick={handleLogout}
-                        className="w-full flex items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:bg-gray-50"
-                        style={{ color: colors.gray[700] }}
-                      >
-                        <LogOut size={14} />
-                        Đăng xuất
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Button asChild variant="primary" size="sm">
-                  <Link href="#">
-                    Đăng nhập
-                  </Link>
-                </Button>
-              )}   
+              <Button asChild variant="primary" size="sm">
+                <Link href="#">Đăng nhập</Link>
+              </Button>
             </div>
           </div>
         </Container>
@@ -251,25 +137,15 @@ export function Header() {
               isScrolled ? "shadow-md" : ""
             )}
           >
-            {user ? (
-              <button
-                className="p-1.5 flex items-center justify-center"
-                onClick={() => setIsUserDrawerOpen(true)}
-                aria-label="Open profile"
-              >
-                <AvatarCircle size={20} className="text-xs" />
-              </button>
-            ) : (
-              <Link href="#" className="p-1.5 flex items-center justify-center">
-                <Image
-                  src="/mobile_header/menu_user_icon.svg"
-                  alt="User"
-                  width={20}
-                  height={20}
-                  style={{ width: '20px', height: '20px' }}
-                />
-              </Link>
-            )}
+            <Link href="#" className="p-1.5 flex items-center justify-center">
+              <Image
+                src="/mobile_header/menu_user_icon.svg"
+                alt="User"
+                width={20}
+                height={20}
+                style={{ width: '20px', height: '20px' }}
+              />
+            </Link>
             <div className="w-px h-4 bg-gray-300" />
             <button
               className="p-1.5 flex items-center justify-center"
@@ -393,56 +269,6 @@ export function Header() {
             </p>
           </div>
 
-        </div>
-      </div>
-
-      {/* Mobile User Drawer */}
-      <div className={cn("fixed inset-0 z-[60] transition-all duration-300 md:hidden", isUserDrawerOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none")}>
-        <div className="absolute inset-0 bg-black/30" onClick={() => setIsUserDrawerOpen(false)} />
-        <div className={cn("absolute top-0 left-0 h-full w-[85%] max-w-[320px] transition-transform duration-300 flex flex-col", isUserDrawerOpen ? "translate-x-0" : "-translate-x-full")} style={{ backgroundColor: colors.neutral.white }}>
-          {/* Header */}
-          <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: colors.gray[200] }}>
-            <span className="text-sm font-semibold" style={{ color: colors.gray[900] }}>Tài khoản</span>
-            <button className="p-2" style={{ color: colors.gray[700] }} onClick={() => setIsUserDrawerOpen(false)} aria-label="Close profile">
-              <X size={14} />
-            </button>
-          </div>
-
-          {/* User Info */}
-          {user && (
-            <div className="flex-1 px-5 py-6 flex flex-col">
-              <div className="flex items-center gap-3 mb-6">
-                <AvatarCircle size={48} />
-                <div className="min-w-0">
-                  <p className="text-base font-semibold truncate" style={{ color: colors.gray[900] }}>
-                    {displayName}
-                  </p>
-                  <p className="text-sm truncate" style={{ color: colors.gray[500] }}>
-                    {user.email}
-                  </p>
-                </div>
-              </div>
-
-              <span
-                className="block py-3 px-4 rounded-xl text-sm font-medium mb-4 cursor-pointer transition-colors hover:bg-gray-50"
-                style={{ color: colors.gray[700] }}
-              >
-                Quản lý nội dung
-              </span>
-
-              <button
-                onClick={handleLogout}
-                className="mt-auto w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium transition-colors"
-                style={{
-                  backgroundColor: withOpacity(colors.primary.DEFAULT, 0.08),
-                  color: colors.primary.DEFAULT,
-                }}
-              >
-                <LogOut size={16} />
-                Đăng xuất
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </>
