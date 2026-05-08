@@ -142,30 +142,36 @@ export function ProjectsSection() {
 
           {/* Project Images - Mobile: vertical stack; Desktop: horizontal */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 order-2 lg:order-1">
-            <Image
-              src="/home/home_pj_01.webp"
-              alt="Dự án 1"
-              width={800}
-              height={600}
-              className="w-full h-auto rounded-2xl lg:rounded-3xl"
-              loading="lazy"
-            />
-            <Image
-              src="/home/home_pj_02.webp"
-              alt="Dự án 2"
-              width={800}
-              height={600}
-              className="w-full h-auto rounded-2xl lg:rounded-3xl"
-              loading="lazy"
-            />
-            <Image
-              src="/home/home_pj_03.webp"
-              alt="Dự án 3"
-              width={800}
-              height={600}
-              className="w-full h-auto rounded-2xl lg:rounded-3xl"
-              loading="lazy"
-            />
+            <div className="overflow-hidden rounded-2xl lg:rounded-3xl">
+              <Image
+                src="/home/home_pj_01.webp"
+                alt="Dự án 1"
+                width={800}
+                height={600}
+                className="w-full h-auto transition-transform duration-300 hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div className="overflow-hidden rounded-2xl lg:rounded-3xl">
+              <Image
+                src="/home/home_pj_02.webp"
+                alt="Dự án 2"
+                width={800}
+                height={600}
+                className="w-full h-auto transition-transform duration-300 hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div className="overflow-hidden rounded-2xl lg:rounded-3xl">
+              <Image
+                src="/home/home_pj_03.webp"
+                alt="Dự án 3"
+                width={800}
+                height={600}
+                className="w-full h-auto transition-transform duration-300 hover:scale-105"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
     </Section>

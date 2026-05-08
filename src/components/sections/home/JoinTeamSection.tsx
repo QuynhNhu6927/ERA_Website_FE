@@ -9,7 +9,7 @@ const benefits = [
   {
     icon: "/join/join_money_icon.svg",
     title: "Cơ chế hoa hồng đột phá",
-    description: "Tối đa hóa thu nhập cá nhân với chính sách hoa hồng lũy tiến hấp dẫn.",
+    description: "Tối đa hóa thu nhập cá nhân với chính sách hoa hồng lũy tiến hấp dẫn",
     bgColor: colors.primary.navy.DEFAULT,
     linkColor: colors.secondary.DEFAULT,
     href: "/",

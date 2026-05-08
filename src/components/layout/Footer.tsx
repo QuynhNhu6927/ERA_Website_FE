@@ -58,27 +58,27 @@ export function Footer() {
         </div>
 
         {/* Desktop: 4 Headings in 1 row - Flexbox */}
-        <div className="hidden lg:flex justify-between mb-6">
+        <div className="hidden lg:flex items-baseline justify-between mb-10">
           <h3 
-            className="text-sm tracking-wider font-semibold"
+            className="text-sm tracking-wider font-semibold leading-snug"
             style={{ width: '28%' }}
           >
             CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN ERA VIỆT NAM
           </h3>
           <h4 
-            className="text-base font-semibold"
+            className="text-sm font-semibold leading-none"
             style={{ width: '22%' }}
           >
             Văn phòng làm việc
           </h4>
           <h4 
-            className="text-base font-semibold"
+            className="text-sm font-semibold leading-none"
             style={{ width: '15%' }}
           >
             Về chúng tôi
           </h4>
           <h4 
-            className="text-base font-semibold text-left"
+            className="text-sm font-semibold text-left leading-none"
             style={{ width: '15%' }}
           >
             Theo dõi chúng tôi

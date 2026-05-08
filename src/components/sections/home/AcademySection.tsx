@@ -87,7 +87,7 @@ export function AcademySection() {
             
             {/* Desktop: Caption - positioned outside the frame at bottom left */}
             <div 
-              className="absolute -bottom-4 left-4 px-5 py-3 rounded-lg"
+              className="absolute -bottom-4 left-[-16] px-5 py-3 rounded-lg"
               style={{
                 backgroundColor: colors.primary.navy.DEFAULT,
               }}
@@ -99,9 +99,9 @@ export function AcademySection() {
                   lineHeight: 1.4,
                 }}
               >
-                Chương trình đào tạo kỹ năng,
+                Chương trình đào tạo kỹ năng, kiến thức
                 <br />
-                kiến thức hàng tuần
+                phong phú, chuyên sâu hàng tuần
               </p>
             </div>
           </div>
