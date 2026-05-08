@@ -12,7 +12,7 @@ export function AboutEraVietnamSection() {
       <Container size="lg">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-10 items-center">
           {/* Text */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 text-center lg:text-left">
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
               <span style={{ color: colors.primary.navy.DEFAULT }}>
                 ERA Vietnam
@@ -28,7 +28,7 @@ export function AboutEraVietnamSection() {
             </h2>
 
             <div
-              className="mt-5 pl-4 border-l-2 text-gray-600 text-[15px] leading-relaxed"
+              className="mt-5 pl-0 border-l-0 lg:pl-4 lg:border-l-2 text-gray-600 text-[15px] leading-relaxed"
               style={{ borderColor: colors.primary.DEFAULT }}
             >
               <p>
@@ -40,7 +40,7 @@ export function AboutEraVietnamSection() {
 
             <Link
               href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg mt-8"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg mt-8 w-full lg:w-auto"
               style={{ backgroundColor: colors.primary.DEFAULT }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.backgroundColor =

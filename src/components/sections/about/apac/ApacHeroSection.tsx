@@ -11,7 +11,7 @@ const stats = [
 
 export function ApacHeroSection() {
   return (
-    <section className="relative min-h-[400px] md:min-h-[500px]">
+    <section className="relative min-h-[400px] md:min-h-[500px] overflow-visible">
       {/* Background with bottom gradient */}
       <div
         className="absolute inset-0"
@@ -26,7 +26,8 @@ export function ApacHeroSection() {
       {/* Content anchored to bottom */}
       <div className="absolute bottom-0 left-0 right-0">
         <Container size="lg">
-          <div>
+          {/* Title + description — desktop */}
+          <div className="hidden md:block pb-4">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white leading-tight">
@@ -43,26 +44,33 @@ export function ApacHeroSection() {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="relative z-10 translate-y-1/2">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-              {stats.map((s, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-2xl p-5 md:p-6 text-center shadow-lg"
+          {/* Title — mobile only */}
+          <div className="md:hidden pb-4">
+            <h1 className="text-2xl font-extrabold text-white leading-tight">
+              ERA CHÂU Á THÁI BÌNH
+              <br />
+              DƯƠNG - APAC REALTY
+            </h1>
+          </div>
+
+          {/* Stats — mobile: 1 col, desktop: 3 cols with translate-y-1/2 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto pb-8 md:pb-0 md:translate-y-1/2">
+            {stats.map((s, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl p-5 md:p-6 text-center shadow-lg"
+              >
+                <p
+                  className="text-2xl md:text-3xl font-extrabold"
+                  style={{ color: colors.primary.DEFAULT }}
                 >
-                  <p
-                    className="text-2xl md:text-3xl font-extrabold"
-                    style={{ color: colors.primary.DEFAULT }}
-                  >
-                    {s.value}
-                  </p>
-                  <p className="text-xs text-gray-600 mt-1 whitespace-pre-line font-medium uppercase tracking-wide">
-                    {s.label}
-                  </p>
-                </div>
-              ))}
-            </div>
+                  {s.value}
+                </p>
+                <p className="text-xs text-gray-600 mt-1 whitespace-pre-line font-medium uppercase tracking-wide">
+                  {s.label}
+                </p>
+              </div>
+            ))}
           </div>
         </Container>
       </div>

@@ -10,27 +10,40 @@ const stats = [
   { value: "40,000+", label: "AGENTS" },
 ];
 
+function StatCard({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="bg-white rounded-2xl p-5 md:p-6 text-center shadow-lg">
+      <p className="text-2xl md:text-3xl font-extrabold" style={{ color: colors.primary.DEFAULT }}>
+        {value}
+      </p>
+      <p className="text-xs text-gray-600 mt-1 whitespace-pre-line font-medium uppercase tracking-wide">
+        {label}
+      </p>
+    </div>
+  );
+}
+
 export function EraRealEstateHeroSection() {
   return (
-    <section className="relative min-h-[400px] md:min-h-[500px]">
-      {/* Background with bottom gradient */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 85%), url('/about/about_era_hero_banner.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+    <>
+      <section className="relative h-[420px] md:h-[500px] overflow-visible flex items-end">
+        {/* Background with bottom gradient */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 85%), url('/about/about_era_hero_banner.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
 
-      {/* Content anchored to bottom */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <Container size="lg">
-          <div>
+        <Container size="lg" className="relative z-10 w-full pb-0">
+          {/* Title — desktop only */}
+          <div className="hidden md:block pb-4">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+                <h1 className="text-4xl lg:text-5xl font-extrabold text-white leading-tight">
                   MẠNG LƯỚI TOÀN CẦU
                   <br />
                   CỦA ERA REAL ESTATE
@@ -44,29 +57,32 @@ export function EraRealEstateHeroSection() {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="relative z-10 translate-y-1/2">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {stats.map((s, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-2xl p-5 md:p-6 text-center shadow-lg"
-                >
-                  <p
-                    className="text-2xl md:text-3xl font-extrabold"
-                    style={{ color: colors.primary.DEFAULT }}
-                  >
-                    {s.value}
-                  </p>
-                  <p className="text-xs text-gray-600 mt-1 whitespace-pre-line font-medium uppercase tracking-wide">
-                    {s.label}
-                  </p>
-                </div>
-              ))}
-            </div>
+          {/* Stats — mobile: row 1 (2 cards half in/half out) */}
+          <div className="md:hidden grid grid-cols-2 gap-3 translate-y-1/2">
+            {stats.slice(0, 2).map((s, i) => (
+              <StatCard key={i} value={s.value} label={s.label} />
+            ))}
+          </div>
+
+          {/* Stats — desktop: 1 row 4 cols */}
+          <div className="hidden md:grid grid-cols-4 gap-4 translate-y-1/2 relative z-10">
+            {stats.map((s, i) => (
+              <StatCard key={i} value={s.value} label={s.label} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Stats — mobile: row 2 (2 cards fully outside hero) */}
+      <div className="md:hidden bg-white pt-20 pb-8">
+        <Container size="lg">
+          <div className="grid grid-cols-2 gap-3">
+            {stats.slice(2, 4).map((s, i) => (
+              <StatCard key={i} value={s.value} label={s.label} />
+            ))}
           </div>
         </Container>
       </div>
-    </section>
+    </>
   );
 }

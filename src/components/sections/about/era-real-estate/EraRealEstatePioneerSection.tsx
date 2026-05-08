@@ -3,7 +3,6 @@
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 import { Printer, Globe, Handshake, User } from "lucide-react";
-import Link from "next/link";
 
 const milestones = [
   {
@@ -33,7 +32,7 @@ export function EraRealEstatePioneerSection() {
     <section className="py-16 md:py-24 bg-white">
       <Container size="lg">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+          <h2 className="text-2xl md:text-4xl font-bold leading-tight">
             <span style={{ color: colors.primary.navy.DEFAULT }}>
               TIÊN PHONG TRONG LĨNH VỰC
             </span>
@@ -48,55 +47,21 @@ export function EraRealEstatePioneerSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 items-stretch auto-rows-[1fr] sm:auto-rows-auto">
           {milestones.map((m, i) => (
             <div
               key={i}
-              className="flex flex-col items-center text-center p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+              className="flex flex-row sm:flex-col items-center gap-4 sm:gap-0 p-4 sm:p-6 rounded-2xl bg-white shadow-lg h-full md:hover:scale-[1.03] transition-all duration-300 text-left sm:text-center"
             >
               <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center flex-shrink-0 sm:mb-4"
                 style={{ backgroundColor: m.color }}
               >
-                <m.icon size={28} className="text-white" />
+                <m.icon size={22} className="text-white sm:w-7 sm:h-7" />
               </div>
               <p className="text-sm text-gray-600 leading-relaxed">{m.text}</p>
             </div>
           ))}
-        </div>
-
-        {/* Buttons */}
-        <div className="grid grid-cols-2 gap-8 md:gap-12 mt-12">
-          <Link
-            href="/ve-chung-toi/apac"
-            className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg w-full"
-            style={{ backgroundColor: colors.primary.DEFAULT }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                colors.primary.dark.DEFAULT;
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                colors.primary.DEFAULT;
-            }}
-          >
-            Về ERA APAC
-          </Link>
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg w-full"
-            style={{ backgroundColor: colors.primary.navy.DEFAULT }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                "#0a0a33";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                colors.primary.navy.DEFAULT;
-            }}
-          >
-            Về ERA Vietnam
-          </Link>
         </div>
       </Container>
     </section>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
@@ -12,12 +13,22 @@ const stats = [
 export default function AboutERAVNHeroSection() {
   return (
     <section className="relative min-h-[400px] md:min-h-[500px]">
-      {/* Background with bottom gradient */}
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/contact/contact_hero_banner.jpg"
+          alt="ERA Vietnam"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+      </div>
+      {/* Gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.15) 100%)`,
-          backgroundColor: "#2a2a3a",
         }}
       />
 

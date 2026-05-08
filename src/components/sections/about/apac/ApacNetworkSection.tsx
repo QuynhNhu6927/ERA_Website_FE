@@ -11,7 +11,7 @@ export function ApacNetworkSection() {
       <Container size="lg">
         {/* Title */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+          <h2 className="text-2xl md:text-4xl font-bold leading-tight">
             <span style={{ color: colors.primary.navy.DEFAULT }}>
               MẠNG LƯỚI{" "}
             </span>
@@ -50,7 +50,7 @@ export function ApacNetworkSection() {
               </div>
               {/* Badge */}
               <div
-                className="absolute top-0 right-0 translate-x-[40%] translate-y-[30%] px-5 py-3 rounded-lg text-white text-left shadow-lg"
+                className="absolute bottom-4 left-4 md:top-0 md:right-0 md:bottom-auto md:left-auto md:translate-x-[40%] md:translate-y-[30%] px-5 py-3 rounded-lg text-white text-left shadow-lg"
                 style={{ backgroundColor: colors.primary.DEFAULT }}
               >
                 <span className="text-xl md:text-2xl font-extrabold block">
@@ -64,7 +64,7 @@ export function ApacNetworkSection() {
           </div>
 
           {/* Text */}
-          <div>
+          <div className="text-center lg:text-left">
             <h3
               className="text-2xl md:text-3xl font-bold"
               style={{ color: colors.primary.navy.DEFAULT }}
@@ -75,11 +75,11 @@ export function ApacNetworkSection() {
               className="text-lg md:text-xl font-semibold mt-1"
               style={{ color: colors.primary.DEFAULT }}
             >
-              Trụ sở chính khu vực APAC
+              TRỤ SỞ CHÍNH KHU VỰC APAC
             </p>
 
             <div
-              className="mt-5 pl-4 border-l-2 text-gray-600 text-[15px] leading-relaxed space-y-4"
+              className="mt-5 px-4 md:px-0 md:pl-4 border-l-0 md:border-l-2 text-gray-600 text-[15px] leading-relaxed space-y-4"
               style={{ borderColor: colors.primary.DEFAULT }}
             >
               <p>
@@ -103,7 +103,7 @@ export function ApacNetworkSection() {
         </div>
 
         {/* Buttons */}
-        <div className="grid grid-cols-2 gap-8 md:gap-12 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 mt-8 md:mt-12">
           <Link
             href="/ve-chung-toi/era-real-estate"
             className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg w-full"

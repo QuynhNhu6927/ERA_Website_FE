@@ -1,19 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
 
 const coreValues = [
-  { label: "THỐNG NHẤT", color: colors.primary.DEFAULT, position: "top" },
-  { label: "CHÍNH TRỰC", color: colors.secondary.DEFAULT, position: "right" },
-  { label: "BIẾT ƠN", color: colors.tertiary.purple.DEFAULT, position: "bottom-right" },
-  { label: "ĐỔI MỚI", color: colors.primary.navy.DEFAULT, position: "bottom-left" },
-  { label: "ĐAM MÊ", color: colors.tertiary.orange.DEFAULT, position: "left" },
+  { label: "THỐNG\nNHẤT", color: colors.primary.DEFAULT, delay: "0s" },
+  { label: "CHÍNH\nTRỰC", color: colors.secondary.DEFAULT, delay: "-5s" },
+  { label: "BIẾT ƠN", color: colors.tertiary.purple.DEFAULT, delay: "-10s" },
+  { label: "ĐỔI MỚI", color: colors.primary.navy.DEFAULT, delay: "-15s" },
+  { label: "ĐAM MÊ", color: colors.tertiary.orange.DEFAULT, delay: "-20s" },
 ];
 
 export default function AboutERAVNPhilosophySection() {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <Section id="philosophy" padding="md" bg="gray" className="bg-gray-50/50" noContainer>
       <Container size="lg">
@@ -65,14 +68,14 @@ export default function AboutERAVNPhilosophySection() {
                 </p>
                 <p>
                   <span className="font-semibold">Với khách hàng:</span> Khách hàng có thể hoàn toàn
-                  tự tin khi làm việc với chuyên viên môi giới của ERA những người luôn đặt tâm huyết trong
+                  tự tin khi làm việc với chuyên viên môi giới của ERA những ngườiluôn đặt tâm huyết trong
                   việc phục vụ khách hàng bằng thái độ chính trực nhất.
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Right: Core Values Circle */}
+          {/* Right: Core Values Orbit Animation */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -80,43 +83,113 @@ export default function AboutERAVNPhilosophySection() {
             transition={{ duration: 0.7 }}
             className="flex items-center justify-center"
           >
-            <div className="relative w-80 h-80 md:w-96 md:h-96">
-              {/* Center */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white shadow-lg border-4 border-gray-100 flex flex-col items-center justify-center">
-                  <span className="text-4xl md:text-5xl font-bold" style={{ color: colors.primary.DEFAULT }}>
-                    05
-                  </span>
-                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mt-1 text-center px-2">
-                    GIÁ TRỊ CỐT LÕI
-                  </span>
-                </div>
+            <div
+              className="relative mx-auto"
+              style={{ width: "clamp(320px, 45vw, 520px)", height: "clamp(320px, 45vw, 520px)" }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {/* Inline keyframes */}
+              <style>{`
+                @keyframes orbit-spin {
+                  100% { transform: rotate(360deg); }
+                }
+                @keyframes orbit-counter-spin {
+                  100% { transform: rotate(-360deg); }
+                }
+              `}</style>
+
+              {/* Center Circle */}
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white flex flex-col items-center justify-center z-10"
+                style={{
+                  width: "clamp(140px, 20vw, 200px)",
+                  height: "clamp(140px, 20vw, 200px)",
+                  boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+                }}
+              >
+                <div
+                  className="absolute rounded-full"
+                  style={{
+                    width: "calc(100% - 20px)",
+                    height: "calc(100% - 20px)",
+                    border: "1px solid rgba(0,0,0,0.03)",
+                  }}
+                />
+                <span
+                  className="font-black leading-none"
+                  style={{
+                    color: colors.primary.DEFAULT,
+                    fontSize: "clamp(56px, 8vw, 90px)",
+                    letterSpacing: "-2px",
+                  }}
+                >
+                  05
+                </span>
+                <span
+                  className="font-black uppercase text-center px-2 mt-1"
+                  style={{
+                    color: colors.primary.navy.DEFAULT,
+                    fontSize: "clamp(12px, 1.5vw, 16px)",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  GIÁ TRỊ CỐT LÕI
+                </span>
               </div>
 
-              {/* Values */}
-              {coreValues.map((value, index) => {
-                const angle = (index * 72 - 90) * (Math.PI / 180);
-                const radius = 140;
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
-                return (
-                  <motion.div
-                    key={value.label}
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 + index * 0.1, type: "spring" }}
-                    className="absolute w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-bold text-center shadow-lg"
+              {/* Orbit Rings */}
+              {coreValues.map((value, index) => (
+                <div
+                  key={value.label}
+                  className="absolute top-1/2 left-1/2 rounded-full pointer-events-none"
+                  style={{
+                    width: "clamp(240px, 34vw, 380px)",
+                    height: "clamp(240px, 34vw, 380px)",
+                    marginTop: "calc(clamp(240px, 34vw, 380px) / -2)",
+                    marginLeft: "calc(clamp(240px, 34vw, 380px) / -2)",
+                    animation: `orbit-spin 25s linear infinite`,
+                    animationDelay: value.delay,
+                    animationPlayState: isHovered ? "paused" : "running",
+                  }}
+                >
+                  {/* Planet wrapper — counter spin to keep text upright */}
+                  <div
+                    className="absolute pointer-events-auto"
                     style={{
-                      backgroundColor: value.color,
-                      left: `calc(50% + ${x}px - 40px)`,
-                      top: `calc(50% + ${y}px - 40px)`,
+                      top: "calc(clamp(28px, 4vw, 48px) * -1)",
+                      left: "calc(50% - clamp(28px, 4vw, 48px))",
+                      width: "clamp(56px, 8vw, 96px)",
+                      height: "clamp(56px, 8vw, 96px)",
+                      animation: `orbit-counter-spin 25s linear infinite`,
+                      animationDelay: value.delay,
+                      animationPlayState: isHovered ? "paused" : "running",
                     }}
                   >
-                    <span className="leading-tight px-1">{value.label}</span>
-                  </motion.div>
-                );
-              })}
+                    <div
+                      className="w-full h-full rounded-full flex items-center justify-center text-white font-bold text-center cursor-pointer transition-all duration-300"
+                      style={{
+                        backgroundColor: value.color,
+                        fontSize: "clamp(10px, 1.2vw, 14px)",
+                        lineHeight: 1.3,
+                        border: "5px solid #ffffff",
+                        boxShadow: "0 5px 15px rgba(0,0,0,0.15)",
+                        textTransform: "uppercase",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "scale(1.15)";
+                        e.currentTarget.style.boxShadow = "0 15px 30px rgba(0,0,0,0.3)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "scale(1)";
+                        e.currentTarget.style.boxShadow = "0 5px 15px rgba(0,0,0,0.15)";
+                      }}
+                    >
+                      <span className="whitespace-pre-line px-1">{value.label}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>

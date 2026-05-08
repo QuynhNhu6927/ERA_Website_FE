@@ -26,7 +26,7 @@ export function AboutEraApacSection() {
           </div>
 
           {/* Text */}
-          <div>
+          <div className="text-center lg:text-left">
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
               <span style={{ color: colors.primary.navy.DEFAULT }}>
                 ERA Asia Pacific
@@ -38,7 +38,7 @@ export function AboutEraApacSection() {
             </h2>
 
             <div
-              className="mt-5 pl-4 border-l-2 text-gray-600 text-[15px] leading-relaxed"
+              className="mt-5 pl-0 border-l-0 lg:pl-4 lg:border-l-2 text-gray-600 text-[15px] leading-relaxed"
               style={{ borderColor: colors.primary.DEFAULT }}
             >
               <p>
@@ -51,7 +51,7 @@ export function AboutEraApacSection() {
 
             <Link
               href={ROUTES.apac}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg mt-8"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg mt-8 w-full lg:w-auto"
               style={{ backgroundColor: colors.primary.navy.DEFAULT }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.backgroundColor =

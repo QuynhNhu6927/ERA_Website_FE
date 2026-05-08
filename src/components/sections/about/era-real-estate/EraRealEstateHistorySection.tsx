@@ -6,11 +6,11 @@ import { colors } from "@/lib/theme";
 
 export function EraRealEstateHistorySection() {
   return (
-    <section className="pt-24 md:pt-32 pb-16 md:pb-24 bg-gray-50">
+    <section className="pt-16 md:pt-32 pb-12 md:pb-24 bg-gray-50">
       <Container size="lg">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
           {/* Text */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 text-center lg:text-left">
             <h2
               className="text-3xl md:text-4xl font-bold"
               style={{ color: colors.primary.DEFAULT }}
@@ -19,7 +19,7 @@ export function EraRealEstateHistorySection() {
             </h2>
 
             <div
-              className="mt-5 bg-white p-6 border-l-2 text-gray-600 text-[15px] leading-relaxed space-y-4"
+              className="mt-5 bg-transparent md:bg-white p-4 md:p-6 border-l-0 lg:border-l-2 text-gray-600 text-[15px] leading-relaxed space-y-4"
               style={{ borderColor: colors.primary.DEFAULT }}
             >
               <p>
@@ -46,7 +46,7 @@ export function EraRealEstateHistorySection() {
 
           {/* Image */}
           <div className="order-1 lg:order-2 flex justify-center">
-            <div className="relative w-full max-w-[340px]">
+            <div className="relative w-full max-w-[280px] md:max-w-[340px]">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
                 <Image
                   src="/about/about_era.jpg"
@@ -61,17 +61,17 @@ export function EraRealEstateHistorySection() {
                 alt="ERA Sign"
                 width={240}
                 height={96}
-                className="absolute -top-2 -right-12 md:-right-18 w-[70%] md:w-[80%] h-auto object-contain pointer-events-none"
+                className="absolute -top-2 -right-6 md:-right-18 w-[60%] md:w-[80%] h-auto object-contain pointer-events-none"
               />
               {/* Badge */}
               <div
-                className="absolute bottom-0 left-0 translate-x-[-55%] translate-y-[-30%] px-5 py-4 rounded-xl text-white text-left shadow-lg"
+                className="absolute bottom-0 left-0 translate-x-[-30%] translate-y-[-20%] md:translate-x-[-55%] md:translate-y-[-30%] px-4 py-3 md:px-5 md:py-4 rounded-xl text-white text-left shadow-lg"
                 style={{ backgroundColor: colors.primary.navy.DEFAULT }}
               >
-                <span className="text-[11px] font-normal opacity-80 block tracking-wider">
+                <span className="text-[10px] md:text-[11px] font-normal opacity-80 block tracking-wider">
                   KHỞI NGUỒN TỪ
                 </span>
-                <span className="text-3xl font-bold">1971</span>
+                <span className="text-2xl md:text-3xl font-bold">1971</span>
               </div>
             </div>
           </div>
