@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { colors } from "@/lib/theme";
 
 interface CultureRowProps {
   tag: string;
@@ -48,13 +49,13 @@ function CultureRow({
 
   const textBlock = (
     <div className="flex flex-col justify-center">
-      <span className="inline-block self-start bg-[#C8102E] text-white text-sm font-semibold px-6 py-1.5 rounded-md uppercase tracking-wide">
+      <span className="inline-block self-start text-white text-sm font-semibold px-6 py-1.5 rounded-md uppercase tracking-wide" style={{ backgroundColor: colors.primary.DEFAULT }}>
         {tag}
       </span>
       <h3 className="text-2xl md:text-3xl font-bold mt-4 leading-tight">
-        <span className="text-[#C8102E]">{titleRed}</span>
+        <span style={{ color: colors.primary.DEFAULT }}>{titleRed}</span>
         <br />
-        <span className="text-[#0C0C44]">{titleNavy}</span>
+        <span style={{ color: colors.primary.navy.DEFAULT }}>{titleNavy}</span>
       </h3>
       <ul className="mt-5 space-y-3 text-gray-700 text-[15px] leading-relaxed">
         {bullets.map((b, i) => (

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { CompassMergeAnimation } from "@/components/sections/about/compass/CompassMergeAnimation";
+import { colors, withOpacity } from "@/lib/theme";
 
 export function CompassHeroSection() {
   const [cycle, setCycle] = useState(0);
@@ -27,7 +28,7 @@ export function CompassHeroSection() {
       {/* Light overlay */}
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: "rgba(237, 237, 237, 0.35)" }}
+        style={{ backgroundColor: withOpacity("#ededed", 0.35) }}
       />
 
       <Container className="relative z-10">
@@ -63,7 +64,7 @@ export function CompassHeroSection() {
       </Container>
 
       {/* Bottom text with dark blue background — full width, sát bottom */}
-      <div className="relative z-10 w-full bg-[#0a1a4a] text-white py-10 md:py-12 px-6 text-center">
+      <div className="relative z-10 w-full text-white py-10 md:py-12 px-6 text-center" style={{ backgroundColor: colors.primary.navy.DEFAULT }}>
         <p className="max-w-4xl mx-auto text-sm md:text-base leading-relaxed italic">
           {paragraph2}
         </p>
