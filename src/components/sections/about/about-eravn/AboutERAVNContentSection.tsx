@@ -21,7 +21,7 @@ export default function AboutERAVNContentSection() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-full bg-gray-100">
               <Image
-                src="/home/home_banner_hero_2_mb.jpg"
+                src="/home/home_banner_hero_2_mb.webp"
                 alt="ERA Vietnam VNBC 2025"
                 fill
                 className="object-cover"

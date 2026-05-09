@@ -31,7 +31,7 @@ export function ApacHeroSection() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, transparent 85%), url('/about/about_section02.jpg')",
+              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, transparent 85%), url('/about/about_section02.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

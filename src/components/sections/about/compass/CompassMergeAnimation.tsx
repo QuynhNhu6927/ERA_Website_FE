@@ -206,7 +206,7 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
         transition={{ x: { duration: 2, ease: "easeInOut" }, opacity: { duration: 0.5 }, scale: { duration: 2, ease: "easeOut" } }}
       >
         <motion.div className="w-full h-full" animate={{ opacity: step >= 6 ? 0 : 1 }} transition={{ duration: 0.3 }}>
-          <Image src="/about/about_anywhere_hero.png" alt="Anywhere" width={140} height={140} className="object-contain w-full h-full" priority />
+          <Image src="/about/about_anywhere_hero.webp" alt="Anywhere" width={140} height={140} className="object-contain w-full h-full" priority />
         </motion.div>
       </motion.div>
 
@@ -223,7 +223,7 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
         transition={{ x: { duration: 2, ease: "easeInOut" }, opacity: { duration: 0.5 }, scale: { duration: 2, ease: "easeOut" } }}
       >
         <motion.div className="w-full h-full" animate={{ opacity: step >= 6 ? 0 : 1 }} transition={{ duration: 0.3 }}>
-          <Image src="/about/about_compass_hero.png" alt="Compass" width={140} height={140} className="object-contain w-full h-full" priority />
+          <Image src="/about/about_compass_hero.webp" alt="Compass" width={140} height={140} className="object-contain w-full h-full" priority />
         </motion.div>
       </motion.div>
 
@@ -238,7 +238,7 @@ export function CompassMergeAnimation({ cycle }: CompassMergeAnimationProps) {
         }}
         transition={{ opacity: { duration: 0.4 }, scale: { type: "spring", stiffness: 200, damping: 15 } }}
       >
-        <Image src="/about/about_compass_inter.png" alt="Compass International" width={180} height={180} className="object-contain w-full h-full" priority />
+        <Image src="/about/about_compass_inter.webp" alt="Compass International" width={180} height={180} className="object-contain w-full h-full" priority />
       </motion.div>
     </div>
   );

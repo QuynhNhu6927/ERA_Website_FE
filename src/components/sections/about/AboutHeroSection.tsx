@@ -13,7 +13,7 @@ export function AboutHeroSection() {
       className="relative min-h-[500px] md:min-h-[550px] flex items-end md:items-center"
       style={{
         backgroundImage:
-          "linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.4)), url('/about/about_hero_banner.png')",
+          "linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.4)), url('/about/about_hero_banner.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

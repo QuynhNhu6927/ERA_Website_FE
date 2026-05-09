@@ -30,7 +30,7 @@ export function ApacNetworkSection() {
         {/* Map image */}
         <div className="relative w-full md:max-w-4xl mx-auto aspect-[4/3] md:aspect-[16/9] md:rounded-2xl overflow-hidden">
           <Image
-            src="/about/about_apac_map.png"
+            src="/about/about_apac_map.webp"
             alt="ERA APAC Network Map"
             fill
             className="object-contain"
@@ -55,7 +55,7 @@ export function ApacNetworkSection() {
             <div className="relative w-full max-w-[500px]">
               <div className="relative aspect-[4/3] md:aspect-[1/1] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
                 <Image
-                  src="/about/about_apac_img.png"
+                  src="/about/about_apac_img.webp"
                   alt="ERA Singapore"
                   fill
                   className="object-cover"

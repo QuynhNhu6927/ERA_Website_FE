@@ -62,7 +62,7 @@ export function AboutEraGlobalSection() {
             <div className="relative w-full max-w-[340px]">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
                 <Image
-                  src="/about/about_era.jpg"
+                  src="/about/about_era.webp"
                   alt="ERA Real Estate"
                   fill
                   className="object-cover"
@@ -71,7 +71,7 @@ export function AboutEraGlobalSection() {
 
               </div>
               <Image
-                src="/about/about_era_sign.png"
+                src="/about/about_era_sign.webp"
                 alt="ERA Sign"
                 width={200}
                 height={80}

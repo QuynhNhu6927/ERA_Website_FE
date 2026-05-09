@@ -16,7 +16,7 @@ export default function AboutERAVNHeroSection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/contact/contact_hero_banner.jpg"
+          src="/contact/contact_hero_banner.webp"
           alt="ERA Vietnam"
           fill
           className="object-cover"

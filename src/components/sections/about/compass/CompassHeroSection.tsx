@@ -23,7 +23,7 @@ export function CompassHeroSection() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/join/join_hero_bg.png')" }}
+        style={{ backgroundImage: "url('/join/join_hero_bg.webp')" }}
       />
       {/* Light overlay */}
       <div
@@ -37,7 +37,7 @@ export function CompassHeroSection() {
           <div className="text-center mb-10 md:mb-14">
             <div className="relative w-64 h-16 md:w-96 md:h-24 mx-auto">
               <Image
-                src="/about/about_compass_inter.png"
+                src="/about/about_compass_inter.webp"
                 alt="Compass International Holdings"
                 fill
                 className="object-contain"

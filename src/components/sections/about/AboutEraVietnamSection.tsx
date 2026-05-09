@@ -59,7 +59,7 @@ export function AboutEraVietnamSection() {
           <div className="order-1 lg:order-2 flex justify-center">
             <div className="relative w-full max-w-[500px] aspect-[1/1] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
               <Image
-                src="/home/home_banner_hero_2_mb.jpg"
+                src="/home/home_banner_hero_2_mb.webp"
                 alt="ERA Vietnam"
                 fill
                 className="object-cover"

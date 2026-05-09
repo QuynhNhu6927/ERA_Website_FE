@@ -32,7 +32,7 @@ export function EraRealEstateHeroSection() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 85%), url('/about/about_era_hero_banner.jpg')",
+              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 85%), url('/about/about_era_hero_banner.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

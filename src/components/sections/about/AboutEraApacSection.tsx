@@ -16,7 +16,7 @@ export function AboutEraApacSection() {
           <div className="flex justify-center">
             <div className="relative w-full max-w-[500px] aspect-[1/1] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
               <Image
-                src="/about/about_section02.jpg"
+                src="/about/about_section02.webp"
                 alt="ERA Asia Pacific"
                 fill
                 className="object-cover"

@@ -15,7 +15,7 @@ export function CompassCollabSection() {
           {/* Collaboration Image */}
           <div className="w-full max-w-3xl mb-8">
             <Image
-              src="/about/about_compass_collab.png"
+              src="/about/about_compass_collab.webp"
               alt="Anywhere x Compass"
               width={900}
               height={220}

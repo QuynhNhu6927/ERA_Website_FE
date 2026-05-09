@@ -89,7 +89,7 @@ export function CompassLoadingAnimation({ onComplete }: CompassLoadingAnimationP
           transition={{ duration: 0.3 }}
         >
           <Image
-            src="/about/about_anywhere_hero.png"
+            src="/about/about_anywhere_hero.webp"
             alt="Anywhere"
             width={180}
             height={180}
@@ -121,7 +121,7 @@ export function CompassLoadingAnimation({ onComplete }: CompassLoadingAnimationP
           transition={{ duration: 0.3 }}
         >
           <Image
-            src="/about/about_compass_hero.png"
+            src="/about/about_compass_hero.webp"
             alt="Compass"
             width={180}
             height={180}
@@ -207,7 +207,7 @@ export function CompassLoadingAnimation({ onComplete }: CompassLoadingAnimationP
               transition={{ duration: 0.4 }}
             >
               <Image
-                src="/about/about_compass_inter.png"
+                src="/about/about_compass_inter.webp"
                 alt="Compass International"
                 width={220}
                 height={220}
