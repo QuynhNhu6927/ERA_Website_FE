@@ -1,3 +1,4 @@
+export { default as AboutERAVNPage } from "./AboutERAVNPage";
 export { default as AboutERAVNHeroSection } from "./AboutERAVNHeroSection";
 export { default as AboutERAVNTabs } from "./AboutERAVNTabs";
 export { default as AboutERAVNContentSection } from "./AboutERAVNContentSection";

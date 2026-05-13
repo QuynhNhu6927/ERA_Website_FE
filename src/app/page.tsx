@@ -11,6 +11,12 @@ export const metadata: Metadata = {
     description:
       "Trực thuộc Compass International Holdings. Sở hữu hệ sinh thái công nghệ và 2.300+ Agents",
     type: "website",
+    images: [
+      {
+        url: "/home/home_news_02.webp",
+        alt: "ERA Vietnam",
+      },
+    ],
   },
 };
 
