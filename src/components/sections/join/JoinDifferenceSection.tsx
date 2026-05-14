@@ -11,36 +11,36 @@ const cards = [
     id: "01",
     title: "THƯƠNG HIỆU TOÀN CẦU",
     description:
-      "Một trong những thương hiệu môi giới BĐS hàng đầu tại Mỹ & Châu Á Thái Bình Dương",
+      "Một trong những thương hiệu môi giới bất động sản hàng đầu tại Mỹ và Châu Á - Thái Bình Dương.",
     variant: "primary" as const,
   },
   {
-    id: "02",
+    id: "04",
     title: "SẢN PHẨM ĐA DẠNG",
     description:
-      "Dễ dàng tìm kiếm sản phẩm phù hợp cho mọi khách hàng với rổ hàng hơn 150 dự án trong và ngoài nước",
+      "Dễ dàng tìm kiếm sản phẩm phù hợp cho mọi khách hàng, với rổ hàng hơn 150 dự án trong và ngoài nước.",
     variant: "navy" as const,
+  },
+  {
+    id: "02",
+    title: "ĐÀO TẠO CHUYÊN NGHIỆP",
+    description:
+      "Agent được định hướng đào tạo và trang bị đầy đủ kiến thức, kỹ năng cần thiết để trở thành một chuyên viên tư vấn bất động sản toàn diện.",
+    variant: "secondary" as const,
   },
   {
     id: "03",
-    title: "ĐÀO TẠO CHUYÊN NGHIỆP",
-    description:
-      "Agent được định hướng đào tạo và trang bị đầy đủ kiến thức, kỹ năng cần thiết để trở thành một chuyên viên tư vấn bất động sản toàn diện",
-    variant: "navy" as const,
-  },
-  {
-    id: "04",
     title: "CÔNG NGHỆ ĐỒNG HÀNH",
     description:
-      "Agent được hỗ trợ công nghệ độc quyền giúp tối ưu hiệu suất và gia tăng lượt khách hàng tiềm năng",
-    variant: "navy" as const,
+      "Agent được hỗ trợ công nghệ độc quyền giúp tối ưu hiệu suất và gia tăng lượt khách hàng tiềm năng.",
+    variant: "tertiary-orange" as const,
   },
   {
     id: "05",
     title: "THU NHẬP ĐỘT PHÁ",
     description:
-      "Tối đa hóa thu nhập cá nhân với chính sách hoa hồng lũy tiến hấp dẫn.\n\nĐặc biệt, hệ thống chia sẻ doanh thu giúp bạn xây dựng nguồn thu nhập thụ động bền vững từ việc phát triển đội nhóm",
-    variant: "navy" as const,
+      "Tối đa hóa thu nhập cá nhân với chính sách hoa hồng lũy tiến hấp dẫn.\n\nĐặc biệt, hệ thống chia sẻ doanh thu giúp bạn xây dựng nguồn thu nhập thụ động bền vững từ việc phát triển đội nhóm.",
+    variant: "tertiary-purple" as const,
   },
 ];
 
@@ -54,11 +54,19 @@ function DiffCard({
   id: string;
   title: string;
   description: string;
-  variant: "primary" | "navy";
+  variant: "primary" | "navy" | "secondary" | "tertiary-orange" | "tertiary-purple";
   className?: string;
 }) {
   const bgColor =
-    variant === "primary" ? colors.primary.DEFAULT : colors.primary.navy.DEFAULT;
+    variant === "primary"
+      ? colors.primary.DEFAULT
+      : variant === "secondary"
+      ? colors.secondary.DEFAULT
+      : variant === "tertiary-orange"
+      ? colors.tertiary.orange.DEFAULT
+      : variant === "tertiary-purple"
+      ? colors.tertiary.purple.DEFAULT
+      : colors.primary.navy.DEFAULT;
 
   return (
     <div
@@ -146,7 +154,7 @@ export function JoinDifferenceSection() {
               <DiffCard {...cards[4]} className="flex-1" />
               <div
                 className="h-1 rounded-full mt-5"
-                style={{ backgroundColor: colors.primary.navy.DEFAULT }}
+                style={{ backgroundColor: colors.tertiary.purple.DEFAULT }}
               />
             </div>
           </div>
@@ -155,7 +163,7 @@ export function JoinDifferenceSection() {
         {/* CTA Button */}
         <div className="flex justify-center">
           <Button asChild variant="primary" size="lg">
-            <a href="#">GIA NHẬP TEAM ERA NGAY</a>
+            <a href="https://app.era.com.vn/register">GIA NHẬP TEAM ERA NGAY</a>
           </Button>
         </div>
       </Container>

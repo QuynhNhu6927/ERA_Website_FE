@@ -11,7 +11,12 @@ export const metadata: Metadata = {
     description:
       "Khám phá hành trình của ERA Vietnam: Từ sức mạnh hậu thuẫn Compass, di sản toàn cầu ERA Real Estate 1971, mạng lưới ERA APAC đến bệ phóng vững chắc tại Việt Nam.",
     type: "website",
-    images: [],
+    images: [
+      {
+        url: "/home/home_news_02.webp",
+        alt: "About ERA Vietnam",
+      },
+    ],
   },
 };
 

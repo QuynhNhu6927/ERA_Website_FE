@@ -46,7 +46,7 @@ export function ContactHeroSection() {
                 textShadow: `0 4px 20px ${withOpacity(colors.neutral.black, 0.5)}, 0 2px 8px ${withOpacity(colors.neutral.black, 0.4)}`,
               }}
             >
-              Kết nối với mạng lưới bất động sản hàng đầu thế giới. Dù bạn đang tìm kiếm cơ hội đầu tư, giải pháp an cư hay mong muốn bứt phá sự nghiệp, ERA Vietnam luôn sẵn sàng đồng hành.
+              Kết nối với mạng lưới bất động sản hàng đầu thế giới. Dù bạn đang tìm kiếm cơ hội đầu tư, giải pháp an cư hay mong muốn bứt phá sự nghiệp, ERA Vietnam luôn sẵn sàng đồng hành
             </p>
           </div>
         </div>
