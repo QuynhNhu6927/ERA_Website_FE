@@ -178,7 +178,7 @@ export function ContactFormSection() {
                   fontSize: '18px',
                 }}
               >
-                Đang tìm kiếm cơ hội nghề nghiệp?
+                Bạn đang tìm kiếm cơ hội nghề nghiệp?
               </h3>
               <p
                 className="mb-3"
@@ -189,10 +189,10 @@ export function ContactFormSection() {
                   lineHeight: 1.5,
                 }}
               >
-                Trở thành một phần của cộng đồng môi giới bất động sản toàn cầu.
+                Trở thành một phần của cộng đồng môi giới bất động sản toàn cầu
               </p>
               <a
-                href={ROUTES.join}
+                href="https://app.era.com.vn/register"
                 className="inline-flex items-center gap-1 transition-opacity hover:opacity-80"
                 style={{ color: colors.neutral.white, fontWeight: 700, fontSize: '16px' }}
               >

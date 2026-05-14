@@ -7,8 +7,8 @@ import { CircleCheck } from "lucide-react";
 
 const benefits = [
   "Hệ thống đào tạo bài bản theo tiêu chuẩn quốc tế",
-  "Cơ Chế Hoa Hồng Đột Phá Cao Nhất Thị Trường",
-  "Hỗ Trợ Công Nghệ Độc Quyền Gia Tăng Hiệu Suất Bán Hàng",
+  "Cơ chế hoa hồng đột phá cao nhất thị trường",
+  "Hỗ trợ công nghệ độc quyền gia tăng hiệu suất bán hàng",
 ];
 
 export function JoinHeroSection() {

@@ -67,7 +67,7 @@ export function ContactOfficesSection() {
                 <button
                   key={office.id}
                   onClick={() => setActiveOffice(office.id)}
-                  className="px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-colors"
+                  className="px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-colors hover:scale-[1.02] transition-transform"
                   style={{
                     backgroundColor: isActive ? colors.primary.navy.DEFAULT : colors.gray[100],
                     color: isActive ? colors.neutral.white : colors.gray[500],
@@ -170,7 +170,7 @@ export function ContactOfficesSection() {
                 <button
                   key={office.id}
                   onClick={() => setActiveOffice(office.id)}
-                  className="w-full text-left rounded-xl p-5 transition-shadow duration-200 hover:shadow-md"
+                  className="w-full text-left rounded-xl p-5 transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
                   style={{
                     backgroundColor: isActive ? colors.primary.navy.DEFAULT : colors.neutral.white,
                     boxShadow: isActive

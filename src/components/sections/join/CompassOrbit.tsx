@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -8,26 +8,37 @@ interface OrbitItem {
   logo: string;
   title: string;
   description: string;
+  delay?: number;
 }
 
 const RING_INNER_ITEMS: OrbitItem[] = [
   {
+    logo: "/join/join_century_21.webp",
+    title: "CENTURY 21",
+    description:
+      "'Tiêu chuẩn vàng' của ngành môi giới. Sức mạnh nhận diện vô song cùng mạng lưới chuyên gia tận tâm, bức phá mọi giới hạn tại hơn 86 quốc gia.",
+    delay: 0,
+  },
+  {
+    logo: "/about/compass_b5.svg",
+    title: "COLDWELL BANKER COMMERCIAL",
+    description:
+      "Mạng lưới môi giới bất động sản thương mại hàng đầu, kết nối cơ hội đầu tư và giải pháp tài sản chuyên nghiệp trên phạm vi toàn cầu.",
+    delay: -7.5,
+  },
+  {
     logo: "/join/join_era.webp",
     title: "ERA REAL ESTATE",
     description:
-      "Tiên phong công nghệ, nhạy bén thời cuộc. Mạng lưới hiện đại trao quyền cho các nhà môi giới thế hệ mới, tối ưu hóa giao dịch trên toàn cầu.",
+      "Tiên phong công nghệ, nhạy bén thờị cuộc. Mạng lưới hiện đại trao quyền cho các nhà môi giới thế hệ mới, tối ưu hóa giao dịch trên toàn cầu.",
+    delay: -15,
   },
   {
     logo: "/join/join_coldwell_banker.webp",
     title: "COLDWELL BANKER",
     description:
       "Di sản vĩ đại hơn một thế kỉ. Biểu tượng kinh điển của sự tin cậy, dẫn dắt những chuẩn mực khắt khe nhất trong dịch vụ môi giới chuyên nghiệp.",
-  },
-  {
-    logo: "/join/join_century_21.webp",
-    title: "CENTURY 21",
-    description:
-      "'Tiêu chuẩn vàng' của ngành môi giới. Sức mạnh nhận diện vô song cùng mạng lưới chuyên gia tận tâm, bức phá mọi giới hạn tại hơn 86 quốc gia.",
+    delay: -22.5,
   },
 ];
 
@@ -36,21 +47,25 @@ const RING_OUTER_ITEMS: OrbitItem[] = [
     logo: "/join/join_sothebys.webp",
     title: "SOTHEBY'S",
     description: "Kế thừa di sản từ nhà đấu giá lừng danh. Đặc quyền kết nối giới siêu giàu toàn cầu với những kiệt tác bất động sản mang tính biểu tưởng.",
+    delay: 0,
   },
   {
     logo: "/join/join_croran.webp",
     title: "CORCORAN",
     description: "Tôn vinh phong cách sống độc bản. Dịch vụ môi giới 'may đo' cao cấp, thấu hiểu sâu sắc gu thẩm mỹ của giới tinh hoa thành thị.",
+    delay: -10,
   },
   {
     logo: "/join/join_christies.webp",
     title: "CHRISTIE'S",
     description: "Nơi kiến trúc giao thoa cùng nghệ thuật. Mạng lưới môi giới độc quyền chỉ dành riêng cho các dinh thự xa hoa và báu vật triệu đô.",
+    delay: -20,
   },
   {
     logo: "/join/join_better_homes.webp",
     title: "BETTER HOMES",
     description: "Hơn cả một giao dịch bất động sản. Thương hiệu truyền cảm hứng, định hình phong cách sống và kiến tạo những không gian tổ ấm đích thực.",
+    delay: -30,
   },
 ];
 
@@ -65,13 +80,16 @@ interface OrbitRingProps {
   ringName: string;
   activeRing: string | null;
   onActiveRingChange: (ring: string | null) => void;
+  iconSize?: number;
 }
 
-function OrbitRing({ radius, items, duration, reverse = false, paused, onPauseChange, zIndexBase, ringName, activeRing, onActiveRingChange }: OrbitRingProps) {
+function OrbitRing({ radius, items, duration, reverse = false, paused, onPauseChange, zIndexBase, ringName, activeRing, onActiveRingChange, iconSize }: OrbitRingProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const direction = reverse ? " reverse" : "";
   const counterDirection = reverse ? "" : " reverse";
   const ringZIndex = activeRing === ringName ? 50 : zIndexBase;
+
+  const marginOffset = iconSize != null ? iconSize / 2 : 28;
 
   return (
     <div
@@ -84,7 +102,7 @@ function OrbitRing({ radius, items, duration, reverse = false, paused, onPauseCh
       }}
     >
       {items.map((item, i) => {
-        const delay = -(i * (duration / items.length));
+        const delay = item.delay != null ? item.delay : -(i * (duration / items.length));
         const animState = paused ? "paused" : "running";
 
         return (
@@ -107,8 +125,8 @@ function OrbitRing({ radius, items, duration, reverse = false, paused, onPauseCh
                 <div
                   className="absolute top-0 left-0 group pointer-events-auto cursor-pointer"
                   style={{
-                    marginTop: "-28px",
-                    marginLeft: "-28px",
+                    marginTop: `-${marginOffset}px`,
+                    marginLeft: `-${marginOffset}px`,
                     zIndex: hoveredIndex === i ? 50 : zIndexBase,
                     animation: `spin ${duration}s linear infinite${counterDirection}`,
                     animationDelay: `${delay}s`,
@@ -119,14 +137,14 @@ function OrbitRing({ radius, items, duration, reverse = false, paused, onPauseCh
                 >
                   {/* Icon placeholder */}
                   <div
-                    className="w-14 h-14 bg-white rounded-2xl border border-gray-100 flex items-center justify-center transition-all duration-200 hover:scale-110 hover:border-[#C8102E] shadow-[0_4px_24px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(200,16,46,0.25)] overflow-hidden"
+                    className={`relative bg-white rounded-2xl border border-gray-100 flex items-center justify-center transition-all duration-200 hover:scale-110 hover:border-[#C8102E] shadow-[0_4px_24px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(200,16,46,0.25)] overflow-hidden ${iconSize == null ? "w-14 h-14" : ""}`}
+                    style={iconSize != null ? { width: iconSize, height: iconSize } : undefined}
                   >
                     <Image
                       src={item.logo}
                       alt={item.title}
-                      width={48}
-                      height={48}
-                      className="object-contain"
+                      fill
+                      className="object-contain p-1.5"
                     />
                   </div>
 
@@ -165,9 +183,44 @@ function OrbitRing({ radius, items, duration, reverse = false, paused, onPauseCh
   );
 }
 
-export function CompassOrbit() {
+export function CompassOrbit({ mobile = false }: { mobile?: boolean }) {
   const [paused, setPaused] = useState(false);
   const [activeRing, setActiveRing] = useState<string | null>(null);
+
+  if (mobile) {
+    return (
+      <div className="relative origin-center mx-auto" style={{ width: 380, height: 380 }}>
+        {/* Center Compass */}
+        <div
+          className="absolute top-1/2 left-1/2 rounded-full bg-white flex items-center justify-center z-10"
+          style={{
+            width: 100,
+            height: 100,
+            transform: "translate(-50%, -50%)",
+            boxShadow: `
+              0 0 20px 8px rgba(65, 179, 224, 0.35),
+              0 0 60px 25px rgba(65, 179, 224, 0.2),
+              0 0 100px 50px rgba(65, 179, 224, 0.08)
+            `,
+          }}
+        >
+          <Image
+            src="/about/about_compass_inter.webp"
+            alt="Compass"
+            width={80}
+            height={80}
+            className="object-contain"
+          />
+        </div>
+
+        {/* Inner ring: 4 icons, clockwise */}
+        <OrbitRing radius={95} items={RING_INNER_ITEMS} duration={30} paused={paused} onPauseChange={setPaused} zIndexBase={10} ringName="inner" activeRing={activeRing} onActiveRingChange={setActiveRing} iconSize={38} />
+
+        {/* Outer ring: 4 icons, counter-clockwise */}
+        <OrbitRing radius={162} items={RING_OUTER_ITEMS} duration={40} reverse paused={paused} onPauseChange={setPaused} zIndexBase={20} ringName="outer" activeRing={activeRing} onActiveRingChange={setActiveRing} iconSize={38} />
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-[420px] h-[420px] scale-[0.72] md:scale-100 origin-center mx-auto">
@@ -200,3 +253,4 @@ export function CompassOrbit() {
     </div>
   );
 }
+

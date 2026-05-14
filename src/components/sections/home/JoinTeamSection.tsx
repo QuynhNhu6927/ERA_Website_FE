@@ -12,7 +12,7 @@ const benefits = [
     description: "Tối đa hóa thu nhập cá nhân với chính sách hoa hồng lũy tiến hấp dẫn",
     bgColor: colors.primary.navy.DEFAULT,
     linkColor: colors.secondary.DEFAULT,
-    href: "/",
+    href: ROUTES.join,
   },
   {
     icon: "/join/join_learn_icon.svg",
@@ -20,7 +20,7 @@ const benefits = [
     description: "Nâng tầm kỹ năng với hệ thống ERA Academy",
     bgColor: colors.primary.DEFAULT,
     linkColor: colors.tertiary.orange.DEFAULT,
-    href: "/",
+    href: ROUTES.join,
   },
   {
     icon: "/join/join_product_icon.svg",
@@ -28,7 +28,7 @@ const benefits = [
     description: "Dễ dàng tìm kiếm sản phẩm phù hợp cho mọi khách hàng với rổ hàng khổng lồ",
     bgColor: colors.primary.navy.DEFAULT,
     linkColor: colors.secondary.DEFAULT,
-    href: "/",
+    href: ROUTES.join,
   },
   {
     icon: "/join/join_tech_icon.svg",
@@ -36,7 +36,7 @@ const benefits = [
     description: "Làm chủ mọi giao dịch với hệ sinh thái My ERA",
     bgColor: colors.primary.DEFAULT,
     linkColor: colors.tertiary.orange.DEFAULT,
-    href: "/",
+    href: ROUTES.join,
   },
 ];
 
