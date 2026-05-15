@@ -38,7 +38,7 @@ function CultureRow({
         alt={`${tag} detail`}
         width={220}
         height={150}
-        className={`rounded-xl object-cover absolute w-[45%] md:w-[200px] h-auto aspect-[4/3] shadow-xl border-4 border-white ${
+        className={`rounded-xl object-cover absolute w-[45%] md:w-[200px] h-auto shadow-xl border-4 border-white ${
           reverse
             ? "-bottom-5 -left-5 md:-bottom-8 md:-left-8"
             : "-bottom-5 -right-5 md:-bottom-8 md:-right-8"
@@ -233,8 +233,7 @@ export function JoinCultureSection() {
               "Ứng dụng hệ sinh thái số hóa toàn diện giúp Agent rút ngắn thời gian chốt deal, quản lý giỏ hàng và khách hàng mọi lúc mọi nơi.",
             ]}
             mainImage="/join/join_tech.webp"
-            overlapImage="/academy/aca_myera.webp"
-            overlapClassName="bg-white object-contain"
+            overlapImage="/join/join_mascot.webp"
           />
         </div>
       </Container>
