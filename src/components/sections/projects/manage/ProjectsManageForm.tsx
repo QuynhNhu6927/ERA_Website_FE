@@ -146,7 +146,7 @@ interface Props {
   onCancel: () => void;
 }
 
-export function ProjectsAdminForm({ initialData, onSave, onCancel }: Props) {
+export function ProjectsManageForm({ initialData, onSave, onCancel }: Props) {
   const [form, setForm] = useState<ProjectFormData>(
     initialData ?? {
       name: "",
@@ -384,19 +384,50 @@ export function ProjectsAdminForm({ initialData, onSave, onCancel }: Props) {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-end gap-3 pt-2">
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="px-6"
-            onClick={onCancel}
-          >
-            Huỷ
+        <div className="flex items-center justify-between gap-3 pt-4">
+          <Button type="button" variant="primary" size="sm" className="px-6">
+            Đăng
           </Button>
-          <Button type="submit" variant="primary" size="sm" className="px-6">
-            {initialData ? "Lưu thay đổi" : "Tạo dự án"}
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="px-6 bg-white"
+              onClick={onCancel}
+            >
+              Huỷ
+            </Button>
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md px-6 py-2 text-sm bg-white border-2"
+              style={{ borderColor: colors.primary.navy.DEFAULT, color: colors.primary.navy.DEFAULT }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = colors.primary.navy.DEFAULT;
+                e.currentTarget.style.color = colors.neutral.white;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = colors.neutral.white;
+                e.currentTarget.style.color = colors.primary.navy.DEFAULT;
+              }}
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                <polyline points="17 21 17 13 7 13 7 21" />
+                <polyline points="7 3 7 8 15 8" />
+              </svg>
+              {initialData ? "Lưu thay đổi" : "Lưu"}
+            </button>
+          </div>
         </div>
       </form>
     </div>

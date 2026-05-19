@@ -1,5 +1,5 @@
-import NewsManageSection from "@/components/sections/news/manage/NewsManageSection";
+import NewsManagePage from "@/components/sections/news/manage/NewsManagePage";
 
 export default function NewsManagementPage() {
-  return <NewsManageSection />;
+  return <NewsManagePage />;
 }
