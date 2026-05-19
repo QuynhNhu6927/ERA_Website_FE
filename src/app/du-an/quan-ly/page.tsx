@@ -1,5 +1,5 @@
-import { ProjectsAdminPage } from "@/components/sections/projects";
+import { ProjectsManagePage } from "@/components/sections/projects";
 
 export default function ProjectManagement() {
-  return <ProjectsAdminPage />;
+  return <ProjectsManagePage />;
 }

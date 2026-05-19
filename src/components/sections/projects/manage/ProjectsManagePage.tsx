@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
-import { ProjectsAdminList } from "./ProjectsAdminList";
-import { ProjectsAdminForm, ProjectFormData } from "./ProjectsAdminForm";
+import { ProjectsManageList } from "./ProjectsManageList";
+import { ProjectsManageForm, ProjectFormData } from "./ProjectsManageForm";
 
 const initialProjects: ProjectFormData[] = [
   {
@@ -24,7 +23,7 @@ const initialProjects: ProjectFormData[] = [
   },
 ];
 
-export function ProjectsAdminPage() {
+export function ProjectsManagePage() {
   const [projects, setProjects] = useState<ProjectFormData[]>(initialProjects);
   const [editing, setEditing] = useState<ProjectFormData | null>(null);
   const [showForm, setShowForm] = useState(false);
@@ -66,24 +65,22 @@ export function ProjectsAdminPage() {
   return (
     <main className="min-h-screen bg-gray-50">
       <Section padding="md" bg="gray">
-        <Container size="lg">
-          <div className="space-y-8">
-            {showForm ? (
-              <ProjectsAdminForm
-                initialData={editing ?? undefined}
-                onSave={handleSave}
-                onCancel={handleCancel}
-              />
-            ) : (
-              <ProjectsAdminList
-                projects={projects}
-                onEdit={handleEdit}
-                onDelete={handleDelete}
-                onAdd={handleAdd}
-              />
-            )}
-          </div>
-        </Container>
+        <div className="space-y-8">
+          {showForm ? (
+            <ProjectsManageForm
+              initialData={editing ?? undefined}
+              onSave={handleSave}
+              onCancel={handleCancel}
+            />
+          ) : (
+            <ProjectsManageList
+              projects={projects}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+              onAdd={handleAdd}
+            />
+          )}
+        </div>
       </Section>
     </main>
   );
