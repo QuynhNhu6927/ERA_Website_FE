@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Section } from "@/components/ui/Section";
+import { colors } from "@/lib/theme";
 import { ApplyManageForm, type JobFormData } from "./ApplyManageForm";
 import { ApplyManageList } from "./ApplyManageList";
 
@@ -73,7 +74,7 @@ export default function ApplyManagePage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen" style={{ backgroundColor: colors.gray[50] }}>
       <Section padding="md" bg="gray">
         <div className="space-y-8">
           {showForm ? (

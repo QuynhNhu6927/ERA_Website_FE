@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { CompassHeroSection } from "@/components/sections/about/compass/CompassHeroSection";
-import { CompassBrandsSection } from "@/components/sections/about/compass/CompassBrandsSection";
+import { AboutCompassPage } from "@/components/sections/about/compass/AboutCompassPage";
 
 export const metadata: Metadata = {
   title: "Compass International Holdings - ERA Vietnam",
@@ -22,10 +21,5 @@ export const metadata: Metadata = {
 };
 
 export default function CompassPage() {
-  return (
-    <main>
-      <CompassHeroSection />
-      <CompassBrandsSection />
-    </main>
-  );
+  return <AboutCompassPage />;
 }

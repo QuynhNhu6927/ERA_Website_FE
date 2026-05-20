@@ -1,5 +1,6 @@
 import { forwardRef, ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { colors } from "@/lib/theme";
 import { Container } from "./Container";
 
 interface SectionProps {
@@ -25,11 +26,11 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
     },
     ref
   ) {
-    const bgClasses = {
-      white: "bg-white",
-      gray: "bg-gray-50",
-      navy: "bg-[#0C0C44]",
-      none: "",
+    const bgStyles: Record<string, React.CSSProperties> = {
+      white: { backgroundColor: colors.neutral.white },
+      gray: { backgroundColor: colors.gray[50] },
+      navy: { backgroundColor: colors.primary.navy.DEFAULT },
+      none: {},
     };
 
     const paddingClasses = {
@@ -45,7 +46,8 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
       <section
         ref={ref}
         id={id}
-        className={cn(bgClasses[bg], paddingClasses[padding], className)}
+        className={cn(paddingClasses[padding], className)}
+        style={bgStyles[bg]}
       >
         {noContainer ? (
           children
