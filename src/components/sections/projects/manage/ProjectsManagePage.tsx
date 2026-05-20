@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Section } from "@/components/ui/Section";
+import { colors } from "@/lib/theme";
 import { ProjectsManageList } from "./ProjectsManageList";
 import { ProjectsManageForm, ProjectFormData } from "./ProjectsManageForm";
 
@@ -63,7 +64,7 @@ export function ProjectsManagePage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen" style={{ backgroundColor: colors.gray[50] }}>
       <Section padding="md" bg="gray">
         <div className="space-y-8">
           {showForm ? (

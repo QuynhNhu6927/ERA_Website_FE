@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import { colors, withOpacity } from "@/lib/theme";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import {
   ClassicEditor,
@@ -158,7 +159,12 @@ export default function RichEditor({
       />
       <div
         ref={wordCountRef}
-        className="flex justify-end px-3 py-1.5 text-xs text-gray-400 border-t border-gray-100 bg-gray-50/50"
+        className="flex justify-end px-3 py-1.5 text-xs"
+        style={{
+          color: colors.gray[400],
+          borderTop: `1px solid ${colors.gray[100]}`,
+          backgroundColor: withOpacity(colors.gray[50], 0.5),
+        }}
       />
     </div>
   );

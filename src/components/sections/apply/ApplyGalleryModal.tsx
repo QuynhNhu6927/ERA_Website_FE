@@ -3,6 +3,7 @@
 import { useEffect, useCallback, useState } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { colors, withOpacity } from "@/lib/theme";
 
 interface ApplyGalleryModalProps {
   images: string[];
@@ -10,6 +11,15 @@ interface ApplyGalleryModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+const s = {
+  overlay: { backgroundColor: withOpacity(colors.neutral.black, 0.95) },
+  border: { borderColor: withOpacity(colors.neutral.white, 0.2) },
+  borderHover: { borderColor: withOpacity(colors.neutral.white, 0.4) },
+  textMuted: { color: withOpacity(colors.neutral.white, 0.7) },
+  textFaint: { color: withOpacity(colors.neutral.white, 0.6) },
+  textWhite: { color: colors.neutral.white },
+};
 
 export function ApplyGalleryModal({
   images,
@@ -68,33 +78,45 @@ export function ApplyGalleryModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 select-none">
+    <div
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center select-none"
+      style={s.overlay}
+    >
       {/* Overlay click to close */}
       <div className="absolute inset-0" onClick={onClose} />
 
       {/* Close */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/40 transition-colors"
+        className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full flex items-center justify-center transition-colors"
+        style={s.border}
+        onMouseEnter={(e) => Object.assign(e.currentTarget.style, s.borderHover)}
+        onMouseLeave={(e) => Object.assign(e.currentTarget.style, s.border)}
         aria-label="Đóng"
       >
-        <X size={20} />
+        <X size={20} style={s.textMuted} />
       </button>
 
       {/* Prev / Next arrows */}
       <button
         onClick={goPrev}
-        className="absolute left-2 md:left-6 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/40 transition-colors"
+        className="absolute left-2 md:left-6 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-colors"
+        style={s.border}
+        onMouseEnter={(e) => Object.assign(e.currentTarget.style, s.borderHover)}
+        onMouseLeave={(e) => Object.assign(e.currentTarget.style, s.border)}
         aria-label="Trước"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft size={24} style={s.textMuted} />
       </button>
       <button
         onClick={goNext}
-        className="absolute right-2 md:right-6 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/40 transition-colors"
+        className="absolute right-2 md:right-6 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-colors"
+        style={s.border}
+        onMouseEnter={(e) => Object.assign(e.currentTarget.style, s.borderHover)}
+        onMouseLeave={(e) => Object.assign(e.currentTarget.style, s.border)}
         aria-label="Sau"
       >
-        <ChevronRight size={24} />
+        <ChevronRight size={24} style={s.textMuted} />
       </button>
 
       {/* Ribbon — dải ảnh absolute */}
@@ -132,7 +154,10 @@ export function ApplyGalleryModal({
       </div>
 
       {/* Counter */}
-      <div className="absolute bottom-6 md:bottom-8 z-30 text-sm text-white/60 font-medium tracking-wider">
+      <div
+        className="absolute bottom-6 md:bottom-8 z-30 text-sm font-medium tracking-wider"
+        style={s.textFaint}
+      >
         {activeIndex + 1} / {images.length}
       </div>
     </div>
