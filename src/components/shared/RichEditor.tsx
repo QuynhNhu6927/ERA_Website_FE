@@ -17,7 +17,11 @@ import {
   ImageStyle,
   ImageCaption,
   ImageTextAlternative,
-  FontSize,
+  ImageResize,
+  ImageResizeEditing,
+  ImageResizeHandles,
+  Heading,
+  FontColor,
   WordCount,
   Undo,
 } from "ckeditor5";
@@ -74,18 +78,24 @@ class CustomEditor extends ClassicEditor {
     ImageStyle,
     ImageCaption,
     ImageTextAlternative,
-    FontSize,
+    ImageResize,
+    ImageResizeEditing,
+    ImageResizeHandles,
+    Heading,
+    FontColor,
     WordCount,
     Undo,
     CustomUploadAdapterPlugin,
-  ];
+  ] as any;
 
   static defaultConfig = {
     licenseKey: "GPL",
     toolbar: [
-      "fontSize",
+      "heading",
+      "|",
       "bold",
       "italic",
+      "fontColor",
       "|",
       "link",
       "imageUpload",
@@ -96,12 +106,32 @@ class CustomEditor extends ClassicEditor {
       "undo",
       "redo",
     ],
+    fontColor: {
+      colors: [
+        { color: colors.neutral.black, label: "Đen" },
+        { color: colors.gray[500], label: "Xám" },
+        { color: colors.primary.DEFAULT, label: "Đỏ" },
+        { color: colors.primary.navy.DEFAULT, label: "Navy" },
+        { color: colors.secondary.DEFAULT, label: "Xanh dương" },
+        { color: colors.tertiary.orange.DEFAULT, label: "Cam" },
+        { color: colors.tertiary.purple.DEFAULT, label: "Tím" },
+      ],
+      columns: 7,
+    },
 
-    fontSize: {
-      options: [9, 11, 13, "default", 17, 19, 21, 24, 28],
-      supportAllValues: true,
+    heading: {
+      options: [
+        { model: "paragraph", title: "Paragraph", class: "ck-heading_paragraph" },
+        { model: "heading1", view: "h1", title: "H1", class: "ck-heading_heading1" },
+        { model: "heading2", view: "h2", title: "H2", class: "ck-heading_heading2" },
+        { model: "heading3", view: "h3", title: "H3", class: "ck-heading_heading3" },
+        { model: "heading4", view: "h4", title: "H4", class: "ck-heading_heading4" },
+        { model: "heading5", view: "h5", title: "H5", class: "ck-heading_heading5" },
+        { model: "heading6", view: "h6", title: "H6", class: "ck-heading_heading6" },
+      ] as any,
     },
     image: {
+      resizeUnit: "px",
       toolbar: [
         "imageStyle:inline",
         "imageStyle:block",
@@ -111,7 +141,7 @@ class CustomEditor extends ClassicEditor {
         "imageTextAlternative",
       ],
     },
-  };
+  } as any;
 }
 
 export default function RichEditor({
@@ -134,6 +164,15 @@ export default function RichEditor({
           max-height: 360px !important;
           overflow-y: auto !important;
         }
+        .ck-content h1 { font-size: 36px; font-weight: 700; line-height: 1.2; }
+        .ck-content h2 { font-size: 30px; font-weight: 700; line-height: 1.2; }
+        .ck-content h3 { font-size: 24px; font-weight: 700; line-height: 1.3; }
+        .ck-content h4 { font-size: 20px; font-weight: 600; line-height: 1.4; }
+        .ck-content h5 { font-size: 16px; font-weight: 600; line-height: 1.4; }
+        .ck-content h6 { font-size: 14px; font-weight: 600; line-height: 1.4; }
+        .ck-content .image { margin: 1em 0; }
+        .ck-content .image_resized { max-width: 100%; display: block; }
+        .ck-content .image_resized img { width: 100%; }
       `;
       document.head.appendChild(style);
     }
