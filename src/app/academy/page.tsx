@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/home/home_academy.webp",
-        alt: "ERA Vietnam",
+        alt: "ERA Academy",
       },
     ],
   },

@@ -139,9 +139,9 @@ export function ApplyManageForm({ initialData, onSave, onCancel }: Props) {
         <h2 className="text-xl font-black" style={{ color: colors.primary.navy.DEFAULT }}>
           {initialData ? "Chỉnh sửa tin tuyển dụng" : "Thêm tin tuyển dụng"}
         </h2>
-        <button onClick={onCancel} className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors">
+        <Button variant="ghost" isIconOnly size="sm" onClick={onCancel}>
           <X size={20} className="text-gray-500" />
-        </button>
+        </Button>
       </div>
 
       <form onSubmit={handleSubmit}>

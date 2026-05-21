@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { colors } from "@/lib/theme";
 import Image from "next/image";
 
@@ -82,28 +83,22 @@ export default function AboutERAVNAwardsSection() {
         {/* Tabs */}
         <div className="flex justify-center mt-6 mb-8">
           <div className="inline-flex items-center rounded-lg overflow-hidden border border-gray-200">
-            <button
+            <Button
+              variant={activeTab === "monthly" ? "primary" : "ghost"}
+              size="sm"
               onClick={() => setActiveTab("monthly")}
-              className={`w-48 h-10 px-8 text-sm font-medium whitespace-nowrap transition-colors flex items-center justify-center ${
-                activeTab === "monthly"
-                  ? "text-white"
-                  : "text-gray-600 bg-white hover:bg-gray-50"
-              }`}
-              style={activeTab === "monthly" ? { backgroundColor: colors.primary.DEFAULT } : undefined}
+              className="w-48 h-10 rounded-none text-gray-600 hover:bg-gray-50"
             >
               Vinh Danh Tháng
-            </button>
-            <button
+            </Button>
+            <Button
+              variant={activeTab === "yearly" ? "primary" : "ghost"}
+              size="sm"
               onClick={() => setActiveTab("yearly")}
-              className={`w-48 h-10 px-8 text-sm font-medium whitespace-nowrap transition-colors flex items-center justify-center ${
-                activeTab === "yearly"
-                  ? "text-white"
-                  : "text-gray-600 bg-white hover:bg-gray-50"
-              }`}
-              style={activeTab === "yearly" ? { backgroundColor: colors.primary.DEFAULT } : undefined}
+              className="w-48 h-10 rounded-none text-gray-600 hover:bg-gray-50"
             >
               Vinh Danh Thường Niên
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -115,10 +110,11 @@ export default function AboutERAVNAwardsSection() {
                 VINH DANH MỖI THÁNG
               </h3>
               <div className="relative">
-                <button
+                <Button
+                  variant="navy"
+                  size="sm"
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium"
-                  style={{ backgroundColor: colors.primary.navy.DEFAULT }}
+                  className="gap-2"
                 >
                   <span>{selectedMonth}</span>
                   <span className="text-white/50">|</span>
@@ -126,7 +122,7 @@ export default function AboutERAVNAwardsSection() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="6 9 12 15 18 9" />
                   </svg>
-                </button>
+                </Button>
                 {dropdownOpen && (
                   <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-100 p-2 z-10 min-w-[140px]">
                     <div className="grid grid-cols-3 gap-1">

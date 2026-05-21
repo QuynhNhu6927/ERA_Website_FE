@@ -66,16 +66,14 @@ export function ApplyJobDetailPage() {
               </span>
             </div>
           </div>
-          <button
-            type="button"
+          <Button
+            className="flex-shrink-0 rounded-full px-8 shadow-lg hover:shadow-xl"
             onClick={() => {
               document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }}
-            className="flex-shrink-0 px-8 py-3 rounded-full text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all cursor-pointer"
-            style={{ backgroundColor: colors.primary.DEFAULT }}
           >
             Ứng Tuyển Ngay
-          </button>
+          </Button>
         </div>
       </div>
 

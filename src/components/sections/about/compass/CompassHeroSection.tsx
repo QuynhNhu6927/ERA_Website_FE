@@ -16,7 +16,7 @@ export function CompassHeroSection() {
   }, []);
 
   const paragraph2 =
-    "Bằng cách kết hợp mạng lưới nhượng quyền thương hiệu rộng khắp của Anywhere với nền tảng công nghệ môi giới đột phá của Compass, chúng tôi đang từng bước tái định nghĩa chuẩn mực của ngành môi giới toàn cầu, tối ưu hóa mọi trải nghiệm giao dịch thông qua sức mạnh của dữ liệu và công nghệ.";
+    "Bằng cách kết hợp mạng lưới nhượng quyền thương hiệu rộng khắp nơi của Anywhere với nền tảng công nghệ môi giới đột phá của Compass, chúng tôi đang từng bước tái định nghĩa chuẩn mực của ngành môi giới toàn cầu, tối ưu hóa mọi trải nghiệm giao dịch thông qua sức mạnh của dữ liệu và công nghệ";
 
   return (
     <section className="relative min-h-[400px] md:min-h-[500px] pt-16">

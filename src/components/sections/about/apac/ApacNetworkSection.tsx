@@ -106,16 +106,18 @@ export function ApacNetworkSection() {
                 <strong style={{ color: colors.primary.DEFAULT }}>
                   &apos;trái tim&apos; điều hành
                 </strong>{" "}
-                của toàn khu vực Châu Á - Thái Bình Dương, ERA Singapore quy tụ
-                gần 10.000 chuyên gia bất động sản sâu kinh nghiệm, đồng hành
-                cùng sự phát triển nóng đóng của thị trường tại Quốc đảo Sư tử.
-                Với hơn 45 năm hiện diện, ERA tại Quốc đảo Sư tử không ngừng mở
-                rộng quy mô và hoàn thiện hệ thống vận hành.
+                của toàn khu vực Châu Á - Thái Bình Dương, 
+                ERA Singapore quy tụ gần 10.000 chuyên gia 
+                bất động sản giàu kinh nghiệm, đồng hành cùng 
+                sự phát triển sôi động của thị trường tại Singapore. 
+                Với hơn 45 năm hiện diện, ERA Singapore không ngừng 
+                mở rộng quy mô và hoàn thiện hệ thống vận hành.
               </p>
               <p>
-                Trong hơn 3 thập kỷ gần đây, ERA giữ vị thế là một trong hai
-                thương hiệu dẫn đầu tại Singapore, với đội ngũ nhân sự tên tuổi,
-                mạng lưới phủ sóng và thành tích giao dịch vượt trội.
+                Trong hơn 3 thập kỷ gần đây, ERA giữ vị thế là một 
+                trong hai thương hiệu dẫn đầu tại Singapore, với đội 
+                ngũ nhân sự tên tuổi, mạng lưới phủ sóng và thành tích 
+                giao dịch vượt trội.
               </p>
             </div>
           </div>

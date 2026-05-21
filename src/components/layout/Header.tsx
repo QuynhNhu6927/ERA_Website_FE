@@ -16,12 +16,17 @@ const ICON_SIZES = {
   socialIcon: 40,
 };
 
-const navLinks: { href: string; label: string; icon: string; external?: boolean }[] = [
+const navLinks: { href: string; label: string; icon: string; external?: boolean; children?: { href: string; label: string }[] }[] = [
   { href: "/", label: "Dự án", icon: "/mobile_header/menu_project_icon.svg"},
   { href: ROUTES.join, label: "Join Team ERA", icon: "/mobile_header/menu_join_icon.svg"},
   { href: "/", label: "Tin tức", icon: "/mobile_header/menu_news_icon.svg" },
   { href: ROUTES.contact, label: "Liên hệ", icon: "/mobile_header/menu_contact_icon.svg" },
-  { href: ROUTES.aboutUs, label: "Về chúng tôi", icon: "/mobile_header/menu_about_icon.svg" },
+  { href: ROUTES.aboutUs, label: "Về chúng tôi", icon: "/mobile_header/menu_about_icon.svg", children: [
+    { href: ROUTES.eraVn, label: "Về ERA Vietnam" },
+    { href: ROUTES.compass, label: "Về Compass International Holdings" },
+    { href: ROUTES.era, label: "Về ERA Real Estate" },
+    { href: ROUTES.apac, label: "Về APAC Realty" },
+  ]},
 ];
 
 export function Header() {
@@ -30,6 +35,7 @@ export function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedMobileAbout, setExpandedMobileAbout] = useState(false);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -82,6 +88,7 @@ export function Header() {
               <nav className="flex items-center gap-8">
                 {navLinks.map((link) => {
                   const isHovered = hoveredItem === link.label;
+                  const hasChildren = !!link.children?.length;
                   const commonProps = {
                     onMouseEnter: () => setHoveredItem(link.label),
                     onMouseLeave: () => setHoveredItem(null),
@@ -100,6 +107,39 @@ export function Header() {
                       >
                         {link.label}
                       </a>
+                    );
+                  }
+                  
+                  if (hasChildren) {
+                    return (
+                      <div key={link.label} className="relative group">
+                        <Link 
+                          {...commonProps} 
+                          href={link.href}
+                          className="text-sm transition-all duration-200 py-5 block"
+                          style={{ color: hoveredItem === link.label ? colors.primary.DEFAULT : colors.gray[700], fontWeight: hoveredItem === link.label ? 800 : 500, fontSize: '14px' }}
+                          onMouseEnter={() => setHoveredItem(link.label)}
+                          onMouseLeave={() => setHoveredItem(null)}
+                        >
+                          {link.label}
+                        </Link>
+                        <div className="absolute top-full left-0 z-50 hidden group-hover:block">
+                          <div className="bg-white rounded-lg shadow-lg border border-gray-100 py-2 min-w-[280px]">
+                            {link.children!.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className="block px-4 py-3 text-sm transition-colors duration-200 hover:bg-gray-50"
+                                style={{ color: colors.primary.navy.DEFAULT, fontWeight: 500 }}
+                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = colors.primary.DEFAULT; }}
+                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = colors.primary.navy.DEFAULT; }}
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     );
                   }
                   
@@ -197,11 +237,12 @@ export function Header() {
 
           {/* Section 2: Nav Links */}
           <div className="px-5 py-5" style={{ backgroundColor: colors.gray[50] }}>
-            <nav className="flex flex-col gap-6">
+            <nav className="flex flex-col gap-2">
               {navLinks.map((link) => {
                 const linkClass = "flex items-center gap-4 py-3";
                 const linkStyle = { color: colors.primary.navy.DEFAULT, fontWeight: 500, fontSize: '16px' };
                 const iconElement = <Image src={link.icon} alt={link.label} width={ICON_SIZES.navIcon} height={ICON_SIZES.navIcon} style={{ width: ICON_SIZES.navIcon, height: ICON_SIZES.navIcon }} />;
+                const hasChildren = !!link.children?.length;
                 
                 if (link.external) {
                   return (
@@ -217,6 +258,37 @@ export function Header() {
                       {iconElement}
                       {link.label}
                     </a>
+                  );
+                }
+                
+                if (hasChildren) {
+                  return (
+                    <div key={link.label}>
+                      <button
+                        onClick={() => setExpandedMobileAbout(!expandedMobileAbout)}
+                        className={linkClass + " w-full text-left"}
+                        style={linkStyle}
+                      >
+                        {iconElement}
+                        <span className="flex-1">{link.label}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={expandedMobileAbout ? "rotate-180" : ""} style={{ transition: 'transform 0.2s', color: colors.gray[500] }}><polyline points="6 9 12 15 18 9" /></svg>
+                      </button>
+                      {expandedMobileAbout && (
+                        <div className="flex flex-col pl-10">
+                          {link.children!.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="py-3 text-sm transition-colors duration-200"
+                              style={{ color: colors.gray[600], fontWeight: 400, fontSize: '14px' }}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   );
                 }
                 

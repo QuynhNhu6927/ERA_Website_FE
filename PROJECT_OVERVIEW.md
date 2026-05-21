@@ -76,6 +76,12 @@ export default function VeChungToi() {
 - Color được quản lý qua `src/lib/theme.ts` và CSS variables trong `globals.css`
 - Tailwind v4 dùng `@import "tailwindcss"` và `@theme inline`
 
+### "use client" Convention
+- `app/*.tsx` (page files) → **Server Component**, không có `"use client"`
+- `components/sections/*.tsx` → **~90% là Client Component**, có `"use client"` (dùng state, effect, event)
+- `components/ui/*.tsx` → Tùy component; `Button.tsx` đã có `"use client"`
+- `lib/*.ts` → Pure TypeScript, **không cần** directive
+
 ---
 
 ## 4. Core Files
@@ -92,7 +98,7 @@ export default function VeChungToi() {
 ### UI Base
 | File | Mô tả |
 |------|-------|
-| `src/components/ui/Button.tsx` | Button với variants: primary, secondary, outline, ghost |
+| `src/components/ui/Button.tsx` | Variants: `primary`, `secondary`, `navy`, `navy-outline`, `outline`, `ghost`, `white`, `white-outline`, `danger`. Props: `shape` (default/circle), `isIconOnly`, `asChild`, `isLoading` |
 | `src/components/ui/Container.tsx` | Responsive container với size variants |
 | `src/components/ui/Section.tsx` | Section wrapper với bg, padding configs |
 | `src/components/ui/SectionTitle.tsx` | Title component với highlight, subtitle |
@@ -116,11 +122,15 @@ export default function VeChungToi() {
 
 ### Colors (Primary)
 ```
-Primary:     #C8102E (ERA Red)
-Primary Dark:#990038
-Navy:        #0C0C44
-Secondary:   #41B3E0
-Accent:      #0f172a
+Primary:     #C8102E (ERA Red)     → colors.primary.DEFAULT
+Primary Dark:#990038               → colors.primary.dark.DEFAULT
+Navy:        #0C0C44               → colors.primary.navy.DEFAULT
+Secondary:   #41B3E0               → colors.secondary.DEFAULT
+Accent:      #0f172a               → colors.accent.DEFAULT
+White:       #ffffff               → colors.neutral.white
+Gray 50:     #f9fafb              → colors.gray[50]
+Gray 100:    #f3f4f6              → colors.gray[100]
+Gray 500:    #6b7280              → colors.gray[500]
 ```
 
 ### Breakpoints
@@ -130,30 +140,30 @@ Accent:      #0f172a
 
 ---
 
-## 6. Routes
+## 6. Routes → Components Mapping
 
-```
-/                           # Trang chủ
-/ve-chung-toi               # Về chúng tôi
-/ve-chung-toi/apac          # ERA APAC
-/ve-chung-toi/compass       # Compass International
-/ve-chung-toi/era-real-estate   # ERA Real Estate
-/ve-chung-toi/ve-era-viet-nam   # Về ERA Vietnam
-/du-an                      # Dự án
-/du-an/chi-tiet             # Chi tiết dự án
-/du-an/quan-ly              # Quản lý dự án
-/tin-tuc                    # Tin tức
-/tin-tuc/[slug]             # Chi tiết tin tức
-/tin-tuc/quan-ly            # Quản lý tin tức
-/gia-nhap                   # Join Team ERA
-/ung-tuyen                  # Ứng tuyển
-/ung-tuyen/chi-tiet-cong-viec  # Chi tiết công việc
-/ung-tuyen/quan-ly          # Quản lý ứng tuyển
-/academy                    # Academy
-/lien-he                    # Liên hệ
-/dieu-khoan-su-dung         # Điều khoản
-/chinh-sach-bao-mat         # Chính sách bảo mật
-```
+| Route | Page File | Main Component |
+|-------|-----------|----------------|
+| `/` | `app/page.tsx` | `HomePage` |
+| `/ve-chung-toi` | `app/ve-chung-toi/page.tsx` | `AboutPage` |
+| `/ve-chung-toi/apac` | `app/ve-chung-toi/apac/page.tsx` | `ApacPage` |
+| `/ve-chung-toi/compass` | `app/ve-chung-toi/compass/page.tsx` | `CompassPage` |
+| `/ve-chung-toi/era-real-estate` | `app/ve-chung-toi/era-real-estate/page.tsx` | `EraRealEstatePage` |
+| `/ve-chung-toi/ve-era-viet-nam` | `app/ve-chung-toi/ve-era-viet-nam/page.tsx` | `AboutERAVNPage` |
+| `/du-an` | `app/du-an/page.tsx` | `ProjectsPage` |
+| `/du-an/chi-tiet` | `app/du-an/chi-tiet/page.tsx` | `ProjectsDetailPage` |
+| `/du-an/quan-ly` | `app/du-an/quan-ly/page.tsx` | `ProjectsManagePage` |
+| `/tin-tuc` | `app/tin-tuc/page.tsx` | `NewsPage` |
+| `/tin-tuc/[slug]` | `app/tin-tuc/[slug]/page.tsx` | `NewsDetailPage` |
+| `/tin-tuc/quan-ly` | `app/tin-tuc/quan-ly/page.tsx` | `NewsManagePage` |
+| `/gia-nhap` | `app/gia-nhap/page.tsx` | `JoinPage` |
+| `/ung-tuyen` | `app/ung-tuyen/page.tsx` | `ApplyPage` |
+| `/ung-tuyen/chi-tiet-cong-viec` | `app/ung-tuyen/chi-tiet-cong-viec/page.tsx` | `ApplyJobDetailPage` |
+| `/ung-tuyen/quan-ly` | `app/ung-tuyen/quan-ly/page.tsx` | `ApplyManagePage` |
+| `/academy` | `app/academy/page.tsx` | `AcademyPage` |
+| `/lien-he` | `app/lien-he/page.tsx` | `ContactPage` |
+| `/dieu-khoan-su-dung` | `app/dieu-khoan-su-dung/page.tsx` | `LegalPage` |
+| `/chinh-sach-bao-mat` | `app/chinh-sach-bao-mat/page.tsx` | `LegalPage` |
 
 ---
 
@@ -169,7 +179,109 @@ const nextConfig = {
 
 ---
 
-## 8. Notes
+## 8. Animation Convention
+
+Pattern chuẩn trong project:
+
+```tsx
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: index * 0.1 }}
+>
+```
+
+> **Quy tắc**: Luôn dùng `viewport={{ once: true }}` để tránh re-trigger khi scroll lên/xuống.
+
+---
+
+## 9. Common Patterns (chưa tách thành UI component)
+
+| Pattern | Files lặp | Đề xuất tách |
+|---------|-----------|--------------|
+| Hero Banner (`relative` + `Image fill` + overlay) | 12 hero sections | `ui/HeroBanner.tsx` |
+| Data Table (header + body + edit/delete + empty) | 3 manage lists | `ui/DataTable.tsx` hoặc `shared/ManagePageTemplate.tsx` |
+| Input / Select (rounded-lg border-gray-200 ...) | 4 form files | `ui/Input.tsx`, `ui/Select.tsx` |
+| Image Fallback (rounded-2xl + bg-gray-100 + Image) | 11 files | `ui/ImageWithFallback.tsx` |
+| Breadcrumb (`flex gap-2` + Link + `/`) | 3 detail pages | `ui/Breadcrumb.tsx` |
+| Carousel Arrow (`w-10 h-10 rounded-full border`) | 3 testimonial/related sections | `ui/CircleButton.tsx` |
+| File Upload (border-dashed + hover state) | 3 form files | `ui/FileUpload.tsx` |
+| Search Input (icon + bg-gray-50 + input) | 2 files | `ui/SearchInput.tsx` |
+
+---
+
+## 10. Tab Implementations (đang phân mảnh)
+
+Hiện có **4 kiểu tab** khác nhau trong project:
+
+1. **Underline indicator** — `AboutERAVNTabs`, `NewsTabsSection`, `ProjectsListSection`
+2. **Pill toggle** — `ApplyRecruitmentSection`, `AcademyCoursesSection`, `ContactOfficesSection`
+3. **Border container** — `AboutERAVNAwardsSection`
+4. **Rounded-full segmented** — `LegalPageLayout`
+
+> **Todo**: Unify thành 1 `<Tabs>` component trong `ui/`.
+
+---
+
+## 11. Form Styling Pattern
+
+Input class chuẩn đang copy-paste ở nhiều file:
+```tsx
+className="rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 outline-none focus:border-gray-400 transition-colors"
+```
+
+> **Todo**: Tách thành `ui/Input.tsx` và `ui/Select.tsx`.
+
+---
+
+## 12. Image Handling (Static Export)
+
+Với `images.unoptimized: true`:
+- Dùng `<Image fill className="object-cover" />` cho background / hero images
+- Dùng `<Image width height />` cho explicit size (card thumbnail, avatar)
+- Chỉ dùng `<img>` cho BCT logo ở Footer (tránh lỗi ESLint `no-img-element`)
+- Khi API chưa có, dùng gray placeholder (`bg-gray-200`) với initials text
+
+---
+
+## 13. Mock Data Status
+
+Nhiều section đang dùng mock data hardcoded inline:
+- `AboutERAVNAwardsSection` — achievers, agents, divisions
+- `ApplyRecruitmentSection` — jobs array
+- `ProjectsListSection` — projects array
+- `NewsDetailPage` — relatedNews array
+
+> Khi API ready, chỉ cần thay mock arrays bằng API response. Component structure không đổi.
+
+---
+
+## 14. Anti-patterns
+
+| Vấn đề | Ví dụ | Cách làm đúng |
+|--------|-------|---------------|
+| Override Section padding qua `className` | `className="!py-10"` trên `<Section>` | Dùng prop `padding="xs/sm/md/lg/xl"` của Section |
+| Viết `max-w-6xl mx-auto px-4` inline | `ApplyJobDetailPage.tsx` (4 lần) | Dùng `<Container size="lg">` |
+| Copy-paste input class string | `ApplyManageForm`, `NewsManageForm` | Dùng `ui/Input.tsx` |
+| Inline `style={{ color: colors.gray[500] }}` | Nhiều file trước refactor | Dùng Tailwind class `text-gray-500` hoặc `style` từ `lib/theme` |
+
+---
+
+## 15. Known Issues / Tech Debt
+
+| Issue | File | Mức độ | Ghi chú |
+|-------|------|--------|---------|
+| `setState` trong `useEffect` | `ApplyGalleryModal.tsx:33` | Medium | Có thể gây cascading renders |
+| `any` type | `RichEditor.tsx` (5 lần), `Button.tsx:forwardRef` | Medium | Cần thay bằng proper types |
+| `<img>` thay vì `<Image>` | `Footer.tsx` (BCT logo ×2) | Low | BCT logo không cần optimize |
+| `no-unescaped-entities` | `ProjectsDetailContentSection.tsx`, `ProjectsManageList.tsx` | Low | `"` nên escape thành `&quot;` |
+| Unused imports | `NewsManagePage.tsx` (colors), nhiều file khác | Low | Dọn dẹp định kỳ |
+| Turbopack panic `/ung-tuyen/` | Dev server only | Low | Xóa `.next` và chạy lại nếu gặp |
+
+---
+
+## 16. Notes
 
 - **Static Export**: `images.unoptimized: true` → build ra HTML tĩnh
 - **Scroll Performance**: Dùng `requestAnimationFrame` trong scroll handlers

@@ -52,7 +52,7 @@ export function EraRealEstateHeroSection() {
               <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-md">
                 Từ nước Mỹ vươn ra toàn cầu, mạng lưới ERA không ngừng mở rộng,
                 trở thành bệ phóng vững chắc cho hàng chục ngàn chuyên viên tinh
-                hoa.
+                hoa
               </p>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Section } from "@/components/ui/Section";
+import { Button } from "@/components/ui/Button";
 import { colors, withOpacity } from "@/lib/theme";
 
 const offices = [
@@ -64,17 +65,16 @@ export function ContactOfficesSection() {
             {offices.map((office) => {
               const isActive = office.id === activeOffice;
               return (
-                <button
+                <Button
                   key={office.id}
+                  variant={isActive ? "navy" : "ghost"}
+                  size="sm"
+                  className="whitespace-nowrap hover:scale-[1.02]"
+                  style={isActive ? undefined : { color: colors.gray[500] }}
                   onClick={() => setActiveOffice(office.id)}
-                  className="px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-colors hover:scale-[1.02] transition-transform"
-                  style={{
-                    backgroundColor: isActive ? colors.primary.navy.DEFAULT : colors.gray[100],
-                    color: isActive ? colors.neutral.white : colors.gray[500],
-                  }}
                 >
                   {office.id === "south" ? "TPHCM" : office.id === "central" ? "Đà Nẵng" : "Hà Nội"}
-                </button>
+                </Button>
               );
             })}
           </div>
