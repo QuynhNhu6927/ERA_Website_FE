@@ -84,12 +84,9 @@ export function NewsManageForm({ initialData, onSave, onCancel }: Props) {
         >
           {initialData ? "Chỉnh sửa tin tức" : "Tạo tin tức mới"}
         </h2>
-        <button
-          onClick={onCancel}
-          className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
-        >
+        <Button variant="ghost" isIconOnly size="sm" onClick={onCancel}>
           <X size={20} className="text-gray-500" />
-        </button>
+        </Button>
       </div>
 
       <form onSubmit={handleSubmit}>

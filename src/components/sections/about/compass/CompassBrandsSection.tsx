@@ -8,15 +8,15 @@ import { colors } from "@/lib/theme";
 import { ROUTES } from "@/lib/routes";
 
 const brands = [
-  { name: "ERA", logo: "/about/compass_b1.svg" },
-  { name: "Compass", logo: "/about/compass_b2.svg" },
-  { name: "Century 21", logo: "/about/compass_b3.svg" },
   { name: "Coldwell Banker", logo: "/about/compass_b4.svg" },
+  { name: "Century 21", logo: "/about/compass_b3.svg" },
+  { name: "ERA", logo: "/about/compass_b1.svg" },
   { name: "Coldwell Banker Commercial", logo: "/about/compass_b5.svg" },
-  { name: "Sotheby's", logo: "/about/compass_b6.svg" },
-  { name: "Corcoran", logo: "/about/compass_b7.svg" },
   { name: "Better Homes", logo: "/about/compass_b8.svg" },
   { name: "Christie's", logo: "/about/compass_b9.svg" },
+  { name: "Sotheby's", logo: "/about/compass_b6.svg" },
+  { name: "Compass", logo: "/about/compass_b2.svg" },
+  { name: "Corcoran", logo: "/about/compass_b7.svg" },
 ];
 
 export function CompassBrandsSection() {

@@ -42,7 +42,7 @@ export function EraRealEstatePioneerSection() {
           </h2>
           <p className="mt-4 text-gray-600 text-[15px] leading-relaxed max-w-2xl mx-auto">
             ERA tự hào nắm giữ những kỷ lục &quot;Đầu tiên&quot; trên thế giới, liên tục
-            phá vỡ mọi giới hạn truyền thống để dẫn dắt thị trường.
+            phá vỡ mọi giới hạn truyền thống để dẫn dắt thị trường
           </p>
         </div>
 

@@ -44,19 +44,19 @@ export default function AboutERAVNPhilosophySection() {
             className="space-y-8"
           >
             <div className="border-l-4 pl-6" style={{ borderColor: colors.primary.DEFAULT }}>
-              <h3 className="font-bold text-sm uppercase tracking-wider" style={{ color: colors.primary.DEFAULT }}>
+              <h3 className="font-bold text-base uppercase tracking-wider" style={{ color: colors.primary.DEFAULT }}>
                 Tầm nhìn
               </h3>
-              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+              <p className="mt-3 text-gray-600 text-base leading-relaxed">
                 ERA Vietnam là công ty môi giới bất động sản do khách hàng và nhân viên môi giới lựa chọn
               </p>
             </div>
 
             <div className="border-l-4 pl-6" style={{ borderColor: colors.primary.navy.DEFAULT }}>
-              <h3 className="font-bold text-sm uppercase tracking-wider" style={{ color: colors.primary.navy.DEFAULT }}>
+              <h3 className="font-bold text-base uppercase tracking-wider" style={{ color: colors.primary.navy.DEFAULT }}>
                 Sứ mệnh
               </h3>
-              <div className="mt-3 text-gray-600 text-sm leading-relaxed space-y-3">
+              <div className="mt-3 text-gray-600 text-base leading-relaxed space-y-3">
                 <p>
                   Tại ERA, chúng tôi cam kết đem lại dịch vụ tốt nhất, kết quả tốt nhất và luôn hướng đến sự
                   hài lòng cao nhất từ khách hàng.
@@ -68,7 +68,7 @@ export default function AboutERAVNPhilosophySection() {
                 </p>
                 <p>
                   <span className="font-semibold">Với khách hàng:</span> Khách hàng có thể hoàn toàn
-                  tự tin khi làm việc với chuyên viên môi giới của ERA những ngườiluôn đặt tâm huyết trong
+                  tự tin khi làm việc với chuyên viên môi giới của ERA những người luôn đặt tâm huyết trong
                   việc phục vụ khách hàng bằng thái độ chính trực nhất.
                 </p>
               </div>

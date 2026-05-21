@@ -1,21 +1,70 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes, forwardRef, ReactElement, isValidElement, cloneElement } from "react";
+import {
+  ButtonHTMLAttributes,
+  forwardRef,
+  ReactElement,
+  isValidElement,
+  cloneElement,
+} from "react";
 import { colors } from "@/lib/theme";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "navy"
+    | "navy-outline"
+    | "outline"
+    | "ghost"
+    | "white"
+    | "white-outline"
+    | "danger";
   size?: "sm" | "md" | "lg";
+  shape?: "default" | "circle";
+  isIconOnly?: boolean;
   isLoading?: boolean;
   asChild?: boolean;
 }
 
-const Button = forwardRef<any, ButtonProps>(
-  ({ className, variant = "primary", size = "md", isLoading, asChild, children, style: userStyle, ...props }, ref) => {
-    const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md";
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      variant = "primary",
+      size = "md",
+      shape = "default",
+      isIconOnly,
+      isLoading,
+      asChild,
+      children,
+      style: userStyle,
+      ...props
+    },
+    ref
+  ) => {
+    const baseStyles =
+      "inline-flex items-center justify-center font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md";
 
-    const variants = {
+    const shapeStyles = {
+      default: "rounded-lg",
+      circle: "rounded-full",
+    };
+
+    const iconOnlySizes = {
+      sm: "p-1.5",
+      md: "p-2",
+      lg: "p-2.5",
+    };
+
+    const textSizes = {
+      sm: "px-5 py-2 text-sm",
+      md: "px-6 py-3 text-base",
+      lg: "px-8 py-4 text-lg",
+    };
+
+    const variants: Record<string, React.CSSProperties> = {
       primary: {
         backgroundColor: colors.primary.DEFAULT,
         color: colors.neutral.white,
@@ -24,43 +73,77 @@ const Button = forwardRef<any, ButtonProps>(
         backgroundColor: colors.primary.navy.DEFAULT,
         color: colors.neutral.white,
       },
+      navy: {
+        backgroundColor: colors.primary.navy.DEFAULT,
+        color: colors.neutral.white,
+      },
+      "navy-outline": {
+        border: `2px solid ${colors.primary.navy.DEFAULT}`,
+        color: colors.primary.navy.DEFAULT,
+        backgroundColor: "transparent",
+      },
       outline: {
         border: `2px solid ${colors.primary.DEFAULT}`,
         color: colors.primary.DEFAULT,
-        backgroundColor: 'transparent',
+        backgroundColor: "transparent",
       },
       ghost: {
         color: colors.neutral.foreground,
-        backgroundColor: 'transparent',
+        backgroundColor: "transparent",
+      },
+      white: {
+        backgroundColor: colors.neutral.white,
+        color: colors.primary.navy.DEFAULT,
+      },
+      "white-outline": {
+        border: `2px solid ${colors.neutral.white}`,
+        color: colors.neutral.white,
+        backgroundColor: "transparent",
+      },
+      danger: {
+        backgroundColor: colors.primary.DEFAULT,
+        color: colors.neutral.white,
       },
     };
 
-    const sizes = {
-      sm: "px-5 py-2 text-sm",
-      md: "px-6 py-3 text-base",
-      lg: "px-8 py-4 text-lg",
-    };
-
-    const hoverStyles = {
+    const hoverStyles: Record<string, React.CSSProperties> = {
       primary: { backgroundColor: colors.primary.dark.DEFAULT },
-      secondary: { backgroundColor: colors.secondary.dark },
-      outline: { backgroundColor: colors.primary.DEFAULT, color: colors.neutral.white },
+      secondary: { backgroundColor: colors.primary.navy.s80 },
+      navy: { backgroundColor: colors.primary.navy.s80 },
+      "navy-outline": {
+        backgroundColor: colors.primary.navy.DEFAULT,
+        color: colors.neutral.white,
+      },
+      outline: {
+        backgroundColor: colors.primary.DEFAULT,
+        color: colors.neutral.white,
+      },
       ghost: { backgroundColor: colors.gray[100] },
+      white: { backgroundColor: colors.gray[100] },
+      "white-outline": {
+        backgroundColor: colors.neutral.white,
+        color: colors.primary.navy.DEFAULT,
+      },
+      danger: { backgroundColor: colors.primary.dark.DEFAULT },
     };
 
-    const mergedClassName = cn(baseStyles, sizes[size], className);
+    const sizeClass = isIconOnly ? iconOnlySizes[size] : textSizes[size];
+    const mergedClassName = cn(baseStyles, shapeStyles[shape], sizeClass, className);
+
+    const variantStyle = variants[variant] || variants.primary;
+    const hoverStyle = hoverStyles[variant] || hoverStyles.primary;
 
     if (asChild && isValidElement(children)) {
       const child = children as ReactElement<any>;
       return cloneElement(child, {
         className: cn(mergedClassName, child.props.className),
-        style: { ...variants[variant], ...userStyle, ...child.props.style },
+        style: { ...variantStyle, ...userStyle, ...child.props.style },
         onMouseEnter: (e: React.MouseEvent<HTMLElement>) => {
-          Object.assign(e.currentTarget.style, hoverStyles[variant]);
+          Object.assign(e.currentTarget.style, hoverStyle);
           child.props.onMouseEnter?.(e);
         },
         onMouseLeave: (e: React.MouseEvent<HTMLElement>) => {
-          Object.assign(e.currentTarget.style, { ...variants[variant], ...userStyle });
+          Object.assign(e.currentTarget.style, { ...variantStyle, ...userStyle });
           child.props.onMouseLeave?.(e);
         },
         ref,
@@ -73,12 +156,12 @@ const Button = forwardRef<any, ButtonProps>(
       <button
         ref={ref}
         className={mergedClassName}
-        style={{ ...variants[variant], ...userStyle }}
+        style={{ ...variantStyle, ...userStyle }}
         onMouseEnter={(e) => {
-          Object.assign(e.currentTarget.style, hoverStyles[variant]);
+          Object.assign(e.currentTarget.style, hoverStyle);
         }}
         onMouseLeave={(e) => {
-          Object.assign(e.currentTarget.style, { ...variants[variant], ...userStyle });
+          Object.assign(e.currentTarget.style, { ...variantStyle, ...userStyle });
         }}
         disabled={isLoading || props.disabled}
         {...props}
@@ -95,3 +178,4 @@ const Button = forwardRef<any, ButtonProps>(
 Button.displayName = "Button";
 
 export { Button };
+export type { ButtonProps };

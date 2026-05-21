@@ -1,24 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { colors } from "@/lib/theme";
 
 const divisions = [
-  { name: "Trần Vĩnh Phi Long", group: "Galaxy Group", initial: "T", color: colors.primary.DEFAULT },
-  { name: "Vũ Thị Thu Trang", group: "Universe Group", initial: "V", color: colors.secondary.DEFAULT },
-  { name: "Nguyễn Long Sơn", group: "Legend Group", initial: "N", color: colors.tertiary.orange.DEFAULT },
-  { name: "Trần Thị Hoàng Nhi", group: "Elite Group", initial: "T", color: colors.tertiary.purple.DEFAULT },
-  { name: "Ngô Trung Hiếu", group: "Hell Division", initial: "N", color: colors.primary.navy.DEFAULT },
-  { name: "Phạm Thị Thuý Hồng", group: "Mercury Division", initial: "P", color: "#64748b" },
-  { name: "Phan Thị Thu Hương", group: "AEM Division", initial: "P", color: colors.primary.DEFAULT },
-  { name: "Lai Trúc Quân", group: "SUN Division", initial: "L", color: colors.secondary.DEFAULT },
-  { name: "Nguyễn Thu Trang", group: "Ability Division", initial: "N", color: colors.tertiary.orange.DEFAULT },
-  { name: "Nguyễn Thị Yến Như", group: "Aether Division", initial: "N", color: colors.tertiary.purple.DEFAULT },
-  { name: "Nguyễn Phước Sửu", group: "Happy Plus Division", initial: "N", color: colors.primary.navy.DEFAULT },
-  { name: "Nguyễn Thị Thanh Tâm", group: "Tara Division", initial: "N", color: "#64748b" },
+  { name: "Trần Vĩnh Phi Long", group: "Galaxy Group", image: "/about/about_division_01.webp" },
+  { name: "Vũ Thị Thu Trang", group: "Universe Group", image: "/about/about_division_02.webp" },
+  { name: "Nguyễn Long Sơn", group: "Legend Group", image: "/about/about_division_03.webp" },
+  { name: "Trần Thị Hoàng Nhi", group: "Elite Group", image: "/about/about_division_04.webp" },
+  { name: "Ngô Trung Hiếu", group: "Hell Division", image: "/about/about_division_05.webp" },
+  { name: "Phạm Thị Thuý Hồng", group: "Mercury Division", image: "/about/about_division_06.webp" },
+  { name: "Phan Thị Thu Hương", group: "AEM Division", image: "/about/about_division_07.webp" },
+  { name: "Lai Trúc Quân", group: "SUN Division", image: "/about/about_division_08.webp" },
+  { name: "Nguyễn Thu Trang", group: "Ability Division", image: "/about/about_division_09.webp" },
+  { name: "Nguyễn Thị Yến Như", group: "Aether Division", image: "/about/about_division_10.webp" },
+  { name: "Nguyễn Phước Sửu", group: "Happy Plus Division", image: "/about/about_division_11.webp" },
+  { name: "Nguyễn Thị Thanh Tâm", group: "Tara Division", image: "/about/about_division_12.webp" },
 ];
 
 export default function AboutERAVNDivisionsSection() {
@@ -39,7 +39,7 @@ export default function AboutERAVNDivisionsSection() {
           </h3>
           <p className="mt-4 text-gray-500 max-w-3xl mx-auto text-sm md:text-base">
             ERA Vietnam tự hào sở hữu 12 division, mỗi division đóng vai trò quan trọng trong sự phát triển của công ty và
-            mang đến những giá trị triết thực cho khách hàng trong lĩnh vực môi giới bất động sản.
+            mang đến những giá trị triết thực cho khách hàng trong lĩnh vực môi giới bất động sản
           </p>
         </motion.div>
 
@@ -51,20 +51,21 @@ export default function AboutERAVNDivisionsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="text-center"
+              className="text-center group cursor-pointer"
             >
-              <div
-                className="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full flex items-center justify-center border-4 border-white shadow-md"
-                style={{ backgroundColor: person.color + "15", borderColor: person.color + "30" }}
-              >
-                <span className="text-3xl md:text-4xl font-bold" style={{ color: person.color }}>
-                  {person.initial}
-                </span>
+              <div className="relative w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full overflow-hidden border-4 border-white shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:border-gray-100">
+                <Image
+                  src={person.image}
+                  alt={person.name}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 112px, 128px"
+                />
               </div>
-              <h4 className="mt-3 font-semibold text-sm" style={{ color: colors.primary.DEFAULT }}>
+              <h4 className="mt-3 font-semibold text-base transition-colors duration-200 group-hover:text-red-700" style={{ color: colors.primary.DEFAULT }}>
                 {person.name}
               </h4>
-              <p className="text-xs font-semibold" style={{ color: colors.primary.navy.DEFAULT }}>{person.group}</p>
+              <p className="text-sm font-semibold transition-colors duration-200" style={{ color: colors.primary.navy.DEFAULT }}>{person.group}</p>
             </motion.div>
           ))}
         </div>

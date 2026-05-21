@@ -3,7 +3,8 @@
 import { memo, useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { colors, withOpacity } from "@/lib/theme";
+import { Button } from "@/components/ui/Button";
+import { colors } from "@/lib/theme";
 import { ROUTES } from "@/lib/routes";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -126,9 +127,10 @@ export const NewsDetailPage = memo(function NewsDetailPage() {
                   style={{ color: colors.neutral.foreground }}
                 />
               </div>
-              <button
-                className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg"
-                style={{ backgroundColor: colors.primary.DEFAULT }}
+              <Button
+                isIconOnly
+                size="sm"
+                className="flex-shrink-0 rounded-lg"
                 aria-label="Tìm kiếm"
               >
                 <svg
@@ -142,7 +144,7 @@ export const NewsDetailPage = memo(function NewsDetailPage() {
                   <circle cx="11" cy="11" r="8" />
                   <path d="m21 21-4.3-4.3" />
                 </svg>
-              </button>
+              </Button>
             </div>
 
             {/* Mobile search input — expands when active */}

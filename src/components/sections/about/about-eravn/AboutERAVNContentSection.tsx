@@ -58,7 +58,7 @@ export default function AboutERAVNContentSection() {
             </h2>
 
             <div className="border-l-4 pl-6" style={{ borderColor: colors.primary.DEFAULT }}>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 text-base leading-relaxed">
                 Chính thức hiện diện tại Việt Nam từ năm 2017, ERA Vietnam tự hào là công ty môi
                 giới bất động sản quốc tế hàng đầu, mang đến sự kết hợp hoàn hảo giữa tiêu chuẩn
                 dịch vụ môi giới toàn cầu và sự thấu hiểu sâu sắc thị trường bản địa.
@@ -66,10 +66,10 @@ export default function AboutERAVNContentSection() {
             </div>
 
             <div className="border-l-4 pl-6" style={{ borderColor: colors.primary.navy.DEFAULT }}>
-              <h3 className="font-bold text-gray-800 uppercase tracking-wider text-sm">
+              <h3 className="font-bold text-gray-800 uppercase tracking-wider text-base">
                 Tăng trưởng
               </h3>
-              <p className="mt-3 text-gray-600 leading-relaxed text-sm">
+              <p className="mt-3 text-gray-600 leading-relaxed text-base">
                 Năm 2023, với những thành công nhất định, APAC Realty, công ty sở hữu quyền thương
                 hiệu ERA Real Estate toàn bộ khu vực Châu Á Thái Bình Dương đã quyết định đầu tư trực tiếp
                 vào ERA Vietnam, giúp công ty trở thành một trong số ít công ty môi giới tại Việt Nam có vốn
@@ -78,10 +78,10 @@ export default function AboutERAVNContentSection() {
             </div>
 
             <div className="border-l-4 pl-6" style={{ borderColor: colors.secondary.DEFAULT }}>
-              <h3 className="font-bold text-gray-800 uppercase tracking-wider text-sm">
+              <h3 className="font-bold text-gray-800 uppercase tracking-wider text-base">
                 Năng lực đội ngũ
               </h3>
-              <p className="mt-3 text-gray-600 leading-relaxed text-sm">
+              <p className="mt-3 text-gray-600 leading-relaxed text-base">
                 Agent ERA Vietnam được định hướng đào tạo và trang bị đầy đủ kiến thức, kỹ năng cần
                 thiết để trở thành một chuyên viên tư vấn bất động sản toàn diện, được hỗ trợ sở hữu
                 Chứng chỉ hành nghề môi giới bất động sản theo quy định của Pháp luật.

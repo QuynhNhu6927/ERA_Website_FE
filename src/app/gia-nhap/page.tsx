@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { JoinPage } from "@/components/sections/join";
 
 export const metadata: Metadata = {
-  title: "Gia nhập ERA Vietnam - Bệ phóng bứt phá sự nghiệp môi giới BĐS",
+  title: "Tuyển Dụng Chuyên Viên BĐS | Hoa Hồng Đột Phá Cùng ERA",
   description:
-    "Bệ phóng bứt phá sự nghiệp môi giới bất động sản. Kế thừa nền tảng công nghệ Mỹ, nhận đào tạo chứng chỉ quốc tế và hoa hồng hấp dẫn nhất.",
+    "Gia nhập ERA Vietnam - Bệ phóng bứt phá sự nghiệp môi giới BĐS với mức hoa hồng đột phá. Kế thừa nền tảng công nghệ Mỹ, nhận đào tạo chứng chỉ quốc tế và hoa hồng hấp dẫn nhất.",
   openGraph: {
-    title: "Gia nhập ERA Vietnam - Bệ phóng bứt phá sự nghiệp môi giới BĐS",
+    title: "Tuyển Dụng Chuyên Viên BĐS | Hoa Hồng Đột Phá Cùng ERA",
     description:
-      "Bệ phóng bứt phá sự nghiệp môi giới bất động sản. Kế thừa nền tảng công nghệ Mỹ, nhận đào tạo chứng chỉ quốc tế và hoa hồng hấp dẫn nhất.",
+      "Gia nhập ERA Vietnam - Bệ phóng bứt phá sự nghiệp môi giới BĐS với mức hoa hồng đột phá. Kế thừa nền tảng công nghệ Mỹ, nhận đào tạo chứng chỉ quốc tế và hoa hồng hấp dẫn nhất.",
     type: "website",
     images: [
       {
         url: "/join/join_aca.webp",
-        alt: "Join ERA Vietnam",
+        alt: "TRỞ THÀNH CHUYÊN VIÊN TƯ VẤN BĐS TẠI ERA VIETNAM",
       },
     ],
   },

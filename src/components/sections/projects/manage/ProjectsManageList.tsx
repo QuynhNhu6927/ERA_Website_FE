@@ -144,20 +144,25 @@ export function ProjectsManageList({ projects, onEdit, onDelete, onAdd }: Props)
                       </td>
                       <td className="px-5 py-4">
                         <div className="flex items-center justify-end gap-2">
-                          <button
+                          <Button
+                            variant="ghost"
+                            isIconOnly
+                            size="md"
                             onClick={() => onEdit(project)}
-                            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
                             title="Chỉnh sửa"
                           >
                             <Pencil size={15} className="text-gray-500" />
-                          </button>
-                          <button
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            isIconOnly
+                            size="md"
                             onClick={() => project.id && onDelete(project.id)}
-                            className="p-2 rounded-lg hover:bg-red-50 transition-colors"
                             title="Xoá"
+                            className="hover:!bg-red-50"
                           >
                             <Trash2 size={15} className="text-red-500" />
-                          </button>
+                          </Button>
                         </div>
                       </td>
                     </tr>

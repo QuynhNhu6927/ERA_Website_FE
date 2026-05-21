@@ -9,12 +9,12 @@ import {
 export const metadata: Metadata = {
   title: "Liên hệ ERA Vietnam - Tư vấn bất động sản chuyên nghiệp",
   description:
-    "Kết nối với ERA Vietnam để nhận tư vấn bất động sản chuyên nghiệp. Gọi ngay Hotline 1800 6701 hoặc để lại thông tin, chúng tôi sẽ hỗ trợ bạn nhanh nhất!",
+    "Kết nối với ERA Vietnam - Thương hiệu môi giới BĐS quốc tế. Chúng tôi sẵn sàng hỗ trợ tư vấn dự án, ký gửi nhà đất và giải đáp thông tin tuyển dụng. Gọi ngay hotline 1800 6701!",
   keywords: ["ERA Vietnam", "liên hệ ERA", "tư vấn BĐS", "hotline ERA"],
   openGraph: {
     title: "Liên hệ ERA Vietnam - Tư vấn bất động sản chuyên nghiệp",
     description:
-      "Kết nối với ERA Vietnam để nhận tư vấn bất động sản chuyên nghiệp. Gọi ngay Hotline 1800 6701 hoặc để lại thông tin, chúng tôi sẽ hỗ trợ bạn nhanh nhất!",
+      "Kết nối với ERA Vietnam - Thương hiệu môi giới BĐS quốc tế. Chúng tôi sẵn sàng hỗ trợ tư vấn dự án, ký gửi nhà đất và giải đáp thông tin tuyển dụng. Gọi ngay hotline 1800 6701!",
     type: "website",
     images: [
       {

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/home/home_news_02.webp",
-        alt: "About ERA Vietnam",
+        alt: "Về chúng tôi - ERA Vietnam",
       },
     ],
   },

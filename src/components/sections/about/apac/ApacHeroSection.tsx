@@ -31,7 +31,7 @@ export function ApacHeroSection() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, transparent 85%), url('/about/about_section02.webp')",
+              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 45%, transparent 85%), url('/about/about_section02.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -51,7 +51,7 @@ export function ApacHeroSection() {
               <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-md">
                 Không chỉ dừng lại ở nước Mỹ, ERA đã vươn mình mạnh mẽ để trở
                 thành một trong những mạng lưới bất động sản lớn mạnh nhất khu
-                vực Châu Á - Thái Bình Dương.
+                vực Châu Á - Thái Bình Dương
               </p>
             </div>
           </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Section } from "@/components/ui/Section";
+import { Button } from "@/components/ui/Button";
 import { colors } from "@/lib/theme";
 import { ROUTES } from "@/lib/routes";
 
@@ -73,19 +74,16 @@ export function ApplyRecruitmentSection() {
           {tabs.map((tab) => {
             const isActive = tab.key === activeTab;
             return (
-              <button
+              <Button
                 key={tab.key}
+                variant={isActive ? "primary" : "ghost"}
+                size="sm"
+                className="rounded-full"
+                style={isActive ? undefined : { color: colors.primary.navy.DEFAULT }}
                 onClick={() => setActiveTab(tab.key)}
-                className="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200"
-                style={{
-                  backgroundColor: isActive
-                    ? colors.primary.DEFAULT
-                    : "transparent",
-                  color: isActive ? colors.neutral.white : colors.primary.navy.DEFAULT,
-                }}
               >
                 {tab.label}
-              </button>
+              </Button>
             );
           })}
         </div>
@@ -127,49 +125,18 @@ export function ApplyRecruitmentSection() {
               </div>
             </div>
 
-            <Link
-              href={ROUTES.applyDetail}
-              className="flex-shrink-0 px-6 py-2.5 rounded-full text-sm font-semibold text-white transition-colors"
-              style={{ backgroundColor: colors.primary.DEFAULT }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                  colors.primary.dark.DEFAULT;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                  colors.primary.DEFAULT;
-              }}
-            >
-              Xem chi tiet
-            </Link>
+            <Button asChild className="flex-shrink-0 rounded-full px-6">
+              <Link href={ROUTES.applyDetail}>Xem chi tiết</Link>
+            </Button>
           </div>
         ))}
       </div>
 
       {/* View All */}
       <div className="flex justify-center">
-        <button
-          className="px-8 py-3 rounded-[15px] text-sm font-semibold transition-colors"
-          style={{
-            border: `1.5px solid ${colors.primary.navy.DEFAULT}`,
-            color: colors.primary.navy.DEFAULT,
-            backgroundColor: "transparent",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.backgroundColor =
-              colors.primary.navy.DEFAULT;
-            (e.currentTarget as HTMLButtonElement).style.color =
-              colors.neutral.white;
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.backgroundColor =
-              "transparent";
-            (e.currentTarget as HTMLButtonElement).style.color =
-              colors.primary.navy.DEFAULT;
-          }}
-        >
+        <Button variant="navy-outline" className="rounded-[15px] px-8">
           Xem tất cả 14 vị trí
-        </button>
+        </Button>
       </div>
     </Section>
   );

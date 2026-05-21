@@ -91,20 +91,26 @@ export function ApplyManageList({ jobs, onEdit, onDelete, onAdd }: Props) {
                     </td>
                     <td className="px-4 py-3 text-center">
                       <div className="flex items-center justify-center gap-2">
-                        <button
+                        <Button
+                          variant="ghost"
+                          isIconOnly
+                          size="sm"
                           onClick={() => onEdit(job)}
-                          className="p-1.5 rounded-lg hover:bg-blue-50 transition-colors text-blue-600"
                           title="Sửa"
+                          className="text-blue-600 hover:!bg-blue-50"
                         >
                           <Pencil size={15} />
-                        </button>
-                        <button
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          isIconOnly
+                          size="sm"
                           onClick={() => job.id && onDelete(job.id)}
-                          className="p-1.5 rounded-lg hover:bg-red-50 transition-colors text-red-500"
                           title="Xoá"
+                          className="text-red-500 hover:!bg-red-50"
                         >
                           <Trash2 size={15} />
-                        </button>
+                        </Button>
                       </div>
                     </td>
                   </tr>
