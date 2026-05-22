@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
@@ -19,28 +18,19 @@ export default function AboutERAVNServicesSection() {
   return (
     <Section id="services" padding="md" bg="gray" noContainer>
       <Container size="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
+        <div className="text-center mb-14">
           <h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold"
             style={{ color: colors.primary.DEFAULT }}
           >
             LĨNH VỰC HOẠT ĐỘNG
           </h2>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {services.map((service, index) => (
-            <motion.div
+          {services.map((service) => (
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
               className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
             >
               <Image
@@ -54,7 +44,7 @@ export default function AboutERAVNServicesSection() {
               <div className="absolute bottom-0 left-0 right-0 p-5 text-center">
                 <h3 className="text-white font-semibold text-lg">{service.title}</h3>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </Container>

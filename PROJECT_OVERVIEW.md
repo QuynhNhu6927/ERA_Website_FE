@@ -13,10 +13,10 @@
 | Language | TypeScript 5 |
 | Styling | Tailwind CSS v4 |
 | Font | Inter (Google Fonts) |
-| Animation | Framer Motion |
 | Icons | Lucide React |
-| Rich Editor | CKEditor 5 |
-| Utilities | clsx, tailwind-merge, axios |
+| Rich Editor | CKEditor 5 (monorepo package) |
+| Utilities | clsx, tailwind-merge |
+| Deploy | Vercel (Git integration, auto-deploy on push) |
 
 ---
 
@@ -101,15 +101,14 @@ export default function VeChungToi() {
 | `src/components/ui/Button.tsx` | Variants: `primary`, `secondary`, `navy`, `navy-outline`, `outline`, `ghost`, `white`, `white-outline`, `danger`. Props: `shape` (default/circle), `isIconOnly`, `asChild`, `isLoading` |
 | `src/components/ui/Container.tsx` | Responsive container với size variants |
 | `src/components/ui/Section.tsx` | Section wrapper với bg, padding configs |
-| `src/components/ui/SectionTitle.tsx` | Title component với highlight, subtitle |
-| `src/components/ui/Badge.tsx` | Badge component |
+
 
 ### Lib
 | File | Mô tả |
 |------|-------|
 | `src/lib/utils.ts` | `cn()` utility |
-| `src/lib/theme.ts` | Color palette, theme classes, `withOpacity()` |
-| `src/lib/routes.ts` | Centralized route constants |
+| `src/lib/theme.ts` | Color palette, `withOpacity()` utility |
+| `src/lib/routes.ts` | Centralized route constants (`ROUTES`) |
 
 ### Hooks
 | File | Mô tả |
@@ -177,22 +176,38 @@ const nextConfig = {
 };
 ```
 
+> **Note**: Không cần `output: 'export'` vì deploy trên Vercel hỗ trợ Next.js App Router native (SSR/SSG).
+
+---
+
+## 7.1 SEO & Search Console
+
+| File | Mô tả |
+|------|-------|
+| `src/app/robots.ts` | Cho phép crawl toàn bộ, chặn `/quan-ly` routes |
+| `src/app/sitemap.ts` | 15 static URLs (chưa bao gồm dynamic posts) |
+| `src/app/layout.tsx` | Google site verification: `k7gJl-mR813vH7LjJj1wD4B23PDH4N-F_bEW9pHylmc` |
+
+**Trạng thái:**
+- Sitemap đã submit: `https://era.com.vn/sitemap.xml`
+- Google Search Console property: `https://era.com.vn/`
+- Các trang đang được request re-index sau khi cập nhật metadata
+
 ---
 
 ## 8. Animation Convention
 
-Pattern chuẩn trong project:
-
-```tsx
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ delay: index * 0.1 }}
+> **Current**: Project đang không dùng animation library. Các section render static.
 >
-```
-
-> **Quy tắc**: Luôn dùng `viewport={{ once: true }}` để tránh re-trigger khi scroll lên/xuống.
+> Nếu cần thêm animation sau này, đề xuất dùng Framer Motion với pattern:
+> ```tsx
+> <motion.div
+>   initial={{ opacity: 0, y: 20 }}
+>   whileInView={{ opacity: 1, y: 0 }}
+>   viewport={{ once: true }}
+>   transition={{ delay: index * 0.1 }}
+> >
+> ```
 
 ---
 
@@ -278,6 +293,7 @@ Nhiều section đang dùng mock data hardcoded inline:
 | `no-unescaped-entities` | `ProjectsDetailContentSection.tsx`, `ProjectsManageList.tsx` | Low | `"` nên escape thành `&quot;` |
 | Unused imports | `NewsManagePage.tsx` (colors), nhiều file khác | Low | Dọn dẹp định kỳ |
 | Turbopack panic `/ung-tuyen/` | Dev server only | Low | Xóa `.next` và chạy lại nếu gặp |
+| Dead code removed | May 2026 | Done | Đã xóa `Badge.tsx`, `SectionTitle.tsx`, `ImagePlaceholder.tsx`, `CompassCollabSection.tsx`, `CompassLoadingAnimation.tsx`, 12 CKEditor sub-packages, `axios`, `themeClasses`, `cssVariables`, `color()`, `getRoute()`, `RouteKey` |
 
 ---
 

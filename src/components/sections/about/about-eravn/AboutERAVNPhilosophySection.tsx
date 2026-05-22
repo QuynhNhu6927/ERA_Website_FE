@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
@@ -20,29 +19,18 @@ export default function AboutERAVNPhilosophySection() {
   return (
     <Section id="philosophy" padding="md" bg="white" noContainer>
       <Container size="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
+        <div className="text-center mb-14">
           <h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold"
             style={{ color: colors.primary.DEFAULT }}
           >
             TRIẾT LÝ DOANH NGHIỆP
           </h2>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Vision & Mission */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div className="border-l-4 pl-6" style={{ borderColor: colors.primary.DEFAULT }}>
               <h3 className="font-bold text-base uppercase tracking-wider" style={{ color: colors.primary.DEFAULT }}>
                 Tầm nhìn
@@ -73,16 +61,10 @@ export default function AboutERAVNPhilosophySection() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right: Core Values Orbit Animation */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="flex items-center justify-center"
-          >
+          <div className="flex items-center justify-center">
             <div
               className="relative mx-auto"
               style={{ width: "clamp(320px, 45vw, 520px)", height: "clamp(320px, 45vw, 520px)" }}
@@ -191,7 +173,7 @@ export default function AboutERAVNPhilosophySection() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </Container>
     </Section>

@@ -61,14 +61,14 @@ export function CompassBrandsSection() {
               variant="primary"
               className="py-4 px-8 md:px-12 rounded-xl w-full sm:w-auto"
             >
-              <Link href={`${ROUTES.aboutUs}/era-real-estate`}>Về ERA Real Estate</Link>
+              <Link href={ROUTES.era}>Về ERA Real Estate</Link>
             </Button>
             <Button
               asChild
               variant="secondary"
               className="py-4 px-8 md:px-12 rounded-xl w-full sm:w-auto"
             >
-              <Link href="/">Về ERA Vietnam</Link>
+              <Link href={ROUTES.eraVn}>Về ERA Vietnam</Link>
             </Button>
           </div>
         </div>

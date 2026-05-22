@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
@@ -63,12 +62,7 @@ export default function AboutERAVNESGSection() {
       <Container size="lg">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
+          <div>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight" style={{ color: colors.primary.DEFAULT }}>
               HÀNH TRÌNH
               <br />
@@ -85,12 +79,8 @@ export default function AboutERAVNESGSection() {
 
             <div className="mt-8 space-y-4">
               {activities.map((activity, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
                   className="flex items-start gap-4"
                 >
                   <div
@@ -100,19 +90,13 @@ export default function AboutERAVNESGSection() {
                     {activity.icon}
                   </div>
                   <p className="text-sm text-gray-600 pt-2">{activity.text}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Images */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="space-y-4"
-          >
+          <div className="space-y-4">
             <button
               onClick={() => openGallery(0)}
               className="w-full text-left rounded-2xl overflow-hidden shadow-lg relative aspect-[2/1] hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
@@ -139,7 +123,7 @@ export default function AboutERAVNESGSection() {
                 <Image src={esgImages[3]} alt="ESG 4" fill className="object-cover" />
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </Container>
 

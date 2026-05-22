@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -62,12 +61,7 @@ export default function AboutERAVNAwardsSection() {
     <Section id="awards" padding="md" bg="white" noContainer>
       <Container size="lg">
         {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-4"
-        >
+        <div className="text-center mb-4">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
             <span style={{ color: colors.primary.DEFAULT }}>ERA AWARDS</span>
             <span style={{ color: colors.primary.navy.DEFAULT }}> - VĂN HÓA VINH DANH</span>
@@ -78,7 +72,7 @@ export default function AboutERAVNAwardsSection() {
           <p className="text-gray-500 text-sm">
             Tự hào tôn vinh những cá nhân và tập thể xuất sắc đã không ngừng phá vỡ mọi giới hạn.
           </p>
-        </motion.div>
+        </div>
 
         {/* Tabs */}
         <div className="flex justify-center mt-6 mb-8">
@@ -157,12 +151,8 @@ export default function AboutERAVNAwardsSection() {
             {/* Best Achievers */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
               {achievers.map((achiever, index) => (
-                <motion.div
+                <div
                   key={`${achiever.name}-${index}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
                   className="rounded-xl overflow-hidden shadow-md relative group border-2 border-white"
                 >
                   <div className="aspect-square relative">
@@ -173,17 +163,14 @@ export default function AboutERAVNAwardsSection() {
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
             {/* Agent Tables */}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
               {/* Promoted Agents */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+              <div
                 className="lg:col-span-2 rounded-2xl p-5 text-white"
                 style={{ backgroundColor: colors.primary.navy.DEFAULT }}
               >
@@ -209,14 +196,10 @@ export default function AboutERAVNAwardsSection() {
                 <button className="mt-6 text-sm flex items-center gap-1 mx-auto hover:underline text-white">
                   Xem thêm <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
                 </button>
-              </motion.div>
+              </div>
 
               {/* Official Agents */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
+              <div
                 className="lg:col-span-3 rounded-2xl border border-gray-100 p-5 bg-white shadow-sm"
               >
                 <h4 className="font-semibold text-2xl mb-6 text-center" style={{ color: colors.primary.navy.DEFAULT }}>
@@ -243,7 +226,7 @@ export default function AboutERAVNAwardsSection() {
                 <button className="mt-6 text-sm flex items-center gap-1 mx-auto hover:underline" style={{ color: colors.primary.navy.DEFAULT }}>
                   Xem thêm <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
                 </button>
-              </motion.div>
+              </div>
             </div>
           </>
         )}

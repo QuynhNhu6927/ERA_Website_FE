@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
@@ -25,12 +24,7 @@ export default function AboutERAVNDivisionsSection() {
   return (
     <Section id="divisions" padding="md" bg="white" noContainer>
       <Container size="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-6"
-        >
+        <div className="text-center mb-6">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ color: colors.primary.DEFAULT }}>
             HỆ THỐNG DIVISIONS
           </h2>
@@ -41,16 +35,12 @@ export default function AboutERAVNDivisionsSection() {
             ERA Vietnam tự hào sở hữu 12 division, mỗi division đóng vai trò quan trọng trong sự phát triển của công ty và
             mang đến những giá trị triết thực cho khách hàng trong lĩnh vực môi giới bất động sản
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mt-12">
-          {divisions.map((person, index) => (
-            <motion.div
+          {divisions.map((person) => (
+            <div
               key={person.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
               className="text-center group cursor-pointer"
             >
               <div className="relative w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full overflow-hidden border-4 border-white shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:border-gray-100">
@@ -66,7 +56,7 @@ export default function AboutERAVNDivisionsSection() {
                 {person.name}
               </h4>
               <p className="text-sm font-semibold transition-colors duration-200" style={{ color: colors.primary.navy.DEFAULT }}>{person.group}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
