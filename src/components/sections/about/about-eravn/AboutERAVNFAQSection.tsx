@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
@@ -35,25 +34,16 @@ export default function AboutERAVNFAQSection() {
   return (
     <Section padding="md" bg="white" noContainer>
       <Container size="md">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold" style={{ color: colors.primary.DEFAULT }}>
             CÂU HỎI THƯỜNG GẶP - FAQ
           </h2>
-        </motion.div>
+        </div>
 
         <div className="space-y-3">
           {faqs.map((faq, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
               className="border border-gray-100 rounded-xl overflow-hidden"
             >
               <button
@@ -61,7 +51,7 @@ export default function AboutERAVNFAQSection() {
                 className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50/50 transition-colors"
               >
                 <span className="font-semibold text-sm text-gray-800">{faq.question}</span>
-                <motion.svg
+                <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
@@ -70,29 +60,20 @@ export default function AboutERAVNFAQSection() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
                   className="text-gray-400 shrink-0 ml-4"
+                  style={{ transform: openIndex === index ? "rotate(180deg)" : "rotate(0deg)" }}
                 >
                   <polyline points="6 9 12 15 18 9" />
-                </motion.svg>
+                </svg>
               </button>
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              {openIndex === index && (
+                <div className="overflow-hidden">
+                  <div className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </Container>

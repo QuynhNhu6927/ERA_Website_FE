@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
@@ -12,13 +11,7 @@ export default function AboutERAVNContentSection() {
       <Container size="lg">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
           {/* Image + Badge */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative pb-10"
-          >
+          <div className="relative pb-10">
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-full bg-gray-100">
               <Image
                 src="/home/home_banner_hero_2_mb.webp"
@@ -40,16 +33,10 @@ export default function AboutERAVNContentSection() {
                 Agents
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <h2
               className="text-3xl md:text-4xl font-bold"
               style={{ color: colors.primary.DEFAULT }}
@@ -87,7 +74,7 @@ export default function AboutERAVNContentSection() {
                 Chứng chỉ hành nghề môi giới bất động sản theo quy định của Pháp luật.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </Container>
     </Section>

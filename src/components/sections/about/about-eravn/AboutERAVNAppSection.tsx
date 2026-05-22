@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { colors } from "@/lib/theme";
@@ -44,31 +43,19 @@ export default function AboutERAVNAppSection() {
     <Section padding="md" bg="navy" noContainer>
       <Container size="lg">
         {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-6 md:mb-8 text-center"
-        >
+        <div className="mb-6 md:mb-8 text-center">
           <p className="text-3xl md:text-4xl font-bold uppercase" style={{ color: colors.secondary.DEFAULT }}>
             MY ERA APP
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">
             Trợ lý đắc lực dành cho Agent
           </h2>
-        </motion.div>
+        </div>
 
         {/* Image + Features */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-16 items-center">
           {/* Phone Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="flex justify-center"
-          >
+          <div className="flex justify-center">
             <div className="relative w-64 md:w-80 lg:w-96 aspect-[3/4]">
               <Image
                 src="/about/about_eravn_mobileApp.webp"
@@ -77,23 +64,14 @@ export default function AboutERAVNAppSection() {
                 className="object-contain"
               />
             </div>
-          </motion.div>
+          </div>
 
           {/* Features */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
+          <div>
             <div className="space-y-6">
-              {features.map((feature, index) => (
-                <motion.div
+              {features.map((feature) => (
+                <div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
                   className="flex items-start gap-4"
                 >
                   <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center shrink-0 relative">
@@ -103,10 +81,10 @@ export default function AboutERAVNAppSection() {
                     <h4 className="font-semibold text-base text-sky-400">{feature.title}</h4>
                     <p className="text-white/70 text-sm mt-1 leading-relaxed">{feature.desc}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </Container>
     </Section>

@@ -39,12 +39,4 @@ export const ROUTES = {
   privacy: "/chinh-sach-bao-mat",
 } as const;
 
-// Type for route keys (useful for TypeScript autocomplete)
-export type RouteKey = keyof typeof ROUTES;
-
-// Helper function to get route path
-export function getRoute(key: RouteKey): string {
-  return ROUTES[key];
-}
-
 export default ROUTES;
