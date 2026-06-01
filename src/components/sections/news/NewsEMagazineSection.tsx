@@ -11,7 +11,7 @@ const magazines = [
     id: 1,
     title: "Project Ebook",
     date: "THÁNG 6.2026",
-    summary: "Danh sách hơn 30 dự án đang booking và sắp mở bán trong tháng 6 năm 2026.",
+    summary: "Hơn 30 dự án đang booking và sắp mở bán trong tháng 6 năm 2026.",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=400",
     pdfUrl: "/e-magazine/project-ebook-thang-06-2026.pdf",
   },
